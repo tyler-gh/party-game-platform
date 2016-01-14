@@ -1,0 +1,15 @@
+@(title: String, name: String, id: Long, game: String)
+
+@main(title) {
+
+    <div class="pg-content">
+
+        <div id="message"></div>
+
+        <h2>WebSocket Test</h2>
+
+        <div id="output"></div>
+    </div>
+
+    @websocket_test(name, id, game)
+}

@@ -18,6 +18,15 @@ class Client(game: Game, val clientInfo: ClientInfo) {
   def connection(): (Iteratee[GameAction, _], Enumerator[GameAction]) = {
     socket.refs
   }
+
+  override def equals(that: Any): Boolean = that match {
+    case that: Client => this.hashCode == that.hashCode
+    case _ => false
+  }
+
+  override def hashCode: Int = {
+    clientInfo.id.hashCode()
+  }
 }
 
 

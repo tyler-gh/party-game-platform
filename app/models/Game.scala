@@ -1,20 +1,30 @@
 package models
 
-import scala.collection.mutable.ArrayBuffer
+import java.util
+import java.util.Collections
 
-class Game {
 
-  private val clients = ArrayBuffer.empty[Option[Client]]
+class Game(val id: String) {
+
+
+  private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
 
   def addClient(name: String): Client = {
     val client = new Client(this, new ClientInfo(clients.size, name))
-    clients += Some(client)
     performAction(new GameAction(client.clientInfo, GameAction.NEW_CLIENT, None))
+    clients.add(Some(client))
     client
   }
 
+  def getClient(id: Long): Option[Client] = {
+    findClient(client => client.clientInfo.id == id)
+  }
+
   def clientClosed(client: Client): Unit = {
-    clients.transform(clientOpt => if (clientOpt.contains(client)) None else clientOpt)
+    val index = clients.indexOf(client)
+    if(index != -1) {
+      clients.set(index, None)
+    }
   }
 
   def performAction(action: GameAction): Unit = {
@@ -27,7 +37,32 @@ class Game {
   }
 
   private def forEachClient(func: (Client) => Unit): Unit = {
-    clients.foreach(clientOpt => clientOpt.foreach(func))
+    val it = clients.listIterator()
+    while(it.hasNext) {
+      it.next().foreach(func)
+    }
+  }
+
+  private def findClient(func: (Client) => Boolean): Option[Client] = {
+    val it = clients.listIterator()
+    while(it.hasNext) {
+      val client = it.next()
+      if(client.isDefined) {
+        if(func.apply(client.get)) {
+          return Some(client.get)
+        }
+      }
+    }
+    None
+  }
+
+  override def equals(that: Any): Boolean = that match {
+    case that: Game => this.hashCode == that.hashCode
+    case _ => false
+  }
+
+  override def hashCode(): Int = {
+    id.hashCode
   }
 
 }

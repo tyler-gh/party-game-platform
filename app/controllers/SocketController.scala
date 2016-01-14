@@ -1,22 +1,16 @@
 package controllers
 
-import models.{Game, GameAction}
+import models.{Games, GameAction}
+import play.api.libs.iteratee.{Enumerator, Iteratee}
 import play.api.mvc._
 
 
 class SocketController {
 
-  val game = new Game()
-
-  def socket = WebSocket.using[GameAction] { request =>
-    val nameOpt = request.getQueryString("name")
-//    nameOpt.fold(() => {
-//      throw new Exception
-//    })(name => {
-//      game.addClient(name).connection()
-//    })
-    println(nameOpt)
-    game.addClient(nameOpt.get).connection()
+  def socket(name: String, game: String, id: Long) = WebSocket.using[GameAction] { request =>
+      Games.getGame(game).fold[(Iteratee[GameAction, _], Enumerator[GameAction])]((null, null))(game => {
+        game.getClient(id).get.connection()
+      })
   }
 
 }
