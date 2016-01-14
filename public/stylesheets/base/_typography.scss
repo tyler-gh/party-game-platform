@@ -1,0 +1,36 @@
+@import 'variables';
+
+body {
+  	color: $pg-color-dark-gray;
+  	font-size: $pg-mobile-size-small;
+  	font-family: $pg-body-font;
+  	line-height: 1.4;
+
+	@media (min-width: $pg-desk-break) { 
+		font-size: $pg-desk-size-small;
+	}
+
+}
+
+h1 {
+	
+	font-size: $pg-mobile-size-large;
+	line-height: 1.2;
+
+	@media (min-width: $pg-desk-break) { 
+		font-size: $pg-desk-size-large;	
+	}
+}
+
+h2 {
+	font-size: $pg-mobile-size-medium;
+
+	@media (min-width: $pg-desk-break) { 
+		font-size: $pg-desk-size-medium;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}

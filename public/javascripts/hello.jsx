@@ -8,7 +8,7 @@ var Counter = React.createClass({
         });
     },
     render: function () {
-        return (<h2 onClick={this.handleClick}>Click me! Number of clicks: {this.state.clickCount}</h2>);
+        return (<h1 onClick={this.handleClick}>Hello react, Number of clicks: {this.state.clickCount}</h1>);
     }
 });
 ReactDOM.render(
