@@ -1,23 +1,22 @@
 package controllers
 
-import models.SocketActor
+import models.{Game, GameAction}
 import play.api.mvc._
+
 
 class SocketController {
 
-  val actors = scala.collection.mutable.ArrayBuffer.empty[SocketActor]
+  val game = new Game()
 
-  def socket = WebSocket.using[String] { request =>
-    val actor = new SocketActor() {
-      override def onMessage(msg: String) {
-        actors.foreach(a => a.send(msg))
-      }
-      override def onClose(): Unit = {
-        actors -= this
-      }
-    }
-    actors += actor
-    actor.refs
+  def socket = WebSocket.using[GameAction] { request =>
+    val nameOpt = request.getQueryString("name")
+//    nameOpt.fold(() => {
+//      throw new Exception
+//    })(name => {
+//      game.addClient(name).connection()
+//    })
+    println(nameOpt)
+    game.addClient(nameOpt.get).connection()
   }
 
 }
