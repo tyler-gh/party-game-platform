@@ -3,12 +3,14 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
-GET     /ws                         controllers.SocketController.socket(name: String, game: String, id: Long)
-GET     /create_game                controllers.CreateGameController.create
-GET     /join_game                  controllers.JoinGameController.view
-GET     /game                       controllers.JoinGameController.join(name: String, game: String)
+GET     /                                       controllers.Application.index
+GET     /ws                                     controllers.SocketController.socket
+#GET     /create_game                           controllers.CreateGameController.create
+POST    /create_game/:name                      controllers.CreateGameController.create(name: String)
+#GET     /join_game                             controllers.JoinGameController.view
+#GET     /game                                  controllers.JoinGameController.join(name: String, game: String)
+POST    /join_game/:gameName/:gameId/:userName  controllers.JoinGameController.join(userName: String, gameName: String, gameId: String)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                           controllers.Assets.versioned(path="/public", file: Asset)
 

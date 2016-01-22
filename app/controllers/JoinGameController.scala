@@ -1,6 +1,7 @@
 package controllers
 
-import models.Games
+import models.{ClientCookie, Games}
+import play.api.libs.json.{JsObject, Json}
 import play.api.mvc._
 
 /**
@@ -20,6 +21,33 @@ class JoinGameController extends Controller {
     val client = game.addClient(name)
 
     Ok(views.html.game("Game", name, client.clientInfo.id, gameId))
+  }
+
+  def join(userName: String, gameName: String, gameId: String) = Action { implicit request =>
+    joinGame(userName, gameName, gameId)
+  }
+
+  def joinGame(userName: String, gameName: String, gameId: String)(implicit request: Request[Any]) = {
+
+    def newClient() = {
+      val game = Games.getGame(gameId).get
+      val client = game.addClient(userName)
+      val clientJson = Json.toJson(client.clientInfo)
+
+      Ok(clientJson.as[JsObject] + ("users" -> Json.toJson(game.allClients))).withCookies(
+        ClientCookie.NAME.createCookie(userName),
+        ClientCookie.GAME.createCookie(game.id),
+        ClientCookie.ID.createCookie(client.clientInfo.id)
+      )
+    }
+
+    ClientCookie.GAME.getCookie(request.cookies).fold(newClient()){ gameCookie =>
+      if(gameCookie.value.equals(gameId)) {
+        Ok
+      } else {
+        newClient()
+      }
+    }
   }
 
 }

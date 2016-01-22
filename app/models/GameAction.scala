@@ -7,21 +7,23 @@ import play.api.mvc.WebSocket.FrameFormatter
 
 object GameAction {
 
-  sealed abstract class Type(val id: Int, val name: String)
+  sealed class Type(val id: Int, val name: String)
 
   case object NEW_CLIENT extends Type(0, "new-client")
 
-  case object GROUP_MESSAGE extends Type(1, "group-message")
+  // TODO start game action, used to enforce not joining after the game has started
 
-  val actions = Seq(NEW_CLIENT, GROUP_MESSAGE)
+  case object UNFORMED extends Type(1, "")
 
-  def withName(s: String): Option[Type] = {
-    actions.find(action => action.name.equals(s))
+  val actions = Seq(NEW_CLIENT, UNFORMED)
+
+  def withName(s: String): Type = {
+    actions.find(action => action.name.equals(s)).getOrElse(new Type(UNFORMED.id, s))
   }
 
   implicit val gameActionReads: Reads[GameAction] = (
     (JsPath \ "client").read[ClientInfo] and
-    (JsPath \ "actionType").read[String].map(s => withName(s).get) and // TODO: this get will throw an error if Type DNE
+    (JsPath \ "actionType").read[String].map(s => withName(s)) and
       (JsPath \ "data").readNullable[JsValue]
     ) (GameAction.apply _)
 

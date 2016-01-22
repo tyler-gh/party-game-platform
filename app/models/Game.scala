@@ -6,10 +6,10 @@ import java.util.Collections
 
 class Game(val id: String) {
 
-
   private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
 
   def addClient(name: String): Client = {
+    // TODO: no spaces in names
     val client = new Client(this, new ClientInfo(clients.size, name))
     performAction(new GameAction(client.clientInfo, GameAction.NEW_CLIENT, None))
     clients.add(Some(client))
@@ -34,6 +34,10 @@ class Game(val id: String) {
   def endGame(): Unit = {
     forEachClient(client => client.close())
     clients.clear()
+  }
+
+  def allClients: List[ClientInfo] = {
+    clients.toArray(new Array[Option[Client]](clients.size())).toList.flatten.map(_.clientInfo)
   }
 
   private def forEachClient(func: (Client) => Unit): Unit = {
