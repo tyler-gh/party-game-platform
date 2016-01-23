@@ -464,7 +464,7 @@ var App = React.createClass({
 
 ReactDOM.render(
     <App />,
-    document.getElementById('temp')
+    document.getElementById('pg-app')
 );
 
 var QUESTIONS = [
