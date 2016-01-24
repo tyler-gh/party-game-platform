@@ -94,15 +94,15 @@ a {
   text-decoration: none; }
 
 div.game-icon-container:first-child {
-  margin: 64px 64px 64px 64px; }
+  margin: 80px auto; }
 
 div.game-icon-container {
-  margin: 0 64px 64px 64px; }
+  margin: 0 auto 80px; }
 
 div.game-icon-container img {
   display: block;
-  margin: 0 auto;
-  cursor: pointer; }
+  cursor: pointer;
+  margin: 0 auto; }
 
 div.game-icon-container div.center-span {
   text-align: center;
