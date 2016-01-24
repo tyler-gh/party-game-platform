@@ -93,9 +93,34 @@ a {
   color: inherit;
   text-decoration: none; }
 
+div.game-icon-container:first-child {
+  margin: 50px 50px 50px 50px; }
+
 div.game-icon-container {
-  display: table-caption;
-  text-align: center; }
+  margin: 0 50px 50px 50px; }
+
+div.game-icon-container img {
+  display: block;
+  margin: 0 auto;
+  cursor: pointer; }
+
+div.game-icon-container div.center-span {
+  text-align: center;
+  margin: 8px 0; }
+
+div.game-icon-container span {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer; }
+
+.color-fibbage {
+  color: #F5A623; }
+
+.color-pirate {
+  color: #003366; }
+
+.color-mafia {
+  color: #D0021B; }
 
 body {
   color: #2a2a2a;

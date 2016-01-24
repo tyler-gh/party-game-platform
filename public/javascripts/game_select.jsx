@@ -5,7 +5,7 @@ var GameIcon = React.createClass({
         return (
             <div className={"game-icon-container " + game}>
                 <img src={"/assets/svg/" + game + "_icon_color.svg"}/>
-                {title}
+                <div className="center-span"><span className={"color-" + game}>{title}</span></div>
             </div>
         );
     }
@@ -15,9 +15,8 @@ var GameSelectMenu = React.createClass({
     render: function () {
         return (
             <div>
-                <div> select a game placeholder</div>
-                <GameIcon game="pirate" title="Pirate's Dice"/>
-                <GameIcon game="mafia" title="Mafia"/>
+                <GameIcon game="pirate" title="pirate's dice"/>
+                <GameIcon game="mafia" title="mafia"/>
             </div>
         );
     }
