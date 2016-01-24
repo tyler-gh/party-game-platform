@@ -93,6 +93,10 @@ a {
   color: inherit;
   text-decoration: none; }
 
+div.game-icon-container {
+  display: table-caption;
+  text-align: center; }
+
 body {
   color: #2a2a2a;
   font-size: 14px;
