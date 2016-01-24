@@ -1,11 +1,32 @@
 var GameIcon = React.createClass({
-    render: function () {
+    render: function() {
+        var game = this.props.game;
+        return (
+            <img src={"/assets/svg/" + game + "_icon_color.svg"} />
+        );
+    }
+});
+
+var GameTitle = React.createClass({
+    render: function() {
+        var game = this.props.game;
+        var title = this.props.title;
+        return (
+            <span className={"color-" + game}>{title}</span>
+        );
+    }
+});
+
+var GameChoice = React.createClass({
+    render: function() {
         var game = this.props.game;
         var title = this.props.title;
         return (
             <div className={"game-icon-container " + game}>
-                <img src={"/assets/svg/" + game + "_icon_color.svg"}/>
-                <div className="center-span"><span className={"color-" + game}>{title}</span></div>
+                <GameIcon game={game} />
+                <div className="center-span">
+                    <GameTitle game={game} title={title} />
+                </div>
             </div>
         );
     }
@@ -15,8 +36,8 @@ var GameSelectMenu = React.createClass({
     render: function () {
         return (
             <div>
-                <GameIcon game="pirate" title="pirate's dice"/>
-                <GameIcon game="mafia" title="mafia"/>
+                <GameChoice game="pirate" title="pirate's dice"/>
+                <GameChoice game="mafia" title="mafia"/>
             </div>
         );
     }
