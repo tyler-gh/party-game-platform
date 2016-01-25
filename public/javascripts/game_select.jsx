@@ -22,10 +22,12 @@ var GameChoice = React.createClass({
         var game = this.props.game;
         var title = this.props.title;
         return (
-            <div className={"game-icon-container " + game}>
-                <GameIcon game={game} />
-                <div className="center-span">
-                    <h1><GameTitle game={game} title={title} /></h1>
+            <div className={"game-choice-" + game}>
+                <div className={"game-icon-container"}>
+                    <GameIcon game={game} />
+                    <div className="center-span">
+                        <h1><GameTitle game={game} title={title} /></h1>
+                    </div>
                 </div>
             </div>
         );
