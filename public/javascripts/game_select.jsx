@@ -37,8 +37,8 @@ var GameSelectMenu = React.createClass({
         return (
             <div>
                 <GameChoice game="pirate" title="pirate's dice"/>
+                <GameChoice game="fibbage" title="fibbage"/>
                 <GameChoice game="mafia" title="mafia"/>
-                <GameChoice game="pirate" title="pirate's dice"/>
             </div>
         );
     }

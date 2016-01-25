@@ -93,35 +93,6 @@ a {
   color: inherit;
   text-decoration: none; }
 
-div.game-icon-container:first-child {
-  margin: 64px auto; }
-
-div.game-icon-container {
-  margin: 0 auto 64px; }
-
-div.game-icon-container img {
-  display: block;
-  cursor: pointer;
-  margin: 0 auto; }
-
-div.game-icon-container div.center-span {
-  text-align: center;
-  margin: 8px 0; }
-
-div.game-icon-container span {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer; }
-
-.color-fibbage {
-  color: #F5A623; }
-
-.color-pirate {
-  color: #003366; }
-
-.color-mafia {
-  color: #D0021B; }
-
 body {
   color: #2a2a2a;
   font-size: 14px;
@@ -175,6 +146,35 @@ a {
   text-decoration: none; }
 
 .pg-content {
-  margin: 48px; }
+  margin: 24px; }
+
+div.game-icon-container:first-child {
+  margin: 64px auto; }
+
+div.game-icon-container {
+  margin: 0 auto 64px; }
+
+div.game-icon-container img {
+  display: block;
+  cursor: pointer;
+  margin: 0 auto; }
+
+div.game-icon-container div.center-span {
+  text-align: center;
+  margin: 8px 0; }
+
+div.game-icon-container span {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer; }
+
+.color-fibbage {
+  color: #F5A623; }
+
+.color-pirate {
+  color: #003366; }
+
+.color-mafia {
+  color: #D0021B; }
 
 /*# sourceMappingURL=main.css.map */

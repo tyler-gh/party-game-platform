@@ -1,0 +1,40 @@
+@import '../base/variables';
+
+$pg-icon-separation:  64px;
+
+div.game-icon-container:first-child {
+  margin: $pg-icon-separation auto;
+}
+
+div.game-icon-container {
+  margin: 0 auto $pg-icon-separation;
+}
+
+div.game-icon-container img {
+  display: block;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+div.game-icon-container div.center-span {
+  text-align: center;
+  margin: 8px 0;
+}
+
+div.game-icon-container span {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.color-fibbage {
+  color: $pg-color-fibbage-orange
+}
+
+.color-pirate {
+  color: $pg-color-pirate-blue
+}
+
+.color-mafia {
+  color: $pg-color-mafia-red
+}
