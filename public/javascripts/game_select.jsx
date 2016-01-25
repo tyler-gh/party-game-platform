@@ -12,7 +12,7 @@ var GameTitle = React.createClass({
         var game = this.props.game;
         var title = this.props.title;
         return (
-            <span className={"color-" + game}>{title}</span>
+            <span>{title}</span>
         );
     }
 });
