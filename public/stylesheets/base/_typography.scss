@@ -4,7 +4,7 @@ body {
   	color: $pg-color-dark-gray;
   	font-size: $pg-mobile-size-small;
   	font-family: $pg-body-font;
-  	line-height: 1.4;
+  	line-height: 140%;
 
 	@media (min-width: $pg-desk-break) { 
 		font-size: $pg-desk-size-small;
@@ -15,7 +15,7 @@ body {
 h1 {
 	
 	font-size: $pg-mobile-size-large;
-	line-height: 1.2;
+	line-height: 120%;
 
 	@media (min-width: $pg-desk-break) { 
 		font-size: $pg-desk-size-large;	

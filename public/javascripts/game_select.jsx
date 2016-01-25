@@ -25,7 +25,7 @@ var GameChoice = React.createClass({
             <div className={"game-icon-container " + game}>
                 <GameIcon game={game} />
                 <div className="center-span">
-                    <GameTitle game={game} title={title} />
+                    <h1><GameTitle game={game} title={title} /></h1>
                 </div>
             </div>
         );
