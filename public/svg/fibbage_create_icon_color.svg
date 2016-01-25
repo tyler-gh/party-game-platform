@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="31px" height="31px" viewBox="0 0 31 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="fibbage-menu" sketch:type="MSArtboardGroup" transform="translate(-252.000000, -736.000000)" fill="#F6A623">
+            <path d="M267.5,767 C276.060414,767 283,760.060414 283,751.5 C283,742.939586 276.060414,736 267.5,736 C258.939586,736 252,742.939586 252,751.5 C252,760.060414 258.939586,767 267.5,767 Z M274.819667,752.502867 L268.620126,752.502867 L268.620126,759.036697 L266.416858,759.036697 L266.416858,752.502867 L260.247706,752.502867 L260.247706,750.451548 L266.416858,750.451548 L266.416858,743.963303 L268.620126,743.963303 L268.620126,750.451548 L274.819667,750.451548 L274.819667,752.502867 Z" id="Oval-1" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

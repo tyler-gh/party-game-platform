@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="fibbage-menu" sketch:type="MSArtboardGroup" transform="translate(-251.000000, -813.000000)" fill="#F6A623">
+            <path d="M267,845 C275.836556,845 283,837.836556 283,829 C283,820.163444 275.836556,813 267,813 C258.163444,813 251,820.163444 251,829 C251,837.836556 258.163444,845 267,845 Z M261.944625,819.879479 L272.055375,819.879479 L272.055375,838.120521 L261.944625,838.120521 L261.944625,819.879479 Z M264.940403,831.162598 C266.077887,831.162598 267,830.236467 267,829.094026 C267,827.951585 266.077887,827.025454 264.940403,827.025454 C263.802919,827.025454 262.880806,827.951585 262.880806,829.094026 C262.880806,830.236467 263.802919,831.162598 264.940403,831.162598 Z" id="Oval-3" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>
