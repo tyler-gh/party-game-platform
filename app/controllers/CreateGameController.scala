@@ -13,17 +13,9 @@ class CreateGameController extends Controller {
 
   var gameId: Long = 1024
 
-  def create = Action {
-
-    val game = Games.createGame(gameId.toHexString).get
-    gameId += Random.nextInt(128)
-
-    Ok(views.html.game_details("Game Code", game.id))
-  }
-
   def create(name: String) = Action {
 
-    val game = Games.createGame(gameId.toHexString).get
+    val game = Games.createGame(gameId.toHexString, name).get
     val client = game.addClient("root")
 
     gameId += Random.nextInt(128)

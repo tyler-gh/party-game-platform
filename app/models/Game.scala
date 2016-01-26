@@ -4,20 +4,21 @@ import java.util
 import java.util.Collections
 
 
-class Game(val id: String) {
+class Game(val id: String, val name: String) {
 
   private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
+  private val actions = Collections.synchronizedList(new util.ArrayList[GameAction])
 
-  def addClient(name: String): Client = {
+  def addClient(clientName: String): Client = {
     // TODO: no spaces in names
-    val client = new Client(this, new ClientInfo(clients.size, name))
+    val client = new Client(this, new ClientInfo(clients.size, clientName))
     performAction(new GameAction(client.clientInfo, GameAction.NEW_CLIENT, None))
     clients.add(Some(client))
     client
   }
 
-  def getClient(id: Long): Option[Client] = {
-    findClient(client => client.clientInfo.id == id)
+  def getClient(clientId: Long): Option[Client] = {
+    findClient(client => client.clientInfo.id == clientId)
   }
 
   def clientClosed(client: Client): Unit = {
@@ -28,6 +29,7 @@ class Game(val id: String) {
   }
 
   def performAction(action: GameAction): Unit = {
+    actions.add(action)
     forEachClient(client => client.sendAction(action))
   }
 
