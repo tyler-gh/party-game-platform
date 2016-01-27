@@ -10,6 +10,7 @@ scalaVersion := "2.11.6"
 libraryDependencies ++= Seq(
   jdbc,
   "org.postgresql" % "postgresql" % "9.3-1103-jdbc4",
+  "com.typesafe.play" %% "anorm" % "2.4.0",
   cache,
   ws,
   specs2 % Test
