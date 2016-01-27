@@ -1,0 +1,20 @@
+@import '../base/variables';
+
+@mixin game-lobby($color) {
+	height: 100%;
+	width: 100%;
+	background: $color;
+	position: absolute;
+}
+
+.game-lobby-pirate {
+	@include game-lobby($pg-color-pirate);
+}
+
+.game-lobby-fibbage {
+	@include game-lobby($pg-color-fibbage);
+}
+
+.game-lobby-mafia {
+	@include game-lobby($pg-color-mafia);
+}

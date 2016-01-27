@@ -199,4 +199,22 @@ a {
   text-align: center;
   cursor: pointer; }
 
+.game-lobby-pirate {
+  height: 100%;
+  width: 100%;
+  background: #003366;
+  position: absolute; }
+
+.game-lobby-fibbage {
+  height: 100%;
+  width: 100%;
+  background: #F5A623;
+  position: absolute; }
+
+.game-lobby-mafia {
+  height: 100%;
+  width: 100%;
+  background: #D0021B;
+  position: absolute; }
+
 /*# sourceMappingURL=main.css.map */

@@ -27,7 +27,12 @@ routesGenerator := InjectedRoutesGenerator
 pipelineStages := Seq(concat)
 
 Concat.groups := Seq(
-  "game.js" -> group(Seq("lib/rest.js","lib/react/react.js","lib/react/react-dom.min.js","js/game_lobby.js", "js/game_select.js"))
+  "game.js" -> group(Seq("lib/rest.js", 
+  						 "lib/react/react.js", 
+  						 "lib/react/react-dom.min.js", 
+  						 "js/components/icons.js", 
+  						 "js/lobby/game_lobby.js", 
+  						 "js/lobby/game_select.js"))
 )
 
 Concat.parentDir := "public/main/js"
