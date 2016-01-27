@@ -20,18 +20,17 @@ var ClientLoad = function(client, successFunction, errorFunction) {
     };
 };
 
-var Entity = function(url, name, id) {
+var Entity = function(url, name) {
     this.url = url;
     this.name = name;
-    this.id = id;
 };
 
 Entity.prototype.send = function(method, successFunction, errorFunction) {
     var client = new XMLHttpRequest();
-    client.open(method, this.url + "/" + this.name + "/" + this.id, true);
+    client.open(method, this.url + "/" + this.name, true);
     client.onload = ClientLoad(client, successFunction, errorFunction);
     client.send();
-    console.log("sent:" + this.url + "/" + this.name + "/" + this.id);
+    console.log("sent:" + this.url + "/" + this.name);
 };
 
 Entity.prototype.post = function(successFunction, errorFunction) {
@@ -50,8 +49,8 @@ Entity.prototype.put = function(successFunction, errorFunction) {
     this.send("PUT", successFunction, errorFunction);
 };
 
-Entity.prototype.one = function(id) {
-    return new Entity(this.url, this.name, this.id + "/" + id);
+Entity.prototype.one = function(name) {
+    return new Entity(this.url, this.name + "/" + name);
 };
 
 var Rest = function(site, port) {
@@ -64,7 +63,11 @@ var Rest = function(site, port) {
 };
 
 Rest.prototype.one = function(name, id) {
-    return new Entity(this.url, name, id);
+    return new Entity(this.url, name).one(id);
+};
+
+Rest.prototype.all = function(name) {
+    return new Entity(this.url, name);
 };
 
 Rest.prototype.socket = function(name, onOpen, onClose, onMessage, onError) {

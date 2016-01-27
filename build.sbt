@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "9.3-1103-jdbc4",
   cache,
   ws,
-  specs2 % Test
+  specs2 % Test,
+  "org.yaml" % "snakeyaml" % "1.16"
 )
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"

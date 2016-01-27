@@ -5,6 +5,7 @@
 # Home page
 GET     /                                       controllers.Application.index
 GET     /ws                                     controllers.SocketController.socket
+GET     /game_definition                        controllers.GameDefinitionsController.getDefinitions
 POST    /create_game/:name                      controllers.CreateGameController.create(name: String)
 POST    /join_game/:gameName/:gameId/:userName  controllers.JoinGameController.join(userName: String, gameName: String, gameId: String)
 
