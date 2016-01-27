@@ -3,7 +3,7 @@ var GameIcon = React.createClass({
         var game = this.props.game;
         var color = this.props.color;
         return (
-            <img src={"/assets/svg/" + game + "_icon_" + color + ".svg"}/>
+            <img className="game-icon" src={"/assets/svg/" + game + "_icon_" + color + ".svg"}/>
         );
     }
 });
