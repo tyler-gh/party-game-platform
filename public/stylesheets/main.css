@@ -156,32 +156,27 @@ a {
 div.game-choice:first-child {
   margin: 64px auto; }
 
-.game-choice.fibbage {
+.game-choice {
   text-align: center;
   margin: 0 auto 64px; }
-  .game-choice.fibbage div.game-logo {
-    display: inline-block;
-    text-align: center; }
-  .game-choice.fibbage div.game-logo h1 span {
-    color: #F5A623; }
 
-.game-choice.pirate {
-  text-align: center;
-  margin: 0 auto 64px; }
-  .game-choice.pirate div.game-logo {
-    display: inline-block;
-    text-align: center; }
-  .game-choice.pirate div.game-logo h1 span {
-    color: #003366; }
+.game-choice.fibbage div.game-logo {
+  display: inline-block;
+  text-align: center; }
+.game-choice.fibbage div.game-logo h1 span {
+  color: #F5A623; }
 
-.game-choice.mafia {
-  text-align: center;
-  margin: 0 auto 64px; }
-  .game-choice.mafia div.game-logo {
-    display: inline-block;
-    text-align: center; }
-  .game-choice.mafia div.game-logo h1 span {
-    color: #D0021B; }
+.game-choice.pirate div.game-logo {
+  display: inline-block;
+  text-align: center; }
+.game-choice.pirate div.game-logo h1 span {
+  color: #003366; }
+
+.game-choice.mafia div.game-logo {
+  display: inline-block;
+  text-align: center; }
+.game-choice.mafia div.game-logo h1 span {
+  color: #D0021B; }
 
 .game-lobby-pirate {
   height: 100%;
