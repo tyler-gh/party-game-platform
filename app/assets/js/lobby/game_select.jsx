@@ -44,7 +44,7 @@ var GameSelectMenu = React.createClass({
             <div>
                 {
                     this.state.games.map(function (game) {
-                        return <GameChoice game={game.id} title={game.title}/>
+                        return <GameChoice key={game.id} game={game.id} title={game.title}/>
                     })
                 }
             </div>
