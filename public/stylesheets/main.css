@@ -58,7 +58,267 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 28px; }
+  font-size: 24px; }
+  @media (min-width: 360px) {
+    h2 {
+      font-size: 32px; } }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+.pg-styleguide-header {
+  margin: 18px;
+  text-align: center;
+  font-weight: bold; }
+
+.pg-styleguide-subhead {
+  text-align: center;
+  color: #2a2a2a;
+  margin-top: 48px;
+  margin-bottom: 6px; }
+
+.pg-styleguide-icon-buttons {
+  background-color: #003366;
+  padding: 12px 30px; }
+
+.pg-styleguide-solid-buttons {
+  background-color: #ffffff;
+  padding: 12px 30px; }
+
+.pg-styleguide-hollow-button-color {
+  background-color: #ffffff;
+  padding: 12px 30px; }
+
+.pg-styleguide-hollow-button-white {
+  background-color: #003366;
+  padding: 12px 30px; }
+
+body {
+  color: #2a2a2a;
+  font-size: 20px;
+  font-family: "Lato-Regular", serif;
+  line-height: 140%; }
+  @media (min-width: 360px) {
+    body {
+      font-size: 24px; } }
+
+h1 {
+  font-size: 34px;
+  line-height: 120%; }
+  @media (min-width: 360px) {
+    h1 {
+      font-size: 40px; } }
+
+h2 {
+  font-size: 24px; }
+  @media (min-width: 360px) {
+    h2 {
+      font-size: 32px; } }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+button:focus {
+  outline: 0; }
+
+/*-------------lobby solid buttons-----------------*/
+.pg-lobby-solid-button-pirate {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: #003366;
+  color: #ffffff; }
+
+.pg-lobby-solid-button-fibbage {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: #F5A623;
+  color: #ffffff; }
+
+.pg-lobby-solid-button-mafia {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: #D0021B;
+  color: #ffffff; }
+
+/*-------------lobby logo buttons-----------------*/
+.pg-lobby-icon-button-pirate {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: #ffffff;
+  color: #003366;
+  font-weight: bold; }
+  .pg-lobby-icon-button-pirate .pg-lobby-icon-button-icon-container {
+    top: 0;
+    float: left;
+    background-color: #003366;
+    border-radius: 50%;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 5%;
+    top: 9.6px; }
+    .pg-lobby-icon-button-pirate .pg-lobby-icon-button-icon-container .pg-lobby-icon-button-icon {
+      position: absolute;
+      width: 14.4px;
+      height: 14.4px;
+      left: 4.8px;
+      top: 4.8px; }
+
+.pg-lobby-icon-button-fibbage {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: #ffffff;
+  color: #F5A623;
+  font-weight: bold; }
+  .pg-lobby-icon-button-fibbage .pg-lobby-icon-button-icon-container {
+    top: 0;
+    float: left;
+    background-color: #F5A623;
+    border-radius: 50%;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 5%;
+    top: 9.6px; }
+    .pg-lobby-icon-button-fibbage .pg-lobby-icon-button-icon-container .pg-lobby-icon-button-icon {
+      position: absolute;
+      width: 14.4px;
+      height: 14.4px;
+      left: 4.8px;
+      top: 4.8px; }
+
+.pg-lobby-icon-button-mafia {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: #ffffff;
+  color: #D0021B;
+  font-weight: bold; }
+  .pg-lobby-icon-button-mafia .pg-lobby-icon-button-icon-container {
+    top: 0;
+    float: left;
+    background-color: #D0021B;
+    border-radius: 50%;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 5%;
+    top: 9.6px; }
+    .pg-lobby-icon-button-mafia .pg-lobby-icon-button-icon-container .pg-lobby-icon-button-icon {
+      position: absolute;
+      width: 14.4px;
+      height: 14.4px;
+      left: 4.8px;
+      top: 4.8px; }
+
+/*-------------lobby hollow buttons-----------------*/
+.pg-lobby-hollow-button-white {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff; }
+
+.pg-lobby-hollow-button-pirate {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #003366;
+  color: #003366; }
+
+.pg-lobby-hollow-button-fibbage {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #F5A623;
+  color: #F5A623; }
+
+.pg-lobby-hollow-button-mafia {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 9px;
+  border: none;
+  border-radius: 6px;
+  font-size: 24px;
+  position: relative;
+  margin: auto;
+  background-color: transparent;
+  border: 1px solid #D0021B;
+  color: #D0021B; }
+
+body {
+  color: #2a2a2a;
+  font-size: 20px;
+  font-family: "Lato-Regular", serif;
+  line-height: 140%; }
+  @media (min-width: 360px) {
+    body {
+      font-size: 24px; } }
+
+h1 {
+  font-size: 34px;
+  line-height: 120%; }
+  @media (min-width: 360px) {
+    h1 {
+      font-size: 40px; } }
+
+h2 {
+  font-size: 24px; }
   @media (min-width: 360px) {
     h2 {
       font-size: 32px; } }
@@ -84,59 +344,7 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 28px; }
-  @media (min-width: 360px) {
-    h2 {
-      font-size: 32px; } }
-
-a {
-  color: inherit;
-  text-decoration: none; }
-
-body {
-  color: #2a2a2a;
-  font-size: 20px;
-  font-family: "Lato-Regular", serif;
-  line-height: 140%; }
-  @media (min-width: 360px) {
-    body {
-      font-size: 24px; } }
-
-h1 {
-  font-size: 34px;
-  line-height: 120%; }
-  @media (min-width: 360px) {
-    h1 {
-      font-size: 40px; } }
-
-h2 {
-  font-size: 28px; }
-  @media (min-width: 360px) {
-    h2 {
-      font-size: 32px; } }
-
-a {
-  color: inherit;
-  text-decoration: none; }
-
-body {
-  color: #2a2a2a;
-  font-size: 20px;
-  font-family: "Lato-Regular", serif;
-  line-height: 140%; }
-  @media (min-width: 360px) {
-    body {
-      font-size: 24px; } }
-
-h1 {
-  font-size: 34px;
-  line-height: 120%; }
-  @media (min-width: 360px) {
-    h1 {
-      font-size: 40px; } }
-
-h2 {
-  font-size: 28px; }
+  font-size: 24px; }
   @media (min-width: 360px) {
     h2 {
       font-size: 32px; } }
