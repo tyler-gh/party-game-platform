@@ -7,7 +7,7 @@ var GameLogo = React.createClass({
         var title = this.props.title;
         return (
             <div className="game-logo" onClick={this.handleClick}>
-                <GameIcon game={game} color="color"/>
+                <GameIcon game={game} color="color" size="large"/>
                 <div className="center-span">
                     <h1><span>{title}</span></h1>
                 </div>

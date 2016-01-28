@@ -3,7 +3,7 @@ var GameBanner = React.createClass({
 	   var game = this.props.game;
 	   return (
 		   <div className="banner">
-			   <GameIcon game={game} color={"white"}/>
+			   <GameIcon game={game} color={"white"} size="small"/>
 		   </div>
 	   );
    }

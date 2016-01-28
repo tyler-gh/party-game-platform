@@ -98,6 +98,15 @@ img.game-icon {
   cursor: pointer;
   margin: 0 auto; }
 
+img.small {
+  width: 128px; }
+
+img.medium {
+  width: 264px; }
+
+img.large {
+  width: 400px; }
+
 body {
   color: #2a2a2a;
   font-size: 20px;
