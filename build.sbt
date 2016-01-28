@@ -30,9 +30,17 @@ Concat.groups := Seq(
   "game.js" -> group(Seq("lib/rest.js", 
   						 "lib/react/react.js", 
   						 "lib/react/react-dom.min.js", 
-  						 "js/components/icons.js", 
+  						 "js/components/icons.js",
+  						 "js/components/buttons.js",
   						 "js/lobby/game_lobby.js", 
-  						 "js/lobby/game_select.js"))
+  						 "js/lobby/game_select.js")),
+  
+  "style.js" -> group(Seq("lib/rest.js",
+  					      "lib/react/react.js",
+  					      "lib/react/react-dom.min.js",
+  					      "js/components/icons.js",
+  					      "js/components/buttons.js",
+  					      "js/msc/styleguide.js"))
 )
 
 Concat.parentDir := "public/main/js"
