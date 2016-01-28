@@ -1,18 +1,28 @@
-var GameChoice = React.createClass({
-    handleClick: function (e) {
+var GameLogo = React.createClass({
+    handleClick: function(e) {
         ReactDOM.render(<GameLobby game={this.props.game} title={this.props.title}/>, document.getElementById('pg-app'));
     },
     render: function () {
         var game = this.props.game;
         var title = this.props.title;
         return (
-            <div className={"game-choice-" + game} onClick={this.handleClick}>
-                <div className={"game-icon-container"}>
-                    <GameIcon game={game} color={"color"}/>
-                    <div className="center-span">
-                        <h1><span>{title}</span></h1>
-                    </div>
+            <div className="game-logo" onClick={this.handleClick}>
+                <GameIcon game={game} color="color"/>
+                <div className="center-span">
+                    <h1><span>{title}</span></h1>
                 </div>
+            </div>
+        );
+    }
+});
+
+var GameChoice = React.createClass({
+    render: function () {
+        var game = this.props.game;
+        var title = this.props.title;
+        return (
+            <div className={"game-choice " + game}>
+                <GameLogo game={game} title={title}/>
             </div>
         );
     }

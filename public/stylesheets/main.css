@@ -153,44 +153,35 @@ a {
 .pg-content {
   margin: 24px; }
 
-.game-choice-fibbage div.game-icon-container:first-child {
+div.game-choice:first-child {
   margin: 64px auto; }
-.game-choice-fibbage div.game-icon-container {
-  margin: 0 auto 64px; }
-.game-choice-fibbage div.game-icon-container div.center-span {
-  text-align: center;
-  margin: 8px 0;
-  color: #F5A623; }
-.game-choice-fibbage div.game-icon-container span {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer; }
 
-.game-choice-pirate div.game-icon-container:first-child {
-  margin: 64px auto; }
-.game-choice-pirate div.game-icon-container {
+.game-choice.fibbage {
+  text-align: center;
   margin: 0 auto 64px; }
-.game-choice-pirate div.game-icon-container div.center-span {
-  text-align: center;
-  margin: 8px 0;
-  color: #003366; }
-.game-choice-pirate div.game-icon-container span {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer; }
+  .game-choice.fibbage div.game-logo {
+    display: inline-block;
+    text-align: center; }
+  .game-choice.fibbage div.game-logo h1 span {
+    color: #F5A623; }
 
-.game-choice-mafia div.game-icon-container:first-child {
-  margin: 64px auto; }
-.game-choice-mafia div.game-icon-container {
+.game-choice.pirate {
+  text-align: center;
   margin: 0 auto 64px; }
-.game-choice-mafia div.game-icon-container div.center-span {
+  .game-choice.pirate div.game-logo {
+    display: inline-block;
+    text-align: center; }
+  .game-choice.pirate div.game-logo h1 span {
+    color: #003366; }
+
+.game-choice.mafia {
   text-align: center;
-  margin: 8px 0;
-  color: #D0021B; }
-.game-choice-mafia div.game-icon-container span {
-  display: inline-block;
-  text-align: center;
-  cursor: pointer; }
+  margin: 0 auto 64px; }
+  .game-choice.mafia div.game-logo {
+    display: inline-block;
+    text-align: center; }
+  .game-choice.mafia div.game-logo h1 span {
+    color: #D0021B; }
 
 .game-lobby-pirate {
   height: 100%;
