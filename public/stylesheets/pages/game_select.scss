@@ -2,44 +2,36 @@
 
 $pg-icon-separation:  64px;
 
+div.game-choice:first-child {
+  margin: $pg-icon-separation auto;
+}
+
+.game-choice {
+  text-align: center;
+  margin: 0 auto $pg-icon-separation;
+}
+
 @mixin game-choice($color) {
 
-  div.game-icon-container:first-child {
-    margin: $pg-icon-separation auto;
-  }
-
-  div.game-icon-container {
-    margin: 0 auto $pg-icon-separation;
-  }
-
-  div.game-icon-container img {
-    display: block;
-    cursor: pointer;
-    margin: 0 auto;
-  }
-
-  div.game-icon-container div.center-span {
+  div.game-logo {
+    display: inline-block;
     text-align: center;
-    margin: 8px 0;
+  }
+
+  div.game-logo h1 span {
     color: $color;
   }
 
-  div.game-icon-container span {
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-  }
-
 }
 
-.game-choice-fibbage {
+.game-choice.fibbage {
   @include game-choice($pg-color-fibbage);
 }
 
-.game-choice-pirate {
+.game-choice.pirate {
   @include game-choice($pg-color-pirate);
 }
 
-.game-choice-mafia {
+.game-choice.mafia {
   @include game-choice($pg-color-mafia);
 }
