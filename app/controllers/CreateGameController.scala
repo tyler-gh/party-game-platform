@@ -6,11 +6,7 @@ import play.api.mvc._
 
 import scala.util.Random
 
-/**
-  *
-  */
 class CreateGameController extends Controller {
-
   var gameId: Long = 1024
 
   def create(name: String) = Action {
@@ -26,5 +22,4 @@ class CreateGameController extends Controller {
       ClientCookie.GAME.createCookie(game.id)
     )
   }
-
 }

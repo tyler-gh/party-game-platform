@@ -8,7 +8,7 @@ class Application extends Controller {
 
   def index = Action {
     //DB.withConnection { conn =>
-    //  
+    //
     //}
 
     Ok(views.html.index("PGP"))

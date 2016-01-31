@@ -2,6 +2,7 @@ package models
 
 import java.util
 import java.util.Collections
+import scala.collection.JavaConverters._
 
 
 class Game(val id: String, val name: String) {
@@ -33,13 +34,16 @@ class Game(val id: String, val name: String) {
     forEachClient(client => client.sendAction(action))
   }
 
+  /// TODO remove games from games list when they have no clients
   def endGame(): Unit = {
     forEachClient(client => client.close())
     clients.clear()
   }
 
   def allClients: List[ClientInfo] = {
-    clients.toArray(new Array[Option[Client]](clients.size())).toList.flatten.map(_.clientInfo)
+    // IDK if we should assume that we shouldn't include people that have left
+    // TODO have a client left and a client rejoined action?
+    clients.asScala.flatten.map(_.clientInfo).toList
   }
 
   private def forEachClient(func: (Client) => Unit): Unit = {
