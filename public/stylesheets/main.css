@@ -44,22 +44,22 @@ table {
 body {
   color: #2a2a2a;
   font-size: 20px;
-  font-family: "Lato-Regular", serif;
+  font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     body {
       font-size: 24px; } }
 
 h1 {
   font-size: 34px;
   line-height: 120%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h1 {
       font-size: 40px; } }
 
 h2 {
   font-size: 24px; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h2 {
       font-size: 32px; } }
 
@@ -97,22 +97,22 @@ a {
 body {
   color: #2a2a2a;
   font-size: 20px;
-  font-family: "Lato-Regular", serif;
+  font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     body {
       font-size: 24px; } }
 
 h1 {
   font-size: 34px;
   line-height: 120%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h1 {
       font-size: 40px; } }
 
 h2 {
   font-size: 24px; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h2 {
       font-size: 32px; } }
 
@@ -307,33 +307,36 @@ img.game-icon {
   margin: 0 auto; }
 
 img.small {
-  width: 128px; }
-
-img.medium {
-  width: 264px; }
+  width: 54px; }
+  @media (min-width: 450px) {
+    img.small {
+      width: 66px; } }
 
 img.large {
-  width: 400px; }
+  width: 204px; }
+  @media (min-width: 450px) {
+    img.large {
+      width: 252px; } }
 
 body {
   color: #2a2a2a;
   font-size: 20px;
-  font-family: "Lato-Regular", serif;
+  font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     body {
       font-size: 24px; } }
 
 h1 {
   font-size: 34px;
   line-height: 120%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h1 {
       font-size: 40px; } }
 
 h2 {
   font-size: 24px; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h2 {
       font-size: 32px; } }
 
@@ -344,22 +347,22 @@ a {
 body {
   color: #2a2a2a;
   font-size: 20px;
-  font-family: "Lato-Regular", serif;
+  font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     body {
       font-size: 24px; } }
 
 h1 {
   font-size: 34px;
   line-height: 120%; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h1 {
       font-size: 40px; } }
 
 h2 {
   font-size: 24px; }
-  @media (min-width: 360px) {
+  @media (min-width: 450px) {
     h2 {
       font-size: 32px; } }
 
@@ -402,7 +405,7 @@ div.game-choice:first-child {
   .game-lobby-pirate div.container {
     margin: 10%; }
   .game-lobby-pirate div.banner {
-    padding: 32px 0;
+    padding: 12px 0;
     background: #003366; }
   .game-lobby-pirate h1.create-game {
     color: #003366;
@@ -416,7 +419,7 @@ div.game-choice:first-child {
   .game-lobby-fibbage div.container {
     margin: 10%; }
   .game-lobby-fibbage div.banner {
-    padding: 32px 0;
+    padding: 12px 0;
     background: #F5A623; }
   .game-lobby-fibbage h1.create-game {
     color: #F5A623;
@@ -430,7 +433,7 @@ div.game-choice:first-child {
   .game-lobby-mafia div.container {
     margin: 10%; }
   .game-lobby-mafia div.banner {
-    padding: 32px 0;
+    padding: 12px 0;
     background: #D0021B; }
   .game-lobby-mafia h1.create-game {
     color: #D0021B;

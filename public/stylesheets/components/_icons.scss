@@ -7,16 +7,17 @@ img.game-icon {
 }
 
 img.small {
-  //width: 64px;                                 // Desktop
-  width: 128px;
-}
+  width: $pg-sp * 9;
 
-img.medium {
-  //width: 128px;                               // Desktop
-  width: 264px;
+  @media (min-width: $pg-desk-break) {
+    width: $pg-sp * 11;
+  }
 }
 
 img.large {
-  //width: 256px;                               // Desktop
-  width: 400px;
+  width: $pg-sp * 34;
+
+  @media (min-width: $pg-desk-break) {
+   width: $pg-sp * 42;
+  }
 }
