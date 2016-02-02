@@ -303,7 +303,6 @@ button:focus {
 
 img.game-icon {
   display: block;
-  cursor: pointer;
   margin: 0 auto; }
 
 img.small {
@@ -317,6 +316,18 @@ img.large {
   @media (min-width: 450px) {
     img.large {
       width: 252px; } }
+
+div.pg-pirate-background-color {
+  background-color: #003366;
+  height: inherit; }
+
+div.pg-fibbage-background-color {
+  background-color: #F5A623;
+  height: inherit; }
+
+div.pg-mafia-background-color {
+  background-color: #D0021B;
+  height: inherit; }
 
 body {
   color: #2a2a2a;
@@ -373,6 +384,9 @@ a {
 .pg-content {
   margin: 24px; }
 
+html, body, div#pg-app {
+  height: 100%; }
+
 div.game-choice:first-child {
   margin: 64px auto; }
 
@@ -382,26 +396,30 @@ div.game-choice:first-child {
 
 .game-choice.fibbage div.game-logo {
   display: inline-block;
-  text-align: center; }
+  text-align: center;
+  cursor: pointer; }
 .game-choice.fibbage div.game-logo h1 span {
   color: #F5A623; }
 
 .game-choice.pirate div.game-logo {
   display: inline-block;
-  text-align: center; }
+  text-align: center;
+  cursor: pointer; }
 .game-choice.pirate div.game-logo h1 span {
   color: #003366; }
 
 .game-choice.mafia div.game-logo {
   display: inline-block;
-  text-align: center; }
+  text-align: center;
+  cursor: pointer; }
 .game-choice.mafia div.game-logo h1 span {
   color: #D0021B; }
 
 .game-lobby-pirate {
   height: 100%;
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  margin: 0 48px; }
   .game-lobby-pirate div.container {
     margin: 10%; }
   .game-lobby-pirate div.banner {
@@ -415,7 +433,8 @@ div.game-choice:first-child {
 .game-lobby-fibbage {
   height: 100%;
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  margin: 0 48px; }
   .game-lobby-fibbage div.container {
     margin: 10%; }
   .game-lobby-fibbage div.banner {
@@ -429,7 +448,8 @@ div.game-choice:first-child {
 .game-lobby-mafia {
   height: 100%;
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  margin: 0 48px; }
   .game-lobby-mafia div.container {
     margin: 10%; }
   .game-lobby-mafia div.banner {

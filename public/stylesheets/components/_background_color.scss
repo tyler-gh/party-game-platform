@@ -1,0 +1,18 @@
+@import '../base/variables';
+
+@mixin background-color($bg-color) {
+	background-color: $bg-color;
+	height: inherit;
+}
+
+div.pg-pirate-background-color {
+	@include background-color($pg-color-pirate);
+}
+
+div.pg-fibbage-background-color {
+	@include background-color($pg-color-fibbage);
+}
+
+div.pg-mafia-background-color {
+	@include background-color($pg-color-mafia);
+}

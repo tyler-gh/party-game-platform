@@ -9,19 +9,23 @@ var GameBanner = React.createClass({
    }
 });
 
-var GameLobby = React.createClass({
+var GameCreator = React.createClass({
     render: function() {
     	var game = this.props.game;
+        var title = this.props.title;
         return (
-			<BackgroundColor game={game}>
-	        	<LobbyContainer game={game} color="color">
-					<GameIcon size="large"  game={game} color="white"/>
+	        <div className={"game-lobby-" + game}>
+				<GameBanner game={game} />
+				<div className="container">
+					<h1 className="create-game">create game</h1>
+					<h2 className="enter">enter your name</h2>
+
 					<IconButton game={game} icon={"create"} text={"create"}/>
 					<br/>
 					<br/>
 					<IconButton game={game} icon={"join"} text={"join"}/>
-	        	</LobbyContainer>
-			</BackgroundColor>
+				</div>
+	        </div>
 	    );
     }
 });

@@ -4,6 +4,7 @@
 	height: 100%;
 	width: 100%;
 	position: absolute;
+	margin: 0 $pg-sp * 8;
 
 	div.container {
 		margin: 10%;
@@ -11,7 +12,6 @@
 
 	div.banner {
 		padding: $pg-sp * 2 0;
-
 		background: $color;
 	}
 
