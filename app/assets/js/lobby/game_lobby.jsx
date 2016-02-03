@@ -17,8 +17,6 @@ var GameLobby = React.createClass({
 	        	<LobbyContainer game={game} color="color">
 					<GameIcon size="large"  game={game} color="white"/>
 					<IconButton game={game} icon={"create"} text={"create"}/>
-					<br/>
-					<br/>
 					<IconButton game={game} icon={"join"} text={"join"}/>
 	        	</LobbyContainer>
 			</BackgroundColor>

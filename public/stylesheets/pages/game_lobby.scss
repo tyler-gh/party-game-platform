@@ -1,13 +1,25 @@
 @import '../base/variables';
 
 @mixin game-lobby($color) {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	margin: 0 $pg-sp * 8;
 
-	div.container {
-		margin: 10%;
+	$margin: $pg-sp * 7;
+	margin: 0 $margin;
+	width: -webkit-calc((100% - (#{$margin}) * 2));
+	width:    -moz-calc((100% - (#{$margin}) * 2));
+	width:         calc((100% - (#{$margin}) * 2));
+
+	@media (min-width: $pg-desk-break) {
+		$content-size:		$pg-sp * 64;
+		margin: 0 calc((100% - (#{$content-size})) / 2);
+		width: $content-size;
+	}
+
+	max-width: 64 * $pg-sp;
+	height: 100%;
+	position: absolute;
+
+	img.game-icon.large {
+		margin-top: $pg-sp * 13;
 	}
 
 	div.banner {

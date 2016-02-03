@@ -18,6 +18,6 @@ img.large {
   width: $pg-sp * 34;
 
   @media (min-width: $pg-desk-break) {
-   width: $pg-sp * 42;
+    width: $pg-sp * 42;
   }
 }
