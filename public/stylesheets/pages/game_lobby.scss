@@ -20,10 +20,18 @@
 
 	img.game-icon.large {
 		margin-top: $pg-sp * 13;
+		margin-bottom: $pg-sp * 4;
+	}
+
+	h1, h2 {
+		color: $pg-color-white;
+		text-align: center;
+		margin-bottom: $pg-sp * 7;
 	}
 
 	button.pg-lobby-icon-button, button.pg-lobby-hollow-button-white {
-		margin-top: $pg-sp * 3;
+		margin-bottom: $pg-sp * 3;
+		cursor: pointer;
 	}
 
 	div.banner {

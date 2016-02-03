@@ -12,13 +12,16 @@ var GameBanner = React.createClass({
 var GameLobby = React.createClass({
     render: function() {
     	var game = this.props.game;
+		var title = this.props.title;
+		var description = this.props.description;
         return (
 			<BackgroundColor game={game}>
 	        	<LobbyContainer game={game} color="color">
 					<GameIcon size="large"  game={game} color="white"/>
+					<h1>{title}</h1>
+					<h2>{description}</h2>
 					<IconButton game={game} icon={"create"} text={"create"}/>
 					<IconButton game={game} icon={"join"} text={"join"}/>
-					<div></div>
 					<button className="pg-lobby-hollow-button-white">cancel</button>
 	        	</LobbyContainer>
 			</BackgroundColor>

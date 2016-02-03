@@ -429,9 +429,15 @@ div.game-choice:first-child {
       margin: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-pirate img.game-icon.large {
-    margin-top: 78px; }
+    margin-top: 78px;
+    margin-bottom: 24px; }
+  .game-lobby-pirate h1, .game-lobby-pirate h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 42px; }
   .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button-white {
-    margin-top: 18px; }
+    margin-bottom: 18px;
+    cursor: pointer; }
   .game-lobby-pirate div.banner {
     padding: 12px 0;
     background: #003366; }
@@ -453,9 +459,15 @@ div.game-choice:first-child {
       margin: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-fibbage img.game-icon.large {
-    margin-top: 78px; }
+    margin-top: 78px;
+    margin-bottom: 24px; }
+  .game-lobby-fibbage h1, .game-lobby-fibbage h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 42px; }
   .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button-white {
-    margin-top: 18px; }
+    margin-bottom: 18px;
+    cursor: pointer; }
   .game-lobby-fibbage div.banner {
     padding: 12px 0;
     background: #F5A623; }
@@ -477,9 +489,15 @@ div.game-choice:first-child {
       margin: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-mafia img.game-icon.large {
-    margin-top: 78px; }
+    margin-top: 78px;
+    margin-bottom: 24px; }
+  .game-lobby-mafia h1, .game-lobby-mafia h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 42px; }
   .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button-white {
-    margin-top: 18px; }
+    margin-bottom: 18px;
+    cursor: pointer; }
   .game-lobby-mafia div.banner {
     padding: 12px 0;
     background: #D0021B; }

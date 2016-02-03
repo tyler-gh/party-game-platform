@@ -1,6 +1,6 @@
 var GameLogo = React.createClass({
     handleClick: function(e) {
-        ReactDOM.render(<GameLobby game={this.props.game} title={this.props.title}/>, document.getElementById('pg-app'));
+        ReactDOM.render(<GameLobby game={this.props.game} title={this.props.title} description={this.props.description}/>, document.getElementById('pg-app'));
     },
     render: function () {
         var game = this.props.game;
@@ -20,9 +20,10 @@ var GameChoice = React.createClass({
     render: function () {
         var game = this.props.game;
         var title = this.props.title;
+        var description = this.props.description;
         return (
             <div className={"game-choice " + game}>
-                <GameLogo game={game} title={title}/>
+                <GameLogo game={game} title={title} description={description}/>
             </div>
         );
     }
@@ -36,7 +37,6 @@ var GameSelectMenu = React.createClass({
         // TODO this should probably be passed in through props
         api.all("game_definition").get(function(games) {
             me.setState({"games":games});
-            console.log(games);
         });
         return {"games": []};
     },
@@ -45,7 +45,7 @@ var GameSelectMenu = React.createClass({
             <div>
                 {
                     this.state.games.map(function (game) {
-                        return <GameChoice key={game.id} game={game.id} title={game.title}/>
+                        return <GameChoice key={game.id} game={game.id} title={game.title} description={game.description}/>
                     })
                 }
             </div>
