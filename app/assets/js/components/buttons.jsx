@@ -5,7 +5,7 @@ var IconButton = React.createClass({
     	var text = this.props.text;
         
         return (
-	        <button className={"pg-lobby-icon-button-"+game}>
+	        <button className={"pg-lobby-icon-button "+game}>
 	        	{text}
 	        	<div className={"pg-lobby-icon-button-icon-container"}>
 	        		<img className={"pg-lobby-icon-button-icon"} src={"/assets/svg/icon_" + icon + ".svg"}/>

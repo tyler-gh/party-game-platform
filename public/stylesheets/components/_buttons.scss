@@ -24,15 +24,15 @@ button:focus {
 	color: $pg-color-white;
 }
 
-.pg-lobby-solid-button-pirate {
+.pg-lobby-solid-button.pirate {
 	@include pg-lobby-solid-button($pg-color-pirate);
 }
 
-.pg-lobby-solid-button-fibbage {
+.pg-lobby-solid-button.fibbage {
 	@include pg-lobby-solid-button($pg-color-fibbage);
 }
 
-.pg-lobby-solid-button-mafia {
+.pg-lobby-solid-button.mafia {
 	@include pg-lobby-solid-button($pg-color-mafia);
 }
 
@@ -67,15 +67,15 @@ button:focus {
 	}
 }
 
-.pg-lobby-icon-button-pirate {
+.pg-lobby-icon-button.pirate {
 	@include pg-lobby-icon-button($pg-color-pirate);
 }
 
-.pg-lobby-icon-button-fibbage {
+.pg-lobby-icon-button.fibbage {
 	@include pg-lobby-icon-button($pg-color-fibbage);
 }
 
-.pg-lobby-icon-button-mafia {
+.pg-lobby-icon-button.mafia {
 	@include pg-lobby-icon-button($pg-color-mafia);
 }
 
@@ -94,16 +94,15 @@ button:focus {
 	@include pg-lobby-hollow-button($pg-color-white)
 }
 
-.pg-lobby-hollow-button-pirate {
-
+.pg-lobby-hollow-button.pirate {
 	@include pg-lobby-hollow-button($pg-color-pirate)
 }
 
-.pg-lobby-hollow-button-fibbage {
+.pg-lobby-hollow-butto.fibbage {
 	@include pg-lobby-hollow-button($pg-color-fibbage)
 }
 
-.pg-lobby-hollow-button-mafia {
+.pg-lobby-hollow-button.mafia {
 	@include pg-lobby-hollow-button($pg-color-mafia)
 }
 

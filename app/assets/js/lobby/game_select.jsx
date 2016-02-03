@@ -36,6 +36,7 @@ var GameSelectMenu = React.createClass({
         // TODO this should probably be passed in through props
         api.all("game_definition").get(function(games) {
             me.setState({"games":games});
+            console.log(games);
         });
         return {"games": []};
     },

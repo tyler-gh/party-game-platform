@@ -18,6 +18,8 @@ var GameLobby = React.createClass({
 					<GameIcon size="large"  game={game} color="white"/>
 					<IconButton game={game} icon={"create"} text={"create"}/>
 					<IconButton game={game} icon={"join"} text={"join"}/>
+					<div></div>
+					<button className="pg-lobby-hollow-button-white">cancel</button>
 	        	</LobbyContainer>
 			</BackgroundColor>
 	    );
