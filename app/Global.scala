@@ -14,8 +14,9 @@ object Global extends GlobalSettings {
       Games.addGameDefinition(new GameDefinition(
         gameDef.get("id").toString,
         gameDef.get("title").toString,
-        gameDef.get("color").toString)
-      )
+        gameDef.get("color").toString,
+        gameDef.get("description").toString
+      ))
     })
   }
 

@@ -9,17 +9,19 @@ object GameDefinition {
   implicit val gameDefinitionReads: Reads[GameDefinition] = (
     (JsPath \ "id").read[String] and
       (JsPath \ "title").read[String] and
-      (JsPath \ "color").read[String]
+      (JsPath \ "color").read[String] and
+      (JsPath \ "description").read[String]
     ) (GameDefinition.apply _)
 
   implicit val gameDefinitionWrites: Writes[GameDefinition] = (
     (JsPath \ "id").write[String] and
       (JsPath \ "title").write[String] and
-      (JsPath \ "color").write[String]
+      (JsPath \ "color").write[String] and
+      (JsPath \ "description").write[String]
     ) (unlift(GameDefinition.unapply))
 
   implicit val gameDefinitionFormat: Format[GameDefinition] = Format(gameDefinitionReads, gameDefinitionWrites)
   implicit val gameDefinitionFormatter = FrameFormatter.jsonFrame[ClientInfo]
 }
 
-case class GameDefinition(id: String, title: String, color: String)
+case class GameDefinition(id: String, title: String, color: String, description: String)

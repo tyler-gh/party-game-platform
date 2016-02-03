@@ -10,9 +10,9 @@ class Game(val id: String, val name: String) {
   private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
   private val actions = Collections.synchronizedList(new util.ArrayList[GameAction])
 
-  def addClient(clientName: String): Client = {
-    // TODO: no spaces in names
-    val client = new Client(this, new ClientInfo(clients.size, clientName))
+  def addClient(clientName: String, color: String): Client = {
+    // TODO: having a space in the name caused a problem but I don't remember where
+    val client = new Client(this, new ClientInfo(clients.size, clientName, color))
     performAction(new GameAction(client.clientInfo, GameAction.NEW_CLIENT, None))
     clients.add(Some(client))
     client

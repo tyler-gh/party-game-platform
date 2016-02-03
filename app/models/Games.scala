@@ -2,32 +2,34 @@ package models
 
 import java.util.concurrent.ConcurrentHashMap
 import scala.collection.JavaConverters._
+import scala.util.Random
 
 
 object Games {
-  private val games = new ConcurrentHashMap[String, Game]()
+  private val games = new ConcurrentHashMap[String, ConcurrentHashMap[String, Game]]()
+  private val gameInstanceIds = new ConcurrentHashMap[String, Long]()
   private val definitions = new ConcurrentHashMap[String, GameDefinition]()
 
-  // todo: hook the game up to a game definition id
-  def createGame(id: String, name: String): Option[Game] = {
-    if(games.containsKey(id)) {
-      None
-    } else {
-      val newGame = new Game(id, name)
-      games.put(id, newGame)
+  def createGame(gameId: String): Option[Game] = {
+    Option(games.get(gameId)).fold[Option[Game]](None) { defGames =>
+      val instanceId = gameInstanceIds.get(gameId)
+      val newGame = new Game(instanceId.toHexString, gameId)
+      defGames.put(instanceId.toHexString, newGame)
+      gameInstanceIds.put(gameId, instanceId + Random.nextInt(1024))
       Some(newGame)
     }
   }
 
-  def getGame(id: String): Option[Game] = {
-    Option(games.get(id))
+  def getGame(gameId: String, gameInstanceId: String): Option[Game] = {
+    Option(games.get(gameId)).fold[Option[Game]](None)(defGames => Option(defGames.get(gameInstanceId)))
   }
 
   def addGameDefinition(definition: GameDefinition) {
-    if(definitions.containsKey(definition.id)) {
-      throw new IllegalArgumentException("Game definition with id '" + definition.id + "' already exists")
-    } else {
+    Option(definitions.get(definition.id)).fold[Any] {
       definitions.put(definition.id, definition)
+      games.put(definition.id, new ConcurrentHashMap[String, Game]())
+    } { gameDef =>
+      throw new IllegalArgumentException("Game definition with id '" + gameDef.id + "' already exists")
     }
   }
 
