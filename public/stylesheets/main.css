@@ -429,6 +429,7 @@ div.game-choice:first-child {
   width: calc((100% - (42px) * 2));
   max-width: 384px;
   height: 100%;
+  overflow: auto;
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-pirate {
@@ -459,6 +460,7 @@ div.game-choice:first-child {
   width: calc((100% - (42px) * 2));
   max-width: 384px;
   height: 100%;
+  overflow: auto;
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-fibbage {
@@ -489,6 +491,7 @@ div.game-choice:first-child {
   width: calc((100% - (42px) * 2));
   max-width: 384px;
   height: 100%;
+  overflow: auto;
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-mafia {
