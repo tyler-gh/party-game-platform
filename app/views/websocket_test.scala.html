@@ -1,14 +1,20 @@
-@(name: String, id: Long, game: String)
+
 
 <script type="application/javascript">
 
-    var wsUri = "ws://localhost:9000/ws?name=@name&game=@game&id=@id";
+    var wsUri = "ws://localhost:9000/ws";
     var websocket;
     var output;
 
     function init() {
+        var api = new Rest("localhost", 9000);
         output = document.getElementById("output");
-        testWebSocket();
+
+        api.route("create_game").post(function success() {
+            testWebSocket();
+        }, function(e) {
+            console.log(e);
+        }, {game_id: "fibbage"});
     }
 
     function testWebSocket() {
@@ -42,7 +48,7 @@
 
     function doSend(message) {
         writeToScreen("SENT: " + message);
-        websocket.send("{ \"client\":{\"name\":\"@name\", \"id\": @id}, \"actionType\":\"group-message\", \"data\":{\"message\":\"" + message + "\"}}");
+        websocket.send("{ \"client\":{\"name\":\"root\", \"id\": 0,\"color\":\"black\"}, \"actionType\":\"group-message\", \"data\":{\"message\":\"" + message + "\"}}");
     }
 
     function writeToScreen(message) {

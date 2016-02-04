@@ -1,0 +1,36 @@
+@import '../base/variables';
+
+.pg-styleguide-header {
+	margin: $pg-sp*3;
+	text-align: center;
+	font-weight: bold;
+}
+
+.pg-styleguide-subhead {
+	text-align: center;
+	color: $pg-color-dark-gray;
+	margin-top: $pg-sp*8;
+	margin-bottom: $pg-sp;
+}
+
+@mixin button-format($color) {
+	background-color: $color;
+	padding: $pg-sp*2 $pg-sp*5;
+}
+
+.pg-styleguide-icon-buttons {
+	@include button-format($pg-color-pirate);
+}
+
+.pg-styleguide-solid-buttons {
+	@include button-format($pg-color-white);
+}
+
+.pg-styleguide-hollow-button-color {
+	@include button-format($pg-color-white);
+}
+
+.pg-styleguide-hollow-button-white {
+	@include button-format($pg-color-pirate);
+}
+

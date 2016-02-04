@@ -17,23 +17,30 @@ object ClientCookie {
     }
   }
 
-  case object NAME extends Value[String](0, "name") {
+  case object USER_NAME extends Value[String](0, "user_name") {
     override def extractValue(cookie: Cookie): String = {
       cookie.value
     }
   }
 
-  case object GAME extends Value[String](1, "game") {
-    override def extractValue(cookie: Cookie): String = {
-      cookie.value
-    }
-  }
-
-  case object ID extends Value[Long](2, "id") {
+  case object USER_ID extends Value[Long](2, "user_id") {
     override def extractValue(cookie: Cookie): Long = {
       cookie.value.toLong
     }
   }
+
+  case object GAME_INSTANCE_ID extends Value[String](1, "game_instance_id") {
+    override def extractValue(cookie: Cookie): String = {
+      cookie.value
+    }
+  }
+
+  case object GAME_ID extends Value[String](1, "game_id") {
+    override def extractValue(cookie: Cookie): String = {
+      cookie.value
+    }
+  }
+
 
 
 
