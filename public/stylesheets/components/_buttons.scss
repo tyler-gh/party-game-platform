@@ -1,1 +1,108 @@
 @import '../base/variables';
+
+button:focus {
+	outline:0;
+}
+
+
+@mixin pg-lobby-button() {
+	width: 100%;
+	padding-top: $pg-sp;
+	padding-bottom: $pg-sp*1.5;
+	border: none;
+	border-radius: $pg-sp;
+	font-size: $pg-mobile-size-medium;
+	position: relative;
+	margin: auto;
+}
+
+/*-------------lobby solid buttons-----------------*/
+
+@mixin pg-lobby-solid-button($color) {
+	@include pg-lobby-button();
+	background-color: $color;
+	color: $pg-color-white;
+}
+
+.pg-lobby-solid-button.pirate {
+	@include pg-lobby-solid-button($pg-color-pirate);
+}
+
+.pg-lobby-solid-button.fibbage {
+	@include pg-lobby-solid-button($pg-color-fibbage);
+}
+
+.pg-lobby-solid-button.mafia {
+	@include pg-lobby-solid-button($pg-color-mafia);
+}
+
+
+
+/*-------------lobby logo buttons-----------------*/
+
+@mixin pg-lobby-icon-button($color) {
+	@include pg-lobby-button();
+	background-color: $pg-color-white;
+	color: $color;
+	font-weight: bold;
+
+	.pg-lobby-icon-button-icon-container {
+		top: 0;
+		float: left;
+		background-color: $color;
+		border-radius: 50%;
+		position: absolute;
+		width: $pg-sp*4;
+		height: $pg-sp*4;
+		left: 5%;
+		top: $pg-sp*1.6;
+
+		.pg-lobby-icon-button-icon {
+			position: absolute;
+			width: $pg-sp*2.4;
+			height: $pg-sp*2.4;
+			left: $pg-sp*.8;
+			top: $pg-sp*.8;
+		}
+	}
+}
+
+.pg-lobby-icon-button.pirate {
+	@include pg-lobby-icon-button($pg-color-pirate);
+}
+
+.pg-lobby-icon-button.fibbage {
+	@include pg-lobby-icon-button($pg-color-fibbage);
+}
+
+.pg-lobby-icon-button.mafia {
+	@include pg-lobby-icon-button($pg-color-mafia);
+}
+
+
+
+/*-------------lobby hollow buttons-----------------*/
+
+@mixin pg-lobby-hollow-button($color) {
+	@include pg-lobby-button();
+	background-color: transparent;
+	border: 1px solid $color;
+	color: $color;
+}
+
+.pg-lobby-hollow-button.white {
+	@include pg-lobby-hollow-button($pg-color-white)
+}
+
+.pg-lobby-hollow-button.pirate:not(.white) {
+	@include pg-lobby-hollow-button($pg-color-pirate)
+}
+
+.pg-lobby-hollow-button.fibbage:not(.white) {
+	@include pg-lobby-hollow-button($pg-color-fibbage)
+}
+
+.pg-lobby-hollow-button.mafia:not(.white) {
+	@include pg-lobby-hollow-button($pg-color-mafia)
+}
+

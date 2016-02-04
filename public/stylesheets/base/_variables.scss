@@ -1,9 +1,12 @@
 // Dimensions
-$pg-sp: 12px;
+$pg-sp: 6px;
 
 // Color Scheme
 $pg-color-white:          #ffffff;
-$pg-color-primary:        #4b7bb4;
+
+$pg-color-pirate:         #003366;
+$pg-color-fibbage:        #F5A623;
+$pg-color-mafia:          #D0021B;
 
 $pg-color-dark-gray:      #2a2a2a;
 $pg-color-medium-gray:    #888888;
@@ -12,17 +15,17 @@ $pg-color-light-gray:     #dbdbdb;
 $pg-color-black:          #000000;
 
 // Typeface
-$pg-body-font:   "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-$pg-header-font: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;  
+$pg-body-font:   'Lato-Regular', sans-serif; 
+$pg-header-font: 'Lato-Bold', sans-serif;  
 
 //Breakpoint
-$pg-desk-break: 360px;
+$pg-desk-break: 450px;
 
 // Font Sizes
 $pg-desk-size-large:  40px;
-$pg-desk-size-medium: 24px;
-$pg-desk-size-small:  18px;
+$pg-desk-size-medium: 32px;
+$pg-desk-size-small:  24px;
 
-$pg-mobile-size-large:  20px;
-$pg-mobile-size-medium: 16px;
-$pg-mobile-size-small:  14px;
+$pg-mobile-size-large:  34px;
+$pg-mobile-size-medium: 24px;
+$pg-mobile-size-small:  20px;

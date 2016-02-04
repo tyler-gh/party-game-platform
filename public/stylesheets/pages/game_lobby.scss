@@ -1,0 +1,59 @@
+@import '../base/variables';
+
+@mixin game-lobby($color) {
+
+	$margin: $pg-sp * 7;
+	margin: 0 $margin;
+	width: -webkit-calc((100% - (#{$margin}) * 2));
+	width:    -moz-calc((100% - (#{$margin}) * 2));
+	width:         calc((100% - (#{$margin}) * 2));
+
+	@media (min-width: $pg-desk-break) {
+		$content-size:		$pg-sp * 64;
+		margin: 0 calc((100% - (#{$content-size})) / 2);
+		width: $content-size;
+	}
+
+	max-width: 64 * $pg-sp;
+	height: 100%;
+	position: absolute;
+
+	img.game-icon.large {
+		margin-top: $pg-sp * 13;
+		margin-bottom: $pg-sp * 2;
+	}
+
+	h1, h2 {
+		color: $pg-color-white;
+		text-align: center;
+		margin-bottom: $pg-sp * 8;
+	}
+
+	button.pg-lobby-icon-button, button.pg-lobby-hollow-button, button.pg-lobby-solid-button {
+		margin-bottom: $pg-sp * 3;
+		cursor: pointer;
+	}
+
+	div.banner {
+		padding: $pg-sp * 2 0;
+		background: $color;
+	}
+
+	h1.create-game {
+		color: $color;
+		text-align: center;
+		margin-bottom: 32px;
+	}
+}
+
+.game-lobby-pirate {
+	@include game-lobby($pg-color-pirate);
+}
+
+.game-lobby-fibbage {
+	@include game-lobby($pg-color-fibbage);
+}
+
+.game-lobby-mafia {
+	@include game-lobby($pg-color-mafia);
+}

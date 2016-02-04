@@ -1,0 +1,42 @@
+@import '../base/variables';
+
+$pg-icon-separation:  $pg-sp * 11;
+
+div.game-choice:first-child {
+  margin: $pg-icon-separation auto;
+}
+
+.game-choice {
+  text-align: center;
+  margin: 0 auto $pg-icon-separation;
+}
+
+@mixin game-choice($color) {
+
+  div.game-logo {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  div.game-logo img {
+    margin-bottom: $pg-sp * 2;
+  }
+
+  div.game-logo h1 span {
+    color: $color;
+  }
+
+}
+
+.game-choice.fibbage {
+  @include game-choice($pg-color-fibbage);
+}
+
+.game-choice.pirate {
+  @include game-choice($pg-color-pirate);
+}
+
+.game-choice.mafia {
+  @include game-choice($pg-color-mafia);
+}

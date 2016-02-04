@@ -1,0 +1,23 @@
+@import '../base/variables';
+
+img.game-icon {
+  display: block;
+  //cursor: pointer;
+  margin: 0 auto;
+}
+
+img.small {
+  width: $pg-sp * 9;
+
+  @media (min-width: $pg-desk-break) {
+    width: $pg-sp * 11;
+  }
+}
+
+img.large {
+  width: $pg-sp * 34;
+
+  @media (min-width: $pg-desk-break) {
+    width: $pg-sp * 42;
+  }
+}

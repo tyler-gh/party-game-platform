@@ -1,13 +1,19 @@
 @import 'base/reset';
 @import 'base/typography';
 
+@import 'msc/styleguide';
+
 @import 'components/lists';
 @import 'components/modals';
 @import 'components/buttons';
+@import 'components/icons';
+@import 'components/background_color';
 @import 'components/msc';
 
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/content';
+@import 'layout/base';
 
-@import 'pages/home';
+@import 'pages/game_select';
+@import 'pages/game_lobby';

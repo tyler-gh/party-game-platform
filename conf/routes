@@ -4,12 +4,11 @@
 
 # Home page
 GET     /                                       controllers.Application.index
+GET     /styleguide								controllers.StyleGuideController.get
 GET     /ws                                     controllers.SocketController.socket
-#GET     /create_game                           controllers.CreateGameController.create
-POST    /create_game/:name                      controllers.CreateGameController.create(name: String)
-#GET     /join_game                             controllers.JoinGameController.view
-#GET     /game                                  controllers.JoinGameController.join(name: String, game: String)
-POST    /join_game/:gameName/:gameId/:userName  controllers.JoinGameController.join(userName: String, gameName: String, gameId: String)
+GET     /game_definition                        controllers.GameDefinitionsController.getDefinitions
+POST    /create_game                            controllers.CreateGameController.create(game_id: Option[String])
+POST    /join_game                              controllers.JoinGameController.join(user_name: Option[String], game_id: Option[String], game_instance_id: Option[String], color: Option[String])
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                           controllers.Assets.versioned(path="/public", file: Asset)
