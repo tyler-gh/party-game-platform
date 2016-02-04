@@ -9,7 +9,8 @@ var LobbyForm = React.createClass({
 	render: function() {
 		var game = this.props.game;
 		var value = this.state.value;
-		return <input className={"pg-lobby-form-" + game} type="text" value={value} onChange={this.handleChange} />;
+		var placeholder = this.props.placeholder;
+		return <input className={"pg-lobby-form-" + game} type="text" value={value} placeholder={placeholder} onChange={this.handleChange} />;
 	}
 
 });
