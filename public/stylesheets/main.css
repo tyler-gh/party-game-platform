@@ -440,7 +440,7 @@ div.game-choice:first-child {
   .game-lobby-pirate h1, .game-lobby-pirate h2 {
     color: #ffffff;
     text-align: center;
-    margin-bottom: 30px; }
+    margin-bottom: 48px; }
   .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button, .game-lobby-pirate button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
@@ -470,7 +470,7 @@ div.game-choice:first-child {
   .game-lobby-fibbage h1, .game-lobby-fibbage h2 {
     color: #ffffff;
     text-align: center;
-    margin-bottom: 30px; }
+    margin-bottom: 48px; }
   .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button, .game-lobby-fibbage button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
@@ -500,7 +500,7 @@ div.game-choice:first-child {
   .game-lobby-mafia h1, .game-lobby-mafia h2 {
     color: #ffffff;
     text-align: center;
-    margin-bottom: 30px; }
+    margin-bottom: 48px; }
   .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button, .game-lobby-mafia button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
