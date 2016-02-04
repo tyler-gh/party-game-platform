@@ -438,6 +438,8 @@ div.game-choice:first-child {
   .game-lobby-pirate img.game-icon.large {
     margin-top: 78px;
     margin-bottom: 12px; }
+  .game-lobby-pirate h1.create-game {
+    margin-top: 30px; }
   .game-lobby-pirate h1, .game-lobby-pirate h2 {
     color: #ffffff;
     text-align: center;
@@ -468,6 +470,8 @@ div.game-choice:first-child {
   .game-lobby-fibbage img.game-icon.large {
     margin-top: 78px;
     margin-bottom: 12px; }
+  .game-lobby-fibbage h1.create-game {
+    margin-top: 30px; }
   .game-lobby-fibbage h1, .game-lobby-fibbage h2 {
     color: #ffffff;
     text-align: center;
@@ -498,6 +502,8 @@ div.game-choice:first-child {
   .game-lobby-mafia img.game-icon.large {
     margin-top: 78px;
     margin-bottom: 12px; }
+  .game-lobby-mafia h1.create-game {
+    margin-top: 30px; }
   .game-lobby-mafia h1, .game-lobby-mafia h2 {
     color: #ffffff;
     text-align: center;
