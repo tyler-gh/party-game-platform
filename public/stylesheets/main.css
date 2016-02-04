@@ -389,16 +389,18 @@ html, body, div#pg-app {
   min-width: 290px; }
 
 div.game-choice:first-child {
-  margin: 64px auto; }
+  margin: 66px auto; }
 
 .game-choice {
   text-align: center;
-  margin: 0 auto 64px; }
+  margin: 0 auto 66px; }
 
 .game-choice.fibbage div.game-logo {
   display: inline-block;
   text-align: center;
   cursor: pointer; }
+.game-choice.fibbage div.game-logo img {
+  margin-bottom: 12px; }
 .game-choice.fibbage div.game-logo h1 span {
   color: #F5A623; }
 
@@ -406,6 +408,8 @@ div.game-choice:first-child {
   display: inline-block;
   text-align: center;
   cursor: pointer; }
+.game-choice.pirate div.game-logo img {
+  margin-bottom: 12px; }
 .game-choice.pirate div.game-logo h1 span {
   color: #003366; }
 
@@ -413,6 +417,8 @@ div.game-choice:first-child {
   display: inline-block;
   text-align: center;
   cursor: pointer; }
+.game-choice.mafia div.game-logo img {
+  margin-bottom: 12px; }
 .game-choice.mafia div.game-logo h1 span {
   color: #D0021B; }
 
@@ -430,11 +436,11 @@ div.game-choice:first-child {
       width: 384px; } }
   .game-lobby-pirate img.game-icon.large {
     margin-top: 78px;
-    margin-bottom: 24px; }
+    margin-bottom: 12px; }
   .game-lobby-pirate h1, .game-lobby-pirate h2 {
     color: #ffffff;
     text-align: center;
-    margin-bottom: 42px; }
+    margin-bottom: 30px; }
   .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button, .game-lobby-pirate button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
@@ -460,11 +466,11 @@ div.game-choice:first-child {
       width: 384px; } }
   .game-lobby-fibbage img.game-icon.large {
     margin-top: 78px;
-    margin-bottom: 24px; }
+    margin-bottom: 12px; }
   .game-lobby-fibbage h1, .game-lobby-fibbage h2 {
     color: #ffffff;
     text-align: center;
-    margin-bottom: 42px; }
+    margin-bottom: 30px; }
   .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button, .game-lobby-fibbage button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
@@ -490,11 +496,11 @@ div.game-choice:first-child {
       width: 384px; } }
   .game-lobby-mafia img.game-icon.large {
     margin-top: 78px;
-    margin-bottom: 24px; }
+    margin-bottom: 12px; }
   .game-lobby-mafia h1, .game-lobby-mafia h2 {
     color: #ffffff;
     text-align: center;
-    margin-bottom: 42px; }
+    margin-bottom: 30px; }
   .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button, .game-lobby-mafia button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }

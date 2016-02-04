@@ -1,6 +1,6 @@
 @import '../base/variables';
 
-$pg-icon-separation:  64px;
+$pg-icon-separation:  $pg-sp * 11;
 
 div.game-choice:first-child {
   margin: $pg-icon-separation auto;
@@ -17,6 +17,10 @@ div.game-choice:first-child {
     display: inline-block;
     text-align: center;
     cursor: pointer;
+  }
+
+  div.game-logo img {
+    margin-bottom: $pg-sp * 2;
   }
 
   div.game-logo h1 span {
