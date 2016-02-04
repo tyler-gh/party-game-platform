@@ -19,13 +19,17 @@ var GameLobby = React.createClass({
 			ReactDOM.render(<GameSelectMenu />, document.getElementById('pg-app'));
 		};
 
+		var clickCreate = function() {
+			ReactDOM.render(<GameCreator game={game} />, document.getElementById('pg-app'));
+		};
+
         return (
 			<BackgroundColor game={game}>
 	        	<LobbyContainer game={game} color="color">
 					<GameIcon size="large"  game={game} color="white"/>
 					<h1>{title}</h1>
 					<h2>{description}</h2>
-					<LobbyButton game={game} icon={"create"} text={"create"}/>
+					<LobbyButton game={game} icon={"create"} text={"create"} handleClick={clickCreate}/>
 					<LobbyButton game={game} icon={"join"} text={"join"}/>
 					<LobbyButton game={game} hollow="white" text={"cancel"} handleClick={clickCancel}/>
 	        	</LobbyContainer>
