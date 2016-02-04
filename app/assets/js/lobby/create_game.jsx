@@ -25,7 +25,7 @@ var GameCreator = React.createClass({
 				<LobbyContainer game={game} color="color">
 					<div className="container">
 						<h1 className="create-game">create game</h1>
-						<h2 className="enter">enter your name</h2>
+						<h3 className="create-game">enter your name</h3>
 						<LobbyButton game={game} text={"create"}/>
 						<LobbyButton game={game} hollow="color" text={"cancel"} handleClick={clickCancel} />
 					</div>

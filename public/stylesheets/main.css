@@ -440,10 +440,14 @@ div.game-choice:first-child {
     margin-bottom: 12px; }
   .game-lobby-pirate h1.create-game {
     margin-top: 30px; }
-  .game-lobby-pirate h1, .game-lobby-pirate h2 {
-    color: #ffffff;
+  .game-lobby-pirate h1, .game-lobby-pirate h2, .game-lobby-pirate h3 {
+    color: #003366;
     text-align: center;
     margin-bottom: 48px; }
+  .game-lobby-pirate h3.create-game {
+    text-align: left; }
+  .game-lobby-pirate h1.lobby, .game-lobby-pirate h2.lobby {
+    color: #ffffff; }
   .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button, .game-lobby-pirate button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
@@ -472,10 +476,14 @@ div.game-choice:first-child {
     margin-bottom: 12px; }
   .game-lobby-fibbage h1.create-game {
     margin-top: 30px; }
-  .game-lobby-fibbage h1, .game-lobby-fibbage h2 {
-    color: #ffffff;
+  .game-lobby-fibbage h1, .game-lobby-fibbage h2, .game-lobby-fibbage h3 {
+    color: #F5A623;
     text-align: center;
     margin-bottom: 48px; }
+  .game-lobby-fibbage h3.create-game {
+    text-align: left; }
+  .game-lobby-fibbage h1.lobby, .game-lobby-fibbage h2.lobby {
+    color: #ffffff; }
   .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button, .game-lobby-fibbage button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
@@ -504,10 +512,14 @@ div.game-choice:first-child {
     margin-bottom: 12px; }
   .game-lobby-mafia h1.create-game {
     margin-top: 30px; }
-  .game-lobby-mafia h1, .game-lobby-mafia h2 {
-    color: #ffffff;
+  .game-lobby-mafia h1, .game-lobby-mafia h2, .game-lobby-mafia h3 {
+    color: #D0021B;
     text-align: center;
     margin-bottom: 48px; }
+  .game-lobby-mafia h3.create-game {
+    text-align: left; }
+  .game-lobby-mafia h1.lobby, .game-lobby-mafia h2.lobby {
+    color: #ffffff; }
   .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button, .game-lobby-mafia button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
