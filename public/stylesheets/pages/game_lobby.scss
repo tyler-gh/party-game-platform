@@ -24,20 +24,28 @@
 		margin-bottom: $pg-sp * 2;
 	}
 
-	h1, h2 {
-		color: $pg-color-white;
+	h1.create-game {
+		margin-top: $pg-sp * 5;
+	}
+
+	h1, h2, h3 {
+		color: $color;
 		text-align: center;
 		margin-bottom: $pg-sp * 8;
+	}
+
+	h3.create-game {
+		text-align: left;
+		margin-bottom: $pg-sp;
+	}
+
+	h1.lobby, h2.lobby {
+		color: $pg-color-white;
 	}
 
 	button.pg-lobby-icon-button, button.pg-lobby-hollow-button, button.pg-lobby-solid-button {
 		margin-bottom: $pg-sp * 3;
 		cursor: pointer;
-	}
-
-	div.banner {
-		padding: $pg-sp * 2 0;
-		background: $color;
 	}
 
 	h1.create-game {
@@ -61,4 +69,23 @@
 
 .game-lobby-mafia {
 	@include game-lobby($pg-color-mafia);
+}
+
+
+
+@mixin lobby-banner($color) {
+	padding: $pg-sp * 2 0;
+	background: $color;
+}
+
+div.lobby-banner-pirate {
+	@include lobby-banner($pg-color-pirate);
+}
+
+div.lobby-banner-fibbage {
+	@include lobby-banner($pg-color-fibbage);
+}
+
+div.lobby-banner-mafia {
+	@include lobby-banner($pg-color-mafia);
 }
