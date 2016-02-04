@@ -1,14 +1,30 @@
 package models
 
+import java.io.FileReader
 import java.util
-import java.util.Collections
+import java.util.function.BiConsumer
+import java.util.{function, Collections}
+import play.api.libs.json.Json
+
 import scala.collection.JavaConverters._
 
-
-class Game(val id: String, val name: String) {
+// TODO: pass in game definition
+class Game(val id: String, val name: String, val gameDef: GameDefinition) {
 
   private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
-  private val actions = Collections.synchronizedList(new util.ArrayList[GameAction])
+//  private val actions = Collections.synchronizedList(new util.ArrayList[GameAction])
+  private var actionHandler: Option[function.Consumer[String]] = None
+  private val engine = GameScriptEngine.getNewEngine
+  gameDef.jsServerFile.map(file => new FileReader(file)).foreach(reader => {
+    engine.synchronized {
+      val bindings = engine.createBindings()
+      // TODO error handler
+      bindings.put("setActionHandler", getSetActionHandler)
+      bindings.put("broadcastAction", getBroadcastAction)
+      bindings.put("sendAction", getSendAction)
+      engine.eval(reader, bindings)
+    }
+  })
 
   def addClient(clientName: String, color: String): Client = {
     // TODO: having a space in the name caused a problem but I don't remember where
@@ -29,9 +45,45 @@ class Game(val id: String, val name: String) {
     }
   }
 
+  def getBroadcastAction: function.Consumer[String] = {
+    new function.Consumer[String] {
+      override def accept(action: String) {
+        // TODO fold with error
+        Json.parse(action).asOpt[GameAction].foreach(actionObj => {
+          forEachClient(client => client.sendAction(actionObj))
+        })
+      }
+    }
+  }
+
+  def getSendAction: function.BiConsumer[String, String] = {
+    new BiConsumer[String, String] {
+      override def accept(clientsData: String, actionData: String) {
+        (Json.parse(clientsData).asOpt[Seq[Long]], Json.parse(actionData).asOpt[GameAction]) match {
+          case (Some(clientTargets),Some(action)) =>
+            forEachClient(client => if(clientTargets.contains(client.clientInfo.id)) client.sendAction(action))
+          case _ => // TODO error
+        }
+      }
+    }
+  }
+
+  def getSetActionHandler: function.Consumer[function.Consumer[String]] = {
+    new function.Consumer[function.Consumer[String]] {
+      override def accept(handler: function.Consumer[String]) {
+        actionHandler = Some(handler)
+      }
+    }
+  }
+
   def performAction(action: GameAction): Unit = {
-    actions.add(action)
-    forEachClient(client => client.sendAction(action))
+    actionHandler.foreach(handler => {
+      handler.synchronized {
+        handler.accept(Json.stringify(Json.toJson(action)))
+      }
+    })
+//    actions.add(action)
+//    forEachClient(client => client.sendAction(action))
   }
 
   /// TODO remove games from games list when they have no clients

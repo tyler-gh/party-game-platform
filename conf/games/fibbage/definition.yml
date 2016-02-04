@@ -2,3 +2,4 @@ title: fibbage
 color: "#F6A623"
 id: fibbage
 description: This is a description of fibbage
+js_server_file: fibbage_server.js
