@@ -11,13 +11,15 @@ object Games {
   private val definitions = new ConcurrentHashMap[String, GameDefinition]()
 
   def createGame(gameId: String): Option[Game] = {
-    Option(games.get(gameId)).fold[Option[Game]](None) { defGames =>
-      val instanceId = gameInstanceIds.get(gameId)
-      val newGame = new Game(instanceId.toHexString, gameId)
-      defGames.put(instanceId.toHexString, newGame)
-      gameInstanceIds.put(gameId, instanceId + Random.nextInt(1024))
-      Some(newGame)
-    }
+    getGameDefinition(gameId).fold[Option[Game]](None)( gameDef =>
+      Option(games.get(gameId)).fold[Option[Game]](None) { defGames =>
+        val instanceId = gameInstanceIds.get(gameId)
+        val newGame = new Game(instanceId.toHexString, gameId, gameDef)
+        defGames.put(instanceId.toHexString, newGame)
+        gameInstanceIds.put(gameId, instanceId + Random.nextInt(1024))
+        Some(newGame)
+      }
+    )
   }
 
   def getGame(gameId: String, gameInstanceId: String): Option[Game] = {
@@ -25,11 +27,11 @@ object Games {
   }
 
   def addGameDefinition(definition: GameDefinition) {
-    Option(definitions.get(definition.id)).fold[Any] {
-      definitions.put(definition.id, definition)
-      games.put(definition.id, new ConcurrentHashMap[String, Game]())
+    Option(definitions.get(definition.info.id)).fold[Any] {
+      definitions.put(definition.info.id, definition)
+      games.put(definition.info.id, new ConcurrentHashMap[String, Game]())
     } { gameDef =>
-      throw new IllegalArgumentException("Game definition with id '" + gameDef.id + "' already exists")
+      throw new IllegalArgumentException("Game definition with id '" + gameDef.info.id + "' already exists")
     }
   }
 
@@ -37,8 +39,8 @@ object Games {
     Option(definitions.get(id))
   }
 
-  def getGameDefinitions : Iterable[GameDefinition] = {
-    definitions.values().asScala
+  def getGameDefinitionsInfo: Iterable[GameDefinitionInfo] = {
+    definitions.values().asScala.map(g => g.info)
   }
 
 }

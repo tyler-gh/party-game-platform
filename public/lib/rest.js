@@ -25,16 +25,21 @@ var Entity = function(url, name) {
     this.name = name;
 };
 
-Entity.prototype.send = function(method, successFunction, errorFunction) {
+Entity.prototype.send = function(method, successFunction, errorFunction, body) {
     var client = new XMLHttpRequest();
     client.open(method, this.url + "/" + this.name, true);
     client.onload = ClientLoad(client, successFunction, errorFunction);
-    client.send();
+    if(body) {
+        client.setRequestHeader("Content-Type", "application/json");
+        client.send(JSON.stringify(body));
+    } else {
+        client.send();
+    }
     console.log("sent:" + this.url + "/" + this.name);
 };
 
-Entity.prototype.post = function(successFunction, errorFunction) {
-    this.send("POST", successFunction, errorFunction);
+Entity.prototype.post = function(successFunction, errorFunction, body) {
+    this.send("POST", successFunction, errorFunction, body);
 };
 
 Entity.prototype.get = function(successFunction, errorFunction) {
@@ -60,6 +65,10 @@ var Rest = function(site, port) {
     this.url = "http://" + site;
     this.ws = "ws://" + site;
     this.sockets = {};
+};
+
+Rest.prototype.route = function(name) {
+    return new Entity(this.url, name);
 };
 
 Rest.prototype.one = function(name, id) {
