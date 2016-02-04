@@ -249,7 +249,7 @@ button:focus {
       top: 4.8px; }
 
 /*-------------lobby hollow buttons-----------------*/
-.pg-lobby-hollow-button-white {
+.pg-lobby-hollow-button.white {
   width: 100%;
   padding-top: 6px;
   padding-bottom: 9px;
@@ -262,7 +262,7 @@ button:focus {
   border: 1px solid #ffffff;
   color: #ffffff; }
 
-.pg-lobby-hollow-button.pirate {
+.pg-lobby-hollow-button.pirate:not(.white) {
   width: 100%;
   padding-top: 6px;
   padding-bottom: 9px;
@@ -275,7 +275,7 @@ button:focus {
   border: 1px solid #003366;
   color: #003366; }
 
-.pg-lobby-hollow-butto.fibbage {
+.pg-lobby-hollow-button.fibbage:not(.white) {
   width: 100%;
   padding-top: 6px;
   padding-bottom: 9px;
@@ -288,7 +288,7 @@ button:focus {
   border: 1px solid #F5A623;
   color: #F5A623; }
 
-.pg-lobby-hollow-button.mafia {
+.pg-lobby-hollow-button.mafia:not(.white) {
   width: 100%;
   padding-top: 6px;
   padding-bottom: 9px;
@@ -435,7 +435,7 @@ div.game-choice:first-child {
     color: #ffffff;
     text-align: center;
     margin-bottom: 42px; }
-  .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button-white {
+  .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button, .game-lobby-pirate button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
   .game-lobby-pirate div.banner {
@@ -465,7 +465,7 @@ div.game-choice:first-child {
     color: #ffffff;
     text-align: center;
     margin-bottom: 42px; }
-  .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button-white {
+  .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button, .game-lobby-fibbage button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
   .game-lobby-fibbage div.banner {
@@ -495,7 +495,7 @@ div.game-choice:first-child {
     color: #ffffff;
     text-align: center;
     margin-bottom: 42px; }
-  .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button-white {
+  .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button, .game-lobby-mafia button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
   .game-lobby-mafia div.banner {

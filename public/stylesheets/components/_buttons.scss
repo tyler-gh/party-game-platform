@@ -90,19 +90,19 @@ button:focus {
 	color: $color;
 }
 
-.pg-lobby-hollow-button-white {
+.pg-lobby-hollow-button.white {
 	@include pg-lobby-hollow-button($pg-color-white)
 }
 
-.pg-lobby-hollow-button.pirate {
+.pg-lobby-hollow-button.pirate:not(.white) {
 	@include pg-lobby-hollow-button($pg-color-pirate)
 }
 
-.pg-lobby-hollow-butto.fibbage {
+.pg-lobby-hollow-button.fibbage:not(.white) {
 	@include pg-lobby-hollow-button($pg-color-fibbage)
 }
 
-.pg-lobby-hollow-button.mafia {
+.pg-lobby-hollow-button.mafia:not(.white) {
 	@include pg-lobby-hollow-button($pg-color-mafia)
 }
 

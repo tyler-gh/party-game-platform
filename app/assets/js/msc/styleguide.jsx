@@ -2,10 +2,10 @@ var LobbyIconButtonsStyleDemo = React.createClass({
     render: function() {
 	    return (
 	        <div>
-	        	<IconButton game={"pirate"} icon={"create"} text={"create"}/>
+	        	<LobbyButton game={"pirate"} icon={"create"} text={"create"}/>
 	        	<br/>
 	        	<br/>
-	        	<IconButton game={"pirate"} icon={"join"} text={"join"}/>
+	        	<LobbyButton game={"pirate"} icon={"join"} text={"join"}/>
 	        </div>
 	    );
     }

@@ -20,10 +20,10 @@ var GameCreator = React.createClass({
 					<h1 className="create-game">create game</h1>
 					<h2 className="enter">enter your name</h2>
 
-					<IconButton game={game} icon={"create"} text={"create"}/>
+					<LobbyButton game={game} icon={"create"} text={"create"}/>
 					<br/>
 					<br/>
-					<IconButton game={game} icon={"join"} text={"join"}/>
+					<LobbyButton game={game} icon={"join"} text={"join"}/>
 				</div>
 	        </div>
 	    );
