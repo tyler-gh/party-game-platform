@@ -35,11 +35,6 @@
 		cursor: pointer;
 	}
 
-	div.banner {
-		padding: $pg-sp * 2 0;
-		background: $color;
-	}
-
 	h1.create-game {
 		color: $color;
 		text-align: center;
@@ -61,4 +56,23 @@
 
 .game-lobby-mafia {
 	@include game-lobby($pg-color-mafia);
+}
+
+
+
+@mixin lobby-banner($color) {
+	padding: $pg-sp * 2 0;
+	background: $color;
+}
+
+div.lobby-banner-pirate {
+	@include lobby-banner($pg-color-pirate);
+}
+
+div.lobby-banner-fibbage {
+	@include lobby-banner($pg-color-fibbage);
+}
+
+div.lobby-banner-mafia {
+	@include lobby-banner($pg-color-mafia);
 }

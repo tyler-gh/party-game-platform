@@ -1,14 +1,3 @@
-var GameBanner = React.createClass({
-   render: function() {
-	   var game = this.props.game;
-	   return (
-		   <div className="banner">
-			   <GameIcon game={game} color={"white"} size="small"/>
-		   </div>
-	   );
-   }
-});
-
 var GameLobby = React.createClass({
     render: function() {
     	var game = this.props.game;
@@ -20,7 +9,7 @@ var GameLobby = React.createClass({
 		};
 
 		var clickCreate = function() {
-			ReactDOM.render(<GameCreator game={game} />, document.getElementById('pg-app'));
+			ReactDOM.render(<GameCreator game={game} title={title} description={description}/>, document.getElementById('pg-app'));
 		};
 
         return (
