@@ -45,6 +45,10 @@
 		text-align: center;
 		margin-bottom: 32px;
 	}
+
+	:last-child {
+		margin-bottom: $pg-sp * 7 !important;
+	}
 }
 
 .game-lobby-pirate {

@@ -452,6 +452,8 @@ div.game-choice:first-child {
     color: #003366;
     text-align: center;
     margin-bottom: 32px; }
+  .game-lobby-pirate :last-child {
+    margin-bottom: 42px !important; }
 
 .game-lobby-fibbage {
   margin: 0 42px;
@@ -483,6 +485,8 @@ div.game-choice:first-child {
     color: #F5A623;
     text-align: center;
     margin-bottom: 32px; }
+  .game-lobby-fibbage :last-child {
+    margin-bottom: 42px !important; }
 
 .game-lobby-mafia {
   margin: 0 42px;
@@ -514,5 +518,7 @@ div.game-choice:first-child {
     color: #D0021B;
     text-align: center;
     margin-bottom: 32px; }
+  .game-lobby-mafia :last-child {
+    margin-bottom: 42px !important; }
 
 /*# sourceMappingURL=main.css.map */
