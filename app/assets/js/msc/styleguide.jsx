@@ -2,7 +2,7 @@ var LobbyButtonsStyleDemo = React.createClass({
     render: function() {
 	    return (
 	        <div>
-	        
+
 	        	{/* Usage for lobby icon buttons */}
 	        	<div className={"pg-styleguide-subhead"}>lobby icon buttons</div>
 
@@ -50,7 +50,10 @@ var LobbyFormsStyleDemo = React.createClass({
     render: function() {
 	    return (
 	        <div>
-	        	<LobbyForm/>
+	        	<div className={"pg-styleguide-subhead"}>lobby forms</div>
+	        	<div className={"pg-styleguide-forms"}>
+	        		<LobbyForm game={"pirate"} initialValue={"enter styleguide text"}/>
+	        	</div>
 	        </div>
 
 	    );

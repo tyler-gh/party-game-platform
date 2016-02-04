@@ -1,0 +1,26 @@
+@import '../base/variables';
+
+@mixin pg-lobby-form($color) {
+	border: none;
+	border-bottom: 3px solid $color;
+	width: 100%;
+	font-size: $pg-mobile-size-medium;
+	color: $pg-color-medium-gray;
+	padding-bottom: $pg-sp;
+
+	&:focus {
+		outline: 0;
+	}
+}
+
+.pg-lobby-form-pirate {
+	@include pg-lobby-form($pg-color-pirate);
+}
+
+.pg-lobby-form-fibbage {
+	@include pg-lobby-form($pg-color-fibbage);
+}
+
+.pg-lobby-form-mafia {
+	@include pg-lobby-form($pg-color-mafia);
+}

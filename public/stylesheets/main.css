@@ -78,6 +78,7 @@ a {
   margin-top: 48px;
   margin-bottom: 6px; }
 
+/*----------lobby button styleguide styling--------------*/
 .pg-styleguide-icon-buttons {
   background-color: #003366;
   padding: 12px 30px; }
@@ -92,6 +93,10 @@ a {
 
 .pg-styleguide-hollow-button-white {
   background-color: #003366;
+  padding: 12px 30px; }
+
+/*----------lobby forms styleguide styling--------------*/
+.pg-styleguide-forms {
   padding: 12px 30px; }
 
 body {
@@ -316,6 +321,36 @@ img.large {
   @media (min-width: 450px) {
     img.large {
       width: 252px; } }
+
+.pg-lobby-form-pirate {
+  border: none;
+  border-bottom: 3px solid #003366;
+  width: 100%;
+  font-size: 24px;
+  color: #888888;
+  padding-bottom: 6px; }
+  .pg-lobby-form-pirate:focus {
+    outline: 0; }
+
+.pg-lobby-form-fibbage {
+  border: none;
+  border-bottom: 3px solid #F5A623;
+  width: 100%;
+  font-size: 24px;
+  color: #888888;
+  padding-bottom: 6px; }
+  .pg-lobby-form-fibbage:focus {
+    outline: 0; }
+
+.pg-lobby-form-mafia {
+  border: none;
+  border-bottom: 3px solid #D0021B;
+  width: 100%;
+  font-size: 24px;
+  color: #888888;
+  padding-bottom: 6px; }
+  .pg-lobby-form-mafia:focus {
+    outline: 0; }
 
 div.pg-pirate-background-color {
   background-color: #003366;
