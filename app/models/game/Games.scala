@@ -1,6 +1,7 @@
-package models
+package models.game
 
 import java.util.concurrent.ConcurrentHashMap
+
 import scala.collection.JavaConverters._
 import scala.util.Random
 
@@ -14,7 +15,8 @@ object Games {
     getGameDefinition(gameId).fold[Option[Game]](None)( gameDef =>
       Option(games.get(gameId)).fold[Option[Game]](None) { defGames =>
         val instanceId = gameInstanceIds.get(gameId)
-        val newGame = new Game(instanceId.toHexString, gameId, gameDef)
+        val idHex = instanceId.toHexString
+        val newGame = gameDef.jsServerFile.fold[Game](new DefaultSocketGame(idHex, gameId, gameDef))(file => new JsEngineGame(idHex, gameId, gameDef))
         defGames.put(instanceId.toHexString, newGame)
         gameInstanceIds.put(gameId, instanceId + Random.nextInt(1024))
         Some(newGame)

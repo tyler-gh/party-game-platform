@@ -1,9 +1,9 @@
-package models
+package models.game
 
 import java.io.File
 
 import play.api.libs.functional.syntax._
-import play.api.libs.json.{Format, Writes, JsPath, Reads}
+import play.api.libs.json.{Format, JsPath, Reads, Writes}
 import play.api.mvc.WebSocket.FrameFormatter
 
 

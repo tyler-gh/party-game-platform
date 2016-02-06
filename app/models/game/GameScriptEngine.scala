@@ -1,4 +1,4 @@
-package models
+package models.game
 
 import javax.script.ScriptEngine
 

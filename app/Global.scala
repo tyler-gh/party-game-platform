@@ -1,6 +1,6 @@
 import java.io.{FileInputStream, File}
 
-import models.{GameDefinitionInfo, GameDefinition, Games}
+import models.game.{GameDefinitionInfo, GameDefinition, Games}
 import org.yaml.snakeyaml.Yaml
 import play.api._
 import java.util
