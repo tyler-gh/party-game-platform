@@ -27,7 +27,8 @@ routesGenerator := InjectedRoutesGenerator
 pipelineStages := Seq(concat)
 
 Concat.groups := Seq(
-  "game.js" -> group(Seq("lib/rest.js", 
+  "game.js" -> group(Seq("lib/rest.js",
+               "lib/jquery-1.12.0.js",
   						 "lib/react/react.js", 
   						 "lib/react/react-dom.min.js", 
   						 "js/components/icons.js",
@@ -40,6 +41,7 @@ Concat.groups := Seq(
   						 "js/lobby/game_select.js")),
   
   "style.js" -> group(Seq("lib/rest.js",
+                  "lib/jquery-1.12.0.js",
   					      "lib/react/react.js",
   					      "lib/react/react-dom.min.js",
   					      "js/components/icons.js",

@@ -52,7 +52,7 @@ var LobbyFormsStyleDemo = React.createClass({
 	        <div>
 	        	<div className={"pg-styleguide-subhead"}>lobby forms</div>
 	        	<div className={"pg-styleguide-forms"}>
-	        		<LobbyForm game={"pirate"} initialValue={"enter styleguide text"}/>
+	        		<LobbyForm game={"pirate"} instructions={"enter styleguide text"}/>
 	        	</div>
 	        </div>
 

@@ -322,36 +322,94 @@ img.large {
     img.large {
       width: 252px; } }
 
-.pg-lobby-form-pirate {
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions {
+  font-size: 13.33333px;
+  color: #888888;
+  height: 24px;
+  visibility: hidden; }
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-in {
+  animation: fadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-out {
+  animation: fadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-pirate .pg-lobby-form-input {
   border: none;
   border-bottom: 3px solid #003366;
   width: 100%;
   font-size: 24px;
-  color: #888888;
-  padding-bottom: 6px; }
-  .pg-lobby-form-pirate:focus {
+  color: #003366;
+  padding-bottom: 6px;
+  padding-top: 0; }
+  .pg-lobby-form-pirate .pg-lobby-form-input:focus {
     outline: 0; }
+.pg-lobby-form-pirate .pg-lobby-form-input-gray {
+  color: #888888; }
 
-.pg-lobby-form-fibbage {
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions {
+  font-size: 13.33333px;
+  color: #888888;
+  height: 24px;
+  visibility: hidden; }
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-in {
+  animation: fadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-out {
+  animation: fadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-fibbage .pg-lobby-form-input {
   border: none;
   border-bottom: 3px solid #F5A623;
   width: 100%;
   font-size: 24px;
-  color: #888888;
-  padding-bottom: 6px; }
-  .pg-lobby-form-fibbage:focus {
+  color: #F5A623;
+  padding-bottom: 6px;
+  padding-top: 0; }
+  .pg-lobby-form-fibbage .pg-lobby-form-input:focus {
     outline: 0; }
+.pg-lobby-form-fibbage .pg-lobby-form-input-gray {
+  color: #888888; }
 
-.pg-lobby-form-mafia {
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions {
+  font-size: 13.33333px;
+  color: #888888;
+  height: 24px;
+  visibility: hidden; }
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-in {
+  animation: fadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-out {
+  animation: fadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-mafia .pg-lobby-form-input {
   border: none;
   border-bottom: 3px solid #D0021B;
   width: 100%;
   font-size: 24px;
-  color: #888888;
-  padding-bottom: 6px; }
-  .pg-lobby-form-mafia:focus {
+  color: #D0021B;
+  padding-bottom: 6px;
+  padding-top: 0; }
+  .pg-lobby-form-mafia .pg-lobby-form-input:focus {
     outline: 0; }
+.pg-lobby-form-mafia .pg-lobby-form-input-gray {
+  color: #888888; }
 
+@keyframes fadeIn {
+  0% {
+    transform: translate3d(0px, 10px, 0px);
+    opacity: 0; }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+    animation-timing-function: ease-in;
+    opacity: 1; } }
+@keyframes fadeOut {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1; }
+  100% {
+    transform: translate3d(0px, 10px, 0px);
+    animation-timing-function: ease-out;
+    opacity: 0; } }
 div.pg-pirate-background-color {
   background-color: #003366;
   height: inherit; }
