@@ -11,7 +11,12 @@ button:focus {
 	padding-bottom: $pg-sp*1.5;
 	border: none;
 	border-radius: $pg-sp;
+
 	font-size: $pg-mobile-size-medium;
+	@media (min-width: $pg-desk-break) { 
+		font-size: $pg-desk-size-medium;	
+	}
+	
 	position: relative;
 	margin: auto;
 	overflow: hidden;

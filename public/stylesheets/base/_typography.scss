@@ -30,6 +30,14 @@ h2 {
 	}
 }
 
+h3 {
+	font-size: $pg-mobile-size-small;
+
+	@media (min-width: $pg-desk-break) { 
+		font-size: $pg-desk-size-small;
+	}
+}
+
 a {
 	color: inherit;
 	text-decoration: none;

@@ -15,8 +15,7 @@ var LobbyButton = React.createClass({
 		var className;
 		if (icon != null) {
 			className = "pg-lobby-icon-button";
-		} else if (hollow != null) {
-			className = "pg-lobby-hollow-button";
+		} else if (hollow != null) {className = "pg-lobby-hollow-button";
 			if (hollow == "white") {
 				className += " white";
 			}

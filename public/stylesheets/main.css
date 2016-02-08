@@ -43,12 +43,12 @@ table {
 
 body {
   color: #2a2a2a;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
   font-size: 34px;
@@ -58,10 +58,16 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
@@ -101,12 +107,12 @@ a {
 
 body {
   color: #2a2a2a;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
   font-size: 34px;
@@ -116,10 +122,16 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
@@ -135,12 +147,15 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: #003366;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-solid-button.pirate {
+      font-size: 26px; } }
   .pg-lobby-solid-button.pirate .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -158,12 +173,15 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: #F5A623;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-solid-button.fibbage {
+      font-size: 26px; } }
   .pg-lobby-solid-button.fibbage .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -181,12 +199,15 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: #D0021B;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-solid-button.mafia {
+      font-size: 26px; } }
   .pg-lobby-solid-button.mafia .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -205,13 +226,16 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: #ffffff;
   color: #003366;
   font-weight: bold; }
+  @media (min-width: 450px) {
+    .pg-lobby-icon-button.pirate {
+      font-size: 26px; } }
   .pg-lobby-icon-button.pirate .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -245,13 +269,16 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: #ffffff;
   color: #F5A623;
   font-weight: bold; }
+  @media (min-width: 450px) {
+    .pg-lobby-icon-button.fibbage {
+      font-size: 26px; } }
   .pg-lobby-icon-button.fibbage .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -285,13 +312,16 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: #ffffff;
   color: #D0021B;
   font-weight: bold; }
+  @media (min-width: 450px) {
+    .pg-lobby-icon-button.mafia {
+      font-size: 26px; } }
   .pg-lobby-icon-button.mafia .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -326,13 +356,16 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: transparent;
   border: 1px solid #ffffff;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.white {
+      font-size: 26px; } }
   .pg-lobby-hollow-button.white .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -350,13 +383,16 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: transparent;
   border: 1px solid #003366;
   color: #003366; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.pirate:not(.white) {
+      font-size: 26px; } }
   .pg-lobby-hollow-button.pirate:not(.white) .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -374,13 +410,16 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: transparent;
   border: 1px solid #F5A623;
   color: #F5A623; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.fibbage:not(.white) {
+      font-size: 26px; } }
   .pg-lobby-hollow-button.fibbage:not(.white) .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -398,13 +437,16 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
   overflow: hidden;
   background-color: transparent;
   border: 1px solid #D0021B;
   color: #D0021B; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.mafia:not(.white) {
+      font-size: 26px; } }
   .pg-lobby-hollow-button.mafia:not(.white) .pg-lobby-button-splash {
     border-radius: 50%;
     width: 0%;
@@ -438,13 +480,13 @@ img.small {
       width: 66px; } }
 
 img.large {
-  width: 204px; }
+  width: 156px; }
   @media (min-width: 450px) {
     img.large {
-      width: 252px; } }
+      width: 180px; } }
 
 .pg-lobby-form-pirate .pg-lobby-form-persistent-instructions {
-  font-size: 13.33333px;
+  font-size: 12px;
   color: #888888;
   height: 24px;
   visibility: hidden; }
@@ -458,7 +500,7 @@ img.large {
   border: none;
   border-bottom: 3px solid #003366;
   width: 100%;
-  font-size: 24px;
+  font-size: 22px;
   color: #003366;
   padding-bottom: 6px;
   padding-top: 0; }
@@ -468,7 +510,7 @@ img.large {
   color: #888888; }
 
 .pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions {
-  font-size: 13.33333px;
+  font-size: 12px;
   color: #888888;
   height: 24px;
   visibility: hidden; }
@@ -482,7 +524,7 @@ img.large {
   border: none;
   border-bottom: 3px solid #F5A623;
   width: 100%;
-  font-size: 24px;
+  font-size: 22px;
   color: #F5A623;
   padding-bottom: 6px;
   padding-top: 0; }
@@ -492,7 +534,7 @@ img.large {
   color: #888888; }
 
 .pg-lobby-form-mafia .pg-lobby-form-persistent-instructions {
-  font-size: 13.33333px;
+  font-size: 12px;
   color: #888888;
   height: 24px;
   visibility: hidden; }
@@ -506,7 +548,7 @@ img.large {
   border: none;
   border-bottom: 3px solid #D0021B;
   width: 100%;
-  font-size: 24px;
+  font-size: 22px;
   color: #D0021B;
   padding-bottom: 6px;
   padding-top: 0; }
@@ -545,12 +587,12 @@ div.pg-mafia-background-color {
 
 body {
   color: #2a2a2a;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
   font-size: 34px;
@@ -560,10 +602,16 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
@@ -571,12 +619,12 @@ a {
 
 body {
   color: #2a2a2a;
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Lato-Regular", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
   font-size: 34px;
@@ -586,10 +634,16 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
@@ -661,7 +715,7 @@ div.game-choice:first-child {
   .game-lobby-pirate h3.create-game {
     text-align: left;
     margin-bottom: 6px; }
-  .game-lobby-pirate h1.lobby, .game-lobby-pirate h2.lobby {
+  .game-lobby-pirate h1.lobby, .game-lobby-pirate h3.lobby {
     color: #ffffff; }
   .game-lobby-pirate h1.success {
     margin-top: 84px;
@@ -705,7 +759,7 @@ div.game-choice:first-child {
   .game-lobby-fibbage h3.create-game {
     text-align: left;
     margin-bottom: 6px; }
-  .game-lobby-fibbage h1.lobby, .game-lobby-fibbage h2.lobby {
+  .game-lobby-fibbage h1.lobby, .game-lobby-fibbage h3.lobby {
     color: #ffffff; }
   .game-lobby-fibbage h1.success {
     margin-top: 84px;
@@ -749,7 +803,7 @@ div.game-choice:first-child {
   .game-lobby-mafia h3.create-game {
     text-align: left;
     margin-bottom: 6px; }
-  .game-lobby-mafia h1.lobby, .game-lobby-mafia h2.lobby {
+  .game-lobby-mafia h1.lobby, .game-lobby-mafia h3.lobby {
     color: #ffffff; }
   .game-lobby-mafia h1.success {
     margin-top: 84px;
