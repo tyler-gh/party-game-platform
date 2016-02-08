@@ -1,4 +1,9 @@
 var LobbyButton = React.createClass({
+	
+	handleFocus: function() {
+		//TODO finish functionality for splash animation
+		$("#pg-lobby-button-splash-" + text).addClass("pg-lobby-button-splash");
+	},
 	render: function() {
     	var game = this.props.game;
     	var icon = this.props.icon;
@@ -22,7 +27,8 @@ var LobbyButton = React.createClass({
 		className += " " + game;
 
         return (
-	        <button className={className} onClick={handleClick}>
+	        <button className={className} onClick={handleClick} onFocus={this.handleFocus}>
+	        	<div id={"pg-lobby-button-splash-" + text}></div>
 	        	{text}
 				{(() => {
 					if (icon != null) {

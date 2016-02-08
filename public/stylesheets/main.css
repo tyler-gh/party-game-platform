@@ -138,8 +138,19 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #003366;
   color: #ffffff; }
+  .pg-lobby-solid-button.pirate .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
 
 .pg-lobby-solid-button.fibbage {
   width: 100%;
@@ -150,8 +161,19 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #F5A623;
   color: #ffffff; }
+  .pg-lobby-solid-button.fibbage .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
 
 .pg-lobby-solid-button.mafia {
   width: 100%;
@@ -162,8 +184,19 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #D0021B;
   color: #ffffff; }
+  .pg-lobby-solid-button.mafia .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
 
 /*-------------lobby logo buttons-----------------*/
 .pg-lobby-icon-button.pirate {
@@ -175,9 +208,20 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #ffffff;
   color: #003366;
   font-weight: bold; }
+  .pg-lobby-icon-button.pirate .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
   .pg-lobby-icon-button.pirate .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -204,9 +248,20 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #ffffff;
   color: #F5A623;
   font-weight: bold; }
+  .pg-lobby-icon-button.fibbage .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
   .pg-lobby-icon-button.fibbage .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -233,9 +288,20 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #ffffff;
   color: #D0021B;
   font-weight: bold; }
+  .pg-lobby-icon-button.mafia .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
   .pg-lobby-icon-button.mafia .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -263,9 +329,20 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #ffffff;
   color: #ffffff; }
+  .pg-lobby-hollow-button.white .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
 
 .pg-lobby-hollow-button.pirate:not(.white) {
   width: 100%;
@@ -276,9 +353,20 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #003366;
   color: #003366; }
+  .pg-lobby-hollow-button.pirate:not(.white) .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
 
 .pg-lobby-hollow-button.fibbage:not(.white) {
   width: 100%;
@@ -289,9 +377,20 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #F5A623;
   color: #F5A623; }
+  .pg-lobby-hollow-button.fibbage:not(.white) .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
 
 .pg-lobby-hollow-button.mafia:not(.white) {
   width: 100%;
@@ -302,10 +401,32 @@ button:focus {
   font-size: 24px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #D0021B;
   color: #D0021B; }
+  .pg-lobby-hollow-button.mafia:not(.white) .pg-lobby-button-splash {
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: rgba(220, 220, 220, 0.8);
+    position: absolute;
+    z-index: 0;
+    left: 45%;
+    top: 0;
+    animation: splash .25s; }
 
+@keyframes splash {
+  0% {
+    width: 0%;
+    height: 0%;
+    left: 50%; }
+  100% {
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
+    animation-timing-function: ease-out; } }
 img.game-icon {
   display: block;
   margin: 0 auto; }

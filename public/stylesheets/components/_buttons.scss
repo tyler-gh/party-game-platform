@@ -14,6 +14,19 @@ button:focus {
 	font-size: $pg-mobile-size-medium;
 	position: relative;
 	margin: auto;
+	overflow: hidden;
+
+	.pg-lobby-button-splash {
+		border-radius: 50%;
+		width: 0%;
+		height: 0%;
+		background-color: rgba(220, 220, 220, 0.8);
+		position: absolute;
+		z-index: 0;
+		left: 45%;
+		top: 0;
+		animation: splash .25s;
+	}
 }
 
 /*-------------lobby solid buttons-----------------*/
@@ -104,5 +117,20 @@ button:focus {
 
 .pg-lobby-hollow-button.mafia:not(.white) {
 	@include pg-lobby-hollow-button($pg-color-mafia)
+}
+
+@keyframes splash {
+	0% {
+        width: 0%;
+        height: 0%;
+        left: 50%;
+    }
+    100% {
+        width: 200%;
+        height: 200%;
+        left: -50%;
+        top: -50%;
+        animation-timing-function: ease-out;
+    }
 }
 
