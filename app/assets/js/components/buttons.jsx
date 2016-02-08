@@ -2,7 +2,7 @@ var LobbyButton = React.createClass({
 	
 	handleFocus: function() {
 		//TODO finish functionality for splash animation
-		$("#pg-lobby-button-splash-" + text).addClass("pg-lobby-button-splash");
+		$("#pg-lobby-button-splash-" + this.props.text).addClass("pg-lobby-button-splash");
 	},
 	render: function() {
     	var game = this.props.game;
