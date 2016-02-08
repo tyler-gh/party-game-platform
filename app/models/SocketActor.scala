@@ -1,5 +1,6 @@
 package models
 
+import models.game.GameAction
 import play.api.libs.iteratee.{Concurrent, Iteratee}
 import scala.concurrent.ExecutionContext.Implicits.global
 

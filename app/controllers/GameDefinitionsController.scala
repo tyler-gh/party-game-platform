@@ -1,6 +1,6 @@
 package controllers
 
-import models.Games
+import models.game.Games
 import play.api.libs.json.Json
 import play.api.mvc._
 
@@ -8,7 +8,7 @@ import play.api.mvc._
 class GameDefinitionsController extends Controller {
 
   def getDefinitions = Action {
-    Ok(Json.toJson(Games.getGameDefinitions))
+    Ok(Json.toJson(Games.getGameDefinitionsInfo))
   }
 
 }
