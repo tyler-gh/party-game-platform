@@ -8,6 +8,10 @@ var GameLobby = React.createClass({
 			ReactDOM.render(<GameSelectMenu />, document.getElementById('pg-app'));
 		};
 
+		var clickJoin = function() {
+			ReactDOM.render(<GameJoin game={game}/>, document.getElementById('pg-app'));
+		};
+
 		var clickCreate = function() {
 			ReactDOM.render(<GameCreator game={game} title={title} description={description}/>, document.getElementById('pg-app'));
 		};
@@ -19,7 +23,7 @@ var GameLobby = React.createClass({
 					<h1 className="lobby">{title}</h1>
 					<h2 className="lobby">{description}</h2>
 					<LobbyButton game={game} icon={"create"} text={"create"} handleClick={clickCreate}/>
-					<LobbyButton game={game} icon={"join"} text={"join"}/>
+					<LobbyButton game={game} icon={"join"} text={"join"} handleClick={clickJoin}/>
 					<LobbyButton game={game} hollow="white" text={"cancel"} handleClick={clickCancel}/>
 	        	</LobbyContainer>
 			</BackgroundColor>
