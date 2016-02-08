@@ -1,55 +1,76 @@
-@(name: String, id: Long, game: String)
-
 <script type="application/javascript">
 
-    var wsUri = "ws://localhost:9000/ws?name=@name&game=@game&id=@id";
+    var wsUri = "ws://localhost:9000/ws";
     var websocket;
     var output;
 
-    function init() {
-        output = document.getElementById("output");
-        testWebSocket();
-    }
+    var Tester = function(elementId, gameId) {
+        this.elementId = elementId;
+        this.gameId = gameId;
+        this.websocket = null;
+        this.output = null;
+    };
 
-    function testWebSocket() {
-        websocket = new WebSocket(wsUri);
-        websocket.onopen = function(evt) { onOpen(evt) };
-        websocket.onclose = function(evt) { onClose(evt) };
-        websocket.onmessage = function(evt) { onMessage(evt) };
-        websocket.onerror = function(evt) { onError(evt) };
-    }
+    Tester.prototype.init = function(){
+        var me = this;
+        var api = new Rest("localhost", 9000);
+        this.output = document.getElementById(me.elementId);
 
-    function onOpen(evt) {
-        writeToScreen("CONNECTED");
-        doSend("WebSocket rocks");
-    }
+        api.route("create_game").post(function success() {
+            me.testWebSocket();
+        }, function(e) {
+            console.log(e);
+        }, {game_id: me.gameId});
+        return this;
+    };
 
-    function closeWS() {
-        websocket.close();
-    }
+    Tester.prototype.testWebSocket = function() {
+        this.websocket = new WebSocket(wsUri);
+        var me  = this;
+        websocket = me.websocket;
+        websocket.onopen = function(evt) { me.onOpen(evt) };
+        websocket.onclose = function(evt) { me.onClose(evt) };
+        websocket.onmessage = function(evt) { me.onMessage(evt) };
+        websocket.onerror = function(evt) { me.onError(evt) };
+    };
 
-    function onClose(evt) {
-        writeToScreen("DISCONNECTED");
-    }
+    Tester.prototype.onOpen = function(evt) {
+        this.writeToScreen("CONNECTED");
+        this.doSend("WebSocket rocks");
+    };
 
-    function onMessage(evt) {
-        writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
-    }
+    Tester.prototype.closeWS = function() {
+        this.websocket.close();
+    };
 
-    function onError(evt) {
-        writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
-    }
+    Tester.prototype.onClose = function() {
+        this.writeToScreen("DISCONNECTED");
+    };
 
-    function doSend(message) {
-        writeToScreen("SENT: " + message);
-        websocket.send("{ \"client\":{\"name\":\"@name\", \"id\": @id}, \"actionType\":\"group-message\", \"data\":{\"message\":\"" + message + "\"}}");
-    }
+    Tester.prototype.onMessage = function(evt) {
+        this.writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
+    };
 
-    function writeToScreen(message) {
+    Tester.prototype.onError = function(evt) {
+        this.writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+    };
+
+    Tester.prototype.doSend = function(message) {
+        this.writeToScreen("SENT: " + message);
+        this.websocket.send("{ \"client\":{\"name\":\"root\", \"id\": 0,\"color\":\"black\"}, \"actionType\":\"group-message\", \"data\":{\"message\":\"" + message + "\"}}");
+    };
+
+    Tester.prototype.writeToScreen = function(message) {
         var pre = document.createElement("p");
         pre.style.wordWrap = "break-word";
         pre.innerHTML = message;
-        output.appendChild(pre);
+        this.output.appendChild(pre);
+    };
+
+
+    function init() {
+        window.fibbage = new Tester("output", "fibbage").init();
+        window.pirate = new Tester("output-2", "pirate").init();
     }
 
     window.addEventListener("load", init, false);

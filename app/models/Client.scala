@@ -1,5 +1,6 @@
 package models
 
+import models.game.{GameAction, Game}
 import play.api.libs.iteratee.{Enumerator, Iteratee}
 
 

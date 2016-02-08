@@ -1,11 +1,13 @@
-package models
+package models.game
 
 import java.util
 import java.util.Collections
+
+import models.{Client, ClientInfo}
+
 import scala.collection.JavaConverters._
 
-
-class Game(val id: String, val name: String) {
+abstract class Game(val id: String, val name: String, val gameDef: GameDefinition) {
 
   private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
   private val actions = Collections.synchronizedList(new util.ArrayList[GameAction])
@@ -29,10 +31,7 @@ class Game(val id: String, val name: String) {
     }
   }
 
-  def performAction(action: GameAction): Unit = {
-    actions.add(action)
-    forEachClient(client => client.sendAction(action))
-  }
+  def performAction(action: GameAction)
 
   /// TODO remove games from games list when they have no clients
   def endGame(): Unit = {
@@ -46,14 +45,14 @@ class Game(val id: String, val name: String) {
     clients.asScala.flatten.map(_.clientInfo).toList
   }
 
-  private def forEachClient(func: (Client) => Unit): Unit = {
+  protected def forEachClient(func: (Client) => Unit): Unit = {
     val it = clients.listIterator()
     while(it.hasNext) {
       it.next().foreach(func)
     }
   }
 
-  private def findClient(func: (Client) => Boolean): Option[Client] = {
+  protected def findClient(func: (Client) => Boolean): Option[Client] = {
     val it = clients.listIterator()
     while(it.hasNext) {
       val client = it.next()

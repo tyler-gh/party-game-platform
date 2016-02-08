@@ -1,6 +1,7 @@
 package controllers
 
-import models.{ClientCookie, Games}
+import models.ClientCookie
+import models.game.Games
 import play.api.mvc._
 import play.api.libs.json._
 

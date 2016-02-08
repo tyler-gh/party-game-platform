@@ -1,6 +1,7 @@
 package controllers
 
-import models.{ClientCookie, Games, GameAction}
+import models.game.{GameAction, Games}
+import models.ClientCookie
 import play.api.libs.iteratee.{Enumerator, Iteratee}
 import play.api.mvc._
 

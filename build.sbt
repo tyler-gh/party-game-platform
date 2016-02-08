@@ -10,6 +10,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala, SbtWeb, SbtReact
 libraryDependencies ++= Seq(
   jdbc,
   "org.postgresql" % "postgresql" % "9.3-1103-jdbc4",
+  "com.typesafe.play" %% "anorm" % "2.4.0",
   cache,
   ws,
   specs2 % Test,
@@ -38,6 +39,7 @@ Concat.groups := Seq(
   						 "js/components/forms.js",
   						 "js/lobby/game_lobby.js", 
   						 "js/lobby/create_game.js",
+  						 "js/lobby/join_game.js",
   						 "js/lobby/game_select.js")),
   
   "style.js" -> group(Seq("lib/rest.js",

@@ -663,6 +663,11 @@ div.game-choice:first-child {
     margin-bottom: 6px; }
   .game-lobby-pirate h1.lobby, .game-lobby-pirate h2.lobby {
     color: #ffffff; }
+  .game-lobby-pirate h1.success {
+    margin-top: 84px;
+    color: #417505; }
+  .game-lobby-pirate h3.success, .game-lobby-pirate h1.game-code {
+    color: #000000; }
   .game-lobby-pirate .pg-lobby-form-pirate, .game-lobby-pirate .pg-lobby-form-fibbage, .game-lobby-pirate .pg-lobby-form-mafia {
     margin-bottom: 42px; }
   .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button, .game-lobby-pirate button.pg-lobby-solid-button {
@@ -702,6 +707,11 @@ div.game-choice:first-child {
     margin-bottom: 6px; }
   .game-lobby-fibbage h1.lobby, .game-lobby-fibbage h2.lobby {
     color: #ffffff; }
+  .game-lobby-fibbage h1.success {
+    margin-top: 84px;
+    color: #417505; }
+  .game-lobby-fibbage h3.success, .game-lobby-fibbage h1.game-code {
+    color: #000000; }
   .game-lobby-fibbage .pg-lobby-form-pirate, .game-lobby-fibbage .pg-lobby-form-fibbage, .game-lobby-fibbage .pg-lobby-form-mafia {
     margin-bottom: 42px; }
   .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button, .game-lobby-fibbage button.pg-lobby-solid-button {
@@ -741,6 +751,11 @@ div.game-choice:first-child {
     margin-bottom: 6px; }
   .game-lobby-mafia h1.lobby, .game-lobby-mafia h2.lobby {
     color: #ffffff; }
+  .game-lobby-mafia h1.success {
+    margin-top: 84px;
+    color: #417505; }
+  .game-lobby-mafia h3.success, .game-lobby-mafia h1.game-code {
+    color: #000000; }
   .game-lobby-mafia .pg-lobby-form-pirate, .game-lobby-mafia .pg-lobby-form-fibbage, .game-lobby-mafia .pg-lobby-form-mafia {
     margin-bottom: 42px; }
   .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button, .game-lobby-mafia button.pg-lobby-solid-button {
