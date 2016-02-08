@@ -43,6 +43,15 @@
 		color: $pg-color-white;
 	}
 
+	h1.success {
+		margin-top: $pg-sp * 14;
+		color: $pg-color-green;
+	}
+
+	h3.success, h1.game-code {
+		color: $pg-color-black;
+	}
+
 	.pg-lobby-form-pirate, .pg-lobby-form-fibbage, .pg-lobby-form-mafia {
 		margin-bottom: $pg-sp * 7;
 	}
