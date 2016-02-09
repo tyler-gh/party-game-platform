@@ -1,6 +1,8 @@
 var GameJoin = React.createClass({
     render: function() {
     	var game = this.props.game;
+		var title = this.props.title;
+		var description = this.props.description;
 
 		var clickCancel = function() {
 			ReactDOM.render(<GameLobby game={game} title={title} description={description} />, document.getElementById('pg-app'));

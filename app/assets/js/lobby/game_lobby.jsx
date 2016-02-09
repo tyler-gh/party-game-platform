@@ -9,7 +9,7 @@ var GameLobby = React.createClass({
 		};
 
 		var clickJoin = function() {
-			ReactDOM.render(<GameJoin game={game}/>, document.getElementById('pg-app'));
+			ReactDOM.render(<GameJoin game={game} title={title} description={description}/>, document.getElementById('pg-app'));
 		};
 
 		var clickCreate = function() {
