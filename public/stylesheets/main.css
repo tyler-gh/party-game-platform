@@ -44,13 +44,14 @@ table {
 body {
   color: #2a2a2a;
   font-size: 18px;
-  font-family: "Lato-Regular", sans-serif;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
       font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -58,12 +59,14 @@ h1 {
       font-size: 40px; } }
 
 h2 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
       font-size: 26px; } }
 
 h3 {
+  font-family: "Lato-Light", sans-serif;
   font-size: 18px; }
   @media (min-width: 450px) {
     h3 {
@@ -108,13 +111,14 @@ a {
 body {
   color: #2a2a2a;
   font-size: 18px;
-  font-family: "Lato-Regular", sans-serif;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
       font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -122,12 +126,14 @@ h1 {
       font-size: 40px; } }
 
 h2 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
       font-size: 26px; } }
 
 h3 {
+  font-family: "Lato-Light", sans-serif;
   font-size: 18px; }
   @media (min-width: 450px) {
     h3 {
@@ -588,13 +594,14 @@ div.pg-mafia-background-color {
 body {
   color: #2a2a2a;
   font-size: 18px;
-  font-family: "Lato-Regular", sans-serif;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
       font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -602,12 +609,14 @@ h1 {
       font-size: 40px; } }
 
 h2 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
       font-size: 26px; } }
 
 h3 {
+  font-family: "Lato-Light", sans-serif;
   font-size: 18px; }
   @media (min-width: 450px) {
     h3 {
@@ -620,13 +629,14 @@ a {
 body {
   color: #2a2a2a;
   font-size: 18px;
-  font-family: "Lato-Regular", sans-serif;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
       font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -634,12 +644,14 @@ h1 {
       font-size: 40px; } }
 
 h2 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
       font-size: 26px; } }
 
 h3 {
+  font-family: "Lato-Light", sans-serif;
   font-size: 18px; }
   @media (min-width: 450px) {
     h3 {
