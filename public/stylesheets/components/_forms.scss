@@ -5,6 +5,7 @@
 @mixin pg-lobby-form($color) {
 	
 	.pg-lobby-form-persistent-instructions {
+		font-family: $pg-header-font;
 		font-size: $pg-mobile-size-small/1.5;
 		color: $pg-color-medium-gray;
 		height: $pg-sp*4;

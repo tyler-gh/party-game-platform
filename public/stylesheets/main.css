@@ -492,6 +492,7 @@ img.large {
       width: 180px; } }
 
 .pg-lobby-form-pirate .pg-lobby-form-persistent-instructions {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 12px;
   color: #888888;
   height: 24px;
@@ -516,6 +517,7 @@ img.large {
   color: #888888; }
 
 .pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 12px;
   color: #888888;
   height: 24px;
@@ -540,6 +542,7 @@ img.large {
   color: #888888; }
 
 .pg-lobby-form-mafia .pg-lobby-form-persistent-instructions {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 12px;
   color: #888888;
   height: 24px;
