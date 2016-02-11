@@ -62,11 +62,40 @@ object GameDB {
     Json.toJson(games)
   }
 
-  def getRows(): JsValue = {
+  def getRows(gameID : Int = -1, joinCode : String = ""): JsValue = {
+    var whereClause = ""
+
+    whereClause = buildWhereClause(whereClause,"gameID",gameID)
+    whereClause = buildWhereClause(whereClause,"joinCode",joinCode)
+
     DB.withConnection { implicit connection =>
-      var result = SQL("select * from games").as(GameDB.row *)
+      val result = SQL(s"select * from games $whereClause").as(GameDB.row *)
       convertToJson(result)
     }
+  }
+
+  //TODO refactor this out to common db file?
+
+  def buildWhereClause(whereClause : String, colName : String, value: Int): String = {
+    var valueString = ""
+    if(value != -1)
+      valueString = value.toString()
+
+    return buildWhereClause(whereClause,colName,valueString)
+  }
+  //TODO refactor this out to common db file?
+  def buildWhereClause(whereClause : String, colName : String, value: String): String = {
+    var newWhereClause = whereClause
+    if(value != ""){
+      if(newWhereClause == ""){
+        newWhereClause += s" WHERE $colName = $value"
+      }
+      else
+      {
+        newWhereClause += s" AND $colName = $value"
+      }
+    }
+    return newWhereClause
   }
 
   def insertRow(gameID : Int, joinCode : String, gameState: String = "creating"): Boolean = {
@@ -87,6 +116,23 @@ object GameDB {
     return success
   }
 
+  def deleteGameData(gameID : Int): Boolean = {
+    var success = false
+    var result : Int = -1
+    DB.withConnection { implicit connection =>
+      result = SQL(
+        s"DELETE from games where gameID=$gameID").executeUpdate()
+    }
+    if(result == -1){
+      //todo throw error, not return
+      return false
+    }
+
+    if(result == 1) {
+      success = true
+    }
+    return success
+  }
 
   def resetTable(): Boolean = {
     var success = false;

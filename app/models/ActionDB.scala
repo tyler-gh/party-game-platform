@@ -68,11 +68,41 @@ object ActionDB {
     Json.toJson(actions)
   }
 
-  def getRows(): JsValue = {
+  def getRows(startingActionNumber : Int = 0, userID : Int = -1, gameID : Int = -1): JsValue = {
+    var whereClause = ""
+
+    whereClause = s"WHERE actionNumber >= $startingActionNumber"
+    whereClause = buildWhereClause(whereClause,"userID",userID)
+    whereClause = buildWhereClause(whereClause,"gameID",gameID)
+
     DB.withConnection { implicit connection =>
-      var result = SQL("select * from actions").as(ActionDB.row *)
+      val result = SQL(s"select * from actions $whereClause").as(ActionDB.row *)
       convertToJson(result)
     }
+  }
+
+  //TODO refactor this out to common db file?
+
+  def buildWhereClause(whereClause : String, colName : String, value: Int): String = {
+    var valueString = ""
+    if(value != -1)
+      valueString = value.toString()
+
+    return buildWhereClause(whereClause,colName,valueString)
+  }
+  //TODO refactor this out to common db file?
+  def buildWhereClause(whereClause : String, colName : String, value: String): String = {
+    var newWhereClause = whereClause
+    if(value != ""){
+      if(newWhereClause == ""){
+        newWhereClause += s" WHERE $colName = $value"
+      }
+      else
+      {
+        newWhereClause += s" AND $colName = $value"
+      }
+    }
+    return newWhereClause
   }
 
   def insertRow(actionNumber : Int, actionType : String, actionData : String, userID : Int, gameID : Int): Boolean = {
@@ -94,8 +124,6 @@ object ActionDB {
     }
     return success
   }
-
-
 
   def resetTable(): Boolean = {
     var success = true;
@@ -128,8 +156,7 @@ object ActionDB {
           userID        integer,
           gameID        integer,
           PRIMARY KEY(actionNumber, userID, gameID),
-          FOREIGN KEY(userID) REFERENCES users(userID),
-          FOREIGN KEY(gameID) REFERENCES games(gameID)
+          FOREIGN KEY(userID, gameID) REFERENCES users(userID, gameID) ON DELETE CASCADE
           )
         """
       ).execute()

@@ -58,11 +58,41 @@ object UserDB {
     Json.toJson(users)
   }
 
-  def getRows(): JsValue = {
+  def getRows(userID : Int = -1, gameID : Int = -1): JsValue = {
+
+    var whereClause = ""
+
+    whereClause = buildWhereClause(whereClause,"userID",userID)
+    whereClause = buildWhereClause(whereClause,"gameID",gameID)
+
     DB.withConnection { implicit connection =>
-      var result = SQL("select * from users").as(UserDB.row *)
+      val result = SQL(s"select * from users $whereClause").as(UserDB.row *)
       convertToJson(result)
     }
+  }
+
+  //TODO refactor this out to common db file?
+
+  def buildWhereClause(whereClause : String, colName : String, value: Int): String = {
+    var valueString = ""
+    if(value != -1)
+    valueString = value.toString()
+
+    return buildWhereClause(whereClause,colName,valueString)
+  }
+  //TODO refactor this out to common db file?
+  def buildWhereClause(whereClause : String, colName : String, value: String): String = {
+    var newWhereClause = whereClause
+    if(value != ""){
+      if(newWhereClause == ""){
+        newWhereClause += s" WHERE $colName = $value"
+      }
+      else
+      {
+        newWhereClause += s" AND $colName = $value"
+      }
+    }
+    return newWhereClause
   }
 
   def insertRow(userID : Int, userName : String, gameID: Int): Boolean = {
@@ -107,11 +137,11 @@ object UserDB {
       result = SQL(
         """
         CREATE TABLE IF NOT EXISTS users (
-        userID        integer UNIQUE,
+        userID        int,
         userName      text NOT NULL,
         gameID        integer,
         PRIMARY KEY(userID, gameID),
-        FOREIGN KEY(gameID) REFERENCES games(gameID)
+        FOREIGN KEY(gameID) REFERENCES games(gameID) ON DELETE CASCADE
           )
         """
       ).execute()

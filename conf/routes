@@ -16,13 +16,15 @@ GET     /db/create                              controllers.DatabaseController.c
 GET     /db/reset                               controllers.DatabaseController.resetEntireDatabase
 GET     /db/drop                                controllers.DatabaseController.dropDatabaseTables
 
-GET     /db/games                               controllers.DatabaseController.getGames
+GET     /db/games/delete/:gameID                controllers.DatabaseController.deleteGameData(gameID : Int)
+
+GET     /db/games                               controllers.DatabaseController.getGames(gameID : Int ?= -1, joinCode : String ?= "")
 GET     /db/games/:gameID/:gameCode             controllers.DatabaseController.insertGame(gameID: Int, gameCode: String,gameStatus: String ?= "creating")
 
-GET     /db/users                               controllers.DatabaseController.getUsers
+GET     /db/users                               controllers.DatabaseController.getUsers(userID : Int ?= -1, gameID : Int ?= -1)
 GET     /db/users/:userID/:userName/:gameID     controllers.DatabaseController.insertUser(userID : Int, userName : String, gameID: Int)
 
-GET     /db/actions                             controllers.DatabaseController.getActions
+GET     /db/actions                             controllers.DatabaseController.getActions(startingActionNumber : Int ?= 0, userID : Int ?= -1, gameID : Int ?= -1)
 GET     /db/actions/:actionNumber/:actionType/:actionData/:userID/:gameID       controllers.DatabaseController.insertAction(actionNumber : Int, actionType : String, actionData : String, userID : Int, gameID : Int)
 
 # Map static resources from the /public folder to the /assets URL path

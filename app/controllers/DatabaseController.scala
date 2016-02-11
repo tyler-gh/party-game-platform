@@ -59,39 +59,28 @@ class DatabaseController extends Controller {
     Ok(views.html.database_result("insert into actions table", success.toString(), ""))
   }
 
-  def getGames = Action {
-    val games = GameDB.getRows()
+  def getGames(gameID : Int = -1, joinCode : String = "") = Action {
+    val games = GameDB.getRows(gameID,joinCode)
     Ok(games).as("application/json")
   }
 
-  def getUsers = Action {
-    val games = UserDB.getRows()
+  def getUsers(userID : Int = -1, gameID : Int = -1) = Action {
+    val games = UserDB.getRows(userID,gameID)
     Ok(games).as("application/json")
   }
 
-  def getActions = Action {
-    val games = ActionDB.getRows()
+  def getActions(startingActionNumber : Int = 0, userID : Int = -1, gameID : Int = -1) = Action {
+    val games = ActionDB.getRows(startingActionNumber,userID,gameID)
     Ok(games).as("application/json")
   }
 
-  def resetGamesDatabase = Action {
 
-    var success = GameDB.resetTable()
-
-    Ok(views.html.database_result("reset games Database", success.toString(), ""))
+  def deleteGameData(gameID : Int) = Action {
+    val success = GameDB.deleteGameData(gameID)
+    Ok(views.html.database_result(s"delete game data for $gameID", success.toString(), ""))
   }
-  def resetUsersDatabase = Action {
 
-    var success = UserDB.resetTable()
 
-    Ok(views.html.database_result("reset users Database", success.toString(), ""))
-  }
-  def resetActionsDatabase = Action {
-
-    var success = ActionDB.resetTable()
-
-    Ok(views.html.database_result("reset actions Database", success.toString(), ""))
-  }
   def resetEntireDatabase = Action {
 
     var success1 = GameDB.resetTable()
