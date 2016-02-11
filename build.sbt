@@ -40,6 +40,7 @@ Concat.groups := Seq(
   						 "js/lobby/game_lobby.js", 
   						 "js/lobby/create_game.js",
   						 "js/lobby/join_game.js",
+  						 "js/lobby/waiting_room.js",
   						 "js/lobby/game_select.js")),
   
   "style.js" -> group(Seq("lib/rest.js",
