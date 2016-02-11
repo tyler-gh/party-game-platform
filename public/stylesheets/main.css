@@ -637,7 +637,7 @@ div.game-choice:first-child {
   color: #D0021B; }
 
 .game-lobby-pirate {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
@@ -647,7 +647,7 @@ div.game-choice:first-child {
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-pirate {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-pirate img.game-icon.large {
     margin-top: 78px;
@@ -681,7 +681,7 @@ div.game-choice:first-child {
     margin-bottom: 42px !important; }
 
 .game-lobby-fibbage {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
@@ -691,7 +691,7 @@ div.game-choice:first-child {
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-fibbage {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-fibbage img.game-icon.large {
     margin-top: 78px;
@@ -725,7 +725,7 @@ div.game-choice:first-child {
     margin-bottom: 42px !important; }
 
 .game-lobby-mafia {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
@@ -735,7 +735,7 @@ div.game-choice:first-child {
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-mafia {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-mafia img.game-icon.large {
     margin-top: 78px;

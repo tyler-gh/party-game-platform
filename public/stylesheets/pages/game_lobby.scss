@@ -3,14 +3,14 @@
 @mixin game-lobby($color) {
 
 	$margin: $pg-sp * 7;
-	margin: 0 $margin;
+	padding: 0 $margin;
 	width: -webkit-calc((100% - (#{$margin}) * 2));
 	width:    -moz-calc((100% - (#{$margin}) * 2));
 	width:         calc((100% - (#{$margin}) * 2));
 
 	@media (min-width: $pg-desk-break) {
 		$content-size:		$pg-sp * 64;
-		margin: 0 calc((100% - (#{$content-size})) / 2);
+		padding: 0 calc((100% - (#{$content-size})) / 2);
 		width: $content-size;
 	}
 
