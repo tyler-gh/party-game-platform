@@ -1,0 +1,78 @@
+@import '../base/variables';
+
+
+
+@mixin pg-lobby-form($color) {
+	
+	.pg-lobby-form-persistent-instructions {
+		font-family: $pg-header-font;
+		font-size: $pg-mobile-size-small/1.5;
+		color: $pg-color-medium-gray;
+		height: $pg-sp*4;
+		visibility: hidden;
+	}
+
+	.pg-lobby-form-persistent-instructions-fade-in {
+		animation: fadeIn .25s;
+		opacity: 1;
+	}
+
+	.pg-lobby-form-persistent-instructions-fade-out {
+		animation: fadeOut .25s;
+		opacity: 0;
+	}
+
+	.pg-lobby-form-input {
+		border: none;
+		border-bottom: 3px solid $color;
+		width: 100%;
+		font-size: $pg-mobile-size-medium;
+		color: $color;
+		padding-bottom: $pg-sp;
+		padding-top: 0;
+
+		&:focus {
+			outline: 0;
+		}
+	}
+
+	.pg-lobby-form-input-gray {
+		color: $pg-color-medium-gray;
+	}	
+}
+
+.pg-lobby-form-pirate {
+	@include pg-lobby-form($pg-color-pirate);
+}
+
+.pg-lobby-form-fibbage {
+	@include pg-lobby-form($pg-color-fibbage);
+}
+
+.pg-lobby-form-mafia {
+	@include pg-lobby-form($pg-color-mafia);
+}
+
+@keyframes fadeIn {
+	0% {
+        transform: translate3d(0px, 10px, 0px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0px, 0px, 0px);
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+	0% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0px, 10px, 0px);
+        animation-timing-function: ease-out;
+        opacity: 0;
+    }
+}

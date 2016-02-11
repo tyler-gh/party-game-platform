@@ -41,16 +41,31 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
-  font-size: 20px;
-  font-family: "Lato-Regular", sans-serif;
+  font-size: 18px;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -58,15 +73,37 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-family: "Lato-Light", sans-serif;
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 .pg-styleguide-header {
   margin: 18px;
   text-align: center;
@@ -78,6 +115,7 @@ a {
   margin-top: 48px;
   margin-bottom: 6px; }
 
+/*----------lobby button styleguide styling--------------*/
 .pg-styleguide-icon-buttons {
   background-color: #003366;
   padding: 12px 30px; }
@@ -94,16 +132,49 @@ a {
   background-color: #003366;
   padding: 12px 30px; }
 
+/*----------lobby forms styleguide styling--------------*/
+.pg-styleguide-forms {
+  padding: 12px 30px; }
+
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
-  font-size: 20px;
-  font-family: "Lato-Regular", sans-serif;
+  font-size: 18px;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -111,15 +182,51 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-family: "Lato-Light", sans-serif;
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 button:focus {
   outline: 0; }
 
@@ -130,11 +237,19 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #003366;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-solid-button.pirate {
+      font-size: 26px; } }
+  .pg-lobby-solid-button.pirate:hover {
+    background-color: #00264d; }
+  .pg-lobby-solid-button.pirate:active {
+    background-color: #001a33; }
 
 .pg-lobby-solid-button.fibbage {
   width: 100%;
@@ -142,11 +257,19 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #F5A623;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-solid-button.fibbage {
+      font-size: 26px; } }
+  .pg-lobby-solid-button.fibbage:hover {
+    background-color: #f39c0b; }
+  .pg-lobby-solid-button.fibbage:active {
+    background-color: #db8c0a; }
 
 .pg-lobby-solid-button.mafia {
   width: 100%;
@@ -154,11 +277,19 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #D0021B;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-solid-button.mafia {
+      font-size: 26px; } }
+  .pg-lobby-solid-button.mafia:hover {
+    background-color: #b70218; }
+  .pg-lobby-solid-button.mafia:active {
+    background-color: #9d0214; }
 
 /*-------------lobby logo buttons-----------------*/
 .pg-lobby-icon-button.pirate {
@@ -167,12 +298,20 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #ffffff;
   color: #003366;
   font-weight: bold; }
+  @media (min-width: 450px) {
+    .pg-lobby-icon-button.pirate {
+      font-size: 26px; } }
+  .pg-lobby-icon-button.pirate:hover {
+    background-color: #e6e6e6; }
+  .pg-lobby-icon-button.pirate:active {
+    background-color: #cccccc; }
   .pg-lobby-icon-button.pirate .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -196,12 +335,20 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #ffffff;
   color: #F5A623;
   font-weight: bold; }
+  @media (min-width: 450px) {
+    .pg-lobby-icon-button.fibbage {
+      font-size: 26px; } }
+  .pg-lobby-icon-button.fibbage:hover {
+    background-color: #e6e6e6; }
+  .pg-lobby-icon-button.fibbage:active {
+    background-color: #cccccc; }
   .pg-lobby-icon-button.fibbage .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -225,12 +372,20 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: #ffffff;
   color: #D0021B;
   font-weight: bold; }
+  @media (min-width: 450px) {
+    .pg-lobby-icon-button.mafia {
+      font-size: 26px; } }
+  .pg-lobby-icon-button.mafia:hover {
+    background-color: #e6e6e6; }
+  .pg-lobby-icon-button.mafia:active {
+    background-color: #cccccc; }
   .pg-lobby-icon-button.mafia .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -255,12 +410,20 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #ffffff;
   color: #ffffff; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.white {
+      font-size: 26px; } }
+  .pg-lobby-hollow-button.white:hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.white:active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
 .pg-lobby-hollow-button.pirate:not(.white) {
   width: 100%;
@@ -268,12 +431,20 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #003366;
   color: #003366; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.pirate:not(.white) {
+      font-size: 26px; } }
+  .pg-lobby-hollow-button.pirate:not(.white):hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.pirate:not(.white):active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
 .pg-lobby-hollow-button.fibbage:not(.white) {
   width: 100%;
@@ -281,12 +452,20 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #F5A623;
   color: #F5A623; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.fibbage:not(.white) {
+      font-size: 26px; } }
+  .pg-lobby-hollow-button.fibbage:not(.white):hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.fibbage:not(.white):active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
 .pg-lobby-hollow-button.mafia:not(.white) {
   width: 100%;
@@ -294,16 +473,40 @@ button:focus {
   padding-bottom: 9px;
   border: none;
   border-radius: 6px;
-  font-size: 24px;
+  font-size: 22px;
   position: relative;
   margin: auto;
+  overflow: hidden;
   background-color: transparent;
   border: 1px solid #D0021B;
   color: #D0021B; }
+  @media (min-width: 450px) {
+    .pg-lobby-hollow-button.mafia:not(.white) {
+      font-size: 26px; } }
+  .pg-lobby-hollow-button.mafia:not(.white):hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.mafia:not(.white):active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 img.game-icon {
   display: block;
   margin: 0 auto; }
+  img.game-icon:active {
+    opacity: .8; }
 
 img.small {
   width: 54px; }
@@ -312,11 +515,130 @@ img.small {
       width: 66px; } }
 
 img.large {
-  width: 204px; }
+  width: 156px; }
   @media (min-width: 450px) {
     img.large {
-      width: 252px; } }
+      width: 180px; } }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 12px;
+  color: #888888;
+  height: 24px;
+  visibility: hidden; }
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-in {
+  animation: fadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-out {
+  animation: fadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-pirate .pg-lobby-form-input {
+  border: none;
+  border-bottom: 3px solid #003366;
+  width: 100%;
+  font-size: 22px;
+  color: #003366;
+  padding-bottom: 6px;
+  padding-top: 0; }
+  .pg-lobby-form-pirate .pg-lobby-form-input:focus {
+    outline: 0; }
+.pg-lobby-form-pirate .pg-lobby-form-input-gray {
+  color: #888888; }
+
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 12px;
+  color: #888888;
+  height: 24px;
+  visibility: hidden; }
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-in {
+  animation: fadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-out {
+  animation: fadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-fibbage .pg-lobby-form-input {
+  border: none;
+  border-bottom: 3px solid #F5A623;
+  width: 100%;
+  font-size: 22px;
+  color: #F5A623;
+  padding-bottom: 6px;
+  padding-top: 0; }
+  .pg-lobby-form-fibbage .pg-lobby-form-input:focus {
+    outline: 0; }
+.pg-lobby-form-fibbage .pg-lobby-form-input-gray {
+  color: #888888; }
+
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 12px;
+  color: #888888;
+  height: 24px;
+  visibility: hidden; }
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-in {
+  animation: fadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-out {
+  animation: fadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-mafia .pg-lobby-form-input {
+  border: none;
+  border-bottom: 3px solid #D0021B;
+  width: 100%;
+  font-size: 22px;
+  color: #D0021B;
+  padding-bottom: 6px;
+  padding-top: 0; }
+  .pg-lobby-form-mafia .pg-lobby-form-input:focus {
+    outline: 0; }
+.pg-lobby-form-mafia .pg-lobby-form-input-gray {
+  color: #888888; }
+
+@keyframes fadeIn {
+  0% {
+    transform: translate3d(0px, 10px, 0px);
+    opacity: 0; }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+    animation-timing-function: ease-in;
+    opacity: 1; } }
+@keyframes fadeOut {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1; }
+  100% {
+    transform: translate3d(0px, 10px, 0px);
+    animation-timing-function: ease-out;
+    opacity: 0; } }
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 div.pg-pirate-background-color {
   background-color: #003366;
   height: inherit; }
@@ -329,16 +651,59 @@ div.pg-mafia-background-color {
   background-color: #D0021B;
   height: inherit; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
-  font-size: 20px;
-  font-family: "Lato-Regular", sans-serif;
+  font-size: 18px;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -346,25 +711,62 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-family: "Lato-Light", sans-serif;
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
-  font-size: 20px;
-  font-family: "Lato-Regular", sans-serif;
+  font-size: 18px;
+  font-family: "Lato-Light", sans-serif;
   line-height: 140%; }
   @media (min-width: 450px) {
     body {
-      font-size: 24px; } }
+      font-size: 18px; } }
 
 h1 {
+  font-family: "Lato-Regular", sans-serif;
   font-size: 34px;
   line-height: 120%; }
   @media (min-width: 450px) {
@@ -372,15 +774,37 @@ h1 {
       font-size: 40px; } }
 
 h2 {
-  font-size: 24px; }
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 22px; }
   @media (min-width: 450px) {
     h2 {
-      font-size: 32px; } }
+      font-size: 26px; } }
+
+h3 {
+  font-family: "Lato-Light", sans-serif;
+  font-size: 18px; }
+  @media (min-width: 450px) {
+    h3 {
+      font-size: 18px; } }
 
 a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 .pg-content {
   margin: 24px; }
 
@@ -388,6 +812,20 @@ html, body, div#pg-app {
   height: 100%;
   min-width: 290px; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 div.game-choice:first-child {
   margin: 66px auto; }
 
@@ -422,94 +860,162 @@ div.game-choice:first-child {
 .game-choice.mafia div.game-logo h1 span {
   color: #D0021B; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 .game-lobby-pirate {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
   max-width: 384px;
   height: 100%;
+  overflow: auto;
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-pirate {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-pirate img.game-icon.large {
     margin-top: 78px;
     margin-bottom: 12px; }
-  .game-lobby-pirate h1, .game-lobby-pirate h2 {
-    color: #ffffff;
+  .game-lobby-pirate h1.create-game {
+    margin-top: 30px; }
+  .game-lobby-pirate h1, .game-lobby-pirate h2, .game-lobby-pirate h3 {
+    color: #003366;
     text-align: center;
     margin-bottom: 48px; }
+  .game-lobby-pirate h3.create-game {
+    text-align: left;
+    margin-bottom: 6px; }
+  .game-lobby-pirate h1.lobby, .game-lobby-pirate h3.lobby {
+    color: #ffffff; }
+  .game-lobby-pirate h1.success {
+    margin-top: 84px;
+    color: #417505; }
+  .game-lobby-pirate h3.success, .game-lobby-pirate h1.game-code {
+    color: #000000; }
+  .game-lobby-pirate .pg-lobby-form-pirate, .game-lobby-pirate .pg-lobby-form-fibbage, .game-lobby-pirate .pg-lobby-form-mafia {
+    margin-bottom: 42px; }
   .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button, .game-lobby-pirate button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
-  .game-lobby-pirate div.banner {
-    padding: 12px 0;
-    background: #003366; }
   .game-lobby-pirate h1.create-game {
     color: #003366;
     text-align: center;
     margin-bottom: 32px; }
+  .game-lobby-pirate :last-child {
+    margin-bottom: 42px !important; }
 
 .game-lobby-fibbage {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
   max-width: 384px;
   height: 100%;
+  overflow: auto;
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-fibbage {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-fibbage img.game-icon.large {
     margin-top: 78px;
     margin-bottom: 12px; }
-  .game-lobby-fibbage h1, .game-lobby-fibbage h2 {
-    color: #ffffff;
+  .game-lobby-fibbage h1.create-game {
+    margin-top: 30px; }
+  .game-lobby-fibbage h1, .game-lobby-fibbage h2, .game-lobby-fibbage h3 {
+    color: #F5A623;
     text-align: center;
     margin-bottom: 48px; }
+  .game-lobby-fibbage h3.create-game {
+    text-align: left;
+    margin-bottom: 6px; }
+  .game-lobby-fibbage h1.lobby, .game-lobby-fibbage h3.lobby {
+    color: #ffffff; }
+  .game-lobby-fibbage h1.success {
+    margin-top: 84px;
+    color: #417505; }
+  .game-lobby-fibbage h3.success, .game-lobby-fibbage h1.game-code {
+    color: #000000; }
+  .game-lobby-fibbage .pg-lobby-form-pirate, .game-lobby-fibbage .pg-lobby-form-fibbage, .game-lobby-fibbage .pg-lobby-form-mafia {
+    margin-bottom: 42px; }
   .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button, .game-lobby-fibbage button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
-  .game-lobby-fibbage div.banner {
-    padding: 12px 0;
-    background: #F5A623; }
   .game-lobby-fibbage h1.create-game {
     color: #F5A623;
     text-align: center;
     margin-bottom: 32px; }
+  .game-lobby-fibbage :last-child {
+    margin-bottom: 42px !important; }
 
 .game-lobby-mafia {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
   max-width: 384px;
   height: 100%;
+  overflow: auto;
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-mafia {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-mafia img.game-icon.large {
     margin-top: 78px;
     margin-bottom: 12px; }
-  .game-lobby-mafia h1, .game-lobby-mafia h2 {
-    color: #ffffff;
+  .game-lobby-mafia h1.create-game {
+    margin-top: 30px; }
+  .game-lobby-mafia h1, .game-lobby-mafia h2, .game-lobby-mafia h3 {
+    color: #D0021B;
     text-align: center;
     margin-bottom: 48px; }
+  .game-lobby-mafia h3.create-game {
+    text-align: left;
+    margin-bottom: 6px; }
+  .game-lobby-mafia h1.lobby, .game-lobby-mafia h3.lobby {
+    color: #ffffff; }
+  .game-lobby-mafia h1.success {
+    margin-top: 84px;
+    color: #417505; }
+  .game-lobby-mafia h3.success, .game-lobby-mafia h1.game-code {
+    color: #000000; }
+  .game-lobby-mafia .pg-lobby-form-pirate, .game-lobby-mafia .pg-lobby-form-fibbage, .game-lobby-mafia .pg-lobby-form-mafia {
+    margin-bottom: 42px; }
   .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button, .game-lobby-mafia button.pg-lobby-solid-button {
     margin-bottom: 18px;
     cursor: pointer; }
-  .game-lobby-mafia div.banner {
-    padding: 12px 0;
-    background: #D0021B; }
   .game-lobby-mafia h1.create-game {
     color: #D0021B;
     text-align: center;
     margin-bottom: 32px; }
+  .game-lobby-mafia :last-child {
+    margin-bottom: 42px !important; }
+
+div.lobby-banner-pirate {
+  padding: 12px 0;
+  background: #003366; }
+
+div.lobby-banner-fibbage {
+  padding: 12px 0;
+  background: #F5A623; }
+
+div.lobby-banner-mafia {
+  padding: 12px 0;
+  background: #D0021B; }
 
 /*# sourceMappingURL=main.css.map */
