@@ -52,6 +52,17 @@
 		color: $pg-color-black;
 	}
 
+	h1.waiting-room {
+		margin-top: $pg-sp * 7;
+		margin-bottom: 0;
+		color: $color;
+	}
+
+	h3.waiting-room {
+		margin-top: $pg-sp;
+		color: $pg-color-medium-gray;
+	}
+
 	.pg-lobby-form-pirate, .pg-lobby-form-fibbage, .pg-lobby-form-mafia {
 		margin-bottom: $pg-sp * 7;
 	}
