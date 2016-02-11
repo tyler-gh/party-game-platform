@@ -1,33 +1,68 @@
-// Dimensions
-$pg-sp: 6px;
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+$pg-sp:         6px;
+$pg-desk-break: 450px;
 
-// Color Scheme
-$pg-color-white:          #ffffff;
 
+
+
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+
+/*-------  game colors   -------*/
 $pg-color-pirate:         #003366;
 $pg-color-fibbage:        #F5A623;
 $pg-color-mafia:          #D0021B;
+
+
+/*-------  accent colors  ------*/
+$pg-color-white:          #ffffff;
+$pg-color-black:          #000000;
 
 $pg-color-dark-gray:      #2a2a2a;
 $pg-color-medium-gray:    #888888;
 $pg-color-light-gray:     #dbdbdb;
 
-$pg-color-black:          #000000;
+$pg-color-success:        #417505;
+$pg-color-failure:        #D0021B;
 
-$pg-color-green:          #417505;
 
-// Typeface
+/*-------  player colors  ------*/
+$pg-color-player-val1:    #4A90E2;
+$pg-color-player-val2:    #7BBC5D;
+$pg-color-player-val3:    #7849A8;
+$pg-color-player-val4:    #6DB191;
+$pg-color-player-val5:    #ECBC3D;
+$pg-color-player-val6:    #D0021B;
+$pg-color-player-val7:    #174881;
+$pg-color-player-val8:    #851C77;
+$pg-color-player-val9:    #DF487D;
+$pg-color-player-val10:   #5594AF;
+$pg-color-player-val11:	  #FF8100;
+$pg-color-player-val12:   #7A858D;
+
+
+
+
+
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+
+/*--------- Typeface ----------*/
 $pg-body-font:   'Lato-Light', sans-serif; 
 $pg-header-font: 'Lato-Regular', sans-serif;  
 
-//Breakpoint
-$pg-desk-break: 450px;
-
-// Font Sizes
-$pg-desk-size-large:  40px;
-$pg-desk-size-medium: 26px;
-$pg-desk-size-small:  18px;
+/*--------- Font Sizes --------*/
+$pg-desk-size-large:    40px;
+$pg-desk-size-medium:   26px;
+$pg-desk-size-small:    18px;
 
 $pg-mobile-size-large:  34px;
 $pg-mobile-size-medium: 22px;
 $pg-mobile-size-small:  18px;
+
+
+
