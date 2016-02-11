@@ -41,6 +41,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
   font-size: 18px;
@@ -76,6 +90,20 @@ a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 .pg-styleguide-header {
   margin: 18px;
   text-align: center;
@@ -108,6 +136,34 @@ a {
 .pg-styleguide-forms {
   padding: 12px 30px; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
   font-size: 18px;
@@ -143,6 +199,34 @@ a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 button:focus {
   outline: 0; }
 
@@ -162,16 +246,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-solid-button.pirate {
       font-size: 26px; } }
-  .pg-lobby-solid-button.pirate .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-solid-button.pirate:hover {
+    background-color: #00264d; }
+  .pg-lobby-solid-button.pirate:active {
+    background-color: #001a33; }
 
 .pg-lobby-solid-button.fibbage {
   width: 100%;
@@ -188,16 +266,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-solid-button.fibbage {
       font-size: 26px; } }
-  .pg-lobby-solid-button.fibbage .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-solid-button.fibbage:hover {
+    background-color: #f39c0b; }
+  .pg-lobby-solid-button.fibbage:active {
+    background-color: #db8c0a; }
 
 .pg-lobby-solid-button.mafia {
   width: 100%;
@@ -214,16 +286,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-solid-button.mafia {
       font-size: 26px; } }
-  .pg-lobby-solid-button.mafia .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-solid-button.mafia:hover {
+    background-color: #b70218; }
+  .pg-lobby-solid-button.mafia:active {
+    background-color: #9d0214; }
 
 /*-------------lobby logo buttons-----------------*/
 .pg-lobby-icon-button.pirate {
@@ -242,16 +308,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-icon-button.pirate {
       font-size: 26px; } }
-  .pg-lobby-icon-button.pirate .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-icon-button.pirate:hover {
+    background-color: #e6e6e6; }
+  .pg-lobby-icon-button.pirate:active {
+    background-color: #cccccc; }
   .pg-lobby-icon-button.pirate .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -285,16 +345,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-icon-button.fibbage {
       font-size: 26px; } }
-  .pg-lobby-icon-button.fibbage .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-icon-button.fibbage:hover {
+    background-color: #e6e6e6; }
+  .pg-lobby-icon-button.fibbage:active {
+    background-color: #cccccc; }
   .pg-lobby-icon-button.fibbage .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -328,16 +382,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-icon-button.mafia {
       font-size: 26px; } }
-  .pg-lobby-icon-button.mafia .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-icon-button.mafia:hover {
+    background-color: #e6e6e6; }
+  .pg-lobby-icon-button.mafia:active {
+    background-color: #cccccc; }
   .pg-lobby-icon-button.mafia .pg-lobby-icon-button-icon-container {
     top: 0;
     float: left;
@@ -372,16 +420,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.white {
       font-size: 26px; } }
-  .pg-lobby-hollow-button.white .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-hollow-button.white:hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.white:active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
 .pg-lobby-hollow-button.pirate:not(.white) {
   width: 100%;
@@ -399,16 +441,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.pirate:not(.white) {
       font-size: 26px; } }
-  .pg-lobby-hollow-button.pirate:not(.white) .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-hollow-button.pirate:not(.white):hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.pirate:not(.white):active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
 .pg-lobby-hollow-button.fibbage:not(.white) {
   width: 100%;
@@ -426,16 +462,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.fibbage:not(.white) {
       font-size: 26px; } }
-  .pg-lobby-hollow-button.fibbage:not(.white) .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-hollow-button.fibbage:not(.white):hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.fibbage:not(.white):active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
 .pg-lobby-hollow-button.mafia:not(.white) {
   width: 100%;
@@ -453,31 +483,30 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.mafia:not(.white) {
       font-size: 26px; } }
-  .pg-lobby-hollow-button.mafia:not(.white) .pg-lobby-button-splash {
-    border-radius: 50%;
-    width: 0%;
-    height: 0%;
-    background-color: rgba(220, 220, 220, 0.8);
-    position: absolute;
-    z-index: 0;
-    left: 45%;
-    top: 0;
-    animation: splash .25s; }
+  .pg-lobby-hollow-button.mafia:not(.white):hover {
+    background-color: rgba(100, 100, 100, 0.1); }
+  .pg-lobby-hollow-button.mafia:not(.white):active {
+    background-color: rgba(100, 100, 100, 0.3); }
 
-@keyframes splash {
-  0% {
-    width: 0%;
-    height: 0%;
-    left: 50%; }
-  100% {
-    width: 200%;
-    height: 200%;
-    left: -50%;
-    top: -50%;
-    animation-timing-function: ease-out; } }
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 img.game-icon {
   display: block;
   margin: 0 auto; }
+  img.game-icon:active {
+    opacity: .8; }
 
 img.small {
   width: 54px; }
@@ -491,6 +520,20 @@ img.large {
     img.large {
       width: 180px; } }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 .pg-lobby-form-pirate .pg-lobby-form-persistent-instructions {
   font-family: "Lato-Regular", sans-serif;
   font-size: 12px;
@@ -582,6 +625,20 @@ img.large {
     transform: translate3d(0px, 10px, 0px);
     animation-timing-function: ease-out;
     opacity: 0; } }
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 div.pg-pirate-background-color {
   background-color: #003366;
   height: inherit; }
@@ -594,6 +651,48 @@ div.pg-mafia-background-color {
   background-color: #D0021B;
   height: inherit; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
   font-size: 18px;
@@ -629,6 +728,34 @@ a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 body {
   color: #2a2a2a;
   font-size: 18px;
@@ -664,6 +791,20 @@ a {
   color: inherit;
   text-decoration: none; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 .pg-content {
   margin: 24px; }
 
@@ -671,6 +812,20 @@ html, body, div#pg-app {
   height: 100%;
   min-width: 290px; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 div.game-choice:first-child {
   margin: 66px auto; }
 
@@ -705,8 +860,22 @@ div.game-choice:first-child {
 .game-choice.mafia div.game-logo h1 span {
   color: #D0021B; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 .game-lobby-pirate {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
@@ -716,7 +885,7 @@ div.game-choice:first-child {
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-pirate {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-pirate img.game-icon.large {
     margin-top: 78px;
@@ -757,7 +926,7 @@ div.game-choice:first-child {
     margin-bottom: 42px !important; }
 
 .game-lobby-fibbage {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
@@ -767,7 +936,7 @@ div.game-choice:first-child {
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-fibbage {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-fibbage img.game-icon.large {
     margin-top: 78px;
@@ -808,7 +977,7 @@ div.game-choice:first-child {
     margin-bottom: 42px !important; }
 
 .game-lobby-mafia {
-  margin: 0 42px;
+  padding: 0 42px;
   width: -webkit-calc((100% - (42px) * 2));
   width: -moz-calc((100% - (42px) * 2));
   width: calc((100% - (42px) * 2));
@@ -818,7 +987,7 @@ div.game-choice:first-child {
   position: absolute; }
   @media (min-width: 450px) {
     .game-lobby-mafia {
-      margin: 0 calc((100% - (384px)) / 2);
+      padding: 0 calc((100% - (384px)) / 2);
       width: 384px; } }
   .game-lobby-mafia img.game-icon.large {
     margin-top: 78px;

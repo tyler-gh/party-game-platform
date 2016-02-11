@@ -21,18 +21,8 @@ button:focus {
 	margin: auto;
 	overflow: hidden;
 
-	.pg-lobby-button-splash {
-		border-radius: 50%;
-		width: 0%;
-		height: 0%;
-		background-color: rgba(220, 220, 220, 0.8);
-		position: absolute;
-		z-index: 0;
-		left: 45%;
-		top: 0;
-		animation: splash .25s;
-	}
 }
+
 
 /*-------------lobby solid buttons-----------------*/
 
@@ -40,6 +30,14 @@ button:focus {
 	@include pg-lobby-button();
 	background-color: $color;
 	color: $pg-color-white;
+
+	&:hover {
+		background-color: darken($color, 5%);
+	}
+
+	&:active {
+		background-color: darken($color, 10%);
+	}
 }
 
 .pg-lobby-solid-button.pirate {
@@ -63,6 +61,14 @@ button:focus {
 	background-color: $pg-color-white;
 	color: $color;
 	font-weight: bold;
+
+	&:hover {
+		background-color: darken($pg-color-white, 10%);
+	}
+
+	&:active {
+		background-color: darken($pg-color-white, 20%);
+	}
 
 	.pg-lobby-icon-button-icon-container {
 		top: 0;
@@ -106,6 +112,14 @@ button:focus {
 	background-color: transparent;
 	border: 1px solid $color;
 	color: $color;
+
+	&:hover {
+		background-color: rgba(100,100,100,0.1);
+	}
+
+	&:active {
+		background-color: rgba(100,100,100,0.3);
+	}
 }
 
 .pg-lobby-hollow-button.white {
@@ -123,19 +137,3 @@ button:focus {
 .pg-lobby-hollow-button.mafia:not(.white) {
 	@include pg-lobby-hollow-button($pg-color-mafia)
 }
-
-@keyframes splash {
-	0% {
-        width: 0%;
-        height: 0%;
-        left: 50%;
-    }
-    100% {
-        width: 200%;
-        height: 200%;
-        left: -50%;
-        top: -50%;
-        animation-timing-function: ease-out;
-    }
-}
-
