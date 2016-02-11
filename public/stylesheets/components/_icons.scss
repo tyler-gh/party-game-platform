@@ -4,6 +4,10 @@ img.game-icon {
   display: block;
   //cursor: pointer;
   margin: 0 auto;
+
+  &:active {
+    opacity: .8;
+  }
 }
 
 img.small {
