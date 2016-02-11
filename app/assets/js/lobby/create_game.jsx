@@ -51,6 +51,8 @@ var GameCreatedSuccess = React.createClass({
 			ReactDOM.render(<GameLobby game={game} title={title} description={description} />, document.getElementById('pg-app'));
 		};
 
+		var gameCode = "475YZ";
+
 		return (
 			<div>
 				<GameBanner game={game} />
@@ -58,7 +60,7 @@ var GameCreatedSuccess = React.createClass({
 					<div className="container">
 						<h1 className="success">success!</h1>
 						<h3 className="success">{"Your " + title + " game was successfully created.  Give friends access with the following code:"}</h3>
-						<h1 className="game-code">475YZ</h1>
+						<h1 className="game-code">{gameCode}</h1>
 					</div>
 				</LobbyContainer>
 			</div>
