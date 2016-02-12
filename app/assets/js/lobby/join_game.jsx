@@ -34,15 +34,15 @@ var GameUserJoin = React.createClass({
 		var game = this.props.game;
 		var title = this.props.title;
 		var description = this.props.description;
+		var gameCode = "468VR";
 
 		var clickCancel = function() {
 			ReactDOM.render(<GameCodeJoin game={game} title={title} description={description} />, document.getElementById('pg-app'));
 		};
 
 		var clickJoin = function() {
-			//ReactDOM.render(<GameCreatedSuccess game={game} title={title} />, document.getElementById('pg-app'));
+			ReactDOM.render(<WaitingRoom game={game} title={title} gameCode={gameCode} />, document.getElementById('pg-app'));
 		};
-
 
 		return (
 			<div>

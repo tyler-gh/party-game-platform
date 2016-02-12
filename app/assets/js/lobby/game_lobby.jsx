@@ -3,6 +3,7 @@ var GameLobby = React.createClass({
     	var game = this.props.game;
 		var title = this.props.title;
 		var description = this.props.description;
+		var gameCode = this.props.gameCode;
 
 		var clickCancel = function() {
 			ReactDOM.render(<GameSelectMenu />, document.getElementById('pg-app'));
