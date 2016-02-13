@@ -12,8 +12,9 @@ class DefaultSocketGame(id: String, name: String, gameDef: GameDefinition) exten
 
   private val actions = Collections.synchronizedList(new util.ArrayList[GameAction])
 
-  override def performAction(action: GameAction): Unit = {
+  override def handleAction(action: GameAction): Unit = {
     actions.add(action)
     forEachClient(client => client.sendAction(action))
   }
+
 }

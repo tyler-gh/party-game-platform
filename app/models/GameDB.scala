@@ -1,52 +1,32 @@
 package models
 
-import java.util
-import java.util.Collections
-
 import anorm._
 import SqlParser._
 import org.joda.time.DateTime
 import play.api.db.DB
+import play.api.libs.functional.syntax._
 import play.api.libs.json.Json
 import play.api.libs.json._
 import play.api.Play.current
+import utils.DB.UtilsDB
+import scala.language.postfixOps
+
 /**
   * Created by Luke on 1/23/2016.
   */
-//http://www.jamesward.com/2012/02/21/play-framework-2-with-scala-anorm-json-coffeescript-jquery-heroku
-//look here to start fixing my garbage
+
 case class GameDB(gameID: Int,
                   joinCode: String,
                   gameState: String,
                   creationTime : DateTime)
 
-//gameID        integer,
-//joinCode      text NOT NULL,
-//gameState     text NOT NULL,
-//creationTime  date DEFAULT current_timestamp,
-//PRIMARY KEY(gameID)
-
 object GameDB {
-
-  implicit object GameDBFormat extends Format[GameDB] {
-    // convert from GameDB object to JSON (serializing to JSON)
-    def writes(gameDB: GameDB): JsValue = {
-      val gameDBSeq = Seq(
-        "gameID" -> JsNumber(gameDB.gameID),
-        "joinCode" -> JsString(gameDB.joinCode),
-        "gameState" -> JsString(gameDB.gameState),
-        "creationTime" -> JsString(gameDB.creationTime.toString)
-      )
-      JsObject(gameDBSeq)
-   }
-
-    // convert from JSON string to a GameDB object (de-serializing from JSON)
-    // (i don't need this method; just here to satisfy the api)
-    def reads(json: JsValue): JsResult[GameDB] = {
-      JsSuccess(GameDB(-1, "", "", DateTime.now()))
-    }
-
-  }
+    implicit val GameDBWrites: Writes[GameDB] = (
+      (JsPath \ "gameID").write[Int]    and
+        (JsPath \ "joinCode").write[String] and
+        (JsPath \ "gameState").write[String] and
+        (JsPath \ "creationTime").write[DateTime]
+      ) (unlift(GameDB.unapply))
 
   val row = {
       get[Int]("gameID") ~
@@ -64,9 +44,8 @@ object GameDB {
 
   def getRows(gameID : Int = -1, joinCode : String = ""): JsValue = {
     var whereClause = ""
-
-    whereClause = buildWhereClause(whereClause,"gameID",gameID)
-    whereClause = buildWhereClause(whereClause,"joinCode",joinCode)
+    whereClause = UtilsDB.buildWhereClause(whereClause,"gameID",gameID)
+    whereClause = UtilsDB.buildWhereClause(whereClause,"joinCode",joinCode)
 
     DB.withConnection { implicit connection =>
       val result = SQL(s"select * from games $whereClause").as(GameDB.row *)
@@ -74,89 +53,29 @@ object GameDB {
     }
   }
 
-  //TODO refactor this out to common db file?
-
-  def buildWhereClause(whereClause : String, colName : String, value: Int): String = {
-    var valueString = ""
-    if(value != -1)
-      valueString = value.toString()
-
-    return buildWhereClause(whereClause,colName,valueString)
-  }
-  //TODO refactor this out to common db file?
-  def buildWhereClause(whereClause : String, colName : String, value: String): String = {
-    var newWhereClause = whereClause
-    if(value != ""){
-      if(newWhereClause == ""){
-        newWhereClause += s" WHERE $colName = $value"
-      }
-      else
-      {
-        newWhereClause += s" AND $colName = $value"
-      }
-    }
-    return newWhereClause
-  }
-
   def insertRow(gameID : Int, joinCode : String, gameState: String = "creating"): Boolean = {
-    var success = false
-    var result : Int = -1
     DB.withConnection { implicit connection =>
-     result = SQL(s"insert into games(gameID, joinCode, gameState) values ('$gameID', '$joinCode', '$gameState')")
+     SQL(s"insert into games(gameID, joinCode, gameState) values ('$gameID', '$joinCode', '$gameState')")
        .executeUpdate()
-    }
-    if(result == -1){
-      //todo throw error, not return
-      return false
-    }
-
-    if(result == 1) {
-       success = true
-    }
-    return success
+    } >= 1
   }
 
   def deleteGameData(gameID : Int): Boolean = {
-    var success = false
-    var result : Int = -1
     DB.withConnection { implicit connection =>
-      result = SQL(
+       SQL(
         s"DELETE from games where gameID=$gameID").executeUpdate()
-    }
-    if(result == -1){
-      //todo throw error, not return
-      return false
-    }
-
-    if(result == 1) {
-      success = true
-    }
-    return success
+    } >= 1
   }
 
   def resetTable(): Boolean = {
-    var success = false;
-    var result :Int = -1
-
     DB.withConnection { implicit connection =>
-      result = SQL("DELETE FROM games").executeUpdate()
-    }
-    if(result == -1){
-      //todo throw error, not return
-      return false
-    }
-
-    if(result != 0) {
-      success = true
-    }
-    return success
+      SQL("DELETE FROM games").executeUpdate()
+    } >= 1
   }
 
   def createTable(): Boolean  = {
-    var success = false;
-    var result: Boolean = false;
     DB.withConnection { implicit connection =>
-      result = SQL(
+      SQL(
         """
           CREATE TABLE IF NOT EXISTS games (
           gameID        integer,
@@ -168,22 +87,12 @@ object GameDB {
           """
         ).execute()
       }
-    if(result == false) {
-      success = true
-    }
-
-    return success
   }
+
   def dropTable(): Boolean  = {
-    var success = false;
-    var result: Boolean = false
     DB.withConnection { implicit connection =>
-      result = SQL("DROP TABLE games CASCADE;").execute()
+      SQL("DROP TABLE games CASCADE;").execute()
     }
-    if(result == false) {
-      success =true
-    }
-    return success
    }
 
 }

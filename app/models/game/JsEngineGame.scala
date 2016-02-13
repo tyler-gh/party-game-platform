@@ -55,11 +55,14 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
     }
   }
 
-  def performAction(action: GameAction): Unit = {
+  def handleAction(action: GameAction): Unit = {
     actionHandler.foreach(handler => {
       handler.synchronized {
         handler.accept(Json.stringify(Json.toJson(action)))
       }
     })
   }
+
+
+
 }

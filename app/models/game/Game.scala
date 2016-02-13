@@ -15,6 +15,8 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   def addClient(clientName: String, color: String): Client = {
     // TODO: having a space in the name caused a problem but I don't remember where
     val client = new Client(this, new ClientInfo(clients.size, clientName, color))
+    //todo add users joined -> to userdb
+    //todo gameDB isn't being added to yet, so the users cannot be
     performAction(new GameAction(client.clientInfo, GameAction.NEW_CLIENT, None))
     clients.add(Some(client))
     client
@@ -31,7 +33,14 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
     }
   }
 
-  def performAction(action: GameAction)
+  def performAction(action: GameAction) =
+  {
+    //todo add action joined -> to actiondb
+    //todo gameDB isn't being added to yet, so the users and actions cannot be
+     handleAction(action)
+  }
+
+  def handleAction(action: GameAction)
 
   /// TODO remove games from games list when they have no clients
   def endGame(): Unit = {

@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap
 
 import scala.collection.JavaConverters._
 import scala.util.Random
-
+import models.GameDB
 
 object Games {
   private val games = new ConcurrentHashMap[String, ConcurrentHashMap[String, Game]]()
@@ -17,6 +17,8 @@ object Games {
         val instanceId = gameInstanceIds.get(gameId)
         val idHex = instanceId.toHexString
         val newGame = gameDef.jsServerFile.fold[Game](new DefaultSocketGame(idHex, gameId, gameDef))(file => new JsEngineGame(idHex, gameId, gameDef))
+        //todo add game created -> to Gamedb
+        //todo unsure on what the join code is, and the what the gameID is
         defGames.put(instanceId.toHexString, newGame)
         gameInstanceIds.put(gameId, instanceId + Random.nextInt(1024))
         Some(newGame)
