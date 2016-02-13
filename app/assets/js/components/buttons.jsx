@@ -1,15 +1,17 @@
 var LobbyButton = React.createClass({
-    render: function() {
+	
+	render: function() {
     	var game = this.props.game;
     	var icon = this.props.icon;
     	var text = this.props.text;
         var hollow = this.props.hollow;
 
+		var handleClick = this.props.handleClick;
+
 		var className;
 		if (icon != null) {
 			className = "pg-lobby-icon-button";
-		} else if (hollow != null) {
-			className = "pg-lobby-hollow-button";
+		} else if (hollow != null) {className = "pg-lobby-hollow-button";
 			if (hollow == "white") {
 				className += " white";
 			}
@@ -20,7 +22,8 @@ var LobbyButton = React.createClass({
 		className += " " + game;
 
         return (
-	        <button className={className}>
+	        <button className={className} onClick={handleClick}>
+	        	<div id={"pg-lobby-button-splash-" + text}></div>
 	        	{text}
 				{(() => {
 					if (icon != null) {

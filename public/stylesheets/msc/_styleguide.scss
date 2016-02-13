@@ -1,5 +1,9 @@
 @import '../base/variables';
 
+$styleguide-padding-side: $pg-sp*5;
+$styleguide-padding-top:  $pg-sp*2;
+
+
 .pg-styleguide-header {
 	margin: $pg-sp*3;
 	text-align: center;
@@ -13,9 +17,14 @@
 	margin-bottom: $pg-sp;
 }
 
+
+
+
+/*----------lobby button styleguide styling--------------*/
+
 @mixin button-format($color) {
 	background-color: $color;
-	padding: $pg-sp*2 $pg-sp*5;
+	padding: $styleguide-padding-top $styleguide-padding-side;
 }
 
 .pg-styleguide-icon-buttons {
@@ -32,5 +41,14 @@
 
 .pg-styleguide-hollow-button-white {
 	@include button-format($pg-color-pirate);
+}
+
+
+
+
+/*----------lobby forms styleguide styling--------------*/
+
+.pg-styleguide-forms {
+	padding: $styleguide-padding-top $styleguide-padding-side;
 }
 
