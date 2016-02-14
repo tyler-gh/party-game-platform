@@ -9,6 +9,8 @@ target
 .DS_Store
 .sass-cache
 main.css.map
+.sbtserver/
+project/.sbtserver
 .sbtserver
 project/.sbtserver.lock
 project/play-fork-run.sbt
