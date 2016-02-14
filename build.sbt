@@ -36,6 +36,7 @@ Concat.groups := Seq(
   						 "js/components/buttons.js",
   						 "js/components/background_color.js",
   						 "js/lobby/components/lobby_container.js",
+               "js/lobby/components/lobby_countdown_timer.js",
   						 "js/components/forms.js",
   						 "js/lobby/game_lobby.js", 
   						 "js/lobby/create_game.js",
@@ -49,7 +50,8 @@ Concat.groups := Seq(
   					      "lib/react/react-dom.min.js",
   					      "js/components/icons.js",
   					      "js/components/buttons.js",
-                          "js/components/forms.js",
+                  "js/lobby/components/lobby_countdown_timer.js",
+                  "js/components/forms.js",
   					      "js/msc/styleguide.js"))
 )
 

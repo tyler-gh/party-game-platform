@@ -63,6 +63,10 @@
 		color: $pg-color-medium-gray;
 	}
 
+	.waiting-room-players {
+		min-height: $pg-sp*30;
+	}
+
 	.pg-lobby-form-pirate, .pg-lobby-form-fibbage, .pg-lobby-form-mafia {
 		margin-bottom: $pg-sp * 7;
 	}
@@ -76,10 +80,6 @@
 		color: $color;
 		text-align: center;
 		margin-bottom: 32px;
-	}
-
-	:last-child {
-		margin-bottom: $pg-sp * 7 !important;
 	}
 }
 
