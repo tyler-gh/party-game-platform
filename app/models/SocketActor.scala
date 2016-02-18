@@ -1,31 +1,52 @@
 package models
 
-import models.game.GameAction
-import play.api.libs.iteratee.{Concurrent, Iteratee}
+import models.game.{ClientAction, PGPAction, GameAction}
+import play.api.libs.iteratee.{Enumerator, Concurrent, Iteratee}
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.Try
 
 
 abstract class SocketActor() {
 
-  private final val (out, channel) = Concurrent.broadcast[GameAction]
-  private final val in = Iteratee.foreach[GameAction] { msg =>
+  private var open: Boolean = true
+  private val (out, channel) = Concurrent.broadcast[PGPAction]
+  private val in = Iteratee.foreach[PGPAction] { msg =>
     onAction(msg)
   } map { _ =>
-    onClose()
+    doOnClose()
   }
 
-  def refs = (in, out)
+  def refs:(Iteratee[PGPAction, _], Enumerator[PGPAction]) = (in, out)
 
   def send(action: GameAction) {
-    channel.push(action)
+    if(open) {
+      try {
+        channel.push(action)
+      } catch {
+        case scala.util.control.NonFatal(e) =>
+          doOnClose()
+      }
+    }
   }
 
   def close() {
-    channel.eofAndEnd()
+    if(open) {
+      Try {
+        channel.eofAndEnd()
+      }
+      doOnClose()
+    }
+  }
+
+  def isOpen: Boolean = open
+
+  def onAction(action: PGPAction)
+  def onClose()
+
+  private def doOnClose() {
+    open = false
     onClose()
   }
 
-  def onAction(action: GameAction)
-  def onClose()
-
 }
+

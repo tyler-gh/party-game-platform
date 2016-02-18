@@ -23,9 +23,9 @@ object ClientCookie {
     }
   }
 
-  case object USER_ID extends Value[Long](2, "user_id") {
-    override def extractValue(cookie: Cookie): Long = {
-      cookie.value.toLong
+  case object USER_ID extends Value[Int](2, "user_id") {
+    override def extractValue(cookie: Cookie): Int = {
+      cookie.value.toInt
     }
   }
 

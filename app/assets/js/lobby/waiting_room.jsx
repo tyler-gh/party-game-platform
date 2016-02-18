@@ -1,15 +1,25 @@
 var WaitingRoom = React.createClass({
-    
-    getInitialState: function() {
-        return {startButtonState: "start"};
-    },
+    getInitialState: function () {
+        Api.connectSocket("ws", function() {
+            Api.socketSend("ws", JSON.stringify({actionType:"hi guys"}));
+        },function(){},function(event){
+            var data = JSON.parse(event.data);
 
+            if(data.actionType == "new-client" || data.actionType == "client-rejoined") {
+                var users = jQuery.extend(true, {}, this.state.users);
+                users[data.client.id] = data.client.name;
+                this.setState({users: users});
+            }
+		}.bind(this),function(event){});
+        return {users: {}, startButtonState: "start"};
+    },
 	clickLeave: function() {
+		Api.closeSocket("ws");
 		ReactDOM.render(<GameUserJoin game={this.props.game} title={this.props.title} description={this.props.description} gameCode={this.props.gameCode} />, document.getElementById('pg-app'));
 	},
 
 	clickStart: function() {
-		
+
 		var countdownContainer = $("#waiting-room-start-countdown-container");
 		var startButtonContainer = $("#waiting-room-start-button-container");
 
@@ -25,7 +35,7 @@ var WaitingRoom = React.createClass({
 		}
 		else if (this.state.startButtonState == "cancel") {
 			this.setState({startButtonState: "start"});
-			
+
 			countdownContainer.removeClass("countdown-enter")
 			startButtonContainer.removeClass("button-slide-right")
 
@@ -33,7 +43,6 @@ var WaitingRoom = React.createClass({
 			startButtonContainer.addClass("button-slide-left")
 		}
 	},
-
     render: function() {
     	var game = this.props.game;
 		var title = this.props.title;
@@ -47,6 +56,7 @@ var WaitingRoom = React.createClass({
 					<div className="container">
 						<h1 className="waiting-room">waiting for players</h1>
 						<h3 className="waiting-room">{"game code: " + gameCode}</h3>
+						{JSON.stringify(this.state.users)}
 						<div className="waiting-room-players"></div>
 						<div className="pg-waiting-room-toggle">
 							<div id="waiting-room-start-countdown-container" className="waiting-room-start-countdown-container">

@@ -1,6 +1,6 @@
 package controllers
 
-import models.ClientCookie
+import models.{ClientInfo, ClientCookie}
 import models.game.Games
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
@@ -35,8 +35,7 @@ class JoinGameController extends Controller {
         val client = game.addClient(userName, color)
         val clientJson = Json.toJson(client.clientInfo)
 
-        // TODO load previous actions
-        Ok(clientJson.as[JsObject] + ("users" -> Json.toJson(game.allClients))).withCookies(
+        Ok(clientJson.as[JsObject]).withCookies(
           ClientCookie.USER_NAME.createCookie(userName),
           ClientCookie.USER_ID.createCookie(client.clientInfo.id),
           ClientCookie.GAME_INSTANCE_ID.createCookie(gameInstanceId),
@@ -45,11 +44,16 @@ class JoinGameController extends Controller {
       }
     }
 
-    (ClientCookie.GAME_INSTANCE_ID.getCookie(request.cookies), ClientCookie.GAME_ID.getCookie(request.cookies)) match {
-      case (Some(gameInstanceIdCookie), Some(gameIdCookie)) =>
+    val gameInsCookieOpt = ClientCookie.GAME_INSTANCE_ID.getCookie(request.cookies)
+    val gameIdCookieOpt = ClientCookie.GAME_ID.getCookie(request.cookies)
+    val userIdCookieOpt = ClientCookie.USER_ID.getCookie(request.cookies)
+
+    (gameInsCookieOpt, gameIdCookieOpt, userIdCookieOpt) match {
+      case (Some(gameInstanceIdCookie), Some(gameIdCookie), Some(userIdCookie)) =>
         if(gameIdCookie.value.equals(gameId) && gameInstanceIdCookie.value.equals(gameInstanceId)) {
-          // TODO: check to make sure the game still exists
-          Ok
+          Games.getGame(gameId, gameInstanceId).fold(newClient()){ game =>
+            game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok)
+          }
         } else {
           newClient()
         }
