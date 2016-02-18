@@ -7,13 +7,13 @@ import play.api.mvc.WebSocket.FrameFormatter
 
 object ClientInfo {
   implicit val clientInfoReads: Reads[ClientInfo] = (
-    (JsPath \ "id").read[Long] and
+    (JsPath \ "id").read[Int] and
       (JsPath \ "name").read[String] and
       (JsPath \ "color").read[String]
     ) (ClientInfo.apply _)
 
   implicit val clientInfoWrites: Writes[ClientInfo] = (
-    (JsPath \ "id").write[Long] and
+    (JsPath \ "id").write[Int] and
       (JsPath \ "name").write[String] and
       (JsPath \ "color").write[String]
     ) (unlift(ClientInfo.unapply))
@@ -22,4 +22,4 @@ object ClientInfo {
   implicit val clientInfoFormatter = FrameFormatter.jsonFrame[ClientInfo]
 }
 
-case class ClientInfo(id: Long, name: String, color: String)
+case class ClientInfo(id: Int, name: String, color: String)

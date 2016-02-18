@@ -14,7 +14,10 @@ var GameLobby = React.createClass({
 		};
 
 		var clickCreate = function() {
-			ReactDOM.render(<GameCreator game={game} title={title} description={description}/>, document.getElementById('pg-app'));
+			Api.createGame(game, function(data) {
+				ReactDOM.render(<GameCreatedSuccess game={game} title={title} gameCode={data.game_instance_id} />, document.getElementById('pg-app'));
+			});
+			//ReactDOM.render(<GameCreator game={game} title={title} description={description}/>, document.getElementById('pg-app'));
 		};
 
         return (

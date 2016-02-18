@@ -4,6 +4,7 @@ import java.io.FileReader
 import java.util.function.BiConsumer
 import java.util.function
 
+import models.Client
 import play.api.libs.json.Json
 
 /**
@@ -12,16 +13,17 @@ import play.api.libs.json.Json
 class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Game(id, name, gameDef) {
 
   private var actionHandler: Option[function.Consumer[String]] = None
+  private var newClientConnectionHandler: Option[function.Consumer[String]] = None
   private val engine = GameScriptEngine.getNewEngine
+
   gameDef.jsServerFile.map(file => new FileReader(file)).foreach(reader => {
-    engine.synchronized {
-      val bindings = engine.createBindings()
-      // TODO error handler
-      bindings.put("setActionHandler", getSetActionHandler)
-      bindings.put("broadcastAction", getBroadcastAction)
-      bindings.put("sendAction", getSendAction)
-      engine.eval(reader, bindings)
-    }
+    val bindings = engine.createBindings()
+    // TODO error handler
+    bindings.put("setActionHandler", getSetActionHandler)
+    bindings.put("setNewClientConnectionHandler", getSetNewClientConnectionHandler)
+    bindings.put("broadcastAction", getBroadcastAction)
+    bindings.put("sendAction", getSendAction)
+    engine.eval(reader, bindings)
   })
 
   def getBroadcastAction: function.Consumer[String] = {
@@ -55,10 +57,26 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
     }
   }
 
-  def performAction(action: GameAction): Unit = {
+  override def onGameAction(action: GameAction): Unit = {
     actionHandler.foreach(handler => {
       handler.synchronized {
-        handler.accept(Json.stringify(Json.toJson(action)))
+        handler.accept(Json.stringify(Json.toJson(action)(GameAction.gameActionWrites)))
+      }
+    })
+  }
+
+  def getSetNewClientConnectionHandler: function.Consumer[function.Consumer[String]] = {
+    new function.Consumer[function.Consumer[String]] {
+      override def accept(handler: function.Consumer[String]) {
+        newClientConnectionHandler = Some(handler)
+      }
+    }
+  }
+
+  override def onNewClientConnection(client: Client): Unit = {
+    newClientConnectionHandler.foreach(handler => {
+      handler.synchronized {
+        handler.accept(Json.stringify(Json.toJson(client.clientInfo)))
       }
     })
   }
