@@ -36,7 +36,7 @@ class JoinGameController extends Controller {
         val clientJson = Json.toJson(client.clientInfo)
 
         Ok(clientJson.as[JsObject]).withCookies(
-          ClientCookie.USER_NAME.createCookie(userName),
+          ClientCookie.ACTIVE_GAME.createCookie(true),
           ClientCookie.USER_ID.createCookie(client.clientInfo.id),
           ClientCookie.GAME_INSTANCE_ID.createCookie(gameInstanceId),
           ClientCookie.GAME_ID.createCookie(gameId)
@@ -52,7 +52,7 @@ class JoinGameController extends Controller {
       case (Some(gameInstanceIdCookie), Some(gameIdCookie), Some(userIdCookie)) =>
         if(gameIdCookie.value.equals(gameId) && gameInstanceIdCookie.value.equals(gameInstanceId)) {
           Games.getGame(gameId, gameInstanceId).fold(newClient()){ game =>
-            game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok)
+            game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(true)))
           }
         } else {
           newClient()

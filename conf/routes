@@ -4,11 +4,13 @@
 
 # Home page
 GET     /                                       controllers.Application.index
+GET     /game                                   controllers.GameController.get
 GET     /styleguide								controllers.StyleGuideController.get
 GET     /ws                                     controllers.SocketController.socket
 GET     /game_definition                        controllers.GameDefinitionsController.getDefinitions
 POST    /create_game                            controllers.CreateGameController.create(game_id: Option[String])
 POST    /join_game                              controllers.JoinGameController.join(user_name: Option[String], game_id: Option[String], game_instance_id: Option[String], color: Option[String])
+POST    /leave_game                             controllers.LeaveGameController.leave
 GET     /websocket_test							controllers.WebSocketTestController.get
 
 

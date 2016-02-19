@@ -13,11 +13,11 @@ object Games {
 
   def createGame(gameId: String): Option[Game] = {
     getGameDefinition(gameId).fold[Option[Game]](None)( gameDef =>
-      Option(games.get(gameId)).fold[Option[Game]](None) { defGames =>
+      Option(games.get(gameId)).fold[Option[Game]](None) { gameInstances =>
         val instanceId = gameInstanceIds.get(gameId)
         val idHex = instanceId.toHexString
         val newGame = gameDef.jsServerFile.fold[Game](new DefaultSocketGame(idHex, gameId, gameDef))(file => new JsEngineGame(idHex, gameId, gameDef))
-        defGames.put(instanceId.toHexString, newGame)
+        gameInstances.put(instanceId.toHexString, newGame)
         gameInstanceIds.put(gameId, instanceId + Random.nextInt(1024))
         Some(newGame)
       }
@@ -25,7 +25,7 @@ object Games {
   }
 
   def getGame(gameId: String, gameInstanceId: String): Option[Game] = {
-    Option(games.get(gameId)).fold[Option[Game]](None)(defGames => Option(defGames.get(gameInstanceId)))
+    Option(games.get(gameId)).fold[Option[Game]](None)(gameInstances => Option(gameInstances.get(gameInstanceId)))
   }
 
   def addGameDefinition(definition: GameDefinition) {

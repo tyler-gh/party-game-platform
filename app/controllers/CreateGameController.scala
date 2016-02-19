@@ -12,7 +12,7 @@ class CreateGameController extends Controller {
       Games.createGame(gameId).fold(NotFound(Json.obj("error" -> "Game with id %s was not found".format(gameId)))) { game =>
         val client = game.addClient("root", "black") // TODO: what client info should root have?
         Ok(Json.obj("game_instance_id" -> game.id, "game_id" -> gameId, "user_name" -> client.clientInfo.name, "user_id" -> client.clientInfo.id)).withCookies(
-          ClientCookie.USER_NAME.createCookie(client.clientInfo.name),
+          ClientCookie.ACTIVE_GAME.createCookie(true),
           ClientCookie.USER_ID.createCookie(client.clientInfo.id),
           ClientCookie.GAME_INSTANCE_ID.createCookie(game.id),
           ClientCookie.GAME_ID.createCookie(gameId)

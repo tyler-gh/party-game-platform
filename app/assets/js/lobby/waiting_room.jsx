@@ -15,9 +15,11 @@ var WaitingRoom = React.createClass({
     },
 	clickLeave: function() {
 		Api.closeSocket("ws");
-		ReactDOM.render(<GameUserJoin game={this.props.game} title={this.props.title} description={this.props.description} gameCode={this.props.gameCode} />, document.getElementById('pg-app'));
+		Api.leaveGame(function(){
+			window.location.href = '/';
+		});
+		//ReactDOM.render(<GameUserJoin game={this.props.game} title={this.props.title} description={this.props.description} gameCode={this.props.gameCode} />, document.getElementById('pg-app'));
 	},
-
 	clickStart: function() {
 
 		var countdownContainer = $("#waiting-room-start-countdown-container");
