@@ -56,5 +56,12 @@ var GameCreatedSuccess = React.createClass({
 				</LobbyContainer>
 			</div>
 		);
+	},
+	componentDidMount: function() {
+		window.setTimeout(function(){
+
+			window.location.href = "/game";
+
+		}, 3000);
 	}
 });
