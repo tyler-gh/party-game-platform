@@ -5,6 +5,9 @@ var LobbyForm = React.createClass({
 	},
 	handleChange: function(event) {
 		this.setState({value: event.target.value});
+		if(this.props.handleChange) {
+			this.props.handleChange(event);
+		}
 	},
 	handleFocus: function(event) {
 		

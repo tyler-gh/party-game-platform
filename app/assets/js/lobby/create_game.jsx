@@ -19,9 +19,11 @@ var GameCreator = React.createClass({
 			ReactDOM.render(<GameLobby game={game} title={title} description={description} />, document.getElementById('pg-app'));
 		};
 
-		var clickCreate = function() {
-			ReactDOM.render(<GameCreatedSuccess game={game} title={title} />, document.getElementById('pg-app'));
-		};
+        var clickCreate = function() {
+            Api.createGame(game, function(data) {
+                ReactDOM.render(<GameCreatedSuccess game={game} title={title} gameCode={data.game_instance_id} />, document.getElementById('pg-app'));
+            });
+        };
 
 
         return (
@@ -46,12 +48,11 @@ var GameCreatedSuccess = React.createClass({
 		var game = this.props.game;
 		var title = this.props.title;
 		var description = this.props.description;
+		var gameCode = this.props.gameCode;
 
 		var clickCancel = function() {
 			ReactDOM.render(<GameLobby game={game} title={title} description={description} />, document.getElementById('pg-app'));
 		};
-
-		var gameCode = "475YZ";
 
 		return (
 			<div>
