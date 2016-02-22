@@ -32,7 +32,7 @@ function getCookie(name) {
     if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
-var api = new Rest("localhost", 9000);
+var api = new Rest(window.location.hostname, window.location.port);
 
 var WaitingForPlayers = React.createClass({
     render: function () {

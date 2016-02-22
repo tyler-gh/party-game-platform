@@ -29,7 +29,7 @@ var GameChoice = React.createClass({
     }
 });
 
-var api = new Rest("localhost", 9000);
+var api = new Rest(window.location.hostname, window.location.port);
 
 var GameSelectMenu = React.createClass({
     getInitialState: function () {
