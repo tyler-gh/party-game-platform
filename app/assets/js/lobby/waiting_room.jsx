@@ -4,12 +4,15 @@ var WaitingRoom = React.createClass({
             Api.socketSend("ws", JSON.stringify({actionType:"hi guys"}));
         },function(){},function(event){
             var data = JSON.parse(event.data);
+			var users = jQuery.extend(true, {}, this.state.users);
 
-            if(data.actionType == "new-client" || data.actionType == "client-rejoined") {
-                var users = jQuery.extend(true, {}, this.state.users);
+            if(data.actionType == "client-joined") {
                 users[data.client.id] = data.client.name;
                 this.setState({users: users});
-            }
+            } else if(data.actionType == "client-left") {
+				users[data.client.id] = undefined;
+				this.setState({users: users});
+			}
 		}.bind(this),function(event){});
         return {users: {}, startButtonState: "start"};
     },

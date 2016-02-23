@@ -8,7 +8,7 @@ import scala.util.Try
 
 abstract class SocketActor() {
 
-  private var open: Boolean = true
+  private var open: Boolean = false
   private val (out, channel) = Concurrent.broadcast[PGPAction]
   private val in = Iteratee.foreach[PGPAction] { msg =>
     onAction(msg)
@@ -16,7 +16,10 @@ abstract class SocketActor() {
     doOnClose()
   }
 
-  def refs:(Iteratee[PGPAction, _], Enumerator[PGPAction]) = (in, out)
+  def refs:(Iteratee[PGPAction, _], Enumerator[PGPAction]) = {
+    open = true
+    (in, out)
+  }
 
   def send(action: GameAction) {
     if(open) {
