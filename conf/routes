@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                       controllers.Application.index
+GET     /                                       controllers.IndexController.index
 GET     /game                                   controllers.GameController.get
 GET     /styleguide								controllers.StyleGuideController.get
 GET     /ws                                     controllers.SocketController.socket

@@ -1,11 +1,12 @@
 package controllers.traits
 
 import models.{Client, ClientCookie}
-import models.game.{Game, Games}
+import models.game.{Games, Game}
 import play.api.mvc._
 
 trait CookieAuth[T] {
-  def auth(authorized: (Game, Client) => T, neg:()=>T)(implicit request: RequestHeader):T = {
+
+  def auth(authorized: (Game, Client) => T, games: Games)(implicit request: RequestHeader, authError: AuthError[T]):T = {
     val cookies = request.cookies
 
     val activeGameCookieOpt = ClientCookie.ACTIVE_GAME.getCookie(cookies)
@@ -16,16 +17,16 @@ trait CookieAuth[T] {
     (activeGameCookieOpt, idCookieOpt, gameInstanceIdCookieOpt, gameIdCookieOpt) match {
       case (Some(activeGameCookie), Some(idCookie), Some(gameInstanceIdCookie), Some(gameIdCookie)) =>
         if(activeGameCookie.value) {
-          Games.getGame(gameIdCookie.value, gameInstanceIdCookie.value).fold(neg()) { gameInstance =>
-            gameInstance.getClient(idCookie.value).fold(neg()) { client =>
+          games.getGame(gameIdCookie.value, gameInstanceIdCookie.value).fold(authError.gameDNE()) { gameInstance =>
+            gameInstance.getClient(idCookie.value).fold(authError.notAMemberOfGame()) { client =>
               authorized(gameInstance, client)
             }
           }
         } else {
-          neg()
+          authError.leftGame()
         }
       case _ =>
-        neg()
+        authError.notAMemberOfGame()
     }
   }
 }

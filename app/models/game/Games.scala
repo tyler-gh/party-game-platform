@@ -6,7 +6,7 @@ import scala.collection.JavaConverters._
 import scala.util.Random
 
 
-object Games {
+class Games {
   private val games = new ConcurrentHashMap[String, ConcurrentHashMap[String, Game]]()
   private val gameInstanceIds = new ConcurrentHashMap[String, Long]()
   private val definitions = new ConcurrentHashMap[String, GameDefinition]()

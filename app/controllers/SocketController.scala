@@ -1,15 +1,14 @@
 package controllers
 
-import controllers.traits.{WsConnect, CookieAuth}
-import models.game.PGPAction
+import controllers.traits.{AuthError, WsConnect, CookieAuth}
+import models.game.{Games, PGPAction}
 import play.api.libs.iteratee.{Enumerator, Iteratee}
 import play.api.mvc._
 
 import scala.concurrent.Future
 
 
-class SocketController extends CookieAuth[Future[Either[Result, (Iteratee[PGPAction, _], Enumerator[PGPAction], () => Unit)]]] with WsConnect[PGPAction]{
-
+class SocketController(games: Games) extends CookieAuth[Future[Either[Result, (Iteratee[PGPAction, _], Enumerator[PGPAction], () => Unit)]]] with WsConnect[PGPAction]{
 
   def socket = tryAccept { implicit request =>
     auth({ (game, client) =>
@@ -19,9 +18,26 @@ class SocketController extends CookieAuth[Future[Either[Result, (Iteratee[PGPAct
           game.onNewClientConnection(client)
         }))
       })
-    }, { () =>
-      Future.successful(Left(Results.BadRequest))
-    })
+    }, games)
+  }
+
+
+  implicit val socketAuthError = new AuthError[Future[Either[Result, (Iteratee[PGPAction, _], Enumerator[PGPAction], () => Unit)]]] {
+    def error(e: Result)  = {
+      Future.successful(Left(e))
+    }
+    override def missingCookie() = {
+      error(AuthError.mvcResultAuthError.missingCookie())
+    }
+    override def notAMemberOfGame() = {
+      error(AuthError.mvcResultAuthError.notAMemberOfGame())
+    }
+    override def leftGame() = {
+      error(AuthError.mvcResultAuthError.leftGame())
+    }
+    override def gameDNE() = {
+      error(AuthError.mvcResultAuthError.gameDNE())
+    }
   }
 
 }

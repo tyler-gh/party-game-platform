@@ -5,11 +5,11 @@ import models.game.Games
 import play.api.mvc._
 import play.api.libs.json._
 
-class CreateGameController extends Controller {
+class CreateGameController(games: Games) extends Controller {
 
   def create(gameIdOpt: Option[String]) = Action { request =>
     gameIdOpt.orElse[String](request.body.asJson.flatMap[String](json => (json \ "game_id").asOpt[String])).fold[Result](BadRequest) { gameId =>
-      Games.createGame(gameId).fold(NotFound(Json.obj("error" -> "Game with id %s was not found".format(gameId)))) { game =>
+      games.createGame(gameId).fold(NotFound(Json.obj("error" -> "Game with id %s was not found".format(gameId)))) { game =>
         val client = game.addClient("root", "black") // TODO: what client info should root have?
         Ok(Json.obj("game_instance_id" -> game.id, "game_id" -> gameId, "user_name" -> client.clientInfo.name, "user_id" -> client.clientInfo.id)).withCookies(
           ClientCookie.ACTIVE_GAME.createCookie(true),
