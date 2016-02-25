@@ -5,6 +5,27 @@ import controllers.DatabaseController
   */
 object UtilsDB {
 
+  var activeDatabase = databaseTypes.liveDatabase
+
+  object databaseTypes extends Enumeration {
+    val liveDatabase, testDatabase = Value
+  }
+
+  def setActiveDatabaseAsTest(isTestDB : Boolean) =
+  {
+    if(isTestDB)
+      activeDatabase = databaseTypes.testDatabase
+    else
+      activeDatabase = databaseTypes.liveDatabase
+  }
+  def getActiveDatabaseName() :String ={
+    if(activeDatabase == databaseTypes.testDatabase)
+      return "testDB"
+    else if(activeDatabase == databaseTypes.liveDatabase)
+      return "default"
+    else
+      return "default"
+  }
   def buildWhereClause(whereClause : String, colName : String, value: Int): String = {
     var valueString = ""
     if(value != -1)

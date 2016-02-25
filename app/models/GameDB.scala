@@ -8,6 +8,7 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json.Json
 import play.api.libs.json._
 import play.api.Play.current
+import play.api.mvc.WebSocket.FrameFormatter
 import utils.DB.UtilsDB
 import scala.language.postfixOps
 
@@ -21,6 +22,14 @@ case class GameDB(gameID: Int,
                   creationTime : DateTime)
 
 object GameDB {
+
+  implicit val GameDBReads: Reads[GameDB] = (
+    (JsPath \ "gameID").read[Int]    and
+      (JsPath \ "joinCode").read[String] and
+      (JsPath \ "gameState").read[String] and
+      (JsPath \ "creationTime").read[DateTime]
+    ) (GameDB.apply _)
+
     implicit val GameDBWrites: Writes[GameDB] = (
       (JsPath \ "gameID").write[Int]    and
         (JsPath \ "joinCode").write[String] and
@@ -38,43 +47,47 @@ object GameDB {
       }
   }
 
+  def convertFromJson(jsonGames: JsValue): JsValue = {
+    Json.parse(jsonGames.toString())
+  }
+
   def convertToJson(games: Seq[GameDB]): JsValue = {
     Json.toJson(games)
   }
 
-  def getRows(gameID : Int = -1, joinCode : String = ""): JsValue = {
+  def getGames(gameID : Int = -1, joinCode : String = ""): JsValue = {
     var whereClause = ""
     whereClause = UtilsDB.buildWhereClause(whereClause,"gameID",gameID)
     whereClause = UtilsDB.buildWhereClause(whereClause,"joinCode",joinCode)
 
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       val result = SQL(s"select * from games $whereClause").as(GameDB.row *)
       convertToJson(result)
     }
   }
 
-  def insertRow(gameID : Int, joinCode : String, gameState: String = "creating"): Boolean = {
-    DB.withConnection { implicit connection =>
+  def addGame(gameID : Int, joinCode : String, gameState: String = "creating"): Boolean = {
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
      SQL(s"insert into games(gameID, joinCode, gameState) values ('$gameID', '$joinCode', '$gameState')")
        .executeUpdate()
     } >= 1
   }
 
   def deleteGameData(gameID : Int): Boolean = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
        SQL(
         s"DELETE from games where gameID=$gameID").executeUpdate()
     } >= 1
   }
 
   def resetTable(): Boolean = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL("DELETE FROM games").executeUpdate()
     } >= 1
   }
 
   def createTable(): Boolean  = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL(
         """
           CREATE TABLE IF NOT EXISTS games (
@@ -90,7 +103,7 @@ object GameDB {
   }
 
   def dropTable(): Boolean  = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL("DROP TABLE games CASCADE;").execute()
     }
    }

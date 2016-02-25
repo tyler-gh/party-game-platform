@@ -33,36 +33,40 @@ object UserDB {
     }
   }
 
+  def convertFromJson(jsonUsers: JsValue): JsValue = {
+    Json.parse(jsonUsers.toString())
+  }
+
   def convertToJson(users: Seq[UserDB]): JsValue = {
     Json.toJson(users)
   }
 
-  def getRows(userID : Int = -1, gameID : Int = -1): JsValue = {
+  def getUsers(userID : Int = -1, gameID : Int = -1): JsValue = {
     var whereClause = ""
     whereClause = UtilsDB.buildWhereClause(whereClause,"userID",userID)
     whereClause = UtilsDB.buildWhereClause(whereClause,"gameID",gameID)
 
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       val result = SQL(s"select * from users $whereClause").as(UserDB.row *)
       convertToJson(result)
     }
   }
 
-  def insertRow(userID : Int, userName : String, gameID: Int): Boolean = {
-    DB.withConnection { implicit connection =>
+  def addUser(userID : Int, userName : String, gameID: Int): Boolean = {
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL(s"insert into users(userID, userName, gameID) values ('$userID', '$userName' , '$gameID')")
         .executeUpdate()
     } >= 1
   }
 
   def resetTable(): Boolean = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL("DELETE FROM users").executeUpdate()
     } >= 1
   }
 
   def createTable(): Boolean  = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL(
         """
         CREATE TABLE IF NOT EXISTS users (
@@ -78,7 +82,7 @@ object UserDB {
   }
 
   def dropTable(): Boolean  = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL("DROP TABLE users CASCADE;").execute()
     }
   }

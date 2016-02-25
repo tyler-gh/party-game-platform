@@ -10,7 +10,7 @@ import play.api.test.Helpers._
  * An integration test will fire up a whole play application in a real (or headless) browser
  */
 @RunWith(classOf[JUnitRunner])
-class IntegrationSpec extends Specification {
+class FunctionalSpec extends Specification {
 
   "Application" should {
 
@@ -20,5 +20,5 @@ class IntegrationSpec extends Specification {
 
       browser.pageSource must contain("Your new application is ready.")
     }
-  }
+}
 }

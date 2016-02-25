@@ -39,25 +39,27 @@ object ActionDB {
         ActionDB(actionNumber,actionType,actionData, userID, gameID)
     }
   }
-
+  def convertFromJson(jsonActions: JsValue): JsValue = {
+    Json.parse(jsonActions.toString())
+  }
   def convertToJson(actions: Seq[ActionDB]): JsValue = {
     Json.toJson(actions)
   }
 
-  def getRows(startingActionNumber : Int = 0, userID : Int = -1, gameID : Int = -1): JsValue = {
+  def getActions(startingActionNumber : Int = 0, userID : Int = -1, gameID : Int = -1): JsValue = {
     var whereClause = ""
     whereClause = s"WHERE actionNumber >= $startingActionNumber"
     whereClause = UtilsDB.buildWhereClause(whereClause,"userID",userID)
     whereClause = UtilsDB.buildWhereClause(whereClause,"gameID",gameID)
 
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       val result = SQL(s"select * from actions $whereClause").as(ActionDB.row *)
       convertToJson(result)
     }
   }
 
-  def insertRow(actionNumber : Int, actionType : String, actionData : String, userID : Int, gameID : Int): Boolean = {
-    DB.withConnection { implicit connection =>
+  def addAction(actionNumber : Int, actionType : String, actionData : String, userID : Int, gameID : Int): Boolean = {
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL(
         s"insert into actions(actionNumber, actionType, actionData, userID, gameID) " +
         s"values ('$actionNumber', '$actionType', '$actionData','$userID','$gameID')")
@@ -66,13 +68,13 @@ object ActionDB {
   }
 
   def resetTable(): Boolean = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL("DELETE FROM actions").executeUpdate()
     } >= 1
   }
 
   def createTable(): Boolean  = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL(
         """
           CREATE TABLE IF NOT EXISTS actions (
@@ -90,7 +92,7 @@ object ActionDB {
   }
 
   def dropTable(): Boolean  = {
-    DB.withConnection { implicit connection =>
+    DB.withConnection(UtilsDB.getActiveDatabaseName()) { implicit connection =>
       SQL("DROP TABLE actions CASCADE;").execute()
     }
   }
