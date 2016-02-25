@@ -4,6 +4,10 @@ img.game-icon {
   display: block;
   //cursor: pointer;
   margin: 0 auto;
+
+  &:active {
+    opacity: .8;
+  }
 }
 
 img.small {
@@ -15,9 +19,9 @@ img.small {
 }
 
 img.large {
-  width: $pg-sp * 34;
+  width: $pg-sp * 26;
 
   @media (min-width: $pg-desk-break) {
-    width: $pg-sp * 42;
+    width: $pg-sp * 30;
   }
 }

@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-	
+	font-family: $pg-header-font;
 	font-size: $pg-mobile-size-large;
 	line-height: 120%;
 
@@ -23,10 +23,20 @@ h1 {
 }
 
 h2 {
+	font-family: $pg-header-font;
 	font-size: $pg-mobile-size-medium;
 
 	@media (min-width: $pg-desk-break) { 
 		font-size: $pg-desk-size-medium;
+	}
+}
+
+h3 {
+	font-family: $pg-body-font;
+	font-size: $pg-mobile-size-small;
+
+	@media (min-width: $pg-desk-break) { 
+		font-size: $pg-desk-size-small;
 	}
 }
 

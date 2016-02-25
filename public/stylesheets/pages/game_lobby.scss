@@ -3,19 +3,20 @@
 @mixin game-lobby($color) {
 
 	$margin: $pg-sp * 7;
-	margin: 0 $margin;
+	padding: 0 $margin;
 	width: -webkit-calc((100% - (#{$margin}) * 2));
 	width:    -moz-calc((100% - (#{$margin}) * 2));
 	width:         calc((100% - (#{$margin}) * 2));
 
 	@media (min-width: $pg-desk-break) {
 		$content-size:		$pg-sp * 64;
-		margin: 0 calc((100% - (#{$content-size})) / 2);
+		padding: 0 calc((100% - (#{$content-size})) / 2);
 		width: $content-size;
 	}
 
 	max-width: 64 * $pg-sp;
 	height: 100%;
+	overflow: auto;
 	position: absolute;
 
 	img.game-icon.large {
@@ -23,10 +24,47 @@
 		margin-bottom: $pg-sp * 2;
 	}
 
-	h1, h2 {
-		color: $pg-color-white;
+	h1.create-game {
+		margin-top: $pg-sp * 5;
+	}
+
+	h1, h2, h3 {
+		color: $color;
 		text-align: center;
 		margin-bottom: $pg-sp * 8;
+	}
+
+	h3.create-game {
+		text-align: left;
+		margin-bottom: $pg-sp;
+	}
+
+	h1.lobby, h3.lobby {
+		color: $pg-color-white;
+	}
+
+	h1.success {
+		margin-top: $pg-sp * 14;
+		color: $pg-color-success;
+	}
+
+	h3.success, h1.game-code {
+		color: $pg-color-black;
+	}
+
+	h1.waiting-room {
+		margin-top: $pg-sp * 7;
+		margin-bottom: 0;
+		color: $color;
+	}
+
+	h3.waiting-room {
+		margin-top: $pg-sp;
+		color: $pg-color-medium-gray;
+	}
+
+	.pg-lobby-form-pirate, .pg-lobby-form-fibbage, .pg-lobby-form-mafia {
+		margin-bottom: $pg-sp * 7;
 	}
 
 	button.pg-lobby-icon-button, button.pg-lobby-hollow-button, button.pg-lobby-solid-button {
@@ -34,15 +72,14 @@
 		cursor: pointer;
 	}
 
-	div.banner {
-		padding: $pg-sp * 2 0;
-		background: $color;
-	}
-
 	h1.create-game {
 		color: $color;
 		text-align: center;
 		margin-bottom: 32px;
+	}
+
+	:last-child {
+		margin-bottom: $pg-sp * 7 !important;
 	}
 }
 
@@ -56,4 +93,23 @@
 
 .game-lobby-mafia {
 	@include game-lobby($pg-color-mafia);
+}
+
+
+
+@mixin lobby-banner($color) {
+	padding: $pg-sp * 2 0;
+	background: $color;
+}
+
+div.lobby-banner-pirate {
+	@include lobby-banner($pg-color-pirate);
+}
+
+div.lobby-banner-fibbage {
+	@include lobby-banner($pg-color-fibbage);
+}
+
+div.lobby-banner-mafia {
+	@include lobby-banner($pg-color-mafia);
 }

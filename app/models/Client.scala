@@ -1,11 +1,9 @@
 package models
 
-import models.game.{GameAction, Game}
+import models.game.{PGPAction, GameAction, Game}
 import play.api.libs.iteratee.{Enumerator, Iteratee}
 
-
 class Client(game: Game, val clientInfo: ClientInfo) {
-
   private val socket = new ClientSocket(this, game)
 
   def sendAction(action: GameAction): Unit = {
@@ -16,9 +14,11 @@ class Client(game: Game, val clientInfo: ClientInfo) {
     socket.close()
   }
 
-  def connection(): (Iteratee[GameAction, _], Enumerator[GameAction]) = {
+  def connection(): (Iteratee[PGPAction, _], Enumerator[PGPAction]) = {
     socket.refs
   }
+
+  def isSocketOpen = socket.isOpen
 
   override def equals(that: Any): Boolean = that match {
     case that: Client => this.hashCode == that.hashCode
@@ -32,8 +32,9 @@ class Client(game: Game, val clientInfo: ClientInfo) {
 
 
 class ClientSocket(client: Client, game: Game) extends SocketActor {
-  override def onAction(action: GameAction) {
-    game.performAction(action)
+
+  override def onAction(action: PGPAction) {
+    game.performAction(game.createGameAction(client.clientInfo, action))
   }
 
   override def onClose() {

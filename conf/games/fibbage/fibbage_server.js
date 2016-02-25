@@ -1,16 +1,15 @@
 
 var actions = [];
 
-setActionHandler(function(action){
+setActionHandler(function(actionStr){
+    actions.push(JSON.parse(actionStr));
+    broadcastAction(actionStr);
+});
 
-    action = JSON.parse(action);
-    actions.push(action);
-
-
-    broadcastAction(JSON.stringify(action));
-
-
+setNewClientConnectionHandler(function(clientStr) {
+    var client = JSON.parse(clientStr);
+    var clientId = JSON.stringify([client.id]);
     actions.forEach(function(action) {
-        sendAction(JSON.stringify([action.client.id]), JSON.stringify(action));
+        sendAction(clientId, JSON.stringify(action));
     });
 });

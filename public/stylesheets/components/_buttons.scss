@@ -11,10 +11,18 @@ button:focus {
 	padding-bottom: $pg-sp*1.5;
 	border: none;
 	border-radius: $pg-sp;
+
 	font-size: $pg-mobile-size-medium;
+	@media (min-width: $pg-desk-break) { 
+		font-size: $pg-desk-size-medium;	
+	}
+	
 	position: relative;
 	margin: auto;
+	overflow: hidden;
+
 }
+
 
 /*-------------lobby solid buttons-----------------*/
 
@@ -22,6 +30,14 @@ button:focus {
 	@include pg-lobby-button();
 	background-color: $color;
 	color: $pg-color-white;
+
+	&:hover {
+		background-color: darken($color, 5%);
+	}
+
+	&:active {
+		background-color: darken($color, 10%);
+	}
 }
 
 .pg-lobby-solid-button.pirate {
@@ -45,6 +61,14 @@ button:focus {
 	background-color: $pg-color-white;
 	color: $color;
 	font-weight: bold;
+
+	&:hover {
+		background-color: darken($pg-color-white, 10%);
+	}
+
+	&:active {
+		background-color: darken($pg-color-white, 20%);
+	}
 
 	.pg-lobby-icon-button-icon-container {
 		top: 0;
@@ -88,6 +112,14 @@ button:focus {
 	background-color: transparent;
 	border: 1px solid $color;
 	color: $color;
+
+	&:hover {
+		background-color: rgba(100,100,100,0.1);
+	}
+
+	&:active {
+		background-color: rgba(100,100,100,0.3);
+	}
 }
 
 .pg-lobby-hollow-button.white {
@@ -105,4 +137,3 @@ button:focus {
 .pg-lobby-hollow-button.mafia:not(.white) {
 	@include pg-lobby-hollow-button($pg-color-mafia)
 }
-
