@@ -16,7 +16,6 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   def addClient(clientName: String, color: String): Client = {
     // TODO: having a space in the name caused a problem but I don't remember where
     val client = new Client(this, new ClientInfo(clients.size, clientName, color))
-    performAction(createGameAction(client.clientInfo, GameAction.NEW_CLIENT, None))
     clients.add(Some(client))
     client
   }
@@ -40,10 +39,13 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
     createGameAction(clientInfo, pGPAction.gameActionType, pGPAction.data)
   }
 
+  def clientJoined(client: Client) {
+    performAction(createGameAction(client.clientInfo, GameAction.CLIENT_JOINED, None))
+  }
+
   def restoreClient(clientInfo: ClientInfo): Option[Client] = {
     if(clientInfo.id < clients.size) {
       val client = Some(new Client(this, clientInfo))
-      performAction(createGameAction(client.get.clientInfo, GameAction.CLIENT_REJOINED, None))
       clients.set(clientInfo.id, client)
       client
     } else {
@@ -52,10 +54,6 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   }
 
   def clientClosed(client: Client): Unit = {
-    val index = clients.indexOf(client)
-    if(index != -1) {
-      clients.set(index, None)
-    }
     performAction(createGameAction(client.clientInfo, GameAction.CLIENT_LEFT, None))
   }
 
@@ -68,7 +66,12 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   }
 
   def onGameAction(action: GameAction)
-  def onNewClientConnection(client: Client)
+  def onNewClient(client: Client)
+
+  final def onNewClientConnection(client: Client) {
+    onNewClient(client)
+    clientJoined(client)
+  }
 
   /// TODO remove games from games list when they have no clients
   def endGame(): Unit = {

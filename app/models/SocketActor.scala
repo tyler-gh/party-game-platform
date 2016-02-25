@@ -8,45 +8,35 @@ import scala.util.Try
 
 abstract class SocketActor() {
 
-  private var open: Boolean = true
   private val (out, channel) = Concurrent.broadcast[PGPAction]
   private val in = Iteratee.foreach[PGPAction] { msg =>
     onAction(msg)
   } map { _ =>
-    doOnClose()
+    onClose()
   }
 
-  def refs:(Iteratee[PGPAction, _], Enumerator[PGPAction]) = (in, out)
+  def refs:(Iteratee[PGPAction, _], Enumerator[PGPAction]) = {
+    (in, out)
+  }
 
   def send(action: GameAction) {
-    if(open) {
-      try {
-        channel.push(action)
-      } catch {
-        case scala.util.control.NonFatal(e) =>
-          doOnClose()
-      }
+    try {
+      channel.push(action)
+    } catch {
+      case scala.util.control.NonFatal(e) =>
+        onClose()
     }
   }
 
   def close() {
-    if(open) {
-      Try {
-        channel.eofAndEnd()
-      }
-      doOnClose()
+    Try {
+      channel.eofAndEnd()
     }
+    onClose()
   }
-
-  def isOpen: Boolean = open
 
   def onAction(action: PGPAction)
   def onClose()
-
-  private def doOnClose() {
-    open = false
-    onClose()
-  }
 
 }
 

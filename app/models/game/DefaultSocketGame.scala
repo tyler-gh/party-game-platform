@@ -17,7 +17,7 @@ class DefaultSocketGame(id: String, name: String, gameDef: GameDefinition) exten
     forEachClient(client => client.sendAction(action))
   }
 
-  override def onNewClientConnection(client: Client): Unit = {
+  override def onNewClient(client: Client): Unit = {
     actions.synchronized {
       actions.foreach(action => {
         client.sendAction(action)

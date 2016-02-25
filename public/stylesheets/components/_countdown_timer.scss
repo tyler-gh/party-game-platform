@@ -1,0 +1,42 @@
+@import '../base/variables';
+
+@mixin pg-lobby-countdown-timer($color) {
+	width: 100%;
+	-ms-transform: translate(0px,-$pg-sp*5);
+   	-webkit-transform: translate(0px,-$pg-sp*5);
+    transform: translate(0px,-$pg-sp*5);
+
+	.pg-lobby-countdown-label {
+		text-align: center;
+		font-family: $pg-header-font;
+		margin-bottom: $pg-sp/2;
+		color: $color;
+	}
+
+	.pg-lobby-countdown-timer-border {
+		height: $pg-sp*6;
+		width: $pg-sp*6;
+		margin: 0 auto;
+		border-radius: 50%;
+		border: 2px solid $color;
+	}
+
+	.pg-lobby-countdown-timer-time {
+		width: 35%;
+		margin: $pg-sp*.7 auto;
+		color: $color;
+	}
+}
+
+.pg-lobby-countdown-timer-pirate {
+	@include pg-lobby-countdown-timer($pg-color-pirate);
+}
+
+.pg-lobby-countdown-timer-fibbage {
+	@include pg-lobby-countdown-timer($pg-color-fibbage);
+}
+
+.pg-lobby-countdown-timer-mafia {
+	@include pg-lobby-countdown-timer($pg-color-mafia);
+}
+
