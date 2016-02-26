@@ -58,6 +58,9 @@ var GameCreatedSuccess = React.createClass({
 		);
 	},
 	componentDidMount: function() {
+		$("#lobby-banner").css('animation','enterBanner .4s ease-out');
+        $('#pg-app').css('animation','enterLeft .2s ease-in');
+
 		window.setTimeout(function(){
 
 			window.location.href = "/game";

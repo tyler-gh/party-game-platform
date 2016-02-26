@@ -5,19 +5,32 @@ var GameCodeJoin = React.createClass({
     handleGameCodeChange: function (e) {
         this.setState({gameCode: e.target.value});
     },
+    renderGameUserJoin: function() {
+    	ReactDOM.render(<GameUserJoin game={this.props.game} gameCode={this.state.gameCode} title={this.props.title} description={this.props.description}/>, document.getElementById('pg-app'));
+    },
     render: function() {
     	var game = this.props.game;
 		var title = this.props.title;
 		var description = this.props.description;
 
 		var clickCancel = function() {
-			ReactDOM.render(<GameLobby game={game} title={title} description={description}/>, document.getElementById('pg-app'));
+			$('#pg-app').css('animation','exitRight .2s ease-in');
+			$("#lobby-banner").css('animation','exitBanner .4s ease-out');
+    		setTimeout(function() {
+				ReactDOM.render(<GameLobby game={game} title={title} description={description}/>, document.getElementById('pg-app'));
+				$('#pg-app').css('animation','enterRight .2s ease-out');
+			}, 200);
 		};
 
 		var clickJoin = function() {
+			// TODO hit api to see if game actually exists
 			if(this.state.gameCode) {
-				// TODO hit api to see if game actually exists
-				ReactDOM.render(<GameUserJoin game={game} gameCode={this.state.gameCode} title={title} description={description}/>, document.getElementById('pg-app'));
+				$('#enter-game-code-content').css('animation','exitLeft .2s ease-in');
+				var component = this;
+				setTimeout(function() {
+					component.renderGameUserJoin();
+					$('#enter-player-info-content').css('animation','enterLeft .2s ease-in');
+				}, 200);
 			}
 		}.bind(this);
 
@@ -28,9 +41,11 @@ var GameCodeJoin = React.createClass({
 				<LobbyContainer game={game} color="color">
 					<div className="container">
 						<h1 className="create-game">join game</h1>
-						<LobbyForm game={game} handleChange={this.handleGameCodeChange} instructions="enter game code"/>
-						<LobbyButton game={game} text={"submit"} handleClick={clickJoin} />
-						<LobbyButton game={game} hollow="color" text={"cancel"} handleClick={clickCancel} />
+						<div id="enter-game-code-content">
+							<LobbyForm game={game} handleChange={this.handleGameCodeChange} instructions="enter game code"/>
+							<LobbyButton game={game} text={"submit"} handleClick={clickJoin} />
+							<LobbyButton game={game} hollow="color" text={"cancel"} handleClick={clickCancel} />
+						</div>
 					</div>
 				</LobbyContainer>
 	        </div>
@@ -52,15 +67,19 @@ var GameUserJoin = React.createClass({
 		var gameCode = this.props.gameCode;
 
 		var clickCancel = function() {
-			ReactDOM.render(<GameCodeJoin game={game} title={title} description={description} />, document.getElementById('pg-app'));
+			$('#enter-player-info-content').css('animation','exitRight .2s ease-in');
+			setTimeout(function() {
+				ReactDOM.render(<GameCodeJoin game={game} title={title} description={description} />, document.getElementById('pg-app'));
+				$('#enter-game-code-content').css('animation','enterRight .2s ease-out');
+			}, 200);
 		};
 
 		var clickJoin = function() {
 		    var name = this.state.name;
+			$('#game-lobby').css('animation','exitLeft .2s ease-in');
 		    if(name) {
 		        Api.joinGame(name, "green", game, gameCode, function(data) {
 					window.location.href = '/game';
-					//ReactDOM.render(<WaitingRoom game={game} name={name} title={title} gameCode={gameCode} />, document.getElementById('pg-app'));
                 });
 			}
 		}.bind(this);
@@ -71,10 +90,12 @@ var GameUserJoin = React.createClass({
 				<LobbyContainer game={game} color="color">
 					<div className="container">
 						<h1 className="create-game">join game</h1>
-						<LobbyForm game={game} handleChange={this.handleNameChange} instructions="enter your name"/>
-						<h3 className="create-game">select your color</h3>
-						<LobbyButton game={game} text={"join"} handleClick={clickJoin} />
-						<LobbyButton game={game} hollow="color" text={"cancel"} handleClick={clickCancel} />
+						<div id="enter-player-info-content">
+							<LobbyForm game={game} handleChange={this.handleNameChange} instructions="enter your name"/>
+							<h3 className="create-game">select your color</h3>
+							<LobbyButton game={game} text={"join"} handleClick={clickJoin} />
+							<LobbyButton game={game} hollow="color" text={"cancel"} handleClick={clickCancel} />
+						</div>
 					</div>
 				</LobbyContainer>
 			</div>

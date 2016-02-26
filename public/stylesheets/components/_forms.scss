@@ -13,12 +13,12 @@
 	}
 
 	.pg-lobby-form-persistent-instructions-fade-in {
-		animation: fadeIn .25s;
+		animation: formTextFadeIn .25s;
 		opacity: 1;
 	}
 
 	.pg-lobby-form-persistent-instructions-fade-out {
-		animation: fadeOut .25s;
+		animation: formTextFadeOut .25s;
 		opacity: 0;
 	}
 
@@ -53,7 +53,7 @@
 	@include pg-lobby-form($pg-color-mafia);
 }
 
-@keyframes fadeIn {
+@keyframes formTextFadeIn {
 	0% {
         transform: translate3d(0px, 10px, 0px);
         opacity: 0;
@@ -65,7 +65,7 @@
     }
 }
 
-@keyframes fadeOut {
+@keyframes formTextFadeOut {
 	0% {
         transform: translate3d(0px, 0px, 0px);
         opacity: 1;
