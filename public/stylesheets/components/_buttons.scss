@@ -21,6 +21,12 @@ button:focus {
 	margin: auto;
 	overflow: hidden;
 
+	&:hover {
+		-ms-transform: scale(1.02);
+    	-webkit-transform: scale(1.02); 
+    	transform: scale(1.02);
+	}
+
 }
 
 

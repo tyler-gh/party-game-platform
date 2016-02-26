@@ -247,6 +247,10 @@ button:focus {
     .pg-lobby-solid-button.pirate {
       font-size: 26px; } }
   .pg-lobby-solid-button.pirate:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
+  .pg-lobby-solid-button.pirate:hover {
     background-color: #00264d; }
   .pg-lobby-solid-button.pirate:active {
     background-color: #001a33; }
@@ -267,6 +271,10 @@ button:focus {
     .pg-lobby-solid-button.fibbage {
       font-size: 26px; } }
   .pg-lobby-solid-button.fibbage:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
+  .pg-lobby-solid-button.fibbage:hover {
     background-color: #f39c0b; }
   .pg-lobby-solid-button.fibbage:active {
     background-color: #db8c0a; }
@@ -286,6 +294,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-solid-button.mafia {
       font-size: 26px; } }
+  .pg-lobby-solid-button.mafia:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
   .pg-lobby-solid-button.mafia:hover {
     background-color: #b70218; }
   .pg-lobby-solid-button.mafia:active {
@@ -308,6 +320,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-icon-button.pirate {
       font-size: 26px; } }
+  .pg-lobby-icon-button.pirate:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
   .pg-lobby-icon-button.pirate:hover {
     background-color: #e6e6e6; }
   .pg-lobby-icon-button.pirate:active {
@@ -346,6 +362,10 @@ button:focus {
     .pg-lobby-icon-button.fibbage {
       font-size: 26px; } }
   .pg-lobby-icon-button.fibbage:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
+  .pg-lobby-icon-button.fibbage:hover {
     background-color: #e6e6e6; }
   .pg-lobby-icon-button.fibbage:active {
     background-color: #cccccc; }
@@ -382,6 +402,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-icon-button.mafia {
       font-size: 26px; } }
+  .pg-lobby-icon-button.mafia:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
   .pg-lobby-icon-button.mafia:hover {
     background-color: #e6e6e6; }
   .pg-lobby-icon-button.mafia:active {
@@ -421,6 +445,10 @@ button:focus {
     .pg-lobby-hollow-button.white {
       font-size: 26px; } }
   .pg-lobby-hollow-button.white:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
+  .pg-lobby-hollow-button.white:hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.white:active {
     background-color: rgba(100, 100, 100, 0.3); }
@@ -441,6 +469,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.pirate:not(.white) {
       font-size: 26px; } }
+  .pg-lobby-hollow-button.pirate:not(.white):hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
   .pg-lobby-hollow-button.pirate:not(.white):hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.pirate:not(.white):active {
@@ -463,6 +495,10 @@ button:focus {
     .pg-lobby-hollow-button.fibbage:not(.white) {
       font-size: 26px; } }
   .pg-lobby-hollow-button.fibbage:not(.white):hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
+  .pg-lobby-hollow-button.fibbage:not(.white):hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.fibbage:not(.white):active {
     background-color: rgba(100, 100, 100, 0.3); }
@@ -483,6 +519,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.mafia:not(.white) {
       font-size: 26px; } }
+  .pg-lobby-hollow-button.mafia:not(.white):hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02); }
   .pg-lobby-hollow-button.mafia:not(.white):hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.mafia:not(.white):active {
