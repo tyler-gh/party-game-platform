@@ -2,6 +2,7 @@ package models
 
 import anorm._
 import SqlParser._
+import org.joda.time.DateTime
 import play.api.db.DB
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Json
@@ -18,7 +19,14 @@ case class UserDB(userID: Int,
                   gameID: Int)
 
 object UserDB {
-    implicit val UserDBWrites: Writes[UserDB] = (
+
+  implicit val UserDBReads: Reads[UserDB] = (
+    (JsPath \ "userID").read[Int]    and
+      (JsPath \ "userName").read[String] and
+      (JsPath \ "gameID").read[Int]
+    ) (UserDB.apply _)
+
+  implicit val UserDBWrites: Writes[UserDB] = (
       (JsPath \ "userID").write[Int]    and
         (JsPath \ "userName").write[String] and
         (JsPath \ "gameID").write[Int]

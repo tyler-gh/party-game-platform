@@ -5,7 +5,7 @@ import models.game.Games
 import play.api.mvc._
 import play.api.libs.json._
 
-class CreateGameController(games: Games) extends Controller {
+class CreateGameController (games: Games) extends Controller {
 
   def create(gameIdOpt: Option[String]) = Action { request =>
     gameIdOpt.orElse[String](request.body.asJson.flatMap[String](json => (json \ "game_id").asOpt[String])).fold[Result](BadRequest) { gameId =>

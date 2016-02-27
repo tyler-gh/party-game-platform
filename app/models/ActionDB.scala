@@ -21,6 +21,15 @@ case class ActionDB(actionNumber: Int,
                     gameID:Int)
 
 object ActionDB {
+
+  implicit val actionDBReads: Reads[ActionDB] = (
+    (JsPath \ "actionNumber").read[Int]    and
+      (JsPath \ "actionType").read[String] and
+      (JsPath \ "actionData").read[String] and
+      (JsPath \ "userID").read[Int]        and
+      (JsPath \ "gameID").read[Int]
+    ) (ActionDB.apply _)
+
   implicit val actionDBWrites: Writes[ActionDB] = (
     (JsPath \ "actionNumber").write[Int]    and
       (JsPath \ "actionType").write[String] and
