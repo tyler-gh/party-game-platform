@@ -1,3 +1,22 @@
+var LobbyCountdownDemo = React.createClass({
+    render: function() {
+	    return (
+	    	<div>
+	    		<div className={"pg-styleguide-subhead"}>lobby countdown timer</div>
+	        	<LobbyCountdownTimer game={"pirate"}/>
+	        </div>
+	    );
+    }
+});
+
+ReactDOM.render(
+    <LobbyCountdownDemo />,
+    document.getElementById('pg-styleguide-lobby-countdown')
+);
+
+
+
+
 var LobbyButtonsStyleDemo = React.createClass({
     render: function() {
 	    return (

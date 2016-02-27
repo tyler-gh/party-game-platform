@@ -17,9 +17,9 @@ object ClientCookie {
     }
   }
 
-  case object USER_NAME extends Value[String](0, "user_name") {
-    override def extractValue(cookie: Cookie): String = {
-      cookie.value
+  case object ACTIVE_GAME extends Value[Boolean](0, "active_game") {
+    override def extractValue(cookie: Cookie): Boolean = {
+      cookie.value.toBoolean
     }
   }
 
@@ -40,9 +40,4 @@ object ClientCookie {
       cookie.value
     }
   }
-
-
-
-
-
 }

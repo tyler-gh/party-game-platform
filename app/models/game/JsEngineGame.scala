@@ -73,7 +73,7 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
     }
   }
 
-  override def onNewClientConnection(client: Client): Unit = {
+  override def onNewClient(client: Client): Unit = {
     newClientConnectionHandler.foreach(handler => {
       handler.synchronized {
         handler.accept(Json.stringify(Json.toJson(client.clientInfo)))

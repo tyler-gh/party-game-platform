@@ -29,30 +29,50 @@ routesGenerator := InjectedRoutesGenerator
 pipelineStages := Seq(concat)
 
 Concat.groups := Seq(
-  "game.js" -> group(Seq("lib/rest.js",
-               "lib/jquery-1.12.0.js",
-  						 "lib/react/react.js", 
-  						 "lib/react/react-dom.min.js",
-		           "js/util/Api.js",
-  						 "js/components/icons.js",
-  						 "js/components/buttons.js",
-  						 "js/components/background_color.js",
-  						 "js/lobby/components/lobby_container.js",
-  						 "js/components/forms.js",
-  						 "js/lobby/game_lobby.js", 
-  						 "js/lobby/create_game.js",
-  						 "js/lobby/join_game.js",
-  						 "js/lobby/waiting_room.js",
-  						 "js/lobby/game_select.js")),
-  
-  "style.js" -> group(Seq("lib/rest.js",
-                  "lib/jquery-1.12.0.js",
-  					      "lib/react/react.js",
-  					      "lib/react/react-dom.min.js",
-  					      "js/components/icons.js",
-  					      "js/components/buttons.js",
-                          "js/components/forms.js",
-  					      "js/msc/styleguide.js"))
+  "index.js" -> group(Seq(
+    "lib/rest.js",
+    "lib/jquery-1.12.0.js",
+    "lib/react/react.js",
+    "lib/react/react-dom.min.js",
+    "js/util/Api.js",
+    "js/components/icons.js",
+    "js/components/buttons.js",
+    "js/components/background_color.js",
+    "js/lobby/components/lobby_container.js",
+    "js/lobby/components/lobby_countdown_timer.js",
+    "js/components/forms.js",
+    "js/components/game_banner.js",
+    "js/lobby/game_lobby.js",
+    "js/lobby/create_game.js",
+    "js/lobby/join_game.js",
+    "js/lobby/waiting_room.js",
+    "js/lobby/game_select.js")
+  ),
+  "style.js" -> group(Seq(
+    "lib/rest.js",
+    "lib/jquery-1.12.0.js",
+    "lib/react/react.js",
+    "lib/react/react-dom.min.js",
+    "js/components/icons.js",
+    "js/components/buttons.js",
+    "js/lobby/components/lobby_countdown_timer.js",
+    "js/components/forms.js",
+    "js/msc/styleguide.js")
+  ),
+  "game.js" -> group(Seq(
+    "js/util/Api.js",
+    "lib/jquery-1.12.0.js",
+    "lib/react/react.js",
+    "lib/react/react-dom.min.js",
+    "js/components/icons.js",
+    "js/components/buttons.js",
+    "js/components/background_color.js",
+    "js/components/game_banner.js",
+    "js/lobby/components/lobby_container.js",
+    "js/lobby/components/lobby_countdown_timer.js",
+    "js/lobby/waiting_room.js",
+    "js/game/game.js")
+  )
 )
 
 Concat.parentDir := "public/main/js"

@@ -665,6 +665,146 @@ div.pg-mafia-background-color {
 /*------------------------------*/
 /*--------- Typeface ----------*/
 /*--------- Font Sizes --------*/
+.pg-lobby-countdown-timer-pirate {
+  width: 100%;
+  -ms-transform: translate(0px, -30px);
+  -webkit-transform: translate(0px, -30px);
+  transform: translate(0px, -30px); }
+  .pg-lobby-countdown-timer-pirate .pg-lobby-countdown-label {
+    text-align: center;
+    font-family: "Lato-Regular", sans-serif;
+    margin-bottom: 3px;
+    color: #003366; }
+  .pg-lobby-countdown-timer-pirate .pg-lobby-countdown-timer-border {
+    height: 36px;
+    width: 36px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid #003366; }
+  .pg-lobby-countdown-timer-pirate .pg-lobby-countdown-timer-time {
+    width: 35%;
+    margin: 4.2px auto;
+    color: #003366; }
+
+.pg-lobby-countdown-timer-fibbage {
+  width: 100%;
+  -ms-transform: translate(0px, -30px);
+  -webkit-transform: translate(0px, -30px);
+  transform: translate(0px, -30px); }
+  .pg-lobby-countdown-timer-fibbage .pg-lobby-countdown-label {
+    text-align: center;
+    font-family: "Lato-Regular", sans-serif;
+    margin-bottom: 3px;
+    color: #F5A623; }
+  .pg-lobby-countdown-timer-fibbage .pg-lobby-countdown-timer-border {
+    height: 36px;
+    width: 36px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid #F5A623; }
+  .pg-lobby-countdown-timer-fibbage .pg-lobby-countdown-timer-time {
+    width: 35%;
+    margin: 4.2px auto;
+    color: #F5A623; }
+
+.pg-lobby-countdown-timer-mafia {
+  width: 100%;
+  -ms-transform: translate(0px, -30px);
+  -webkit-transform: translate(0px, -30px);
+  transform: translate(0px, -30px); }
+  .pg-lobby-countdown-timer-mafia .pg-lobby-countdown-label {
+    text-align: center;
+    font-family: "Lato-Regular", sans-serif;
+    margin-bottom: 3px;
+    color: #D0021B; }
+  .pg-lobby-countdown-timer-mafia .pg-lobby-countdown-timer-border {
+    height: 36px;
+    width: 36px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid #D0021B; }
+  .pg-lobby-countdown-timer-mafia .pg-lobby-countdown-timer-time {
+    width: 35%;
+    margin: 4.2px auto;
+    color: #D0021B; }
+
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+.pg-waiting-room-toggle {
+  margin-bottom: 0px; }
+  .pg-waiting-room-toggle .waiting-room-start-countdown-container {
+    float: left;
+    height: 36px;
+    visibility: hidden;
+    width: 0%; }
+  .pg-waiting-room-toggle .waiting-room-start-button-container {
+    float: left;
+    width: 100%; }
+  .pg-waiting-room-toggle .button-slide-right {
+    animation: buttonSlideRight .25s;
+    width: 50%; }
+  .pg-waiting-room-toggle .button-slide-left {
+    animation: buttonSlideLeft .25s;
+    width: 100%; }
+  .pg-waiting-room-toggle .countdown-enter {
+    animation: countdownEnter .25s;
+    width: 50%;
+    visibility: initial; }
+  .pg-waiting-room-toggle .countdown-leave {
+    animation: countdownLeave .25s;
+    width: 0%;
+    visibility: hidden; }
+
+@keyframes countdownEnter {
+  0% {
+    width: 0%;
+    opacity: 0; }
+  100% {
+    width: 50%;
+    opacity: 1; } }
+@keyframes countdownLeave {
+  0% {
+    width: 50%;
+    opacity: 1; }
+  100% {
+    width: 0%;
+    opacity: 0; } }
+@keyframes buttonSlideRight {
+  0% {
+    width: 100%; }
+  100% {
+    width: 50%; } }
+@keyframes buttonSlideLeft {
+  0% {
+    width: 50%; }
+  100% {
+    width: 100%; } }
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
 /*------------------------------*/
 /*            Layout            */
 /*------------------------------*/
@@ -913,6 +1053,8 @@ div.game-choice:first-child {
   .game-lobby-pirate h3.waiting-room {
     margin-top: 6px;
     color: #888888; }
+  .game-lobby-pirate .waiting-room-players {
+    min-height: 180px; }
   .game-lobby-pirate .pg-lobby-form-pirate, .game-lobby-pirate .pg-lobby-form-fibbage, .game-lobby-pirate .pg-lobby-form-mafia {
     margin-bottom: 42px; }
   .game-lobby-pirate button.pg-lobby-icon-button, .game-lobby-pirate button.pg-lobby-hollow-button, .game-lobby-pirate button.pg-lobby-solid-button {
@@ -922,8 +1064,6 @@ div.game-choice:first-child {
     color: #003366;
     text-align: center;
     margin-bottom: 32px; }
-  .game-lobby-pirate :last-child {
-    margin-bottom: 42px !important; }
 
 .game-lobby-fibbage {
   padding: 0 42px;
@@ -964,6 +1104,8 @@ div.game-choice:first-child {
   .game-lobby-fibbage h3.waiting-room {
     margin-top: 6px;
     color: #888888; }
+  .game-lobby-fibbage .waiting-room-players {
+    min-height: 180px; }
   .game-lobby-fibbage .pg-lobby-form-pirate, .game-lobby-fibbage .pg-lobby-form-fibbage, .game-lobby-fibbage .pg-lobby-form-mafia {
     margin-bottom: 42px; }
   .game-lobby-fibbage button.pg-lobby-icon-button, .game-lobby-fibbage button.pg-lobby-hollow-button, .game-lobby-fibbage button.pg-lobby-solid-button {
@@ -973,8 +1115,6 @@ div.game-choice:first-child {
     color: #F5A623;
     text-align: center;
     margin-bottom: 32px; }
-  .game-lobby-fibbage :last-child {
-    margin-bottom: 42px !important; }
 
 .game-lobby-mafia {
   padding: 0 42px;
@@ -1015,6 +1155,8 @@ div.game-choice:first-child {
   .game-lobby-mafia h3.waiting-room {
     margin-top: 6px;
     color: #888888; }
+  .game-lobby-mafia .waiting-room-players {
+    min-height: 180px; }
   .game-lobby-mafia .pg-lobby-form-pirate, .game-lobby-mafia .pg-lobby-form-fibbage, .game-lobby-mafia .pg-lobby-form-mafia {
     margin-bottom: 42px; }
   .game-lobby-mafia button.pg-lobby-icon-button, .game-lobby-mafia button.pg-lobby-hollow-button, .game-lobby-mafia button.pg-lobby-solid-button {
@@ -1024,8 +1166,6 @@ div.game-choice:first-child {
     color: #D0021B;
     text-align: center;
     margin-bottom: 32px; }
-  .game-lobby-mafia :last-child {
-    margin-bottom: 42px !important; }
 
 div.lobby-banner-pirate {
   padding: 12px 0;

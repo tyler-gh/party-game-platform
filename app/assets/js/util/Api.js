@@ -19,11 +19,15 @@ API.prototype.joinGame = function(userName, color, gameId, gameInstanceId, succe
     this.postJson("/join_game", {"user_name": userName, "color": color, "game_id": gameId, "game_instance_id":gameInstanceId}, success);
 };
 
+API.prototype.leaveGame = function(success) {
+    this.postJson("/leave_game",{}, success);
+};
+
 API.prototype.socketAddress = function(name) {
     var loc = window.location,
         new_uri = loc.protocol === "https:" ? "wss:" : "ws:";
 
-    return new_uri + "//" + loc.host + loc.pathname + name;
+    return new_uri + "//" + loc.host + "/" + name;
 };
 
 API.prototype.connectSocket = function(name, onOpen, onClose, onMessage, onError) {

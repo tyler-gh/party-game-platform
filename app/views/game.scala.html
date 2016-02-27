@@ -1,15 +1,26 @@
-@(title: String, name: String, id: Long, game: String)
+@(game: String, game_title: String, description: String, game_code:String, css_styles: Option[String], js: Option[String])
 
-@main(title) {
+@header = {
+@if(css_styles.isDefined) {
+    <style>
+    @css_styles.get
+    </style>
+}
+@if(js.isDefined) {
+    <script>
+        @js.get
+    </script>
+}
+}
 
-    <div class="pg-content">
+@main(game_title)(Some(header)) {
+    <div id="pg-app"></div>
+    <script type="text/javascript">
+        var game = "@game";
+        var description = "@description";
+        var title = "@game_title";
+        var gameCode = "@game_code";
+    </script>
 
-        <div id="message"></div>
-
-        <h2>WebSocket Test</h2>
-
-        <div id="output"></div>
-    </div>
-
-
+    <script src="@routes.Assets.versioned("js/game.js")" type="text/javascript" ></script>
 }
