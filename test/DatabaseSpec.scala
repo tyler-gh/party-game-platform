@@ -17,21 +17,21 @@ class DatabaseSpec extends Specification {
 
   UtilsDB.setActiveDatabaseAsTest(true);
 
-  "databases" should {
-    "work " in new WithApplication {
+  //"databases" should {
+   // "work " in new WithApplication {
 
-     // "Games Database after a reset" should {
-     //   "be empty " in {
-     //     GameDB.resetTable()
-     //     val games = GameDB.convertFromJson(GameDB.getGames())
-     //     val expectedJson = Json.parse("[]")
+      "Games Database after a reset" should {
+        "be empty " in {
+          GameDB.resetTable()
+          val games = GameDB.convertFromJson(GameDB.getGames())
+          val expectedJson = Json.parse("[]")
 
-     //     games must equalTo(expectedJson)
-     //   }
-     // }
+          games must equalTo(expectedJson)
+        }
+      }
 
-      //"Games Database after an insert" should {
-      //  "be have the correct data " in {
+      "Games Database after an insert" should {
+        "be have the correct data " in {
           GameDB.resetTable()
           GameDB.addGame(1, "asdf")
           GameDB.addGame(2, "fdsa")
