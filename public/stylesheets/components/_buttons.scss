@@ -21,6 +21,12 @@ button:focus {
 	margin: auto;
 	overflow: hidden;
 
+	&:hover {
+		-ms-transform: scale(1.01);
+    	-webkit-transform: scale(1.01); 
+    	transform: scale(1.01);
+	}
+
 }
 
 
@@ -32,7 +38,7 @@ button:focus {
 	color: $pg-color-white;
 
 	&:hover {
-		background-color: darken($color, 5%);
+		background-color: darken($color, 2%);
 	}
 
 	&:active {
@@ -63,7 +69,7 @@ button:focus {
 	font-weight: bold;
 
 	&:hover {
-		background-color: darken($pg-color-white, 10%);
+		background-color: darken($pg-color-white, 8%);
 	}
 
 	&:active {

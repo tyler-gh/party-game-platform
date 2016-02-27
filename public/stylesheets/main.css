@@ -247,7 +247,11 @@ button:focus {
     .pg-lobby-solid-button.pirate {
       font-size: 26px; } }
   .pg-lobby-solid-button.pirate:hover {
-    background-color: #00264d; }
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-solid-button.pirate:hover {
+    background-color: #002e5c; }
   .pg-lobby-solid-button.pirate:active {
     background-color: #001a33; }
 
@@ -267,7 +271,11 @@ button:focus {
     .pg-lobby-solid-button.fibbage {
       font-size: 26px; } }
   .pg-lobby-solid-button.fibbage:hover {
-    background-color: #f39c0b; }
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-solid-button.fibbage:hover {
+    background-color: #f5a219; }
   .pg-lobby-solid-button.fibbage:active {
     background-color: #db8c0a; }
 
@@ -287,7 +295,11 @@ button:focus {
     .pg-lobby-solid-button.mafia {
       font-size: 26px; } }
   .pg-lobby-solid-button.mafia:hover {
-    background-color: #b70218; }
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-solid-button.mafia:hover {
+    background-color: #c6021a; }
   .pg-lobby-solid-button.mafia:active {
     background-color: #9d0214; }
 
@@ -309,7 +321,11 @@ button:focus {
     .pg-lobby-icon-button.pirate {
       font-size: 26px; } }
   .pg-lobby-icon-button.pirate:hover {
-    background-color: #e6e6e6; }
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-icon-button.pirate:hover {
+    background-color: #ebebeb; }
   .pg-lobby-icon-button.pirate:active {
     background-color: #cccccc; }
   .pg-lobby-icon-button.pirate .pg-lobby-icon-button-icon-container {
@@ -346,7 +362,11 @@ button:focus {
     .pg-lobby-icon-button.fibbage {
       font-size: 26px; } }
   .pg-lobby-icon-button.fibbage:hover {
-    background-color: #e6e6e6; }
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-icon-button.fibbage:hover {
+    background-color: #ebebeb; }
   .pg-lobby-icon-button.fibbage:active {
     background-color: #cccccc; }
   .pg-lobby-icon-button.fibbage .pg-lobby-icon-button-icon-container {
@@ -383,7 +403,11 @@ button:focus {
     .pg-lobby-icon-button.mafia {
       font-size: 26px; } }
   .pg-lobby-icon-button.mafia:hover {
-    background-color: #e6e6e6; }
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-icon-button.mafia:hover {
+    background-color: #ebebeb; }
   .pg-lobby-icon-button.mafia:active {
     background-color: #cccccc; }
   .pg-lobby-icon-button.mafia .pg-lobby-icon-button-icon-container {
@@ -421,6 +445,10 @@ button:focus {
     .pg-lobby-hollow-button.white {
       font-size: 26px; } }
   .pg-lobby-hollow-button.white:hover {
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-hollow-button.white:hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.white:active {
     background-color: rgba(100, 100, 100, 0.3); }
@@ -441,6 +469,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.pirate:not(.white) {
       font-size: 26px; } }
+  .pg-lobby-hollow-button.pirate:not(.white):hover {
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
   .pg-lobby-hollow-button.pirate:not(.white):hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.pirate:not(.white):active {
@@ -463,6 +495,10 @@ button:focus {
     .pg-lobby-hollow-button.fibbage:not(.white) {
       font-size: 26px; } }
   .pg-lobby-hollow-button.fibbage:not(.white):hover {
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
+  .pg-lobby-hollow-button.fibbage:not(.white):hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.fibbage:not(.white):active {
     background-color: rgba(100, 100, 100, 0.3); }
@@ -483,6 +519,10 @@ button:focus {
   @media (min-width: 450px) {
     .pg-lobby-hollow-button.mafia:not(.white) {
       font-size: 26px; } }
+  .pg-lobby-hollow-button.mafia:not(.white):hover {
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); }
   .pg-lobby-hollow-button.mafia:not(.white):hover {
     background-color: rgba(100, 100, 100, 0.1); }
   .pg-lobby-hollow-button.mafia:not(.white):active {
@@ -920,10 +960,10 @@ img.large {
   height: 24px;
   visibility: hidden; }
 .pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-in {
-  animation: fadeIn .25s;
+  animation: formTextFadeIn .25s;
   opacity: 1; }
 .pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-out {
-  animation: fadeOut .25s;
+  animation: formTextFadeOut .25s;
   opacity: 0; }
 .pg-lobby-form-pirate .pg-lobby-form-input {
   border: none;
@@ -945,10 +985,10 @@ img.large {
   height: 24px;
   visibility: hidden; }
 .pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-in {
-  animation: fadeIn .25s;
+  animation: formTextFadeIn .25s;
   opacity: 1; }
 .pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-out {
-  animation: fadeOut .25s;
+  animation: formTextFadeOut .25s;
   opacity: 0; }
 .pg-lobby-form-fibbage .pg-lobby-form-input {
   border: none;
@@ -970,10 +1010,10 @@ img.large {
   height: 24px;
   visibility: hidden; }
 .pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-in {
-  animation: fadeIn .25s;
+  animation: formTextFadeIn .25s;
   opacity: 1; }
 .pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-out {
-  animation: fadeOut .25s;
+  animation: formTextFadeOut .25s;
   opacity: 0; }
 .pg-lobby-form-mafia .pg-lobby-form-input {
   border: none;
@@ -988,7 +1028,7 @@ img.large {
 .pg-lobby-form-mafia .pg-lobby-form-input-gray {
   color: #888888; }
 
-@keyframes fadeIn {
+@keyframes formTextFadeIn {
   0% {
     transform: translate3d(0px, 10px, 0px);
     opacity: 0; }
@@ -996,7 +1036,7 @@ img.large {
     transform: translate3d(0px, 0px, 0px);
     animation-timing-function: ease-in;
     opacity: 1; } }
-@keyframes fadeOut {
+@keyframes formTextFadeOut {
   0% {
     transform: translate3d(0px, 0px, 0px);
     opacity: 1; }
@@ -1331,6 +1371,82 @@ html, body, div#pg-app {
   height: 100%;
   min-width: 290px; }
 
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+/*-------  game colors   -------*/
+/*-------  accent colors  ------*/
+/*-------  player colors  ------*/
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+/*--------- Typeface ----------*/
+/*--------- Font Sizes --------*/
+@keyframes enterLeft {
+  0% {
+    transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -webkit-transform: translateX(100%); }
+  100% {
+    transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -webkit-transform: translateX(0%); } }
+@keyframes exitLeft {
+  0% {
+    transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -webkit-transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%); } }
+@keyframes enterRight {
+  0% {
+    transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%); }
+  100% {
+    transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -webkit-transform: translateX(0%); } }
+@keyframes exitRight {
+  0% {
+    transform: translateX(0%);
+    -ms-transform: translateX(0%);
+    -webkit-transform: translateX(0%); }
+  100% {
+    transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -webkit-transform: translateX(100%); } }
+@keyframes enterBanner {
+  0% {
+    transform: translateY(-200px);
+    -ms-transform: translateY(-200px);
+    -webkit-transform: translateY(-200px);
+    opacity: 0; }
+  50% {
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    opacity: 1; } }
+@keyframes exitBanner {
+  0% {
+    transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    opacity: 1; }
+  25% {
+    opacity: 0; }
+  100% {
+    transform: translateY(-200px);
+    -ms-transform: translateY(-200px);
+    -webkit-transform: translateY(-200px);
+    opacity: 0; } }
 /*------------------------------*/
 /*            Layout            */
 /*------------------------------*/

@@ -1,7 +1,17 @@
 var GameLogo = React.createClass({
     handleClick: function(e) {
+        //handle transition animation by calling renderLobby in timeout
+        $('#pg-app').css('animation','exitLeft .2s ease-in');
+        var component = this;
+        setTimeout(function() {
+                component.renderLobby();
+        }, 200);
+    },
+
+    renderLobby: function() {
         ReactDOM.render(<GameLobby game={this.props.game} title={this.props.title} description={this.props.description}/>, document.getElementById('pg-app'));
     },
+
     render: function () {
         var game = this.props.game;
         var title = this.props.title;
