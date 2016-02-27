@@ -20,31 +20,39 @@ class DatabaseSpec extends Specification {
   "databases" should {
     "work " in new WithApplication {
 
-      "Games Database after a reset" should {
-        "be empty " in {
-          GameDB.resetTable()
-          val games = GameDB.convertFromJson(GameDB.getGames())
-          val expectedJson = Json.parse("[]")
+     // "Games Database after a reset" should {
+     //   "be empty " in {
+     //     GameDB.resetTable()
+     //     val games = GameDB.convertFromJson(GameDB.getGames())
+     //     val expectedJson = Json.parse("[]")
 
-          games must equalTo(expectedJson)
-        }
-      }
+     //     games must equalTo(expectedJson)
+     //   }
+     // }
 
-      "Games Database after an insert" should {
-        "be have the correct data " in {
+      //"Games Database after an insert" should {
+      //  "be have the correct data " in {
           GameDB.resetTable()
           GameDB.addGame(1, "asdf")
           GameDB.addGame(2, "fdsa")
           val games = GameDB.convertFromJson(GameDB.getGames())
 
-          val expectedJson = Json.parse("[]")
+          games.size must equalTo(2)
+          games(0).joinCode must equalTo("asdf")
+          games(1).joinCode must equalTo("fdsa")
 
-          games must equalTo(expectedJson)
         }
       }
 
-    }
-  }
+     // "Application" should {
+     //   "work from within a browser" in new WithBrowser {
+     //     browser.goTo("http://localhost:9000)") // + port)
+    //      browser.pageSource must contain("PGP")
+    //    }
+     // }
+
+    //}
+ // }
 
 
 

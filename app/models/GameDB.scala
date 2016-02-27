@@ -47,8 +47,8 @@ object GameDB {
       }
   }
 
-  def convertFromJson(jsonGames: JsValue): JsValue = {
-    Json.parse(jsonGames.toString())
+  def convertFromJson(jsonGames: JsValue): Seq[GameDB] = {
+    Json.parse(jsonGames.toString()).asOpt[Seq[GameDB]].get
   }
 
   def convertToJson(games: Seq[GameDB]): JsValue = {

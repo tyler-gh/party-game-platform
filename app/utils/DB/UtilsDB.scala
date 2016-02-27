@@ -5,7 +5,7 @@ import controllers.DatabaseController
   */
 object UtilsDB {
 
-  var activeDatabase = databaseTypes.liveDatabase
+  var activeDatabase = databaseTypes.testDatabase
 
   object databaseTypes extends Enumeration {
     val liveDatabase, testDatabase = Value
@@ -19,12 +19,14 @@ object UtilsDB {
       activeDatabase = databaseTypes.liveDatabase
   }
   def getActiveDatabaseName() :String ={
+    var returnValue = "default"
     if(activeDatabase == databaseTypes.testDatabase)
-      return "testDB"
+      returnValue = "testDB"
     else if(activeDatabase == databaseTypes.liveDatabase)
-      return "default"
+      returnValue = "liveDB"
     else
-      return "default"
+      returnValue = "default"
+    return returnValue
   }
   def buildWhereClause(whereClause : String, colName : String, value: Int): String = {
     var valueString = ""

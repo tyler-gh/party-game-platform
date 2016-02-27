@@ -39,9 +39,10 @@ object ActionDB {
         ActionDB(actionNumber,actionType,actionData, userID, gameID)
     }
   }
-  def convertFromJson(jsonActions: JsValue): JsValue = {
-    Json.parse(jsonActions.toString())
+  def convertFromJson(jsonActions: JsValue): Seq[ActionDB] = {
+    Json.parse(jsonActions.toString()).asOpt[Seq[ActionDB]].get
   }
+
   def convertToJson(actions: Seq[ActionDB]): JsValue = {
     Json.toJson(actions)
   }

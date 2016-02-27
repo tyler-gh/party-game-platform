@@ -33,8 +33,8 @@ object UserDB {
     }
   }
 
-  def convertFromJson(jsonUsers: JsValue): JsValue = {
-    Json.parse(jsonUsers.toString())
+  def convertFromJson(jsonUsers: JsValue): Seq[UserDB] = {
+    Json.parse(jsonUsers.toString()).asOpt[Seq[UserDB]].get
   }
 
   def convertToJson(users: Seq[UserDB]): JsValue = {
