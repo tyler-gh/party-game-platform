@@ -1,0 +1,77 @@
+@import '../base/variables';
+
+.pg-waiting-room-toggle {
+	margin-bottom: 0px;
+	.waiting-room-start-countdown-container {
+		float: left;
+		height: $pg-sp*6;
+		visibility: hidden;
+		width: 0%;
+	}
+	.waiting-room-start-button-container {
+		float: left;
+		width: 100%;
+	}
+
+	.button-slide-right {
+		animation: buttonSlideRight .25s;
+		width: 50%;
+	}
+
+	.button-slide-left {
+		animation: buttonSlideLeft .25s;
+		width: 100%;
+	}
+
+	.countdown-enter {
+		animation: countdownEnter .25s;
+		width: 50%;
+		visibility: initial;
+	}
+
+	.countdown-leave {
+		animation: countdownLeave .25s;
+		width: 0%;
+		visibility: hidden;
+	}
+}
+
+@keyframes countdownEnter {
+	0% {
+		width: 0%;
+        opacity: 0;
+    }
+    100% {
+    	width: 50%;
+        opacity: 1;
+    }
+}
+
+@keyframes countdownLeave {
+	0% {
+		width: 50%;
+        opacity: 1;
+    }
+    100% {
+    	width: 0%;
+        opacity: 0;
+    }
+}
+
+@keyframes buttonSlideRight {
+	0% {
+        width: 100%;
+    }
+    100% {
+        width: 50%;
+    }
+}
+
+@keyframes buttonSlideLeft {
+	0% {
+        width: 50%;
+    }
+    100% {
+        width: 100%;
+    }
+}

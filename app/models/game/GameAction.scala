@@ -10,17 +10,15 @@ object GameAction {
 
   sealed class Type(val id: Int, val name: String)
 
-  case object NEW_CLIENT extends Type(0, "new-client")
-
   case object CLIENT_LEFT extends Type(1, "client-left")
 
-  case object CLIENT_REJOINED extends Type(2, "client-rejoined")
+  case object CLIENT_JOINED extends Type(2, "client-joined")
 
   case object GAME_STARTED extends Type(3, "game-started")
 
   case object UNFORMED extends Type(Int.MaxValue, "")
 
-  val actions = Seq(NEW_CLIENT, CLIENT_LEFT, CLIENT_REJOINED, GAME_STARTED, UNFORMED)
+  val actions = Seq(CLIENT_LEFT, CLIENT_JOINED, GAME_STARTED, UNFORMED)
 
   def withName(s: String): Type = {
     actions.find(action => action.name.equals(s)).getOrElse(new Type(UNFORMED.id, s))

@@ -139,7 +139,8 @@ var GameUserJoin = React.createClass({
 		    var name = this.state.name;
 		    if(name) {
 		        Api.joinGame(name, "green", game, gameCode, function(data) {
-                    ReactDOM.render(<WaitingRoom game={game} name={name} title={title} gameCode={gameCode} />, document.getElementById('pg-app'));
+					window.location.href = '/game';
+					//ReactDOM.render(<WaitingRoom game={game} name={name} title={title} gameCode={gameCode} />, document.getElementById('pg-app'));
                 });
 			}
 		}.bind(this);

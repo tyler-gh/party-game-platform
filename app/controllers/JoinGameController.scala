@@ -7,7 +7,7 @@ import play.api.libs.functional.syntax._
 import play.api.mvc._
 
 
-class JoinGameController extends Controller {
+class JoinGameController(games: Games) extends Controller {
 
   case class JoinGameParams(userName: String, gameId: String, gameInstanceId: String, color: String)
   implicit val joinGameReads: Reads[JoinGameParams] = (
@@ -17,13 +17,21 @@ class JoinGameController extends Controller {
       (JsPath \ "color").read[String]
     ) (JoinGameParams.apply _)
 
+  def error(e: JsValue): Result = {
+    BadRequest(Json.obj(("error",e)))
+  }
+
   def join(userNameOpt: Option[String], gameIdOpt: Option[String], gameInstanceIdOpt: Option[String], colorOpt: Option[String]) = Action { implicit request =>
     (userNameOpt, gameIdOpt, gameInstanceIdOpt, colorOpt) match {
       case (Some(userName), Some(gameId), Some(gameInstanceId), Some(color)) =>
         joinGame(userName, gameInstanceId, gameId, color)
       case _ =>
-        request.body.asJson.flatMap(_.asOpt[JoinGameParams]).fold[Result](BadRequest) { params =>
-          joinGame(params.userName, params.gameInstanceId, params.gameId, params.color)
+        request.body.asJson.map(_.validate[JoinGameParams]).fold[Result](error(JsString("Missing required parameters"))) {
+          case success: JsSuccess[JoinGameParams] =>
+            val params = success.get
+            joinGame(params.userName, params.gameInstanceId, params.gameId, params.color)
+          case e: JsError =>
+            error(JsError.toJson(e))
         }
     }
   }
@@ -31,12 +39,12 @@ class JoinGameController extends Controller {
   def joinGame(userName: String, gameInstanceId: String, gameId: String, color: String)(implicit request: Request[Any]) = {
 
     def newClient() = {
-      Games.getGame(gameId, gameInstanceId).fold[Result](BadRequest) { game =>
+      games.getGame(gameId, gameInstanceId).fold[Result](error(JsString(s"Game with id '$gameId' and instance_id '$gameInstanceId' DNE"))) { game =>
         val client = game.addClient(userName, color)
         val clientJson = Json.toJson(client.clientInfo)
 
         Ok(clientJson.as[JsObject]).withCookies(
-          ClientCookie.USER_NAME.createCookie(userName),
+          ClientCookie.ACTIVE_GAME.createCookie(true),
           ClientCookie.USER_ID.createCookie(client.clientInfo.id),
           ClientCookie.GAME_INSTANCE_ID.createCookie(gameInstanceId),
           ClientCookie.GAME_ID.createCookie(gameId)
@@ -51,8 +59,8 @@ class JoinGameController extends Controller {
     (gameInsCookieOpt, gameIdCookieOpt, userIdCookieOpt) match {
       case (Some(gameInstanceIdCookie), Some(gameIdCookie), Some(userIdCookie)) =>
         if(gameIdCookie.value.equals(gameId) && gameInstanceIdCookie.value.equals(gameInstanceId)) {
-          Games.getGame(gameId, gameInstanceId).fold(newClient()){ game =>
-            game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok)
+          games.getGame(gameId, gameInstanceId).fold(newClient()){ game =>
+            game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(true)))
           }
         } else {
           newClient()
