@@ -488,6 +488,385 @@ button:focus {
   .pg-lobby-hollow-button.mafia:not(.white):active {
     background-color: rgba(100, 100, 100, 0.3); }
 
+/*-------------color picker buttons-----------------*/
+.pg-lobby-color-picker-button-color1 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #4A90E2;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color1 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color2 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7BBC5D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color2 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color2 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7BBC5D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color2 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color3 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7849A8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color3 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color4 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #6DB191;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color4 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color5 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #ECBC3D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color5 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color6 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #D0021B;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color6 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color7 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #174881;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color7 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color8 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #851C77;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color8 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color9 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #DF487D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color9 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color10 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #5594AF;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color10 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color11 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #FF8100;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color11 {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color12 {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7A858D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color12 {
+      margin: 18px; } }
+
+/*--Selected--*/
+.pg-lobby-color-picker-button-color1-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #4A90E2;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #4A90E2; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color1-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color2-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7BBC5D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #7BBC5D; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color2-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color2-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7BBC5D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #7BBC5D; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color2-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color3-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7849A8;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #7849A8; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color3-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color4-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #6DB191;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #6DB191; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color4-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color5-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #ECBC3D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #ECBC3D; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color5-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color6-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #D0021B;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #D0021B; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color6-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color7-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #174881;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #174881; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color7-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color8-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #851C77;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #851C77; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color8-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color9-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #DF487D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #DF487D; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color9-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color10-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #5594AF;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #5594AF; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color10-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color11-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #FF8100;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #FF8100; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color11-selected {
+      margin: 18px; } }
+
+.pg-lobby-color-picker-button-color12-selected {
+  float: left;
+  position: relative;
+  margin: 12px;
+  overflow: hidden;
+  background-color: transparent;
+  border: 6px solid #7A858D;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #7A858D; }
+  @media (min-width: 450px) {
+    .pg-lobby-color-picker-button-color12-selected {
+      margin: 18px; } }
+
 /*------------------------------*/
 /*            Layout            */
 /*------------------------------*/
@@ -1038,5 +1417,9 @@ div.lobby-banner-fibbage {
 div.lobby-banner-mafia {
   padding: 12px 0;
   background: #D0021B; }
+
+div.color-picker {
+  width: 90%;
+  margin: auto; }
 
 /*# sourceMappingURL=main.css.map */

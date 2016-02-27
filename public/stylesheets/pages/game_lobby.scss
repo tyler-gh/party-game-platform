@@ -113,3 +113,8 @@ div.lobby-banner-fibbage {
 div.lobby-banner-mafia {
 	@include lobby-banner($pg-color-mafia);
 }
+
+div.color-picker {
+	width: 90%;
+	margin: auto;
+}
