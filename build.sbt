@@ -56,6 +56,7 @@ Concat.groups := Seq(
     "js/components/buttons.js",
     "js/lobby/components/lobby_countdown_timer.js",
     "js/components/forms.js",
+    "js/components/color_picker.js",
     "js/msc/styleguide.js")
   ),
   "game.js" -> group(Seq(
@@ -67,6 +68,7 @@ Concat.groups := Seq(
     "js/components/buttons.js",
     "js/components/background_color.js",
     "js/components/game_banner.js",
+    "js/components/color_picker.js",
     "js/lobby/components/lobby_container.js",
     "js/lobby/components/lobby_countdown_timer.js",
     "js/lobby/waiting_room.js",
