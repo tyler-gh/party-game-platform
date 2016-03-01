@@ -37,6 +37,7 @@ Concat.groups := Seq(
     "js/components/icons.js",
     "js/components/buttons.js",
     "js/components/background_color.js",
+    "js/components/color_picker.js",
     "js/lobby/components/lobby_container.js",
     "js/lobby/components/lobby_countdown_timer.js",
     "js/components/forms.js",
