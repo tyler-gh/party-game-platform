@@ -1,11 +1,13 @@
 package controllers
 
+import javax.inject.Inject
+
 import controllers.traits.{FlatAuthError, CookieAuth}
 import models.game.Games
 import play.api.mvc._
 
 
-class GameController(games: Games) extends Controller with CookieAuth[Result] {
+class GameController @Inject()(games: Games) extends Controller with CookieAuth[Result] {
 
   def get = Action { implicit request =>
     auth({ (game, client) =>

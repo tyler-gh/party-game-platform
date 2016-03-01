@@ -1,5 +1,7 @@
 package controllers
 
+import javax.inject.Inject
+
 import models.{ClientInfo, ClientCookie}
 import models.game.Games
 import play.api.libs.json._
@@ -7,7 +9,7 @@ import play.api.libs.functional.syntax._
 import play.api.mvc._
 
 
-class JoinGameController(games: Games) extends Controller {
+class JoinGameController @Inject()(games: Games) extends Controller {
 
   case class JoinGameParams(userName: String, gameId: String, gameInstanceId: String, color: String)
   implicit val joinGameReads: Reads[JoinGameParams] = (

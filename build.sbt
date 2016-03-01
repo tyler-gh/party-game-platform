@@ -15,7 +15,8 @@ libraryDependencies ++= Seq(
   cache,
   ws,
   specs2 % Test,
-  "org.yaml" % "snakeyaml" % "1.16"
+  "org.yaml" % "snakeyaml" % "1.16",
+"org.scalatestplus" %% "play" % "1.1.0" % "test"
 )
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
@@ -75,6 +76,6 @@ Concat.groups := Seq(
   )
 )
 
-Concat.parentDir := "public/main/js"
-
+//Concat.parentDir := "public/main/js"
+Concat.parentDir := "public/test/public/js"
 pipelineStages in Assets := Seq(concat)

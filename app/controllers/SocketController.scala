@@ -1,5 +1,7 @@
 package controllers
 
+import javax.inject.Inject
+
 import controllers.traits.{AuthError, WsConnect, CookieAuth}
 import models.game.{Games, PGPAction}
 import play.api.libs.iteratee.{Enumerator, Iteratee}
@@ -8,7 +10,7 @@ import play.api.mvc._
 import scala.concurrent.Future
 
 
-class SocketController(games: Games) extends CookieAuth[Future[Either[Result, (Iteratee[PGPAction, _], Enumerator[PGPAction], () => Unit)]]] with WsConnect[PGPAction]{
+class SocketController @Inject()(games: Games) extends CookieAuth[Future[Either[Result, (Iteratee[PGPAction, _], Enumerator[PGPAction], () => Unit)]]] with WsConnect[PGPAction]{
 
   def socket = tryAccept { implicit request =>
     auth({ (game, client) =>
