@@ -32,7 +32,7 @@ pipelineStages := Seq(concat)
 Concat.groups := Seq(
   "index.js" -> group(Seq(
     "lib/rest.js",
-    "lib/jquery-1.12.0.js",
+//    "lib/jquery-1.12.0.js",
     "lib/react/react.js",
     "lib/react/react-dom.min.js",
     "js/util/Api.js",
@@ -51,7 +51,7 @@ Concat.groups := Seq(
   ),
   "style.js" -> group(Seq(
     "lib/rest.js",
-    "lib/jquery-1.12.0.js",
+//    "lib/jquery-1.12.0.js",
     "lib/react/react.js",
     "lib/react/react-dom.min.js",
     "js/components/icons.js",
@@ -62,7 +62,7 @@ Concat.groups := Seq(
   ),
   "game.js" -> group(Seq(
     "js/util/Api.js",
-    "lib/jquery-1.12.0.js",
+//    "lib/jquery-1.12.0.js",
     "lib/react/react.js",
     "lib/react/react-dom.min.js",
     "js/components/icons.js",
@@ -76,6 +76,7 @@ Concat.groups := Seq(
   )
 )
 
+ReactJsKeys.harmony := true
 //Concat.parentDir := "public/main/js"
 Concat.parentDir := "public/test/public/js"
 pipelineStages in Assets := Seq(concat)
