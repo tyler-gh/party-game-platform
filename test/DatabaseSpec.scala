@@ -15,23 +15,23 @@ import utils.DB.UtilsDB
 @RunWith(classOf[JUnitRunner])
 class DatabaseSpec extends Specification {
 
-  UtilsDB.setActiveDatabaseAsTest(true);
-
-  //"databases" should {
-   // "work " in new WithApplication {
-
-      "Games Database after a reset" should {
-        "be empty " in new WithApplication {
-          GameDB.resetTable()
-          val games = GameDB.convertFromJson(GameDB.getGames())
-          val expectedJson = Json.parse("[]")
-
-          games must equalTo(expectedJson)
-        }
-      }
-
+//      "Games Database after a reset" should {
+//        "be empty " in new WithApplication {
+//          UtilsDB.setActiveDatabaseAsTest(true);
+//          GameDB.resetTable()
+//          val gamesJson = GameDB.getGames()
+//          val games = GameDB.convertFromJson(GameDB.getGames())
+//          val expectedJson = Json.parse("[]")
+//
+//          gamesJson must equalTo(expectedJson)
+//          games.size must equalTo(0)
+//
+//        }
+//      }
+//
 //      "Games Database after an insert" should {
 //        "be have the correct data " in new WithApplication {
+//          UtilsDB.setActiveDatabaseAsTest(true);
 //          GameDB.resetTable()
 //          GameDB.addGame(1, "asdf")
 //          GameDB.addGame(2, "fdsa")
@@ -43,37 +43,5 @@ class DatabaseSpec extends Specification {
 //
 //        }
 //      }
-
-     // "Application" should {
-     //   "work from within a browser" in new WithBrowser {
-     //     browser.goTo("http://localhost:9000)") // + port)
-    //      browser.pageSource must contain("PGP")
-    //    }
-     // }
-
-    //}
- // }
-
-
-
-  UtilsDB.setActiveDatabaseAsTest(false);
-
-
-//    "Can parse recursive object" in {
-//      val recursiveJson = """{"foo": {"foo":["bar"]}, "bar": {"foo":["bar"]}}"""
-//      val expectedJson = JsObject(List(
-//        "foo" -> JsObject(List(
-//          "foo" -> JsArray(List[JsValue](JsString("bar")))
-//        )),
-//        "bar" -> JsObject(List(
-//          "foo" -> JsArray(List[JsValue](JsString("bar")))
-//        ))
-//      ))
-//      val resultJson = Json.parse(recursiveJson)
-//      resultJson must equalTo(expectedJson)
-
-
-
-
 
 }
