@@ -1,15 +1,13 @@
 package models.game
 
 import java.io.FileReader
-import java.util.function.BiConsumer
 import java.util.function
 
 import models.Client
 import play.api.libs.json.Json
+import util.FuncTransform._
 
-/**
-  *
-  */
+
 class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Game(id, name, gameDef) {
 
   private var actionHandler: Option[function.Consumer[String]] = None
@@ -17,35 +15,30 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
   private val engine = GameScriptEngine.getNewEngine
 
   gameDef.jsServerFile.map(file => new FileReader(file)).foreach(reader => {
-    val bindings = engine.createBindings()
-    // TODO error handler
-    bindings.put("setActionHandler", getSetActionHandler)
-    bindings.put("setNewClientConnectionHandler", getSetNewClientConnectionHandler)
-    bindings.put("broadcastAction", getBroadcastAction)
-    bindings.put("sendAction", getSendAction)
-    engine.eval(reader, bindings)
+    try {
+      val bindings = engine.createBindings()
+      // TODO error handler
+      bindings.put("setActionHandler", getSetActionHandler)
+      bindings.put("setNewClientConnectionHandler", getSetNewClientConnectionHandler)
+      bindings.put("broadcastAction", getBroadcastAction)
+      bindings.put("sendAction", getSendAction)
+      engine.eval(reader, bindings)
+    } finally {
+      reader.close()
+    }
   })
 
   def getBroadcastAction: function.Consumer[String] = {
-    new function.Consumer[String] {
-      override def accept(action: String) {
-        // TODO fold with error
-        Json.parse(action).asOpt[GameAction].foreach(actionObj => {
-          forEachClient(client => client.sendAction(actionObj))
-        })
-      }
-    }
+    (action: String) => Json.parse(action).asOpt[GameAction].foreach(actionObj => {
+      forEachClient(client => client.sendAction(actionObj))
+    })
   }
 
   def getSendAction: function.BiConsumer[String, String] = {
-    new BiConsumer[String, String] {
-      override def accept(clientsData: String, actionData: String) {
-        (Json.parse(clientsData).asOpt[Seq[Long]], Json.parse(actionData).asOpt[GameAction]) match {
-          case (Some(clientTargets),Some(action)) =>
-            forEachClient(client => if(clientTargets.contains(client.clientInfo.id)) client.sendAction(action))
-          case _ => // TODO error
-        }
-      }
+    (clientsData: String, actionData: String) => (Json.parse(clientsData).asOpt[Seq[Long]], Json.parse(actionData).asOpt[GameAction]) match {
+      case (Some(clientTargets),Some(action)) =>
+        forEachClient(client => if(clientTargets.contains(client.clientInfo.id)) client.sendAction(action))
+      case _ => // TODO error
     }
   }
 

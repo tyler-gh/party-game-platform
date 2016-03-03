@@ -14,8 +14,12 @@ libraryDependencies ++= Seq(
   cache,
   ws,
   specs2 % Test,
-  "org.yaml" % "snakeyaml" % "1.16"
+  "org.yaml" % "snakeyaml" % "1.16",
+  "com.typesafe" %% "jse" % "1.1.2",
+  "org.slf4j" % "slf4j-simple" % "1.7.6"
 )
+
+
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 resolvers += Resolver.sonatypeRepo("releases")

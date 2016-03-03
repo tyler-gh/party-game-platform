@@ -55,11 +55,14 @@ var GameCodeJoin = React.createClass({
 
 var GameUserJoin = React.createClass({
     getInitialState: function () {
-        return {name: ''};
+        return {name: '', color: ''};
     },
     handleNameChange: function (e) {
         this.setState({name: e.target.value});
     },
+	handleColorChange: function(color_id) {
+		this.setState({color: color_id});
+	},
 	render: function() {
 		var game = this.props.game;
 		var title = this.props.title;
@@ -76,9 +79,11 @@ var GameUserJoin = React.createClass({
 
 		var clickJoin = function() {
 		    var name = this.state.name;
-			$('#game-lobby').css('animation','exitLeft .2s ease-in');
-		    if(name) {
-		        Api.joinGame(name, "green", game, gameCode, function(data) {
+			var color = this.state.color;
+
+		    if(name && color) {
+				$('#game-lobby').css('animation','exitLeft .2s ease-in');
+		        Api.joinGame(name, color, game, gameCode, function(data) {
 					window.location.href = '/game';
                 });
 			}
@@ -92,7 +97,7 @@ var GameUserJoin = React.createClass({
 						<h1 className="create-game">join game</h1>
 						<div id="enter-player-info-content">
 							<LobbyForm game={game} handleChange={this.handleNameChange} instructions="enter your name"/>
-							<ColorPicker game={game} color="color"/>
+							<ColorPicker onColorPicked={this.handleColorChange} />
 							<LobbyButton game={game} text={"join"} handleClick={clickJoin} />
 							<LobbyButton game={game} hollow="color" text={"cancel"} handleClick={clickCancel} />
 						</div>

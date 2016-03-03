@@ -1,13 +1,17 @@
 package controllers
 
+import controllers.traits.CookieAuth
 import models.ClientCookie
+import models.game.Games
 import play.api.mvc._
 
-/**
-  *
-  */
-class LeaveGameController extends Controller {
+class LeaveGameController(games: Games) extends Controller with CookieAuth[Result] {
   def leave = Action { implicit request =>
-    Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(false))
+    auth(games, (game, client) => {
+      if(client.clientInfo.id == 0) {
+        games.closeGame(game)
+      }
+      Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(false))
+    })
   }
 }

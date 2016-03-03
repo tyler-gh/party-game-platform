@@ -75,6 +75,7 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
 
   /// TODO remove games from games list when they have no clients
   def endGame(): Unit = {
+    // TODO maybe set ended flag
     forEachClient(client => client.close())
     clients.clear()
   }

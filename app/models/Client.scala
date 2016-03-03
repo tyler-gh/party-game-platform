@@ -7,6 +7,10 @@ class Client(game: Game, val clientInfo: ClientInfo) {
 
   private var socketOpt:Option[ClientSocket] = None
 
+  final def ifMainElse[T](ifMain: => T)(f: => T): T =
+    if (clientInfo.id == 0) ifMain else f
+
+
   def sendAction(action: GameAction): Unit = {
     this.synchronized {
       socketOpt.foreach(socket => socket.send(action))

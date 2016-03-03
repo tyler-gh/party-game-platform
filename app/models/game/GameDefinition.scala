@@ -27,4 +27,10 @@ object GameDefinitionInfo {
 }
 
 case class GameDefinitionInfo(id: String, title: String, color: String, description: String)
-case class GameDefinition(info: GameDefinitionInfo, jsServerFile: Option[File])
+
+case class GameDefinition(
+  info: GameDefinitionInfo,
+  jsServerFile: Option[File],
+  jsClientFiles: Option[Seq[File]],
+  jsMainClientFiles: Option[Seq[File]]
+)
