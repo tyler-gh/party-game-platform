@@ -39,6 +39,18 @@
 
 // Player colors
 
+div.waiting-room-players {
+	margin-bottom: $pg-sp * 8;
+	height: $pg-sp * 38;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+}
+
+div.waiting-room-players::-webkit-scrollbar { 
+	width: 0 !important;
+	overflow: -moz-scrollbars-none;
+}
+
 table.pg-waiting-room-player-table {
 	margin: 0 auto;
 }
