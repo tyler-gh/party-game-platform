@@ -57,8 +57,9 @@ var WaitingRoom = React.createClass({
                         <div className="container">
                             <h1 className="waiting-room">waiting for players</h1>
                             <h3 className="waiting-room">{"game code: " + gameCode}</h3>
-                            {JSON.stringify(this.state.users)}
-                            <div className="waiting-room-players"></div>
+                            <div className="waiting-room-players">
+                                <WaitingRoomPlayersTable users={this.state.users} />
+                                </div>
                             <div className="pg-waiting-room-toggle">
                                 <div id="waiting-room-start-countdown-container"
                                      className="waiting-room-start-countdown-container">
@@ -75,6 +76,42 @@ var WaitingRoom = React.createClass({
                     </LobbyContainer>
                 </div>
             </div>
+        );
+    }
+});
+
+var WaitingRoomPlayersTable = React.createClass({
+    render: function() {
+        var users = this.props.users;
+
+        var userRows = [];
+        var usersKeys = Object.keys(users);
+        for (var i=0; i < usersKeys.length; i++) {
+            var userKey = usersKeys[i];
+            var user = users[userKey];
+            if (user !== undefined && user.name != 'root') {
+                userRows.push(<WaitingRoomPlayer key={user.id} user={user}/>);
+            }
+        }
+
+        return (
+            <table className="pg-waiting-room-player-table">
+                <tbody>
+                    {userRows}
+                </tbody>
+            </table>
+        );
+    }
+});
+
+var WaitingRoomPlayer = React.createClass({
+    render: function() {
+        var user = this.props.user;
+        return (
+            <tr className={'pg-waiting-room-player ' + user.color}>
+                <td><div className="player-circle"></div></td>
+                <td><h2 className="player-name">{user.name}</h2></td>
+            </tr>
         );
     }
 });

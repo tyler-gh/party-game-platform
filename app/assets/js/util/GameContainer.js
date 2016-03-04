@@ -39,7 +39,7 @@ GameContainer.prototype.addActionListener = function (listener) {
 GameContainer.prototype.onPreGameMessage = function (data) {
     switch (data.actionType) {
         case "client-joined":
-            this.users[data.client.id] = data.client.name;
+            this.users[data.client.id] = {id: data.client.id, name: data.client.name, color: data.client.color};
             this.userEvent();
             break;
         case "client-left":
