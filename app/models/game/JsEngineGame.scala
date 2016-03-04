@@ -6,6 +6,7 @@ import java.util.function
 import models.Client
 import play.api.libs.json.Json
 import util.FuncTransform._
+import util.PGPLog._
 
 
 class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Game(id, name, gameDef) {
@@ -22,11 +23,19 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
       bindings.put("setNewClientConnectionHandler", getSetNewClientConnectionHandler)
       bindings.put("broadcastAction", getBroadcastAction)
       bindings.put("sendAction", getSendAction)
+      bindings.put("createAction", getCreateAction)
       engine.eval(reader, bindings)
     } finally {
       reader.close()
     }
   })
+
+  def getCreateAction: function.Function[String, String] = {
+    (actionStr: String) => {
+      val action = Json.parse(actionStr).as[PGPAction]
+      Json.toJson(createGameAction(getClient(0).get.clientInfo, action))(GameAction.gameActionWrites).toString()
+    }
+  }
 
   def getBroadcastAction: function.Consumer[String] = {
     (action: String) => Json.parse(action).asOpt[GameAction].foreach(actionObj => {
@@ -38,7 +47,9 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
     (clientsData: String, actionData: String) => (Json.parse(clientsData).asOpt[Seq[Long]], Json.parse(actionData).asOpt[GameAction]) match {
       case (Some(clientTargets),Some(action)) =>
         forEachClient(client => if(clientTargets.contains(client.clientInfo.id)) client.sendAction(action))
-      case _ => // TODO error
+      case _ =>
+        clientsData.printErrLn()
+        actionData.printErrLn()
     }
   }
 

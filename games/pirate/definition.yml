@@ -4,3 +4,4 @@ id: pirate
 description: This is a description of pirate's dice
 js_client_files: [js/client/pirate_client.jsx]
 js_main_client_files: [js/main/pirate_main.jsx]
+js_server_file: js/server/pirate_server.js

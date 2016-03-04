@@ -16,9 +16,11 @@ object GameAction {
 
   case object GAME_STARTED extends Type(3, "game-started")
 
+  case object CLIENT_DROPPED extends Type(4, "client-dropped")
+
   case object UNFORMED extends Type(Int.MaxValue, "")
 
-  val actions = Seq(CLIENT_LEFT, CLIENT_JOINED, GAME_STARTED, UNFORMED)
+  val actions = Seq(CLIENT_LEFT, CLIENT_JOINED, GAME_STARTED, CLIENT_DROPPED, UNFORMED)
 
   def withName(s: String): Type = {
     actions.find(action => action.name.equals(s)).getOrElse(new Type(UNFORMED.id, s))

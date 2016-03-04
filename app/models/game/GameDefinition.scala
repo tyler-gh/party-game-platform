@@ -31,6 +31,7 @@ case class GameDefinitionInfo(id: String, title: String, color: String, descript
 case class GameDefinition(
   info: GameDefinitionInfo,
   jsServerFile: Option[File],
-  jsClientFiles: Option[Seq[File]],
-  jsMainClientFiles: Option[Seq[File]]
+  // these should only be vars for development purposes. There might be a better way to do this ...
+  var jsClientFiles: Option[Seq[File]],
+  var jsMainClientFiles: Option[Seq[File]]
 )

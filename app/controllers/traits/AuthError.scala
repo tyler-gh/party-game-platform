@@ -36,7 +36,7 @@ object AuthError {
     }
 
     override def notAMemberOfGame(): Result = {
-      error(JsString("You are not a member of this game"))
+      error(JsString("You are not a member of a game"))
     }
 
     override def leftGame(): Result = {

@@ -1,6 +1,8 @@
 @(game: String, game_title: String, description: String, game_code:String, css_styles: Option[String], js: Boolean)
 
 @header = {
+    <script src="@routes.Assets.versioned("lib/react/react.js")" type="text/javascript" ></script>
+    <script src="@routes.Assets.versioned("lib/react/react-dom.min.js")" type="text/javascript" ></script>
 @if(css_styles.isDefined) {
     <style>
         @css_styles.get
@@ -17,9 +19,9 @@
         var gameCode = "@game_code";
     </script>
 
-    <script src="@routes.Assets.versioned("js/game.js")" type="text/javascript" ></script>
-
     @if(js) {
         <script src="@routes.GameController.getGameJS()" type="text/javascript"></script>
     }
+    <script src="@routes.Assets.versioned("js/game.js")" type="text/javascript" ></script>
+
 }

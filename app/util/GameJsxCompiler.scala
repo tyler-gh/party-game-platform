@@ -16,6 +16,7 @@ import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.collection.immutable
 import util.FuncTransform._
+import PGPLog._
 
 class GameJsxCompiler {
   private val watcher = FileSystems.getDefault.newWatchService()
@@ -35,7 +36,7 @@ class GameJsxCompiler {
     future.onComplete(result => {
       val jsResult = result.get.asInstanceOf[JsExecutionResult]
       if(jsResult.exitValue != 0) {
-        new String(jsResult.error.toArray, "UTF-8").split("\n").foreach(System.err.println(_: String))
+        new String(jsResult.error.toArray, "UTF-8").printErrLn()
       }
     })
     Await.result(future, timeout.duration)
@@ -69,6 +70,7 @@ class GameJsxCompiler {
         val key = watcher.take()
         key.pollEvents().forEach( (event:WatchEvent[_]) => {
           checkCompile(key.watchable().asInstanceOf[Path].resolve(event.context().asInstanceOf[Path]))
+
         })
         key.reset()
       }

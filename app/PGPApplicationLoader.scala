@@ -16,25 +16,8 @@ import scala.concurrent.Future
 
 class PGPApplicationLoader extends ApplicationLoader {
 
-  def loadGameDefinitions(games: Games): Unit = {
-    new File("games").listFiles().filter(_.isDirectory).foreach(folder => {
-      val gameDef = new Yaml().load(new FileInputStream(new File(folder, "definition.yml"))).asInstanceOf[util.Map[String, AnyRef]]
-
-      games.addGameDefinition(new GameDefinition(new GameDefinitionInfo(
-        gameDef.get("id").asInstanceOf[String],
-        gameDef.get("title").asInstanceOf[String],
-        gameDef.get("color").asInstanceOf[String],
-        gameDef.get("description").asInstanceOf[String]
-      ), Option(gameDef.get("js_server_file")).map(file => new File(folder, file.toString)),
-        Option(gameDef.get("js_client_files")).map(files => files.asInstanceOf[java.util.ArrayList[String]].asScala.map(new File(folder, _))),
-        Option(gameDef.get("js_main_client_files")).map(files => files.asInstanceOf[java.util.ArrayList[String]].asScala.map(new File(folder, _)))
-      ))
-    })
-  }
-
   def load(context: Context) = {
-    val games = new Games()
-    loadGameDefinitions(games)
+    val games = new Games().loadDefinitions()
     val compiler = new GameJsxCompiler()
 
     Future {
@@ -45,6 +28,7 @@ class PGPApplicationLoader extends ApplicationLoader {
     components.applicationLifecycle.addStopHook(() => Future {
       compiler.shutdown()
     })
+
     components.application
   }
 

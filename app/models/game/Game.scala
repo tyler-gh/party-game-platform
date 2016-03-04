@@ -54,6 +54,10 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   }
 
   def clientClosed(client: Client): Unit = {
+    performAction(createGameAction(client.clientInfo, GameAction.CLIENT_DROPPED, None))
+  }
+
+  def clientLeft(client: Client): Unit = {
     performAction(createGameAction(client.clientInfo, GameAction.CLIENT_LEFT, None))
   }
 

@@ -66,9 +66,8 @@ Concat.groups := Seq(
   ),
   "game.js" -> group(Seq(
     "js/util/Api.js",
+    "js/util/GameContainer.js",
     "lib/jquery-1.12.0.js",
-    "lib/react/react.js",
-    "lib/react/react-dom.min.js",
     "js/components/icons.js",
     "js/components/buttons.js",
     "js/components/background_color.js",

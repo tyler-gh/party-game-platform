@@ -1,16 +1,22 @@
 package models.game
 
+import java.io.{FileInputStream, File}
+import java.util
 import java.util.concurrent.ConcurrentHashMap
+
+import org.yaml.snakeyaml.Yaml
 
 import scala.collection.JavaConverters._
 import scala.util.Random
 
 
 class Games {
+
   private val games = new ConcurrentHashMap[String, ConcurrentHashMap[String, Option[Game]]]()
 
   private val gameInstanceIds = new ConcurrentHashMap[String, Long]()
   private val definitions = new ConcurrentHashMap[String, GameDefinition]()
+
   def createGame(gameId: String): Option[Game] = {
     getGameDefinition(gameId).fold[Option[Game]](None)( gameDef =>
       Option(games.get(gameId)).fold[Option[Game]](None) { gameInstances =>
@@ -49,5 +55,47 @@ class Games {
 
   def getGameDefinitionsInfo: Iterable[GameDefinitionInfo] = {
     definitions.values().asScala.map(g => g.info)
+  }
+
+  def refreshDefinitionFiles(): Games = {
+    new File("games").listFiles().filter(_.isDirectory).foreach(implicit folder => {
+      implicit val gameValues = loadYaml(new File(folder, "definition.yml"))
+      getGameDefinition(getMapValue("id").get).foreach(gameDefinition => {
+        gameDefinition.jsClientFiles = getOptionalList("js_client_files")
+        gameDefinition.jsMainClientFiles = getOptionalList("js_main_client_files")
+      })
+    })
+    this
+  }
+
+  def loadDefinitions(): Games = {
+    definitions.synchronized {
+      new File("games").listFiles().filter(_.isDirectory).foreach(implicit folder => {
+        implicit val gameValues = loadYaml(new File(folder, "definition.yml"))
+
+        addGameDefinition(new GameDefinition(new GameDefinitionInfo(
+          getMapValue("id").get,
+          getMapValue("title").get,
+          getMapValue("color").get,
+          getMapValue("description").get
+        ), getMapValue("js_server_file", Some((file:String) => new File(folder, file))),
+          getOptionalList("js_client_files"),
+          getOptionalList("js_main_client_files")
+        ))
+      })
+    }
+    this
+  }
+
+  private def loadYaml(file: File): util.Map[String, AnyRef] = {
+    new Yaml().load(new FileInputStream(file)).asInstanceOf[util.Map[String, AnyRef]]
+  }
+
+  private def getOptionalList(key: String)(implicit map: util.Map[String, AnyRef], folder: File): Option[Seq[File]] = {
+    getMapValue[util.ArrayList[String], Seq[File]](key, Some(_.asScala.map(new File(folder, _))))
+  }
+
+  private def getMapValue[T,R](key: String, transform: Option[T => R] = None)(implicit map: util.Map[String, AnyRef]): Option[R] = {
+    Option(map.get(key)).map(value => transform.fold(value.asInstanceOf[R])(f => f(value.asInstanceOf[T])))
   }
 }

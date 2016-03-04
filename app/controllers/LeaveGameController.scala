@@ -10,6 +10,8 @@ class LeaveGameController(games: Games) extends Controller with CookieAuth[Resul
     auth(games, (game, client) => {
       if(client.clientInfo.id == 0) {
         games.closeGame(game)
+      } else {
+        game.clientLeft(client)
       }
       Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(false))
     })

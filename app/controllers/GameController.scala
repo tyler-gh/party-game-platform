@@ -51,7 +51,7 @@ class GameController(games: Games) extends Controller with CookieAuth[Result] {
 
 
   def getGameJS = Action { implicit request =>
-    auth(games, (game, client) => {
+    auth(games.refreshDefinitionFiles(), (game, client) => {
       client.ifMainElse(game.gameDef.jsMainClientFiles)(game.gameDef.jsClientFiles).map(files => {
         Ok(files.map(file => {
           val source = scala.io.Source.fromFile(file.getAbsolutePath.replace(".jsx", ".js"))
