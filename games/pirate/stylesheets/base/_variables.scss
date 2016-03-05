@@ -1,0 +1,65 @@
+/*------------------------------*/
+/*            Layout            */
+/*------------------------------*/
+$pi-sp:         6px;
+$pi-desk-break: 450px;
+
+
+
+
+/*------------------------------*/
+/*         Color Scheme         */
+/*------------------------------*/
+
+/*---- display screen colors ---*/
+$pi-ds-color-primary:     #003366;
+
+/*-- controller screen colors --*/ 
+$pi-cs-color-primary:     #003366; //TODO: Replace this default hex value depending on the player color choice from the db
+
+/*------  accent colors   ------*/
+$pi-color-white:          #ffffff;
+$pi-color-black:          #000000;
+
+$pi-color-dark-gray:      #2a2a2a;
+$pi-color-medium-gray:    #888888;
+$pi-color-light-gray:     #dbdbdb;
+
+$pi-color-success:        #417505;
+$pi-color-failure:        #D0021B;
+
+
+/*-------  player colors  ------*/
+$pi-color-player-val1:    #4A90E2;
+$pi-color-player-val2:    #7BBC5D;
+$pi-color-player-val3:    #7849A8;
+$pi-color-player-val4:    #6DB191;
+$pi-color-player-val5:    #ECBC3D;
+$pi-color-player-val6:    #D0021B;
+$pi-color-player-val7:    #174881;
+$pi-color-player-val8:    #851C77;
+$pi-color-player-val9:    #DF487D;
+$pi-color-player-val10:   #5594AF;
+$pi-color-player-val11:	  #FF8100;
+$pi-color-player-val12:   #7A858D;
+
+
+
+
+
+/*------------------------------*/
+/*          Typography          */
+/*------------------------------*/
+
+/*--------- Typeface ----------*/
+$pi-body-font:   'Lato-Light', sans-serif; 
+$pi-header-font: 'Lato-Regular', sans-serif;  
+
+/*--------- Font Sizes --------*/
+$pi-desk-size-large:    40px;
+$pi-desk-size-medium:   26px;
+$pi-desk-size-small:    18px;
+
+$pi-mobile-size-large:  34px;
+$pi-mobile-size-medium: 22px;
+$pi-mobile-size-small:  18px;
