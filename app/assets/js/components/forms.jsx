@@ -3,6 +3,20 @@ var LobbyForm = React.createClass({
 	getInitialState: function() {
 		return {value: this.props.instructions};
 	},
+	componentDidUpdate: function() {
+		var errorMessage = $("#pg-lobby-form-error-message");
+
+		if (this.props.hasError == true) {
+			errorMessage.removeClass("pg-lobby-form-error-message-fade-out")
+			errorMessage.addClass("pg-lobby-form-error-message-fade-in");
+			errorMessage.css("visibility", "initial");
+		}
+		else {
+			errorMessage.removeClass("pg-lobby-form-error-message-fade-in");
+			errorMessage.addClass("pg-lobby-form-error-message-fade-out");
+			
+		}
+	},
 	handleChange: function(event) {
 		this.setState({value: event.target.value});
 		if(this.props.handleChange) {
@@ -42,13 +56,16 @@ var LobbyForm = React.createClass({
 	render: function() {
 		var game = this.props.game;
 		var value = this.state.value;
-		
+
 		return (
 			<div className={"pg-lobby-form-" + game}>
 				<div id="pg-lobby-form-persistent-instructions" className={"pg-lobby-form-persistent-instructions"}>
 					{this.props.instructions}
 				</div> 
 				<input id="pg-lobby-form-input" className={"pg-lobby-form-input pg-lobby-form-input-gray"} type="text" value={value} onChange={this.handleChange} onFocus={this.handleFocus} onBlur={this.handleBlur}/>
+				<div id="pg-lobby-form-error-message" className={"pg-lobby-form-error-message"}>
+					{this.props.errorMessage}
+				</div>
 			</div>
 		);
 	}

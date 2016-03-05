@@ -810,12 +810,6 @@ img.large {
   @media (min-width: 450px) {
     .pg-lobby-form-pirate .pg-lobby-form-persistent-instructions {
       height: 24px; } }
-.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-in {
-  animation: formTextFadeIn .25s;
-  opacity: 1; }
-.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-out {
-  animation: formTextFadeOut .25s;
-  opacity: 0; }
 .pg-lobby-form-pirate .pg-lobby-form-input {
   border: none;
   border-bottom: 3px solid #003366;
@@ -831,6 +825,27 @@ img.large {
     outline: 0; }
 .pg-lobby-form-pirate .pg-lobby-form-input-gray {
   color: #888888; }
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-in {
+  animation: persistentInstructionsFadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-pirate .pg-lobby-form-persistent-instructions-fade-out {
+  animation: persistentInstructionsFadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-pirate .pg-lobby-form-error-message {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 12px;
+  color: #D0021B;
+  height: 19.5px;
+  visibility: hidden; }
+  @media (min-width: 450px) {
+    .pg-lobby-form-pirate .pg-lobby-form-error-message {
+      height: 24px; } }
+.pg-lobby-form-pirate .pg-lobby-form-error-message-fade-in {
+  animation: errorMessageFadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-pirate .pg-lobby-form-error-message-fade-out {
+  animation: errorMessageFadeOut .25s;
+  opacity: 0; }
 
 .pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions {
   font-family: "Lato-Regular", sans-serif;
@@ -841,12 +856,6 @@ img.large {
   @media (min-width: 450px) {
     .pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions {
       height: 24px; } }
-.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-in {
-  animation: formTextFadeIn .25s;
-  opacity: 1; }
-.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-out {
-  animation: formTextFadeOut .25s;
-  opacity: 0; }
 .pg-lobby-form-fibbage .pg-lobby-form-input {
   border: none;
   border-bottom: 3px solid #F5A623;
@@ -862,6 +871,27 @@ img.large {
     outline: 0; }
 .pg-lobby-form-fibbage .pg-lobby-form-input-gray {
   color: #888888; }
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-in {
+  animation: persistentInstructionsFadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-fibbage .pg-lobby-form-persistent-instructions-fade-out {
+  animation: persistentInstructionsFadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-fibbage .pg-lobby-form-error-message {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 12px;
+  color: #D0021B;
+  height: 19.5px;
+  visibility: hidden; }
+  @media (min-width: 450px) {
+    .pg-lobby-form-fibbage .pg-lobby-form-error-message {
+      height: 24px; } }
+.pg-lobby-form-fibbage .pg-lobby-form-error-message-fade-in {
+  animation: errorMessageFadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-fibbage .pg-lobby-form-error-message-fade-out {
+  animation: errorMessageFadeOut .25s;
+  opacity: 0; }
 
 .pg-lobby-form-mafia .pg-lobby-form-persistent-instructions {
   font-family: "Lato-Regular", sans-serif;
@@ -872,12 +902,6 @@ img.large {
   @media (min-width: 450px) {
     .pg-lobby-form-mafia .pg-lobby-form-persistent-instructions {
       height: 24px; } }
-.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-in {
-  animation: formTextFadeIn .25s;
-  opacity: 1; }
-.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-out {
-  animation: formTextFadeOut .25s;
-  opacity: 0; }
 .pg-lobby-form-mafia .pg-lobby-form-input {
   border: none;
   border-bottom: 3px solid #D0021B;
@@ -893,8 +917,29 @@ img.large {
     outline: 0; }
 .pg-lobby-form-mafia .pg-lobby-form-input-gray {
   color: #888888; }
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-in {
+  animation: persistentInstructionsFadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-mafia .pg-lobby-form-persistent-instructions-fade-out {
+  animation: persistentInstructionsFadeOut .25s;
+  opacity: 0; }
+.pg-lobby-form-mafia .pg-lobby-form-error-message {
+  font-family: "Lato-Regular", sans-serif;
+  font-size: 12px;
+  color: #D0021B;
+  height: 19.5px;
+  visibility: hidden; }
+  @media (min-width: 450px) {
+    .pg-lobby-form-mafia .pg-lobby-form-error-message {
+      height: 24px; } }
+.pg-lobby-form-mafia .pg-lobby-form-error-message-fade-in {
+  animation: errorMessageFadeIn .25s;
+  opacity: 1; }
+.pg-lobby-form-mafia .pg-lobby-form-error-message-fade-out {
+  animation: errorMessageFadeOut .25s;
+  opacity: 0; }
 
-@keyframes formTextFadeIn {
+@keyframes persistentInstructionsFadeIn {
   0% {
     transform: translate3d(0px, 10px, 0px);
     opacity: 0; }
@@ -902,12 +947,28 @@ img.large {
     transform: translate3d(0px, 0px, 0px);
     animation-timing-function: ease-in;
     opacity: 1; } }
-@keyframes formTextFadeOut {
+@keyframes persistentInstructionsFadeOut {
   0% {
     transform: translate3d(0px, 0px, 0px);
     opacity: 1; }
   100% {
     transform: translate3d(0px, 10px, 0px);
+    animation-timing-function: ease-out;
+    opacity: 0; } }
+@keyframes errorMessageFadeIn {
+  0% {
+    transform: translate3d(0px, -10px, 0px);
+    opacity: 0; }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+    animation-timing-function: ease-in;
+    opacity: 1; } }
+@keyframes errorMessageFadeOut {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1; }
+  100% {
+    transform: translate3d(0px, -10px, 0px);
     animation-timing-function: ease-out;
     opacity: 0; } }
 /*------------------------------*/

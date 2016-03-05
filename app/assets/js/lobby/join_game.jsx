@@ -1,9 +1,11 @@
 var GameCodeJoin = React.createClass({
     getInitialState: function () {
-        return {gameCode: ''};
+        return {gameCode: '',
+    			badCode: false};
     },
     handleGameCodeChange: function (e) {
-        this.setState({gameCode: e.target.value});
+        this.setState({gameCode: e.target.value,
+        			   badCode: false});
     },
     renderGameUserJoin: function() {
     	ReactDOM.render(<GameUserJoin game={this.props.game} gameCode={this.state.gameCode} title={this.props.title} description={this.props.description}/>, document.getElementById('pg-app'));
@@ -24,7 +26,10 @@ var GameCodeJoin = React.createClass({
 
 		var clickJoin = function() {
 			// TODO hit api to see if game actually exists
-			if(this.state.gameCode) {
+			if(this.state.gameCode == 'badcode') { //Placeholder until I can actually hit the api
+				this.setState({badCode: true});
+			}
+			else if(this.state.gameCode) {
 				$('#enter-game-code-content').css('animation','exitLeft .2s ease-in');
 				var component = this;
 				setTimeout(function() {
@@ -42,7 +47,7 @@ var GameCodeJoin = React.createClass({
 					<div className="container">
 						<h1 className="create-game">join game</h1>
 						<div id="enter-game-code-content">
-							<LobbyForm game={game} handleChange={this.handleGameCodeChange} instructions="enter game code"/>
+							<LobbyForm game={game} handleChange={this.handleGameCodeChange} instructions="enter game code" errorMessage="sorry, there's no game with this code" hasError={this.state.badCode}/>
 							<LobbyButton game={game} text={"submit"} handleClick={clickJoin} />
 							<LobbyButton game={game} hollow="color" text={"cancel"} handleClick={clickCancel} />
 						</div>
