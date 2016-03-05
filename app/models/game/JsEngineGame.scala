@@ -2,10 +2,11 @@ package models.game
 
 import java.io.FileReader
 import java.util.function
+import java.util.function.{BiConsumer, Consumer}
 
 import models.Client
 import play.api.libs.json.Json
-import util.FuncTransform._
+
 import util.PGPLog._
 
 
@@ -31,25 +32,35 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
   })
 
   def getCreateAction: function.Function[String, String] = {
-    (actionStr: String) => {
-      val action = Json.parse(actionStr).as[PGPAction]
-      Json.toJson(createGameAction(getClient(0).get.clientInfo, action))(GameAction.gameActionWrites).toString()
+    new function.Function[String, String] {
+      override def apply(actionStr: String): String = {
+        val action = Json.parse(actionStr).as[PGPAction]
+        Json.toJson(createGameAction(getClient(0).get.clientInfo, action))(GameAction.gameActionWrites).toString()
+      }
     }
   }
 
   def getBroadcastAction: function.Consumer[String] = {
-    (action: String) => Json.parse(action).asOpt[GameAction].foreach(actionObj => {
-      forEachClient(client => client.sendAction(actionObj))
-    })
+    new Consumer[String] {
+      override def accept(action: String): Unit = {
+        Json.parse(action).asOpt[GameAction].foreach(actionObj => {
+          forEachClient(client => client.sendAction(actionObj))
+        })
+      }
+    }
   }
 
   def getSendAction: function.BiConsumer[String, String] = {
-    (clientsData: String, actionData: String) => (Json.parse(clientsData).asOpt[Seq[Long]], Json.parse(actionData).asOpt[GameAction]) match {
-      case (Some(clientTargets),Some(action)) =>
-        forEachClient(client => if(clientTargets.contains(client.clientInfo.id)) client.sendAction(action))
-      case _ =>
-        clientsData.printErrLn()
-        actionData.printErrLn()
+    new BiConsumer[String, String] {
+      override def accept(clientsData: String, actionData: String): Unit = {
+        (Json.parse(clientsData).asOpt[Seq[Long]], Json.parse(actionData).asOpt[GameAction]) match {
+          case (Some(clientTargets), Some(action)) =>
+            forEachClient(client => if (clientTargets.contains(client.clientInfo.id)) client.sendAction(action))
+          case _ =>
+            clientsData.printErrLn()
+            actionData.printErrLn()
+        }
+      }
     }
   }
 

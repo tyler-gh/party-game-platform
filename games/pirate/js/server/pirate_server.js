@@ -157,7 +157,7 @@ var takeTurn = function (action) {
             case "bet":
                 if ((state.bid.dieNumber >= action.data.bid.dieNumber && state.bid.dieCount >= action.data.bid.dieCount) ||
                     state.bid.dieCount > action.data.bid.dieCount ||
-                    action.data.bid.dieNumber < 1 ||
+                    action.data.bid.dieNumber <= 1 ||
                     action.data.bid.dieNumber > 6
                 ) {
                     sendActionToClient(action.client.id, makeAction({actionType: "invalid-bid"}));
@@ -187,8 +187,6 @@ setActionHandler(function (actionStr) {
 
     switch (action.actionType) {
         case "client-joined":
-            doBroadcast(action);
-            break;
         case "client-dropped":
             doBroadcast(action);
             break;
