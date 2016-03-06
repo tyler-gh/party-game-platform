@@ -14,8 +14,12 @@ libraryDependencies ++= Seq(
   cache,
   ws,
   specs2 % Test,
-  "org.yaml" % "snakeyaml" % "1.16"
+  "org.yaml" % "snakeyaml" % "1.16",
+  "com.typesafe" %% "jse" % "1.1.2",
+  "org.slf4j" % "slf4j-simple" % "1.7.6"
 )
+
+
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 resolvers += Resolver.sonatypeRepo("releases")
@@ -37,6 +41,7 @@ Concat.groups := Seq(
     "js/components/icons.js",
     "js/components/buttons.js",
     "js/components/background_color.js",
+    "js/components/color_picker.js",
     "js/lobby/components/lobby_container.js",
     "js/lobby/components/lobby_countdown_timer.js",
     "js/components/forms.js",
@@ -56,17 +61,18 @@ Concat.groups := Seq(
     "js/components/buttons.js",
     "js/lobby/components/lobby_countdown_timer.js",
     "js/components/forms.js",
+    "js/components/color_picker.js",
     "js/msc/styleguide.js")
   ),
   "game.js" -> group(Seq(
     "js/util/Api.js",
+    "js/util/GameContainer.js",
     "lib/jquery-1.12.0.js",
-    "lib/react/react.js",
-    "lib/react/react-dom.min.js",
     "js/components/icons.js",
     "js/components/buttons.js",
     "js/components/background_color.js",
     "js/components/game_banner.js",
+    "js/components/color_picker.js",
     "js/lobby/components/lobby_container.js",
     "js/lobby/components/lobby_countdown_timer.js",
     "js/lobby/waiting_room.js",

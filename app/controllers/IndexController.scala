@@ -7,9 +7,9 @@ import play.api.mvc._
 class IndexController(games: Games) extends Controller with CookieAuth[Result] {
 
   def index = Action { implicit request =>
-    auth({ (game, client) =>
+    auth(games, { (game, client) =>
       Redirect(routes.GameController.get)
-    }, games)(request, new FlatAuthError[Result](Ok(views.html.index("PGP"))))
+    })(request, new FlatAuthError[Result](Ok(views.html.index("PGP"))))
   }
 
 }

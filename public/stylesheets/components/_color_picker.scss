@@ -1,0 +1,261 @@
+@import '../base/variables';
+
+.pg-lobby-color-picker {
+	height: $pg-sp*25;
+	margin: 0;
+
+	@media (min-width: $pg-desk-break) {
+		height: $pg-sp*30;
+	}
+
+	.pg-lobby-color-picker-header {
+		color: $pg-color-medium-gray;
+		font-size: $pg-mobile-size-medium * .75;
+		margin-bottom: $pg-sp;
+		text-align: left;
+
+		@media (min-width: $pg-desk-break) {
+			font-size: $pg-mobile-size-medium;
+			margin-bottom: $pg-sp*2;
+		}
+	}
+}
+
+/*-------------color picker buttons-----------------*/
+@mixin pg-lobby-color-picker-button($color) {
+	background-color: transparent;
+	border: $pg-sp*.6 solid $color;
+	border-radius: 50%;
+	margin: 0 auto $pg-sp*2;
+    cursor: pointer;
+	
+	width: $pg-sp*3.75;
+	height: $pg-sp*3.75;
+
+	@media (min-width: $pg-desk-break) {
+		width: $pg-sp*4.25;
+		height: $pg-sp*4.25;
+		border: $pg-sp*.7 solid $color;
+	}
+
+	.pg-lobby-color-picker-button-splash {
+		@include select-effect-positioning();
+		background-color: $color;
+  		width: $pg-sp*5;
+        height: $pg-sp*5;
+
+        animation: colorButtonSplashSmall .1s ease-in;
+
+        @media (min-width: $pg-desk-break) {
+        	width: $pg-sp*6;
+        	height: $pg-sp*6;
+        	animation: colorButtonSplashLarge .1s ease-in;
+        }
+	}
+
+	.pg-lobby-color-picker-button-splash-out {
+		@include select-effect-positioning();
+		background-color: $color;
+  		width: 0;
+        height: 0;
+        animation: colorButtonSplashOutSmall .1s ease-out;
+
+        @media (min-width: $pg-desk-break) {
+        	animation: colorButtonSplashOutLarge .1s ease-out;
+        }
+	}
+
+	.pg-lobby-color-picker-button-highlight {
+		@include select-effect-positioning();
+		border: 2px solid $color;
+  		width: $pg-sp*6;
+        height: $pg-sp*6;
+        animation: colorButtonHighlightSmall .1s ease-in;
+
+        @media (min-width: $pg-desk-break) {
+        	border: 3px solid $color;
+        	width: $pg-sp*7;
+        	height: $pg-sp*7;
+        	animation: colorButtonHighlightLarge .1s ease-in;
+        }
+	}
+
+	.pg-lobby-color-picker-button-highlight-out {
+		@include select-effect-positioning();
+		border: 2px solid $color;
+  		width: 0;
+        height: 0;
+        opacity: 0;
+        animation: colorButtonHighlightOutSmall .1s ease-out;
+
+        @media (min-width: $pg-desk-break) {
+        	border: 3px solid $color;
+        	animation: colorButtonHighlightOutLarge .1s ease-out;
+        }
+	}
+
+}
+
+@mixin select-effect-positioning() {
+	border-radius: 50%;
+	position: absolute;
+	top: 50%; 
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-ms-transform: translateX(-50%, -50%);
+	-webkit-transform: translateX(-50%, -50%);
+}
+
+.pg-lobby-color-picker-button-container {
+	width: 16.6%;
+	float: left;
+}
+
+.pg-lobby-color-picker-button-color1 {
+	@include pg-lobby-color-picker-button($pg-color-player-val1);
+}
+
+.pg-lobby-color-picker-button-color2 {
+	@include pg-lobby-color-picker-button($pg-color-player-val2);
+}
+
+.pg-lobby-color-picker-button-color2 {
+	@include pg-lobby-color-picker-button($pg-color-player-val2);
+}
+
+.pg-lobby-color-picker-button-color3 {
+	@include pg-lobby-color-picker-button($pg-color-player-val3);
+}
+
+.pg-lobby-color-picker-button-color4 {
+	@include pg-lobby-color-picker-button($pg-color-player-val4);
+}
+
+.pg-lobby-color-picker-button-color5 {
+	@include pg-lobby-color-picker-button($pg-color-player-val5);
+}
+
+.pg-lobby-color-picker-button-color6 {
+	@include pg-lobby-color-picker-button($pg-color-player-val6);
+}
+
+.pg-lobby-color-picker-button-color7 {
+	@include pg-lobby-color-picker-button($pg-color-player-val7);
+}
+
+.pg-lobby-color-picker-button-color8 {
+	@include pg-lobby-color-picker-button($pg-color-player-val8);
+}
+
+.pg-lobby-color-picker-button-color9 {
+	@include pg-lobby-color-picker-button($pg-color-player-val9);
+}
+
+.pg-lobby-color-picker-button-color10 {
+	@include pg-lobby-color-picker-button($pg-color-player-val10);
+}
+
+.pg-lobby-color-picker-button-color11 {
+	@include pg-lobby-color-picker-button($pg-color-player-val11);
+}
+
+.pg-lobby-color-picker-button-color12 {
+	@include pg-lobby-color-picker-button($pg-color-player-val12);
+}
+
+@keyframes colorButtonSplashSmall {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: $pg-sp*5;
+        height: $pg-sp*5;
+    }
+}
+
+@keyframes colorButtonSplashLarge {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: $pg-sp*5;
+        height: $pg-sp*5;
+    }
+}
+
+@keyframes colorButtonSplashOutSmall {
+    0% {
+        width: $pg-sp*5;
+        height: $pg-sp*5;
+    }
+    100% {
+        width: 0;
+        height: 0;
+    }
+}
+
+@keyframes colorButtonSplashOutLarge {
+    0% {
+        width: $pg-sp*5;
+        height: $pg-sp*5;
+    }
+    100% {
+        width: 0;
+        height: 0;
+    }
+}
+
+
+
+
+
+@keyframes colorButtonHighlightSmall {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: $pg-sp*6;
+        height: $pg-sp*6;
+    }
+}
+
+@keyframes colorButtonHighlightLarge {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: $pg-sp*6;
+        height: $pg-sp*6;
+    }
+}
+
+@keyframes colorButtonHighlightOutSmall {
+    0% {
+        width: $pg-sp*6;
+        height: $pg-sp*6;
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes colorButtonHighlightOutLarge {
+    0% {
+        width: $pg-sp*6;
+        height: $pg-sp*6;
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+}
+

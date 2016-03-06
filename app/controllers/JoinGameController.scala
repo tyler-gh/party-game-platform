@@ -10,6 +10,7 @@ import play.api.mvc._
 class JoinGameController(games: Games) extends Controller {
 
   case class JoinGameParams(userName: String, gameId: String, gameInstanceId: String, color: String)
+
   implicit val joinGameReads: Reads[JoinGameParams] = (
     (JsPath \ "user_name").read[String] and
       (JsPath \ "game_id").read[String] and
@@ -18,7 +19,7 @@ class JoinGameController(games: Games) extends Controller {
     ) (JoinGameParams.apply _)
 
   def error(e: JsValue): Result = {
-    BadRequest(Json.obj(("error",e)))
+    BadRequest(Json.obj(("error", e)))
   }
 
   def join(userNameOpt: Option[String], gameIdOpt: Option[String], gameInstanceIdOpt: Option[String], colorOpt: Option[String]) = Action { implicit request =>
@@ -58,8 +59,8 @@ class JoinGameController(games: Games) extends Controller {
 
     (gameInsCookieOpt, gameIdCookieOpt, userIdCookieOpt) match {
       case (Some(gameInstanceIdCookie), Some(gameIdCookie), Some(userIdCookie)) =>
-        if(gameIdCookie.value.equals(gameId) && gameInstanceIdCookie.value.equals(gameInstanceId)) {
-          games.getGame(gameId, gameInstanceId).fold(newClient()){ game =>
+        if (gameIdCookie.value.equals(gameId) && gameInstanceIdCookie.value.equals(gameInstanceId)) {
+          games.getGame(gameId, gameInstanceId).fold(newClient()) { game =>
             game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(true)))
           }
         } else {

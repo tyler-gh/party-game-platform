@@ -1,8 +1,27 @@
+var LobbyColorPickerDemo = React.createClass({
+    render: function() {
+	    return (
+	    	<div>
+	    		<div className={"pg-styleguide-subhead"}>lobby color picker</div>
+	    		<ColorPicker game={"pirate"} color="color"/>
+	        </div>
+	    );
+    }
+});
+
+ReactDOM.render(
+    <LobbyColorPickerDemo />,
+    document.getElementById('pg-styleguide-lobby-color_picker')
+);
+
+
 var LobbyCountdownDemo = React.createClass({
     render: function() {
 	    return (
 	    	<div>
 	    		<div className={"pg-styleguide-subhead"}>lobby countdown timer</div>
+	    		<br/>
+	    		<br/>
 	        	<LobbyCountdownTimer game={"pirate"}/>
 	        </div>
 	    );

@@ -54,6 +54,10 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   }
 
   def clientClosed(client: Client): Unit = {
+    performAction(createGameAction(client.clientInfo, GameAction.CLIENT_DROPPED, None))
+  }
+
+  def clientLeft(client: Client): Unit = {
     performAction(createGameAction(client.clientInfo, GameAction.CLIENT_LEFT, None))
   }
 
@@ -75,6 +79,7 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
 
   /// TODO remove games from games list when they have no clients
   def endGame(): Unit = {
+    // TODO maybe set ended flag
     forEachClient(client => client.close())
     clients.clear()
   }

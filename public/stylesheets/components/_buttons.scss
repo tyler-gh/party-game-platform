@@ -148,21 +148,21 @@ button:focus {
 
 /*-------------color picker buttons-----------------*/
 @mixin pg-lobby-color-picker-button($color) {
-	float: left;
 	position: relative;
-	margin: $pg-sp*2;
-	@media (min-width: $pg-desk-break) { 
-		margin: $pg-sp*3;	
-	}
-	overflow: hidden;
 
 	background-color: transparent;
 
-	border: $pg-sp solid $color;
+	border: $pg-sp/1.5 solid $color;
 	border-radius: 50%;
 
 	width: $pg-sp*5;
 	height: $pg-sp*5;
+
+}
+
+.pg-lobby-color-picker-button-container {
+	width: 16.6%;
+	float: left;
 }
 
 .pg-lobby-color-picker-button-color1 {
