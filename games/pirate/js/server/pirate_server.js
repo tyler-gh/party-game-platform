@@ -1,4 +1,3 @@
-//noinspection JSUnresolvedFunction
 var broadcastActions = [];
 
 var state = {
@@ -181,8 +180,7 @@ var takeTurn = function (action) {
     }
 };
 
-//noinspection JSUnresolvedFunction
-setActionHandler(function (actionStr) {
+var actionHandler = function (actionStr) {
     var action = JSON.parse(actionStr);
 
     switch (action.actionType) {
@@ -204,10 +202,9 @@ setActionHandler(function (actionStr) {
             takeTurn(action);
             break;
     }
-});
+};
 
-//noinspection JSUnresolvedFunction
-setNewClientConnectionHandler(function (clientStr) {
+var newClientConnectionHandler = function (clientStr) {
     var client = JSON.parse(clientStr);
     if (!state.users[state.userIndexes[client.id]]) {
         addUser(client);
@@ -222,7 +219,7 @@ setNewClientConnectionHandler(function (clientStr) {
             promptCurrentTurn();
         }
     }
-});
+};
 
 function sendActionToClient(id, action) {
     sendActionToClients([id], action);
@@ -247,3 +244,9 @@ var copy = function (obj) {
     return JSON.parse(JSON.stringify(obj));
 };
 
+
+//noinspection JSUnresolvedFunction
+setActionHandler("actionHandler");
+
+//noinspection JSUnresolvedFunction
+setNewClientConnectionHandler("newClientConnectionHandler");
