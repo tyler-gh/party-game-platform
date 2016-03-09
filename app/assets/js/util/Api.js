@@ -19,6 +19,16 @@ API.prototype.joinGame = function(userName, color, gameId, gameInstanceId, succe
     this.postJson("/join_game", {"user_name": userName, "color": color, "game_id": gameId, "game_instance_id":gameInstanceId}, success);
 };
 
+API.prototype.gameExists = function(gameId, gameInstanceId, success, error) {
+    $.ajax({
+        url: "/game/exists",
+        type: "GET", 
+        data: {"game_id": gameId, "game_instance_id": gameInstanceId},
+        success: success,
+        error: error
+    });
+};
+
 API.prototype.leaveGame = function(success) {
     this.postJson("/leave_game",{}, success);
 };
