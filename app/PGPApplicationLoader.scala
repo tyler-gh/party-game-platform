@@ -2,7 +2,7 @@
 import java.io.{FileInputStream, File}
 import java.util
 
-import _root_.util.GameJsxCompiler
+import _root_.util.GameAssetsCompiler
 import controllers._
 import models.game.{GameDefinitionInfo, GameDefinition, Games}
 import org.yaml.snakeyaml.Yaml
@@ -12,13 +12,15 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.collection.JavaConverters._
 import router.Routes
 
+
 import scala.concurrent.Future
 
 class PGPApplicationLoader extends ApplicationLoader {
 
+  val games = new Games().loadDefinitions()
+  val compiler = new GameAssetsCompiler(games.getGameDefinitions)
+
   def load(context: Context) = {
-    val games = new Games().loadDefinitions()
-    val compiler = new GameJsxCompiler()
 
     Future {
       compiler()

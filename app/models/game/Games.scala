@@ -18,7 +18,7 @@ class Games {
   private val definitions = new ConcurrentHashMap[String, GameDefinition]()
 
   def createGame(gameId: String): Option[Game] = {
-    getGameDefinition(gameId).fold[Option[Game]](None)( gameDef =>
+    getGameDefinition(gameId).fold[Option[Game]](None)(gameDef =>
       Option(games.get(gameId)).fold[Option[Game]](None) { gameInstances =>
         val instanceId = gameInstanceIds.get(gameId)
         val idHex = instanceId.toHexString
@@ -57,6 +57,10 @@ class Games {
     definitions.values().asScala.map(g => g.info)
   }
 
+  def getGameDefinitions: Seq[GameDefinition] = {
+    definitions.values().asScala.toSeq
+  }
+
   def refreshDefinitionFiles(): Games = {
     new File("games").listFiles().filter(_.isDirectory).foreach(implicit folder => {
       implicit val gameValues = loadYaml(new File(folder, "definition.yml"))
@@ -73,14 +77,17 @@ class Games {
       new File("games").listFiles().filter(_.isDirectory).foreach(implicit folder => {
         implicit val gameValues = loadYaml(new File(folder, "definition.yml"))
 
-        addGameDefinition(new GameDefinition(new GameDefinitionInfo(
-          getMapValue("id").get,
-          getMapValue("title").get,
-          getMapValue("color").get,
-          getMapValue("description").get
-        ), getMapValue("js_server_file", Some((file:String) => new File(folder, file))),
+        addGameDefinition(new GameDefinition(
+          folder,
+          new GameDefinitionInfo(
+            getMapValue("id").get,
+            getMapValue("title").get,
+            getMapValue("color").get,
+            getMapValue("description").get
+          ), getMapValue("js_server_file", Some((file: String) => new File(folder, file))),
           getOptionalList("js_client_files"),
-          getOptionalList("js_main_client_files")
+          getOptionalList("js_main_client_files"),
+          getOptionalList("css_client_files")
         ))
       })
     }
@@ -95,7 +102,7 @@ class Games {
     getMapValue[util.ArrayList[String], Seq[File]](key, Some(_.asScala.map(new File(folder, _))))
   }
 
-  private def getMapValue[T,R](key: String, transform: Option[T => R] = None)(implicit map: util.Map[String, AnyRef]): Option[R] = {
+  private def getMapValue[T, R](key: String, transform: Option[T => R] = None)(implicit map: util.Map[String, AnyRef]): Option[R] = {
     Option(map.get(key)).map(value => transform.fold(value.asInstanceOf[R])(f => f(value.asInstanceOf[T])))
   }
 }

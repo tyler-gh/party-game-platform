@@ -1,5 +1,7 @@
 package controllers
 
+import java.io.File
+
 import controllers.traits.{FlatAuthError, CookieAuth}
 import models.game.Games
 import play.api.libs.json._
@@ -45,7 +47,7 @@ class GameController(games: Games) extends Controller with CookieAuth[Result] {
   def get = Action { implicit request =>
     auth(games, (game, client) => {
       val gameInfo = game.gameDef.info
-      Ok(views.html.game(gameInfo.id, gameInfo.title, gameInfo.description, game.id, None, game.gameDef.jsClientFiles.fold(false)(_ => true)))
+      Ok(views.html.game(gameInfo.id, gameInfo.title, gameInfo.description, game.id, game.gameDef.jsClientFiles.isDefined, game.gameDef.jsClientFiles.isDefined))
     })(request, new FlatAuthError[Result](Redirect(routes.IndexController.index)))
   }
 
@@ -53,12 +55,24 @@ class GameController(games: Games) extends Controller with CookieAuth[Result] {
   def getGameJS = Action { implicit request =>
     auth(games.refreshDefinitionFiles(), (game, client) => {
       client.ifMainElse(game.gameDef.jsMainClientFiles)(game.gameDef.jsClientFiles).map(files => {
-        Ok(files.map(file => {
-          val source = scala.io.Source.fromFile(file.getAbsolutePath.replace(".jsx", ".js"))
-          try source.getLines mkString "\n" finally source.close()
-        }).reduceLeft(_ + _))
+        implicit val appendix = (".jsx", ".js")
+        Ok(files.map(gameAssetToString).mkString("\n")).withHeaders(CONTENT_TYPE -> "application/js")
       }).getOrElse(BadRequest(Json.obj(("error", JsString("Game has no client js")))))
     })
+  }
+
+  def getGameCss = Action { implicit request =>
+    auth(games.refreshDefinitionFiles(), (game, client) => {
+      game.gameDef.cssClientFiles.map(files => {
+        implicit val appendix = (".scss", ".css")
+        Ok(files.map(gameAssetToString).mkString("\n").replaceAll("\"_\"",client.clientInfo.colorCode)).withHeaders(CONTENT_TYPE -> "text/css")
+      }).getOrElse(BadRequest(Json.obj(("error", JsString("Game has no client css")))))
+    })
+  }
+
+  def gameAssetToString(file: File)(implicit rep:(String,String)) : String = {
+    val source = scala.io.Source.fromFile(file.getAbsolutePath.replace(rep._1, rep._2))
+    try source.getLines mkString "\n" finally source.close()
   }
 
 

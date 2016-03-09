@@ -29,9 +29,11 @@ object GameDefinitionInfo {
 case class GameDefinitionInfo(id: String, title: String, color: String, description: String)
 
 case class GameDefinition(
+  path: File,
   info: GameDefinitionInfo,
   jsServerFile: Option[File],
   // these should only be vars for development purposes. There might be a better way to do this ...
   var jsClientFiles: Option[Seq[File]],
-  var jsMainClientFiles: Option[Seq[File]]
+  var jsMainClientFiles: Option[Seq[File]],
+  var cssClientFiles: Option[Seq[File]]
 )

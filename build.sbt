@@ -11,6 +11,7 @@ libraryDependencies ++= Seq(
   jdbc,
   "org.postgresql" % "postgresql" % "9.3-1103-jdbc4",
   "com.typesafe.play" %% "anorm" % "2.4.0",
+  "io.bit3" % "jsass" % "4.1.0",
   cache,
   ws,
   specs2 % Test,

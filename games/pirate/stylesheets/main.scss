@@ -1,3 +1,8 @@
 @import 'base/reset';
 @import 'base/variables';
 @import 'base/typography';
+
+// TODO: remove, this is just to demonstrate the server replacing $pi-cs-color-primary with the correct color
+body {
+  background-color: $pi-cs-color-primary;
+}
