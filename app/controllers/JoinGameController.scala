@@ -7,7 +7,7 @@ import play.api.libs.functional.syntax._
 import play.api.mvc._
 
 
-class JoinGameController(games: Games) extends Controller {
+class JoinGameController(implicit games: Games) extends Controller {
 
   case class JoinGameParams(userName: String, gameId: String, gameInstanceId: String, color: String)
 

@@ -1,0 +1,12 @@
+title: style
+color: "#ffffff"
+id: style
+description: ''
+js_main_client_files: [
+  "../lobby/js/components/icons.jsx",
+  "../lobby/js/components/buttons.jsx",
+  "../lobby/js/lobby/components/lobby_countdown_timer.jsx",
+  "../lobby/js/components/forms.jsx",
+  "../lobby/js/components/color_picker.jsx",
+  "js/styleguide.jsx"
+]

@@ -1,10 +1,13 @@
 package models
 
+import java.util.concurrent.atomic.AtomicBoolean
+
 import models.game.{PGPAction, GameAction, Game}
 import play.api.libs.iteratee.{Enumerator, Iteratee}
 
 class Client(game: Game, val clientInfo: ClientInfo) {
 
+  private val closed = new AtomicBoolean(true)
   private var socketOpt:Option[ClientSocket] = None
 
   final def ifMainElse[T](ifMain: => T)(f: => T): T =
@@ -12,25 +15,31 @@ class Client(game: Game, val clientInfo: ClientInfo) {
 
 
   def sendAction(action: GameAction): Unit = {
-    this.synchronized {
-      socketOpt.foreach(socket => socket.send(action))
+    if(!closed.get()) {
+      this.synchronized {
+        socketOpt.foreach(socket => socket.send(action))
+      }
     }
   }
 
   def close(): Unit = {
+    closed.set(true)
     this.synchronized {
       socketOpt.foreach(socket => socket.close())
     }
   }
 
   def connection(): (Iteratee[PGPAction, _], Enumerator[PGPAction]) = {
-    this.synchronized {
+    val refs= this.synchronized {
       socketOpt = Some(new ClientSocket(this, game, socketClosed))
       socketOpt.get.refs
     }
+    closed.set(false)
+    refs
   }
 
   private def socketClosed() {
+    closed.set(true)
     socketOpt = None
   }
 

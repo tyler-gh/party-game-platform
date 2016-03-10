@@ -4,10 +4,15 @@
 
 # Home page
 GET     /                                       controllers.IndexController.index
+GET     /js                                     controllers.IndexController.lobbyJs
+GET     /css                                    controllers.IndexController.lobbyCss
 GET     /game                                   controllers.GameController.get
 GET     /game/js                                controllers.GameController.getGameJS
+GET     /game/css                               controllers.GameController.getGameCss
 GET     /game/exists                            controllers.GameController.gameExists(game_id: Option[String], game_instance_id: Option[String])
+GET     /game/js/main                           controllers.IndexController.gameJs
 GET     /styleguide								controllers.StyleGuideController.get
+GET     /styleguide/js						    controllers.StyleGuideController.styleJs
 GET     /ws                                     controllers.SocketController.socket
 GET     /game_definition                        controllers.GameDefinitionsController.getDefinitions
 POST    /create_game                            controllers.CreateGameController.create(game_id: Option[String])

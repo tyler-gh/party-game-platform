@@ -1,13 +1,13 @@
 package controllers
 
-import controllers.traits.{FlatAuthError, CookieAuth}
+import controllers.traits.{GameAssetController, FlatAuthError, CookieAuth}
 import models.game.Games
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.mvc._
 
 
-class GameController(games: Games) extends Controller with CookieAuth[Result] {
+class GameController(implicit games: Games) extends Controller with CookieAuth[Result] with GameAssetController {
 
   case class GameExistsParams(gameId: String, gameInstanceId: String)
 
@@ -43,23 +43,31 @@ class GameController(games: Games) extends Controller with CookieAuth[Result] {
   }
 
   def get = Action { implicit request =>
-    auth(games, (game, client) => {
+    implicit val authError = new FlatAuthError[Result](Redirect(routes.IndexController.index()))
+    auth((game, client) => {
       val gameInfo = game.gameDef.info
-      Ok(views.html.game(gameInfo.id, gameInfo.title, gameInfo.description, game.id, None, game.gameDef.jsClientFiles.fold(false)(_ => true)))
-    })(request, new FlatAuthError[Result](Redirect(routes.IndexController.index)))
-  }
-
-
-  def getGameJS = Action { implicit request =>
-    auth(games.refreshDefinitionFiles(), (game, client) => {
-      client.ifMainElse(game.gameDef.jsMainClientFiles)(game.gameDef.jsClientFiles).map(files => {
-        Ok(files.map(file => {
-          val source = scala.io.Source.fromFile(file.getAbsolutePath.replace(".jsx", ".js"))
-          try source.getLines mkString "\n" finally source.close()
-        }).reduceLeft(_ + _))
-      }).getOrElse(BadRequest(Json.obj(("error", JsString("Game has no client js")))))
+      Ok(views.html.game(gameInfo.id, gameInfo.title, gameInfo.description, game.id, game.gameDef.jsClientFiles.isDefined, game.gameDef.jsClientFiles.isDefined))
     })
   }
 
 
+  def getGameJS = Action { implicit request =>
+    auth((game, client) => {
+      assetsSeqToString(client.ifMainElse(game.gameDef.outputJsMainClientFiles)(game.gameDef.outputJsClientFiles)).map { assets =>
+        Ok(assets).as("text/javascript")
+      } getOrElse {
+        BadRequest(Json.obj(("error", JsString("Game has no client js"))))
+      }
+    })
+  }
+
+  def getGameCss = Action { implicit request =>
+    auth((game, client) => {
+      assetsSeqToString(game.gameDef.outputCssClientFiles).map { assets =>
+        Ok(assets.replaceAll("\"_\"",client.clientInfo.colorCode)).as("text/css")
+      } getOrElse {
+        BadRequest(Json.obj(("error", JsString("Game has no client css"))))
+      }
+    })
+  }
 }

@@ -1,0 +1,34 @@
+title: lobby
+color: "#ffffff"
+id: lobby
+description: ''
+css_client_files: [stylesheets/main.scss]
+js_client_files: [
+  "js/util/Api.js",
+  "js/util/GameContainer.js",
+  "js/components/icons.jsx",
+  "js/components/buttons.jsx",
+  "js/components/background_color.jsx",
+  "js/components/game_banner.jsx",
+  "js/components/color_picker.jsx",
+  "js/lobby/components/lobby_container.jsx",
+  "js/lobby/components/lobby_countdown_timer.jsx",
+  "js/lobby/waiting_room.jsx",
+  "js/game/game.jsx"
+]
+js_main_client_files: [
+  "js/util/Api.js",
+  "js/components/icons.jsx",
+  "js/components/buttons.jsx",
+  "js/components/background_color.jsx",
+  "js/components/color_picker.jsx",
+  "js/lobby/components/lobby_container.jsx",
+  "js/lobby/components/lobby_countdown_timer.jsx",
+  "js/components/forms.jsx",
+  "js/components/game_banner.jsx",
+  "js/lobby/game_lobby.jsx",
+  "js/lobby/create_game.jsx",
+  "js/lobby/join_game.jsx",
+  "js/lobby/waiting_room.jsx",
+  "js/lobby/game_select.jsx"
+]

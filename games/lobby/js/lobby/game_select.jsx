@@ -39,13 +39,11 @@ var GameChoice = React.createClass({
     }
 });
 
-var api = new Rest(window.location.hostname, window.location.port);
-
 var GameSelectMenu = React.createClass({
     getInitialState: function () {
         var me = this;
         // TODO this should probably be passed in through props
-        api.all("game_definition").get(function(games) {
+        Api.getGameDefinitions(function(games) {
             me.setState({"games":games});
         });
         return {"games": []};

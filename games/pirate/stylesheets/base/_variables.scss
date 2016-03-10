@@ -15,7 +15,7 @@ $pi-desk-break: 450px;
 $pi-ds-color-primary:     #003366;
 
 /*-- controller screen colors --*/ 
-$pi-cs-color-primary:     #003366; //TODO: Replace this default hex value depending on the player color choice from the db
+$pi-cs-color-primary:         '_'; //TODO: this is a temporary hack, in place until we find a better solution
 
 /*------  accent colors   ------*/
 $pi-color-white:          #ffffff;
