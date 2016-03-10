@@ -42,6 +42,13 @@ class Games {
   }
 
   def getGameDefinitionsInfo: Iterable[GameDefinitionInfo] = {
+    addGameDefinition(new GameDefinition(new GameDefinitionInfo(
+      "1",
+      "title",
+      "color",
+     "description"
+    ),null))
+
     definitions.values().asScala.map(g => g.info)
   }
 

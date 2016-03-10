@@ -12,6 +12,7 @@ import router.Routes
 class PGPApplicationLoader extends ApplicationLoader {
 
   def loadGameDefinitions(games: Games): Unit = {
+
     new File(getClass.getResource("./games").getPath).listFiles().foreach(file => {
       val gameDef = new Yaml().load(new FileInputStream(new File(file, "definition.yml"))).asInstanceOf[util.Map[String, AnyRef]]
 
@@ -28,6 +29,12 @@ class PGPApplicationLoader extends ApplicationLoader {
   def load(context: Context) = {
     val games = new Games()
     loadGameDefinitions(games)
+    games.addGameDefinition(new GameDefinition(new GameDefinitionInfo(
+      "2",
+      "titl3e",
+      "colo3r",
+      "descr3iption"
+    ),null))
     new PGPComponents(context, games).application
   }
 }

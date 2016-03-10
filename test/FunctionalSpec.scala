@@ -1,6 +1,14 @@
+import java.util.logging.Level
+
+import com.sun.xml.internal.ws.api.Component
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.logging.{LogType, LoggingPreferences}
+import org.openqa.selenium.remote.{DesiredCapabilities, CapabilityType}
+import org.openqa.selenium.support.ui.{ExpectedConditions, WebDriverWait}
 import org.specs2.mutable._
 import org.specs2.runner._
 import org.junit.runner._
+import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.libs.ws.WSResponse
 import play.api.mvc
 
@@ -22,9 +30,16 @@ import scala.concurrent.Future
 @RunWith(classOf[JUnitRunner])
 class FunctionalSpec extends Specification {
 
+  /*System.setProperty("webdriver.chrome.driver", "c:/chromedriver_win32/chromedriver.exe");
+  System.setProperty("webdriver.chrome.logfile", "c:/chromedriver_win32/logFile.log");
+  var capabilities = DesiredCapabilities.chrome();
+  var loggingprefs = new LoggingPreferences();
+  loggingprefs.enable(LogType.BROWSER, Level.ALL);
+  capabilities.setCapability(CapabilityType.LOGGING_PREFS, loggingprefs);*/
+
   //TEST ID 1
-//  "Given correct URL in browser" should {
-//    "Go to the home page" in new WithBrowser(port = 9000) {
+//  "Given correct URL in browserFunctionalSpec.scala:28" should {
+   // "Go to the home page" in new WithBrowser(port = 9000) {
 //      val home = FunctionalTests.testID_1()
 //
 //      status(home) must equalTo(OK)
@@ -41,15 +56,22 @@ class FunctionalSpec extends Specification {
 //        response.body must contain("moo57h")
 ////        val home = browser.goTo("/")
 ////
-////        browser.wait(1000)
+////        browser.wrunait(1000)
 ////        browser.$("#pg-app").get(0) must equalTo("moo")
 //
 //      }
 //    }
-  "Given correct URL in browser" should {
-    "Go to the home page" in new WithBrowser(port = 9000) {
-      var home = browser.goTo("/")
+  //"Given correct URL in browser" should {
 
+  //  "Go to the home page" in new WithBrowser(webDriver = new ChromeDriver(capabilities), port = 9000) {
+   //   val application = new GuiceApplicationBuilder().build
+
+   //   var home = browser.goTo("/")
+
+
+
+   //   var wait1 = new WebDriverWait(webDriver, 50);
+   //   wait1.until(ExpectedConditions.titleContains("moo"));
        //home = browser.goTo("/")
         //var home1 = route(FakeRequest(GET, "/assets/js/index.js")).get
         //var home2 = route(FakeRequest(GET, "/")).get
@@ -67,10 +89,16 @@ class FunctionalSpec extends Specification {
         //        browser.wait(1000)
         //browser.$("#pg-app").get(0) must equalTo("moo")
       //browser.pageSource() must contain("moo")
+      //WebDriverWait _wait = new WebDriverWait(_driver, new TimeSpan(0, 1, 0));
 
-      browser.pageSource() must contain("moo")
-    }
-  }
+     // _wait.Until(d => d.FindElement(By.Id("Id_Your_UIElement"));
+
+      //webDriver.wait(10000)
+      //webDriver.wait { driver.title.downcase.start_with? "cheese!" }
+     // browser.pageSource() must contain("moo")
+     // browser.
+   // }
+ // }
 
 
 }
