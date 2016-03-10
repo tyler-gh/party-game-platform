@@ -1,11 +1,10 @@
 @(game: String, game_title: String, description: String, game_code:String, css_styles: Boolean, js: Boolean)
 
 @header = {
+    <link rel="stylesheet" type="text/css" href="@routes.IndexController.lobbyCss()">
 @if(css_styles) {
     <link rel="stylesheet" type="text/css" href="@routes.GameController.getGameCss()">
 }
-    <script src="@routes.Assets.versioned("lib/react/react.js")" type="text/javascript" ></script>
-    <script src="@routes.Assets.versioned("lib/react/react-dom.min.js")" type="text/javascript" ></script>
 }
 
 @main(game_title)(Some(header)) {
@@ -20,6 +19,5 @@
     @if(js) {
         <script src="@routes.GameController.getGameJS()" type="text/javascript"></script>
     }
-    <script src="@routes.Assets.versioned("js/game.js")" type="text/javascript" ></script>
-
+    <script src="@routes.IndexController.gameJs()" type="text/javascript"></script>
 }

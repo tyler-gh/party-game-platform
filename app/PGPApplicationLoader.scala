@@ -1,15 +1,10 @@
 
-import java.io.{FileInputStream, File}
-import java.util
-
 import _root_.util.GameAssetsCompiler
 import controllers._
-import models.game.{GameDefinitionInfo, GameDefinition, Games}
-import org.yaml.snakeyaml.Yaml
+import models.game.Games
 import play.api._
 import play.api.ApplicationLoader.Context
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.collection.JavaConverters._
 import router.Routes
 
 
@@ -17,16 +12,17 @@ import scala.concurrent.Future
 
 class PGPApplicationLoader extends ApplicationLoader {
 
-  val games = new Games().loadDefinitions()
-  val compiler = new GameAssetsCompiler(games.getGameDefinitions)
+  implicit val games = new Games().loadDefinitions()
+  val compiler = new GameAssetsCompiler(games)
 
   def load(context: Context) = {
+    compiler.initialCompilation()
 
     Future {
       compiler()
     }
 
-    val components = new PGPComponents(context, games)
+    val components = new PGPComponents(context)
     components.applicationLifecycle.addStopHook(() => Future {
       compiler.shutdown()
     })
@@ -36,16 +32,16 @@ class PGPApplicationLoader extends ApplicationLoader {
 
 }
 
-class PGPComponents(context: Context, games: Games) extends BuiltInComponentsFromContext(context) {
+class PGPComponents(context: Context)(implicit games: Games) extends BuiltInComponentsFromContext(context) {
 
-  lazy val app = new IndexController(games)
-  lazy val createGame = new CreateGameController(games)
+  lazy val app = new IndexController()
+  lazy val createGame = new CreateGameController()
   lazy val database = new DatabaseController()
-  lazy val game = new GameController(games)
-  lazy val gameDefinition = new GameDefinitionsController(games)
-  lazy val joinGame = new JoinGameController(games)
-  lazy val leaveGame = new LeaveGameController(games)
-  lazy val socket = new SocketController(games)
+  lazy val game = new GameController()
+  lazy val gameDefinition = new GameDefinitionsController()
+  lazy val joinGame = new JoinGameController()
+  lazy val leaveGame = new LeaveGameController()
+  lazy val socket = new SocketController()
   lazy val style = new StyleGuideController()
   lazy val webSocketTest = new WebSocketTestController()
 

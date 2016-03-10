@@ -5,9 +5,9 @@ import models.ClientCookie
 import models.game.Games
 import play.api.mvc._
 
-class LeaveGameController(games: Games) extends Controller with CookieAuth[Result] {
+class LeaveGameController(implicit games: Games) extends Controller with CookieAuth[Result] {
   def leave = Action { implicit request =>
-    auth(games, (game, client) => {
+    auth((game, client) => {
       if(client.clientInfo.id == 0) {
         games.closeGame(game)
       } else {

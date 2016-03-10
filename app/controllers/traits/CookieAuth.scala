@@ -6,7 +6,7 @@ import play.api.mvc._
 
 trait CookieAuth[T] {
 
-  def auth(games: Games, authorized: (Game, Client) => T)(implicit request: RequestHeader, authError: AuthError[T]):T = {
+  def auth(authorized: (Game, Client) => T)(implicit request: RequestHeader, authError: AuthError[T], games: Games):T = {
     val cookies = request.cookies
 
     val activeGameCookieOpt = ClientCookie.ACTIVE_GAME.getCookie(cookies)

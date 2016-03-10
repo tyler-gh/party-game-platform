@@ -2,10 +2,6 @@
 
     "use strict";
 
-    var endsWith = function (s1, s2) {
-        return s1.length >= s2.length && s1.substr(s1.length - s2.length) == s2;
-    };
-
     var fs = require("fs"),
         jsx = require('react-tools');
 
@@ -13,23 +9,26 @@
         if (e) throw e;
     }
 
-    JSON.parse(process.argv[2]).forEach(function (inputFile) {
-        var result, outputFile;
+    var inputFiles = JSON.parse(process.argv[2]);
+    var outputFiles = JSON.parse(process.argv[3]);
+    if (inputFiles.length !== outputFiles.length) {
+        throwIfErr("Input files length must match output files length")
+    }
+    for (var i = 0; i < inputFiles.length; i++) {
+        var inputFile = inputFiles[i];
+
         var fileContents = fs.readFileSync(inputFile, "utf8");
 
-        var jsx = require('react-tools');
-
         var compileResult = jsx.transform(fileContents, {harmony: true});
-        result = compileResult.code;
+        var result = compileResult.code;
         if (result === undefined) {
             result = compileResult;
         }
-        outputFile = inputFile.replace(".jsx", ".js");
 
-        fs.writeFile(outputFile, result, "utf8", function (e) {
+        fs.writeFile(outputFiles[i], result, "utf8", function (e) {
             throwIfErr(e);
         });
 
-    });
+    }
 })();
 

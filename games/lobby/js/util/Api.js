@@ -11,6 +11,16 @@ API.prototype.postJson = function(url, obj, success) {
    }).then(success);
 };
 
+API.prototype.get = function(url, success, error) {
+    $.ajax(url, {
+        type : 'GET'
+    }).done(success).fail(error);
+};
+
+API.prototype.getGameDefinitions = function(success, error) {
+    this.get("/game_definition", success, error);
+};
+
 API.prototype.createGame = function(gameId, success) {
     this.postJson("/create_game", {'game_id': gameId}, success);
 };

@@ -1,15 +1,13 @@
 package controllers
 
-import java.io.File
-
-import controllers.traits.{FlatAuthError, CookieAuth}
+import controllers.traits.{GameAssetController, FlatAuthError, CookieAuth}
 import models.game.Games
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.mvc._
 
 
-class GameController(games: Games) extends Controller with CookieAuth[Result] {
+class GameController(implicit games: Games) extends Controller with CookieAuth[Result] with GameAssetController {
 
   case class GameExistsParams(gameId: String, gameInstanceId: String)
 
@@ -45,35 +43,31 @@ class GameController(games: Games) extends Controller with CookieAuth[Result] {
   }
 
   def get = Action { implicit request =>
-    auth(games, (game, client) => {
+    implicit val authError = new FlatAuthError[Result](Redirect(routes.IndexController.index()))
+    auth((game, client) => {
       val gameInfo = game.gameDef.info
       Ok(views.html.game(gameInfo.id, gameInfo.title, gameInfo.description, game.id, game.gameDef.jsClientFiles.isDefined, game.gameDef.jsClientFiles.isDefined))
-    })(request, new FlatAuthError[Result](Redirect(routes.IndexController.index)))
+    })
   }
 
 
   def getGameJS = Action { implicit request =>
-    auth(games.refreshDefinitionFiles(), (game, client) => {
-      client.ifMainElse(game.gameDef.jsMainClientFiles)(game.gameDef.jsClientFiles).map(files => {
-        implicit val appendix = (".jsx", ".js")
-        Ok(files.map(gameAssetToString).mkString("\n")).withHeaders(CONTENT_TYPE -> "application/js")
-      }).getOrElse(BadRequest(Json.obj(("error", JsString("Game has no client js")))))
+    auth((game, client) => {
+      assetsSeqToString(client.ifMainElse(game.gameDef.outputJsMainClientFiles)(game.gameDef.outputJsClientFiles)).map { assets =>
+        Ok(assets).as("text/javascript")
+      } getOrElse {
+        BadRequest(Json.obj(("error", JsString("Game has no client js"))))
+      }
     })
   }
 
   def getGameCss = Action { implicit request =>
-    auth(games.refreshDefinitionFiles(), (game, client) => {
-      game.gameDef.cssClientFiles.map(files => {
-        implicit val appendix = (".scss", ".css")
-        Ok(files.map(gameAssetToString).mkString("\n").replaceAll("\"_\"",client.clientInfo.colorCode)).withHeaders(CONTENT_TYPE -> "text/css")
-      }).getOrElse(BadRequest(Json.obj(("error", JsString("Game has no client css")))))
+    auth((game, client) => {
+      assetsSeqToString(game.gameDef.outputCssClientFiles).map { assets =>
+        Ok(assets.replaceAll("\"_\"",client.clientInfo.colorCode)).as("text/css")
+      } getOrElse {
+        BadRequest(Json.obj(("error", JsString("Game has no client css"))))
+      }
     })
   }
-
-  def gameAssetToString(file: File)(implicit rep:(String,String)) : String = {
-    val source = scala.io.Source.fromFile(file.getAbsolutePath.replace(rep._1, rep._2))
-    try source.getLines mkString "\n" finally source.close()
-  }
-
-
 }

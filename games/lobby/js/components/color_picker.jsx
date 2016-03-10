@@ -9,7 +9,9 @@ var ColorPicker = React.createClass({
 	
 	onChildClick: function(button_id, selected) {
 		if (selected) {
-			this.props.onColorPicked(button_id);
+			if(this.props.onColorPicked) {
+				this.props.onColorPicked(button_id);
+			}
 
 	        $("#cp-button-" + this.state.selected_id + "-splash").addClass('pg-lobby-color-picker-button-splash-out');
   			$("#cp-button-" + this.state.selected_id + "-highlight").addClass('pg-lobby-color-picker-button-highlight-out');

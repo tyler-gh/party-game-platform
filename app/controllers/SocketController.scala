@@ -8,10 +8,10 @@ import play.api.mvc._
 import scala.concurrent.Future
 
 
-class SocketController(games: Games) extends CookieAuth[Future[Either[Result, (Iteratee[PGPAction, _], Enumerator[PGPAction], () => Unit)]]] with WsConnect[PGPAction]{
+class SocketController(implicit games: Games) extends CookieAuth[Future[Either[Result, (Iteratee[PGPAction, _], Enumerator[PGPAction], () => Unit)]]] with WsConnect[PGPAction]{
 
   def socket = tryAccept { implicit request =>
-    auth(games, { (game, client) =>
+    auth({ (game, client) =>
       Future.successful({
         val connection = client.connection()
         Right((connection._1, connection._2, () => {
