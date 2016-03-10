@@ -3,7 +3,8 @@ var WaitingRoom = React.createClass({
         var gameContainer = new GameContainer(Api, document.getElementById('pg-app'));
         gameContainer.addUserListener(this.onUserUpdate);
         gameContainer.connect();
-        return {users: {}, startButtonState: "start"};
+
+        return {users: {}, startButtonState: "start", countdownTime: "5", intervalTimer: null};
     },
     onUserUpdate: function(users) {
         this.setState({users: users});
@@ -28,6 +29,7 @@ var WaitingRoom = React.createClass({
             countdownContainer.addClass("countdown-enter");
             startButtonContainer.addClass("button-slide-right");
 
+            this.refs['countdown-timer'].startTimer();
         }
         else if (this.state.startButtonState == "cancel") {
             this.setState({startButtonState: "start"});
@@ -36,11 +38,9 @@ var WaitingRoom = React.createClass({
             startButtonContainer.removeClass("button-slide-right");
 
             countdownContainer.addClass("countdown-leave");
-            startButtonContainer.addClass("button-slide-left")
-        }
+            startButtonContainer.addClass("button-slide-left");
 
-        if (window.gameStart) {
-            Api.socketSend("ws", JSON.stringify({actionType: "start-game"}));
+            this.refs['countdown-timer'].cancelTimer();
         }
     },
     render: function () {
@@ -48,6 +48,12 @@ var WaitingRoom = React.createClass({
         var title = this.props.title;
         var description = this.props.description;
         var gameCode = this.props.gameCode;
+
+        var callback = function() {
+            if (window.gameStart) {
+                    Api.socketSend("ws", JSON.stringify({actionType: "start-game"}));
+            }
+        }
 
         return (
             <div>
@@ -63,7 +69,7 @@ var WaitingRoom = React.createClass({
                             <div className="pg-waiting-room-toggle">
                                 <div id="waiting-room-start-countdown-container"
                                      className="waiting-room-start-countdown-container">
-                                    <LobbyCountdownTimer game={game}/>
+                                    <LobbyCountdownTimer ref="countdown-timer" game={game} seconds={5} callback={callback}/>
                                 </div>
                                 <div id="waiting-room-start-button-container"
                                      className="waiting-room-start-button-container">
