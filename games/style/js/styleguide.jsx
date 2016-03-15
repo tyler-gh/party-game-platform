@@ -1,3 +1,22 @@
+var LobbyLoadingSpinnerDemo = React.createClass({
+    render: function() {
+	    return (
+	    	<div>
+	    		<div className={"pg-styleguide-lobby-loading_spinner-container"}>
+		    		<div className={"pg-styleguide-subhead"}>lobby loading spinner</div>
+		    		<LobbyLoadingSpinner game={"fibbage"}/>
+	    		</div>
+	        </div>
+	    );
+    }
+});
+
+ReactDOM.render(
+    <LobbyLoadingSpinnerDemo />,
+    document.getElementById('pg-styleguide-lobby-loading_spinner')
+);
+
+
 var LobbyColorPickerDemo = React.createClass({
     render: function() {
 	    return (
