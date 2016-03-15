@@ -1,9 +1,11 @@
 var LobbyColorPickerDemo = React.createClass({
     render: function() {
 	    return (
-	    	<div>
-	    		<div className={"pg-styleguide-subhead"}>lobby color picker</div>
-	    		<ColorPicker game={"pirate"} color="color"/>
+	    	<div className={"pg-styleguide-color-picker"}>
+	    		<div className={"pg-styleguide-color-picker-container"}>
+		    		<div className={"pg-styleguide-subhead"}>lobby color picker</div>
+		    		<ColorPicker game={"pirate"} color="color"/>
+	    		</div>
 	        </div>
 	    );
     }
