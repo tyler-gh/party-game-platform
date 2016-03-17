@@ -23,9 +23,9 @@ import PGPLog._
 
 class GameAssetsCompiler(games: Games) {
 
-  implicit val context = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(((games.getGameDefinitions.size + 2) * 1.5).asInstanceOf[Int]))
+  private implicit lazy val context = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(((games.getGameDefinitions.size + 2) * 1.5).asInstanceOf[Int]))
 
-  private val watchers: Seq[GameWatcher] =
+  private lazy val watchers: Seq[GameWatcher] =
     games.getGameDefinitions.map(gameDef => new GameWatcher(gameDef)) :+
       new GameWatcher(games.style) :+
       new GameWatcher(games.lobby)
@@ -105,31 +105,53 @@ sealed class GameWatcher(gameDef: GameDefinition)(implicit context: ExecutionCon
     }
   }
 
-  def initialCompilation(): Unit = {
-    new File(gameDef.path, "build").mkdir()
-
-    Files.walkFileTree(gameDef.path.toPath, new SimpleFileVisitor[Path] {
+  private def walkPathFiles(path: Path, consumer: Path => Unit, dirConsumer: Option[Path => Unit] = None): Unit = {
+    Files.walkFileTree(path, new SimpleFileVisitor[Path] {
       override def visitFile(file: Path, attrs: BasicFileAttributes): FileVisitResult = {
-        checkCompile(file)
+        consumer(file)
         FileVisitResult.CONTINUE
       }
 
       override def preVisitDirectory(dir: Path, attrs: BasicFileAttributes): FileVisitResult = {
-        if (!dir.getFileName.toString.equals("build")) {
-          dir.toAbsolutePath.register(watcher, ENTRY_MODIFY)
-        }
+        dirConsumer.foreach(_ (dir))
         FileVisitResult.CONTINUE
       }
     })
+  }
+
+  private def walkLobbyFiles(files: Option[Seq[File]], consumer: String => Unit) {
+    files.foreach(files => files.map(_.toString).filter(_.startsWith("games/lobby/")).foreach(consumer))
+  }
+
+  private def recompile(): Unit = {
+    walkPathFiles(gameDef.path.toPath, path => {
+      if (!path.toAbsolutePath.toString.endsWith("definition.yml")) {
+        checkCompile(path)
+      }
+    })
+    def compileShared(files: Option[Seq[File]]): Unit = {
+      walkLobbyFiles(files, lobbyFile => checkCompile(new File(lobbyFile).toPath))
+    }
+    compileShared(gameDef.jsMainClientFiles)
+    compileShared(gameDef.jsClientFiles)
+    compileShared(gameDef.cssClientFiles)
+  }
+
+  def initialCompilation(): Unit = {
+    new File(gameDef.path, "build").mkdir()
+    walkPathFiles(gameDef.path.toPath, checkCompile, Some(dir => {
+      if (!dir.getFileName.toString.equals("build")) {
+        dir.toAbsolutePath.register(watcher, ENTRY_MODIFY)
+      }
+    }))
 
     def compileShared(files: Option[Seq[File]]): Unit = {
-      files.foreach(files => files.map(_.toString).filter(_.startsWith("games/lobby/")).foreach({ lobbyFile =>
+      walkLobbyFiles(files, { lobbyFile =>
         val file = new File(lobbyFile).toPath
         checkCompile(file)
         file.getParent.toAbsolutePath.register(watcher, ENTRY_MODIFY)
-      }))
+      })
     }
-
     compileShared(gameDef.jsMainClientFiles)
     compileShared(gameDef.jsClientFiles)
     compileShared(gameDef.cssClientFiles)
@@ -146,6 +168,7 @@ sealed class GameWatcher(gameDef: GameDefinition)(implicit context: ExecutionCon
     if (p.endsWith("definition.yml")) {
       println("Reloading game definition")
       GameDefinition(gameDef)
+      recompile()
     } else if (!p.contains("/build/")) {
       val shouldCompile = ((containsPath(gameDef.jsClientFiles, p) || containsPath(gameDef.jsMainClientFiles, p)) && (p.endsWith(".jsx") || p.endsWith(".js"))) ||
         ((p.endsWith(".scss") || p.endsWith(".css")) && gameDef.cssClientFiles.isDefined)

@@ -9,8 +9,9 @@ import scala.util.Random
 
 class Games {
 
+  /// Remove Option[Game]
   private val games = new ConcurrentHashMap[String, ConcurrentHashMap[String, Option[Game]]]()
-
+  /// change game instance ids
   private val gameInstanceIds = new ConcurrentHashMap[String, Long]()
   private val definitions = new ConcurrentHashMap[String, GameDefinition]()
   val style = GameDefinition(new File("games/style"))
@@ -35,6 +36,7 @@ class Games {
 
   def closeGame(game: Game) {
     game.endGame()
+    // memory leak
     Option(games.get(game.gameDef.info.id)).foreach(_.put(game.id, None))
   }
 
