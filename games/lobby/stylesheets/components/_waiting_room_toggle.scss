@@ -132,7 +132,7 @@ table.pg-waiting-room-player-table {
 
 
 
-@keyframes countdownEnter {
+@-webkit-keyframes countdownEnter {
 	0% {
 		width: 0%;
         opacity: 0;
@@ -143,7 +143,7 @@ table.pg-waiting-room-player-table {
     }
 }
 
-@keyframes countdownLeave {
+@-webkit-keyframes countdownLeave {
 	0% {
 		width: 50%;
         opacity: 1;
@@ -154,7 +154,7 @@ table.pg-waiting-room-player-table {
     }
 }
 
-@keyframes buttonSlideRight {
+@-webkit-keyframes buttonSlideRight {
 	0% {
         width: 100%;
     }
@@ -163,7 +163,7 @@ table.pg-waiting-room-player-table {
     }
 }
 
-@keyframes buttonSlideLeft {
+@-webkit-keyframes buttonSlideLeft {
 	0% {
         width: 50%;
     }

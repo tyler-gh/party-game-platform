@@ -85,7 +85,7 @@
 	@include pg-lobby-form($pg-color-mafia);
 }
 
-@keyframes persistentInstructionsFadeIn {
+@-webkit-keyframes persistentInstructionsFadeIn {
 	0% {
         transform: translate3d(0px, 10px, 0px);
         opacity: 0;
@@ -97,7 +97,7 @@
     }
 }
 
-@keyframes persistentInstructionsFadeOut {
+@-webkit-keyframes persistentInstructionsFadeOut {
 	0% {
         transform: translate3d(0px, 0px, 0px);
         opacity: 1;
@@ -109,7 +109,7 @@
     }
 }
 
-@keyframes errorMessageFadeIn {
+@-webkit-keyframes errorMessageFadeIn {
 	0% {
         transform: translate3d(0px, -10px, 0px);
         opacity: 0;
@@ -121,7 +121,7 @@
     }
 }
 
-@keyframes errorMessageFadeOut {
+@-webkit-keyframes errorMessageFadeOut {
 	0% {
         transform: translate3d(0px, 0px, 0px);
         opacity: 1;

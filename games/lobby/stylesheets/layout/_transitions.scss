@@ -1,6 +1,6 @@
 @import '../base/variables';
 
-@keyframes enterLeft {
+@-webkit-keyframes enterLeft {
     0% {
         transform: translateX(100%);
         -ms-transform: translateX(100%);
@@ -13,7 +13,7 @@
     }
 }
 
-@keyframes exitLeft {
+@-webkit-keyframes exitLeft {
     0% {
         transform: translateX(0%);
         -ms-transform: translateX(0%);
@@ -26,7 +26,7 @@
     }
 }
 
-@keyframes enterRight {
+@-webkit-keyframes enterRight {
     0% {
         transform: translateX(-100%);
         -ms-transform: translateX(-100%);
@@ -39,7 +39,7 @@
     }
 }
 
-@keyframes exitRight {
+@-webkit-keyframes exitRight {
     0% {
         transform: translateX(0%);
         -ms-transform: translateX(0%);
@@ -52,7 +52,7 @@
     }
 }
 
-@keyframes enterBanner {
+@-webkit-keyframes enterBanner {
     0% {
         transform: translateY(-200px);
         -ms-transform: translateY(-200px);
@@ -70,7 +70,7 @@
     }
 }
 
-@keyframes exitBanner {
+@-webkit-keyframes exitBanner {
     0% {
         transform: translateY(0);
         -ms-transform: translateY(0);

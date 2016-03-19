@@ -1,11 +1,11 @@
 @import '../base/variables';
 
 .pg-lobby-color-picker {
-	height: $pg-sp*25;
-	margin: 0;
+	height: $pg-sp*17;
+    margin-bottom: 15%;
 
 	@media (min-width: $pg-desk-break) {
-		height: $pg-sp*30;
+		margin-bottom: $pg-sp * 7; 
 	}
 
 	.pg-lobby-color-picker-header {
@@ -102,8 +102,8 @@
 	top: 50%; 
 	left: 50%;
 	transform: translate(-50%,-50%);
-	-ms-transform: translateX(-50%, -50%);
-	-webkit-transform: translateX(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
 }
 
 .pg-lobby-color-picker-button-container {
@@ -163,7 +163,7 @@
 	@include pg-lobby-color-picker-button($pg-color-player-val12);
 }
 
-@keyframes colorButtonSplashSmall {
+@-webkit-keyframes colorButtonSplashSmall {
     0% {
         width: 0;
         height: 0;
@@ -174,7 +174,7 @@
     }
 }
 
-@keyframes colorButtonSplashLarge {
+@-webkit-keyframes colorButtonSplashLarge {
     0% {
         width: 0;
         height: 0;
@@ -185,7 +185,7 @@
     }
 }
 
-@keyframes colorButtonSplashOutSmall {
+@-webkit-keyframes colorButtonSplashOutSmall {
     0% {
         width: $pg-sp*5;
         height: $pg-sp*5;
@@ -196,7 +196,7 @@
     }
 }
 
-@keyframes colorButtonSplashOutLarge {
+@-webkit-keyframes colorButtonSplashOutLarge {
     0% {
         width: $pg-sp*5;
         height: $pg-sp*5;
@@ -211,7 +211,7 @@
 
 
 
-@keyframes colorButtonHighlightSmall {
+@-webkit-keyframes colorButtonHighlightSmall {
     0% {
         width: 0;
         height: 0;
@@ -222,7 +222,7 @@
     }
 }
 
-@keyframes colorButtonHighlightLarge {
+@-webkit-keyframes colorButtonHighlightLarge {
     0% {
         width: 0;
         height: 0;
@@ -233,7 +233,7 @@
     }
 }
 
-@keyframes colorButtonHighlightOutSmall {
+@-webkit-keyframes colorButtonHighlightOutSmall {
     0% {
         width: $pg-sp*6;
         height: $pg-sp*6;
@@ -246,7 +246,7 @@
     }
 }
 
-@keyframes colorButtonHighlightOutLarge {
+@-webkit-keyframes colorButtonHighlightOutLarge {
     0% {
         width: $pg-sp*6;
         height: $pg-sp*6;
