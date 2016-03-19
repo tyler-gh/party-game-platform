@@ -105,15 +105,15 @@ var lieAction = function (action) {
     clearBid();
 
     user.numberOfDie--;
-    broadcastLostDie();
+    broadcastLostDie(user);
+
+    generateDie();
+    broadcastDie();
 
     if (checkWinner()) {
         state.finished = true;
         return;
     }
-
-    generateDie();
-    broadcastDie();
 
     state.currentUserIndex = state.userIndexes[user.id] - 1;
     advanceUser();

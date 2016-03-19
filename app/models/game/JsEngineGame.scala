@@ -16,6 +16,11 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
   private var actionHandler: Option[String] = None
   private var newClientConnectionHandler: Option[String] = None
   private val engine = GameScriptEngine.getNewEngine
+
+  //LUKE's hacky fix. not stable, not working fully.
+  //It will grab the last file defined in defintion.yml
+  //It will connect the handlers correctly, but the different files don't see each other and so were stuck
+
   val jsServerFile = gameDef.jsServerFiles.head
 
   jsServerFile.map(file => new FileReader(file)).foreach(reader => {
