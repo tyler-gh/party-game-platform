@@ -58,7 +58,7 @@ case class GameDefinition(
   def getOutputPath(path: String): String = {
     val basePath = this.path.getParentFile.getAbsolutePath
     val folderPath = path.substring(basePath.length)
-    val filePath = folderPath.substring(folderPath.indexOf('/'))
+    val filePath = folderPath.substring(folderPath.indexOf(File.separator))
     this.path.getAbsolutePath + "/build" + replaceOutputExtension(filePath)
   }
 
