@@ -16,8 +16,9 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
   private var actionHandler: Option[String] = None
   private var newClientConnectionHandler: Option[String] = None
   private val engine = GameScriptEngine.getNewEngine
+  val jsServerFile = gameDef.jsServerFiles.head
 
-  gameDef.jsServerFile.map(file => new FileReader(file)).foreach(reader => {
+  jsServerFile.map(file => new FileReader(file)).foreach(reader => {
     try {
       val bindings = engine.createBindings()
       // TODO error handler

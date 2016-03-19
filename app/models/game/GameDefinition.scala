@@ -36,7 +36,7 @@ case class GameDefinitionInfo(id: String, title: String, color: String, descript
 case class GameDefinition(
   path: File,
   info: GameDefinitionInfo,
-  jsServerFile: Option[File],
+  var jsServerFiles: Option[Seq[File]],
   // these should only be vars for development purposes. There might be a better way to do this ...
   var jsClientFiles: Option[Seq[File]],
   var jsMainClientFiles: Option[Seq[File]],
@@ -59,7 +59,7 @@ case class GameDefinition(
     val basePath = this.path.getParentFile.getAbsolutePath
     val folderPath = path.substring(basePath.length)
     val filePath = folderPath.substring(folderPath.indexOf(File.separator))
-    this.path.getAbsolutePath + "/build" + replaceOutputExtension(filePath)
+    this.path.getAbsolutePath + File.separator + "build" + replaceOutputExtension(filePath)
   }
 
   private def replaceOutputExtension(path: String):String = {
@@ -80,6 +80,7 @@ object GameDefinition {
     gameDefinition.synchronized {
       implicit val folder = gameDefinition.path
       implicit val gameValues = loadYaml(new File(gameDefinition.path, "definition.yml"))
+      gameDefinition.jsServerFiles = getOptionalList("js_server_files")
       gameDefinition.jsClientFiles = getOptionalList("js_client_files")
       gameDefinition.jsMainClientFiles = getOptionalList("js_main_client_files")
       gameDefinition.cssClientFiles = getOptionalList("css_client_files")
@@ -95,7 +96,8 @@ object GameDefinition {
         getMapValue("title").get,
         getMapValue("color").get,
         getMapValue("description").get
-      ), getMapValue("js_server_file", Some((file: String) => new File(folder, file))),
+      ),
+      getOptionalList("js_server_files"),
       getOptionalList("js_client_files"),
       getOptionalList("js_main_client_files"),
       getOptionalList("css_client_files")

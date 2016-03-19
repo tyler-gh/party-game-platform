@@ -11,4 +11,7 @@ js_client_files: [
   js/client/pirate_client.jsx
 ]
 js_main_client_files: [js/main/pirate_main.jsx]
-js_server_file: js/server/pirate_server.js
+js_server_files: [
+  js/server/pirate_server_2.js,
+  js/server/pirate_server.js
+]
