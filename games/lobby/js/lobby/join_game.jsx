@@ -94,9 +94,15 @@ var GameUserJoin = React.createClass({
 
 		    if(name && color) {
 				$('#game-lobby').css('animation','exitLeft .2s ease-in');
-		        Api.joinGame(name, color, game, gameCode, function(data) {
-					window.location.href = '/game';
-                });
+
+				setTimeout(function() {
+					ReactDOM.render(<LobbyLoadingSpinner game={game}/>, document.getElementById('game-lobby'));
+					
+					Api.joinGame(name, color, game, gameCode, function(data) {
+						window.location.href = '/game';
+	                });
+				}, 200);
+
 			}
 		}.bind(this);
 
