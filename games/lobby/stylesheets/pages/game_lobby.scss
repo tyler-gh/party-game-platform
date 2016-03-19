@@ -72,11 +72,27 @@
 		margin-top: $pg-sp * 7;
 		margin-bottom: 0;
 		color: $color;
+
+		font-family: $pg-header-font;
+		font-size: $pg-mobile-size-large/1.5;
+		line-height: 120%;
+
+		@media (min-width: $pg-desk-break) { 
+			font-size: $pg-desk-size-large;	
+		}
 	}
 
 	h3.waiting-room {
 		margin-top: $pg-sp;
 		color: $pg-color-medium-gray;
+
+		font-family: $pg-body-font;
+		font-weight: bold;
+		font-size: $pg-mobile-size-medium/1.5;
+
+		@media (min-width: $pg-desk-break) { 
+			font-size: $pg-desk-size-medium;
+		}
 	}
 
 	.waiting-room-players {
