@@ -71,8 +71,7 @@ var checkWinner = function () {
     return numPlayers == 1;
 };
 
-var isValidBid = function(action)
-{
+var isValidBid = function (action) {
     var isInvalidBid =
         (state.bid.dieNumber >= action.data.bid.dieNumber && state.bid.dieCount >= action.data.bid.dieCount) ||
         state.bid.dieCount > action.data.bid.dieCount ||
@@ -80,20 +79,18 @@ var isValidBid = function(action)
         action.data.bid.dieNumber > 6;
 
     return !isInvalidBid
-}
+};
 
-var setBid = function(action)
-{
+var setBid = function (action) {
     state.bid.dieCount = action.data.bid.dieCount;
     state.bid.dieNumber = action.data.bid.dieNumber;
     state.bid.bidder = action.client.id;
-}
-var clearBid = function()
-{
+};
+var clearBid = function () {
     state.bid.dieCount = -1;
     state.bid.dieNumber = -1;
     state.bid.bidder = -1;
-}
+};
 
 var lieAction = function (action) {
     var user;
@@ -107,24 +104,23 @@ var lieAction = function (action) {
     user.numberOfDie--;
     broadcastLostDie(user);
 
-    generateDie();
-    broadcastDie();
-
     if (checkWinner()) {
         state.finished = true;
         return;
     }
 
+    generateDie();
+    broadcastDie();
+
     state.currentUserIndex = state.userIndexes[user.id] - 1;
     advanceUser();
     promptCurrentTurn();
-}
+};
 
 //bidAction
 
-var bidAction = function (action)
-{
-    if (!isValidBid(action)){
+var bidAction = function (action) {
+    if (!isValidBid(action)) {
         sendActionToClient(action.client.id, makeAction({actionType: "invalid-bid"}));
         return;
     }
@@ -133,7 +129,7 @@ var bidAction = function (action)
 
     advanceUser();
     promptCurrentTurn();
-}
+};
 
 var takeTurn = function (action) {
     if (action.client.id == state.users[state.currentUserIndex].id) {

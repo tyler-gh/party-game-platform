@@ -1,6 +1,6 @@
 package models.game
 
-import java.io.FileReader
+import java.io.{File, FileReader}
 import java.util.function
 import javax.script.{ScriptContext, Invocable}
 
@@ -17,26 +17,21 @@ class JsEngineGame(id: String, name: String, gameDef: GameDefinition) extends Ga
   private var newClientConnectionHandler: Option[String] = None
   private val engine = GameScriptEngine.getNewEngine
 
-  //LUKE's hacky fix. not stable, not working fully.
-  //It will grab the last file defined in defintion.yml
-  //It will connect the handlers correctly, but the different files don't see each other and so were stuck
+  private def fileToString(file: File): String = {
+    val source = scala.io.Source.fromFile(file.getAbsolutePath)
+    try source.getLines mkString "\n" finally source.close()
+  }
 
-  val jsServerFile = gameDef.jsServerFiles.head
-
-  jsServerFile.map(file => new FileReader(file)).foreach(reader => {
-    try {
-      val bindings = engine.createBindings()
-      // TODO error handler
-      bindings.put("setActionHandler", getSetActionHandler)
-      bindings.put("setNewClientConnectionHandler", getSetNewClientConnectionHandler)
-      bindings.put("broadcastAction", getBroadcastAction)
-      bindings.put("sendAction", getSendAction)
-      bindings.put("createAction", getCreateAction)
-      engine.setBindings(bindings, ScriptContext.ENGINE_SCOPE)
-      engine.eval(reader, bindings)
-    } finally {
-      reader.close()
-    }
+  gameDef.jsServerFiles.map(_.map(fileToString).mkString("\n")).foreach(files => {
+    val bindings = engine.createBindings()
+    // TODO error handler
+    bindings.put("setActionHandler", getSetActionHandler)
+    bindings.put("setNewClientConnectionHandler", getSetNewClientConnectionHandler)
+    bindings.put("broadcastAction", getBroadcastAction)
+    bindings.put("sendAction", getSendAction)
+    bindings.put("createAction", getCreateAction)
+    engine.setBindings(bindings, ScriptContext.ENGINE_SCOPE)
+    engine.eval(files, bindings)
   })
 
   def getCreateAction: function.Function[String, String] = {
