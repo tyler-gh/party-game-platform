@@ -35,7 +35,7 @@ class Games(rootDirectory: File) {
     getGameDefinition(gameId).fold[Option[Game]](None)(gameDef =>
       Option(games.get(gameId)).fold[Option[Game]](None) { gameInstances =>
         val idHex = Games.getUniqueId(gameInstances.keySet())
-        val newGame = gameDef.jsServerFile.fold[Game](new DefaultSocketGame(idHex, gameId, gameDef))(file => new JsEngineGame(idHex, gameId, gameDef))
+        val newGame = gameDef.jsServerFiles.fold[Game](new DefaultSocketGame(idHex, gameId, gameDef))(file => new JsEngineGame(idHex, gameId, gameDef))
         gameInstances.put(idHex, newGame)
         Some(newGame)
       }
