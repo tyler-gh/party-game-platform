@@ -1,4 +1,6 @@
 
+import java.io.File
+
 import _root_.util.GameAssetsCompiler
 import controllers._
 import models.game.Games
@@ -10,9 +12,11 @@ import router.Routes
 
 import scala.concurrent.Future
 
-class PGPApplicationLoader extends ApplicationLoader {
+class PGPApplicationLoader(rootDirectory: File) extends ApplicationLoader {
 
-  implicit val games = new Games().loadDefinitions()
+  def this() = this(new File("."))
+
+  implicit val games = new Games(rootDirectory).loadDefinitions
   val compiler = new GameAssetsCompiler(games)
 
   def load(context: Context) = {

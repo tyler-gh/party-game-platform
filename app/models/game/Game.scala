@@ -13,9 +13,9 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
   protected val actionSet = new util.HashSet[GameAction]()
 
-  def addClient(clientName: String, color: String): Client = {
+  def addClient(clientName: String, color: String, clientFactory: (Game, ClientInfo) => Client = new Client(_, _)): Client = {
     // TODO: having a space in the name caused a problem but I don't remember where
-    val client = new Client(this, new ClientInfo(clients.size, clientName, color))
+    val client = clientFactory(this, new ClientInfo(clients.size, clientName, color))
     clients.add(Some(client))
     client
   }

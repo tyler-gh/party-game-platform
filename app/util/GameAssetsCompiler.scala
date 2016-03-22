@@ -31,11 +31,11 @@ class GameAssetsCompiler(games: Games) {
       new GameWatcher(games.lobby)
 
   def initialCompilation() = {
-    watchers.foreach(watcher => watcher.initialCompilation())
+    watchers.foreach(_.initialCompilation())
   }
 
   def shutdown() = {
-    watchers.foreach(watcher => watcher.shutdown())
+    watchers.foreach(_.shutdown())
   }
 
 
@@ -56,52 +56,68 @@ sealed class GameWatcher(gameDef: GameDefinition)(implicit context: ExecutionCon
     watcher.close()
   }
 
-  private def compile(file: File) {
-
-    if (file.toString.endsWith(".jsx")) {
-      implicit val system = ActorSystem("jse-system")
-      implicit val timeout = Timeout(500.seconds)
-      val outputPath = gameDef.getOutputPath(file)
+  private def compileIfNeeded(file: File, checkFile: File, outputPath: String, compiler: (File, File) => Unit): Unit = {
+    val outputFile = new File(outputPath)
+    if (!outputFile.exists() ||  outputFile.lastModified() < checkFile.lastModified()) {
+      outputFile.getParentFile.mkdirs()
       println(s"compiling '$file' to '$outputPath'")
-      new File(outputPath).getParentFile.mkdirs()
-      val files = immutable.Seq(Json.toJson(Seq(file.getAbsolutePath)).toString(), Json.toJson(Seq(outputPath)).toString())
-      val future = system.actorOf(Trireme.props(), "engine").ask(Engine.ExecuteJs(buildFile, files, timeout.duration))
-      future.onComplete(result => {
-        val jsResult = result.get.asInstanceOf[JsExecutionResult]
-        if (jsResult.exitValue != 0) {
-          new String(jsResult.output.toArray, "UTF-8").printErrLn()
-          new String(jsResult.error.toArray, "UTF-8").printErrLn()
-        }
-      })
-      Await.result(future, timeout.duration)
-      system.shutdown()
-    } else if (file.toString.endsWith(".scss")) {
-      gameDef.cssClientFiles.foreach(files => files.map(gameDef.getOutputPath).foreach(outputPath => {
+      compiler(file.getAbsoluteFile, outputFile)
+    }
+  }
 
-        println(s"compiling '$file' to '$outputPath'")
+  private def compileIfNeeded(file: File, compiler: (File, File) => Unit): Unit = {
+    compileIfNeeded(file, file, gameDef.getOutputPath(file), compiler)
+  }
 
-        new File(outputPath).getParentFile.mkdirs()
-        val compiler = new io.bit3.jsass.Compiler()
-        val options = new io.bit3.jsass.Options()
-        options.setOutputStyle(io.bit3.jsass.OutputStyle.COMPRESSED)
-        try {
-          gameDef.cssClientFiles.foreach(files => files.map(_.getAbsolutePath).foreach(file => {
-            val css = compiler.compileFile(new File(file).toURI, new File("x").toURI, options)
-            Files.write(new File(outputPath).toPath, css.getCss.getBytes(StandardCharsets.UTF_8))
-          }))
-        } catch {
-          case e: io.bit3.jsass.CompilationException =>
-            e.printStackTrace()
-        }
+  private def compileJsx(file: File, outputFile: File): Unit = {
+    implicit val system = ActorSystem("jse-system")
+    implicit val timeout = Timeout(500.seconds)
+    val files = immutable.Seq(Json.toJson(Seq(file.getAbsolutePath)).toString(), Json.toJson(Seq(outputFile.getAbsolutePath)).toString())
+    val future = system.actorOf(Trireme.props(), "engine").ask(Engine.ExecuteJs(buildFile, files, timeout.duration))
+    future.onComplete(result => {
+      val jsResult = result.get.asInstanceOf[JsExecutionResult]
+      if (jsResult.exitValue != 0) {
+        jsResult.printResult()
+      }
+    })
+    Await.result(future, timeout.duration)
+    system.shutdown()
+  }
 
-      }))
-    } else if (file.toString.endsWith(".js") || file.toString.endsWith(".css")) {
-      val outputPath = gameDef.getOutputPath(file)
-      println(s"moving '$file' to '$outputPath'")
-      new File(outputPath).getParentFile.mkdirs()
-      new FileOutputStream(outputPath) getChannel() transferFrom(new FileInputStream(file) getChannel, 0, Long.MaxValue)
+  private def compileSass(file: File, outputFile: File): Unit = {
+    val compiler = new io.bit3.jsass.Compiler()
+    val options = new io.bit3.jsass.Options()
+    options.setOutputStyle(io.bit3.jsass.OutputStyle.COMPRESSED)
+    try {
+      val css = compiler.compileFile(file.toURI, new File("x").toURI, options)
+      Files.write(outputFile.toPath, css.getCss.getBytes(StandardCharsets.UTF_8))
+    } catch {
+      case e: io.bit3.jsass.CompilationException =>
+        e.printStackTrace()
+    }
+  }
+
+  private def copyFile(file: File, outputFile: File): Unit = {
+    new FileOutputStream(outputFile) getChannel() transferFrom(new FileInputStream(file) getChannel, 0, Long.MaxValue)
+  }
+
+  private def ext(file: File): String = {
+    val i = file.getName.lastIndexOf('.')
+    if (i > 0) {
+      file.getName.substring(i+1)
     } else {
-      s"Invalid File '$file'".printErrLn()
+      ""
+    }
+  }
+
+  private def compile(file: File) {
+    ext(file) match {
+      case "jsx" => compileIfNeeded(file, compileJsx)
+      case "scss" => gameDef.cssClientFiles.foreach(files =>
+        files.foreach(compileFile => compileIfNeeded(compileFile, file, gameDef.getOutputPath(compileFile), compileSass))
+      )
+      case "js" | "css" => compileIfNeeded(file, copyFile)
+      case default => s"Invalid File '$file' with extension '${ext(file)}'".printErrLn()
     }
   }
 
@@ -120,7 +136,7 @@ sealed class GameWatcher(gameDef: GameDefinition)(implicit context: ExecutionCon
   }
 
   private def walkLobbyFiles(files: Option[Seq[File]], consumer: String => Unit) {
-    files.foreach(files => files.map(_.toString).filter(_.startsWith("games/lobby/")).foreach(consumer))
+    files.foreach(files => files.map(_.toString).filter(_.startsWith("games" + File.separator + "lobby" + File.separator)).foreach(consumer))
   }
 
   private def recompile(): Unit = {
@@ -169,7 +185,7 @@ sealed class GameWatcher(gameDef: GameDefinition)(implicit context: ExecutionCon
       println("Reloading game definition")
       GameDefinition(gameDef)
       recompile()
-    } else if (!p.contains(File.separator +"build" +File.separator)) {
+    } else if (!p.contains(File.separator +  "build" + File.separator)) {
       val shouldCompile = ((containsPath(gameDef.jsClientFiles, p) || containsPath(gameDef.jsMainClientFiles, p)) && (p.endsWith(".jsx") || p.endsWith(".js"))) ||
         ((p.endsWith(".scss") || p.endsWith(".css")) && gameDef.cssClientFiles.isDefined)
 

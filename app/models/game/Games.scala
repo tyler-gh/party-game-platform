@@ -23,13 +23,13 @@ object Games {
   }
 }
 
-class Games {
+class Games(rootDirectory: File) {
   private implicit val rand = new Random()
 
   private val games = new ConcurrentHashMap[String, ConcurrentHashMap[String, Game]]()
   private val definitions = new ConcurrentHashMap[String, GameDefinition]()
-  val style = GameDefinition(new File("games/style"))
-  val lobby = GameDefinition(new File("games/lobby"))
+  val style = GameDefinition(new File(rootDirectory, "games/style"))
+  val lobby = GameDefinition(new File(rootDirectory, "games/lobby"))
 
   def createGame(gameId: String): Option[Game] = {
     getGameDefinition(gameId).fold[Option[Game]](None)(gameDef =>
@@ -78,9 +78,9 @@ class Games {
     f.isDirectory && !SPECIAL_DIRS(f.getName)
   }
 
-  def loadDefinitions(): Games = {
+  def loadDefinitions: Games = {
     definitions.synchronized {
-      new File("games").listFiles().filter(isGameDefinition).foreach(implicit folder => {
+      new File(rootDirectory, "games").listFiles().filter(isGameDefinition).foreach(implicit folder => {
         addGameDefinition(GameDefinition(folder))
       })
     }
