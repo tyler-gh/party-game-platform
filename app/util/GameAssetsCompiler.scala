@@ -169,7 +169,7 @@ sealed class GameWatcher(gameDef: GameDefinition)(implicit context: ExecutionCon
       println("Reloading game definition")
       GameDefinition(gameDef)
       recompile()
-    } else if (!p.contains("/build/")) {
+    } else if (!p.contains(File.separator +"build" +File.separator)) {
       val shouldCompile = ((containsPath(gameDef.jsClientFiles, p) || containsPath(gameDef.jsMainClientFiles, p)) && (p.endsWith(".jsx") || p.endsWith(".js"))) ||
         ((p.endsWith(".scss") || p.endsWith(".css")) && gameDef.cssClientFiles.isDefined)
 

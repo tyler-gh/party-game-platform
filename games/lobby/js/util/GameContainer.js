@@ -100,7 +100,7 @@ GameApi.prototype.makeBid = function(bid) {
     this.send({
         actionType: "take-turn",
         data: {
-            responseType: "bet",
+            responseType: "bid",
             bid: bid
         }
     });
