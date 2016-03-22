@@ -27,7 +27,7 @@ ApiActionListener.prototype.getActionHandler = function() {
     }.bind(this);
 };
 
-var App = React.createClass({
+var PirateClient = React.createClass({
     getInitialState: function () {
         var al = new ApiActionListener(this);
         this.props.api.addActionListener(al.getActionHandler());
@@ -42,13 +42,6 @@ var App = React.createClass({
         this.setState({takingTurn: false});
     },
     render: function () {
-        var divStyle = {
-            padding: "50px"
-        };
-        var headerStyle = {
-            marginTop: "10px",
-            marginBottom: "30px"
-        };
 
         var body = "", display = "", bid = this.state.currentBidCount != -1, takingTurn = this.state.takingTurn;
 
@@ -69,8 +62,8 @@ var App = React.createClass({
 
 
         return (
-            <div style={divStyle}>
-                <h1 style={headerStyle}>Pirate's Dice</h1>
+            <div>
+                <ClientHeader username={"Jackson"}/>
                 <DiceDisplay bid={bid} dice={this.state.die}/>
                 {display}
                 {body}
@@ -81,7 +74,7 @@ var App = React.createClass({
 
 window.gameStart = function (dom, api, users) {
     ReactDOM.render(
-        <App api={api} users={users}/>,
+        <PirateClient api={api} users={users}/>,
         dom
     );
 };
