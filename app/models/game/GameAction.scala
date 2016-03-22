@@ -23,7 +23,11 @@ object GameAction {
   val actions = Seq(CLIENT_LEFT, CLIENT_JOINED, GAME_STARTED, CLIENT_DROPPED, UNFORMED)
 
   def withName(s: String): Type = {
-    actions.find(action => action.name.equals(s)).getOrElse(new Type(UNFORMED.id, s))
+    actions.find(action => action.name.equals(s)).getOrElse(new Type(UNFORMED.id, s) {
+      override def toString: String = {
+        name
+      }
+    })
   }
 
   implicit val clientActionReads: Reads[ClientAction] = (

@@ -22,5 +22,34 @@ class ApplicationSpec extends Specification {
       contentType(home) must beSome.which(_ == "text/html")
       contentAsString(home) must contain("<div id=\"pg-app\"></div>")
     }
+
+    "load lobby js" in new WithDepsApplication {
+      val lobbyjs = route(FakeRequest(GET, "/js")).get
+
+      status(lobbyjs) must equalTo(OK)
+      contentType(lobbyjs) must beSome.which(_ == "text/javascript")
+      contentAsString(lobbyjs) must contain("React.createClass")
+    }
+
+    "load game main js" in new WithDepsApplication {
+      val gameMainJs = route(FakeRequest(GET, "/game/js/main")).get
+
+      status(gameMainJs) must equalTo(OK)
+      contentType(gameMainJs) must beSome.which(_ == "text/javascript")
+      contentAsString(gameMainJs) must contain("React.createClass")
+    }
+
+    "load lobby css" in new WithDepsApplication {
+      val lobbyCss = route(FakeRequest(GET, "/css")).get
+
+      status(lobbyCss) must equalTo(OK)
+      contentType(lobbyCss) must beSome.which(_ == "text/css")
+    }
+
+    "redirect if logged in" in new WithDepsApplication {
+      // TODO: create test for this with mocks
+    }
+
+
   }
 }
