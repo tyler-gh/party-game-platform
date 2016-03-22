@@ -14,23 +14,23 @@
 	}
 
 	.button-slide-right {
-		animation: buttonSlideRight .25s;
+		-webkit-animation: buttonSlideRight .25s;
 		width: 50%;
 	}
 
 	.button-slide-left {
-		animation: buttonSlideLeft .25s;
+		-webkit-animation: buttonSlideLeft .25s;
 		width: 100%;
 	}
 
 	.countdown-enter {
-		animation: countdownEnter .25s;
+		-webkit-animation: countdownEnter .25s;
 		width: 50%;
 		visibility: initial;
 	}
 
 	.countdown-leave {
-		animation: countdownLeave .25s;
+		-webkit-animation: countdownLeave .25s;
 		width: 0%;
 		visibility: hidden;
 	}
@@ -40,8 +40,14 @@
 // Player colors
 
 div.waiting-room-players {
-	margin-bottom: $pg-sp * 8;
-	height: $pg-sp * 38;
+	height: $pg-sp*42;
+
+	@media (min-width: 375px)  {
+		height: $pg-sp*58;
+	}
+	@media (min-width: $pg-desk-break)  {
+		height: $pg-sp*70;
+	}
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 }
@@ -78,6 +84,13 @@ table.pg-waiting-room-player-table {
 		color: $color;
 		margin-bottom: 0;
 		font-weight: 600;
+
+		font-family: $pg-header-font;
+		font-size: $pg-mobile-size-medium;
+
+		@media (min-width: $pg-desk-break) { 
+			font-size: $pg-desk-size-medium;
+		}
 	}
 }
 
@@ -132,7 +145,7 @@ table.pg-waiting-room-player-table {
 
 
 
-@keyframes countdownEnter {
+@-webkit-keyframes countdownEnter {
 	0% {
 		width: 0%;
         opacity: 0;
@@ -143,7 +156,7 @@ table.pg-waiting-room-player-table {
     }
 }
 
-@keyframes countdownLeave {
+@-webkit-keyframes countdownLeave {
 	0% {
 		width: 50%;
         opacity: 1;
@@ -154,7 +167,7 @@ table.pg-waiting-room-player-table {
     }
 }
 
-@keyframes buttonSlideRight {
+@-webkit-keyframes buttonSlideRight {
 	0% {
         width: 100%;
     }
@@ -163,7 +176,7 @@ table.pg-waiting-room-player-table {
     }
 }
 
-@keyframes buttonSlideLeft {
+@-webkit-keyframes buttonSlideLeft {
 	0% {
         width: 50%;
     }

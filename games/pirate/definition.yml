@@ -1,8 +1,14 @@
 title: pirate's dice
 color: "#003366"
 id: pirate
-description: This is a description of pirate's dice
+description: A thrilling game of plundering, betrayal, and high seas deception 
 css_client_files: [stylesheets/main.scss]
-js_client_files: [js/client/pirate_client.jsx]
+js_client_files: [
+  js/client/liar_button.jsx,
+  js/client/bid_form.jsx,
+  js/client/dice_display.jsx,
+  js/client/bid_display.jsx,
+  js/client/pirate_client.jsx
+]
 js_main_client_files: [js/main/pirate_main.jsx]
 js_server_file: js/server/pirate_server.js

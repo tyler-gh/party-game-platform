@@ -1,5 +1,6 @@
 package controllers
 
+import controllers.traits.{FlatAuthError, CookieAuth}
 import models.{ClientInfo, ClientCookie}
 import models.game.Games
 import play.api.libs.json._
@@ -7,7 +8,7 @@ import play.api.libs.functional.syntax._
 import play.api.mvc._
 
 
-class JoinGameController(implicit games: Games) extends Controller {
+class JoinGameController(implicit games: Games) extends Controller with CookieAuth[Boolean] {
 
   case class JoinGameParams(userName: String, gameId: String, gameInstanceId: String, color: String)
 
@@ -38,36 +39,39 @@ class JoinGameController(implicit games: Games) extends Controller {
   }
 
   def joinGame(userName: String, gameInstanceId: String, gameId: String, color: String)(implicit request: Request[Any]) = {
+    implicit val notAuth = new FlatAuthError[Boolean](false)
+    if (auth((_,_) => true)) {
+      Ok
+    } else {
+      def newClient() = {
+        games.getGame(gameId, gameInstanceId).fold[Result](error(JsString(s"Game with id '$gameId' and instance_id '$gameInstanceId' DNE"))) { game =>
+          val client = game.addClient(userName, color)
+          val clientJson = Json.toJson(client.clientInfo)
 
-    def newClient() = {
-      games.getGame(gameId, gameInstanceId).fold[Result](error(JsString(s"Game with id '$gameId' and instance_id '$gameInstanceId' DNE"))) { game =>
-        val client = game.addClient(userName, color)
-        val clientJson = Json.toJson(client.clientInfo)
+          Ok(clientJson.as[JsObject]).withCookies(
+            ClientCookie.ACTIVE_GAME.createCookie(true),
+            ClientCookie.USER_ID.createCookie(client.clientInfo.id),
+            ClientCookie.GAME_INSTANCE_ID.createCookie(gameInstanceId),
+            ClientCookie.GAME_ID.createCookie(gameId)
+          )
+        }
+      }
 
-        Ok(clientJson.as[JsObject]).withCookies(
-          ClientCookie.ACTIVE_GAME.createCookie(true),
-          ClientCookie.USER_ID.createCookie(client.clientInfo.id),
-          ClientCookie.GAME_INSTANCE_ID.createCookie(gameInstanceId),
-          ClientCookie.GAME_ID.createCookie(gameId)
-        )
+      val gameInsCookieOpt = ClientCookie.GAME_INSTANCE_ID.getCookie(request.cookies)
+      val gameIdCookieOpt = ClientCookie.GAME_ID.getCookie(request.cookies)
+      val userIdCookieOpt = ClientCookie.USER_ID.getCookie(request.cookies)
+
+      (gameInsCookieOpt, gameIdCookieOpt, userIdCookieOpt) match {
+        case (Some(gameInstanceIdCookie), Some(gameIdCookie), Some(userIdCookie)) =>
+          if (gameIdCookie.value.equals(gameId) && gameInstanceIdCookie.value.equals(gameInstanceId)) {
+            games.getGame(gameId, gameInstanceId).fold(newClient()) { game =>
+              game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(true)))
+            }
+          } else {
+            newClient()
+          }
+        case _ => newClient()
       }
     }
-
-    val gameInsCookieOpt = ClientCookie.GAME_INSTANCE_ID.getCookie(request.cookies)
-    val gameIdCookieOpt = ClientCookie.GAME_ID.getCookie(request.cookies)
-    val userIdCookieOpt = ClientCookie.USER_ID.getCookie(request.cookies)
-
-    (gameInsCookieOpt, gameIdCookieOpt, userIdCookieOpt) match {
-      case (Some(gameInstanceIdCookie), Some(gameIdCookie), Some(userIdCookie)) =>
-        if (gameIdCookie.value.equals(gameId) && gameInstanceIdCookie.value.equals(gameInstanceId)) {
-          games.getGame(gameId, gameInstanceId).fold(newClient()) { game =>
-            game.restoreClient(new ClientInfo(userIdCookie.value, userName, color)).fold(newClient())(client => Ok.withCookies(ClientCookie.ACTIVE_GAME.createCookie(true)))
-          }
-        } else {
-          newClient()
-        }
-      case _ => newClient()
-    }
   }
-
 }

@@ -8,5 +8,6 @@ js_main_client_files: [
   "../lobby/js/lobby/components/lobby_countdown_timer.jsx",
   "../lobby/js/components/forms.jsx",
   "../lobby/js/components/color_picker.jsx",
+  "../lobby/js/components/lobby_loading_spinner.jsx",
   "js/styleguide.jsx"
 ]

@@ -25,18 +25,24 @@ var GameCodeJoin = React.createClass({
 		};
 
 		var clickJoin = function() {
-			// TODO hit api to see if game actually exists
-			if(this.state.gameCode == 'badcode') { //Placeholder until I can actually hit the api
-				this.setState({badCode: true});
-			}
-			else if(this.state.gameCode) {
+			var game = this.props.game;
+			var gameCode = this.state.gameCode;
+			var component = this
+
+			var success = function() {
 				$('#enter-game-code-content').css('animation','exitLeft .2s ease-in');
-				var component = this;
-				setTimeout(function() {
+					setTimeout(function() {
 					component.renderGameUserJoin();
 					$('#enter-player-info-content').css('animation','enterLeft .2s ease-in');
 				}, 200);
 			}
+
+			var error = function() {
+				component.setState({badCode: true});
+			}
+
+			Api.gameExists(game, gameCode, success, error);
+
 		}.bind(this);
 
 
@@ -88,9 +94,15 @@ var GameUserJoin = React.createClass({
 
 		    if(name && color) {
 				$('#game-lobby').css('animation','exitLeft .2s ease-in');
-		        Api.joinGame(name, color, game, gameCode, function(data) {
-					window.location.href = '/game';
-                });
+
+				setTimeout(function() {
+					ReactDOM.render(<LobbyLoadingSpinner game={game}/>, document.getElementById('game-lobby'));
+					
+					Api.joinGame(name, color, game, gameCode, function(data) {
+						window.location.href = '/game';
+	                });
+				}, 200);
+
 			}
 		}.bind(this);
 

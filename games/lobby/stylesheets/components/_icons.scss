@@ -11,7 +11,7 @@ img.game-icon {
 }
 
 img.small {
-  width: $pg-sp * 9;
+  height: $pg-sp * 9;
 
   @media (min-width: $pg-desk-break) {
     width: $pg-sp * 11;
@@ -19,7 +19,7 @@ img.small {
 }
 
 img.large {
-  width: $pg-sp * 26;
+  height: 20%;
 
   @media (min-width: $pg-desk-break) {
     width: $pg-sp * 30;

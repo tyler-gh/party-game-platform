@@ -16,16 +16,19 @@ class PGPApplicationLoader extends ApplicationLoader {
   val compiler = new GameAssetsCompiler(games)
 
   def load(context: Context) = {
-    compiler.initialCompilation()
-
-    Future {
-      compiler()
-    }
-
     val components = new PGPComponents(context)
-    components.applicationLifecycle.addStopHook(() => Future {
-      compiler.shutdown()
-    })
+
+    if(Play.isDev(components.application)) {
+      compiler.initialCompilation()
+
+      Future {
+        compiler()
+      }
+
+      components.applicationLifecycle.addStopHook(() => Future {
+        compiler.shutdown()
+      })
+    }
 
     components.application
   }

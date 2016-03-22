@@ -29,11 +29,17 @@ var GameLobby = React.createClass({
 
 		var clickCreate = function() {
 			$('#pg-app').css('animation','exitLeft .2s ease-in');
-    		setTimeout(function() {
-            	Api.createGame(game, function(data) {
+			
+			setTimeout(function() {
+                ReactDOM.render(<LobbyLoadingSpinner game={game}/>, document.getElementById('pg-app'));
+        	}, 200);
+
+			setTimeout(function() {
+	        	Api.createGame(game, function(data) {
+	        		$('#pg-app').css('animation','exitLeft .2s ease-in');
 					ReactDOM.render(<GameCreatedSuccess game={game} title={title} gameCode={data.game_instance_id} />, document.getElementById('pg-app'));
 				});
-        	}, 200);
+			}, 200);
 		};
 
         return (

@@ -17,9 +17,7 @@ var state = {
         die: [],
         numberOfDie: -1
     }],
-    userIndexes: {
-        0: 0
-    }
+    userIndexes: {0: 0}
 };
 
 var sendDieToClient = function (id, die) {

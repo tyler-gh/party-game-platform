@@ -1,9 +1,30 @@
-var LobbyColorPickerDemo = React.createClass({
+var LobbyLoadingSpinnerDemo = React.createClass({
     render: function() {
 	    return (
 	    	<div>
-	    		<div className={"pg-styleguide-subhead"}>lobby color picker</div>
-	    		<ColorPicker game={"pirate"} color="color"/>
+	    		<div className={"pg-styleguide-lobby-loading_spinner-container"}>
+		    		<div className={"pg-styleguide-subhead"}>lobby loading spinner</div>
+		    		<LobbyLoadingSpinner game={"fibbage"}/>
+	    		</div>
+	        </div>
+	    );
+    }
+});
+
+ReactDOM.render(
+    <LobbyLoadingSpinnerDemo />,
+    document.getElementById('pg-styleguide-lobby-loading_spinner')
+);
+
+
+var LobbyColorPickerDemo = React.createClass({
+    render: function() {
+	    return (
+	    	<div className={"pg-styleguide-color-picker"}>
+	    		<div className={"pg-styleguide-color-picker-container"}>
+		    		<div className={"pg-styleguide-subhead"}>lobby color picker</div>
+		    		<ColorPicker game={"pirate"} color="color"/>
+	    		</div>
 	        </div>
 	    );
     }

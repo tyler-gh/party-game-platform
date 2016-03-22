@@ -17,6 +17,19 @@ $styleguide-padding-top:  $pg-sp*2;
 	margin-bottom: $pg-sp;
 }
 
+.pg-styleguide-lobby-loading_spinner-container {
+	height: $pg-sp*70;
+}
+
+.pg-styleguide-color-picker {
+	margin: 0 auto;
+
+	.pg-styleguide-color-picker-container {
+		margin: 0 auto;
+		width: 80%;
+		max-width: $pg-sp*80
+	}
+}
 
 
 

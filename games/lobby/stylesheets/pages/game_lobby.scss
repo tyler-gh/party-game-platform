@@ -20,18 +20,34 @@
 	position: absolute;
 
 	img.game-icon.large {
-		margin-top: $pg-sp * 13;
+		
+		margin-top: 20%;
 		margin-bottom: $pg-sp * 2;
+
+		@media (min-width: $pg-desk-break) {
+			margin-top: $pg-sp * 13;
+		}	
 	}
 
 	h1.create-game {
-		margin-top: $pg-sp * 5;
+		margin-top: 10%;
+		margin-bottom: 5%;
+
+		@media (min-width: $pg-desk-break) {
+			margin-top: $pg-sp * 5;
+			margin-bottom: $pg-sp * 5;
+		}
 	}
 
 	h1, h2, h3 {
 		color: $color;
 		text-align: center;
-		margin-bottom: $pg-sp * 8;
+
+		margin-bottom: 10%;
+
+		@media (min-width: $pg-desk-break) {
+			margin-bottom: $pg-sp * 8;
+		}
 	}
 
 	h3.create-game {
@@ -56,11 +72,27 @@
 		margin-top: $pg-sp * 7;
 		margin-bottom: 0;
 		color: $color;
+
+		font-family: $pg-header-font;
+		font-size: $pg-mobile-size-large/1.5;
+		line-height: 120%;
+
+		@media (min-width: $pg-desk-break) { 
+			font-size: $pg-desk-size-large;	
+		}
 	}
 
 	h3.waiting-room {
 		margin-top: $pg-sp;
 		color: $pg-color-medium-gray;
+
+		font-family: $pg-body-font;
+		font-weight: bold;
+		font-size: $pg-mobile-size-medium/1.5;
+
+		@media (min-width: $pg-desk-break) { 
+			font-size: $pg-desk-size-medium;
+		}
 	}
 
 	.waiting-room-players {
@@ -68,7 +100,10 @@
 	}
 
 	.pg-lobby-form-pirate, .pg-lobby-form-fibbage, .pg-lobby-form-mafia {
-		margin-bottom: $pg-sp * 7;
+		margin-bottom: 5%;
+		@media (min-width: $pg-desk-break) {	
+			margin-bottom: $pg-sp * 7;
+		}
 	}
 
 	button.pg-lobby-icon-button, button.pg-lobby-hollow-button, button.pg-lobby-solid-button {
@@ -79,7 +114,6 @@
 	h1.create-game {
 		color: $color;
 		text-align: center;
-		margin-bottom: 32px;
 	}
 }
 
