@@ -30,7 +30,7 @@ var DiceBar = React.createClass({
 var Die = React.createClass({
     
     componentDidMount() {
-
+    	//get the dice element and change it to an svg
 		$('.dice_svg').each(function() {
 		    var $img = jQuery(this);
 		    var imgID = $img.attr('id');
