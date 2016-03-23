@@ -7,7 +7,6 @@ js_client_files: [
   js/client/liar_button.jsx,
   js/client/bid_form.jsx,
   js/client/dice_display.jsx,
-  js/client/dice.jsx,
   js/client/bid_display.jsx,
   js/client/pirate_client.jsx,
   js/client/client_header.jsx

@@ -2,6 +2,14 @@
 
 .pi-cs-dice-display {
 	margin-bottom: $pi-sp*4;
+	
+	.pi-cs-dice-bar-container {
+		align-items: center;
+	  	justify-content: center;
+	  	display: -webkit-flex;
+		display: flex;
+	}
+	
 	.pi-cs-dice-shelf {
 		height: $pi-sp*2;
 		width: 100%;
@@ -12,4 +20,8 @@
 
 .dice_svg path {
 	fill: $pi-cs-color-primary;
+}
+
+.dice_svg {
+	margin: 0 $pi-sp;
 }
