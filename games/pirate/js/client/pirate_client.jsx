@@ -64,7 +64,7 @@ var PirateClient = React.createClass({
         return (
             <div>
                 <ClientHeader username={"Jackson"}/>
-                <DiceDisplay bid={bid} dice={this.state.die}/>
+                <ClientDiceDisplay bid={bid} dice={this.state.die}/>
                 {display}
                 {body}
             </div>

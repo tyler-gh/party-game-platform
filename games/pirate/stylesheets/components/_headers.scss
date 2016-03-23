@@ -23,16 +23,17 @@
 	  	justify-content: center;
 
 		.pi-cs-header-sign {
-			width: $pi-sp * 35;
+			width: $pi-sp * 28;
 			position: relative;
+			margin-bottom: $pi-sp*5;
 		}
 
 		.pi-cs-header-sign-text {
 			left: 0;
 		    position:absolute;
 		    text-align:center;
-		    top: $pi-sp * 17;
-		    font-size: $pi-sp*5;
+		    top: $pi-sp * 16;
+		    font-size: $pi-sp*4;
 		    color: $pi-color-white;
 		    width: 100%;
 		}

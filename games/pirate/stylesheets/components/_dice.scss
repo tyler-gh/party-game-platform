@@ -1,0 +1,15 @@
+@import '../base/variables';
+
+.pi-cs-dice-display {
+	margin-bottom: $pi-sp*4;
+	.pi-cs-dice-shelf {
+		height: $pi-sp*2;
+		width: 100%;
+		background-color: $pi-color-dark-gray;
+		box-shadow: 0px 3px 5px #888888;
+	}
+}
+
+.dice_svg path {
+	fill: $pi-cs-color-primary;
+}

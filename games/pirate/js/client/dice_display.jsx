@@ -1,8 +1,12 @@
-var DiceDisplay = React.createClass({
+var ClientDiceDisplay = React.createClass({
     render: function () {
-        var dieStyle = {
-            marginBottom: this.props.bid ? "0px" : "70px"
-        };
-        return <h2 style={dieStyle}>{JSON.stringify(this.props.dice)}</h2>
+        return (
+        	<div className={"pi-cs-dice-display"}>
+        		<h2>{JSON.stringify(this.props.dice)}</h2>
+        		<DieOne/>
+        		<div className={"pi-cs-dice-shelf"}></div>
+        	</div>
+        )
     }
 });
+
