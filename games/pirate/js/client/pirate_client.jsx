@@ -72,9 +72,9 @@ var PirateClient = React.createClass({
     }
 });
 
-window.gameStart = function (dom, api, users) {
+window.gameStart = function (dom, api, users, userInfo) {
     ReactDOM.render(
-        <PirateClient api={api} users={users}/>,
+        <PirateClient api={api} users={users} userInfo={userInfo}/>,
         dom
     );
 };

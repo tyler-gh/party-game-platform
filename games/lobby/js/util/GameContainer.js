@@ -6,6 +6,7 @@ var GameContainer = function (api, dom) {
     this.actionListeners = [];
     this.userListeners = [];
     this.preGame = true;
+    this.userInfo = null;
 };
 
 GameContainer.prototype.onConnect = function () {
@@ -48,7 +49,10 @@ GameContainer.prototype.onPreGameMessage = function (data) {
             break;
         case "start-game":
             this.preGame = false;
-            window.gameStart(this.dom, new GameApi(this.addActionListener.bind(this), this.api), this.users);
+            window.gameStart(this.dom, new GameApi(this.addActionListener.bind(this), this.api), this.users, this.userInfo);
+            break;
+        case "user-info":
+            this.userInfo = data.data;
             break;
     }
 };

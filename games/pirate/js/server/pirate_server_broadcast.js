@@ -15,6 +15,13 @@ var sendDieToClient = function (id, die) {
     }));
 };
 
+var sendUserInfo = function (id, user) {
+    sendActionToClient(id, makeAction({
+        actionType: "user-info",
+        data: user
+    }));
+};
+
 var broadcastDie = function () {
     forEachUser(function (user) {
         sendDieToClient(user.id, copy(user.die));
