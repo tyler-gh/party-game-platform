@@ -51,28 +51,12 @@ var PirateClient = React.createClass({
 
         var body = "", display = "", bid = this.state.currentBidCount != -1, takingTurn = this.state.takingTurn;
 
-        if (bid) {
-            display = <BidDisplay bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />;
-        }
-
-        if (takingTurn) {
-            if(bid) {
-                body = <div>
-                    <LiarButton onSubmit={this.tookTurn} api={this.props.api}/>
-                    <BidForm onSubmit={this.tookTurn} api={this.props.api}/>
-                </div>;
-            } else {
-                body = <BidForm onSubmit={this.tookTurn} api={this.props.api}/>
-            }
-        }
-
-
         return (
             <div>
                 <ClientHeader username={this.props.userInfo.name}/>
                 <div id="clientDiceDisplay"></div>
-                {display}
-                {body}
+                <ClientActionPanel bid={this.state.currentBidCount} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
+                <BidDisplay bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />
             </div>
         );
     }

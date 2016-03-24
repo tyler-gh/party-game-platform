@@ -34,7 +34,7 @@ var BidForm = React.createClass({
                 <input type="text" placeholder="Die Number"
                        value={this.state.dieNumberStr}
                        onChange={this.handleDieNumberChange}/>
-                <input type="submit" value="Make Bid"/>
+                <input type="submit" value="MAKE THE BID"/>
             </form>
         );
     }
