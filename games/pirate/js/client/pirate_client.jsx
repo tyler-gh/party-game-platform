@@ -38,6 +38,12 @@ var PirateClient = React.createClass({
             currentBidNumber: -1
         };
     },
+    componentDidUpdate: function(oldProps, oldState) {
+        if (this.state.die != oldState.die) {
+            $( "#clientDiceDisplay" ).empty();
+            ReactDOM.render(<ClientDiceDisplay bid={this.state.currentBidCount} dice={this.state.die}/>, document.getElementById('clientDiceDisplay'));
+        }
+    },
     tookTurn: function () {
         this.setState({takingTurn: false});
     },
@@ -64,7 +70,7 @@ var PirateClient = React.createClass({
         return (
             <div>
                 <ClientHeader username={this.props.userInfo.name}/>
-                <ClientDiceDisplay bid={bid} dice={this.state.die}/>
+                <div id="clientDiceDisplay"></div>
                 {display}
                 {body}
             </div>

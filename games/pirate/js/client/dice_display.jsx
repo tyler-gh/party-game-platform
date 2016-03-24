@@ -14,12 +14,11 @@ var ClientDiceDisplay = React.createClass({
 var DiceBar = React.createClass({
 
     render: function () {
-        dice = this.props.dice;
         return (
         	<div className="pi-cs-dice-bar">
-                {dice.map(function(die_val){
+                {this.props.dice.map(function(die_val){
                     return <Die die_val={die_val}/>;
-                 })}
+                })}
             </div>
         )
     }
