@@ -138,7 +138,7 @@ var takeTurn = function (action) {
 
 var bidAction = function (action) {
     if (!isValidBid(action)) {
-        sendActionToClient(action.client.id, makeAction({actionType: "invalid-bid"}));
+        promptInvalidBid(action.client.id);
         return;
     }
     setBid(action);
@@ -168,7 +168,7 @@ var setBid = function (action) {
 var lieAction = function (action) {
     if (state.bid.bidder == -1)
     {
-
+        promptNoBid(action.client.id)
     }
     var user;
     if (didLie()) {

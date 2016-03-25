@@ -69,6 +69,18 @@ var promptCurrentTurn = function () {
     }));
 };
 
+var promptInvalidBid = function (id) {
+    sendActionToClient(id, makeAction({
+        actionType: "invalid-bid"
+    }));
+}
+
+var promptNoBid = function (id) {
+    sendActionToClient(id, makeAction({
+        actionType: "no-bid"
+    }));
+}
+
 var broadcastNewBid = function() {
     doBroadcast(makeAction({
         actionType: "new-bid",
