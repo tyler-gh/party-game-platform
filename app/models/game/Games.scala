@@ -1,7 +1,7 @@
 package models.game
 
 import java.io.File
-import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.{ConcurrentHashMap, TimeUnit}
 
 import scala.collection.JavaConverters._
 import scala.util.Random
@@ -31,7 +31,21 @@ class Games(rootDirectory: File) {
   val style = GameDefinition(new File(rootDirectory, "games/style"))
   val lobby = GameDefinition(new File(rootDirectory, "games/lobby"))
 
+  def cleanupExpiredGames(): Unit = {
+    games.asScala.foreach { case (outerkey :String,  outervalue : ConcurrentHashMap[String, Game]) =>
+      outervalue.asScala.foreach { case (innerkey : String, game : Game) =>
+        if(game.hasGameExpired) {
+          closeGame(game)
+        }
+      }
+    }
+  }
+
   def createGame(gameId: String): Option[Game] = {
+    //This might be better to be called on a timer... I had too much trouble
+    //trying to get one to work, so I thought here would be a good alternative
+    cleanupExpiredGames()
+
     getGameDefinition(gameId).fold[Option[Game]](None)(gameDef =>
       Option(games.get(gameId)).fold[Option[Game]](None) { gameInstances =>
         val idHex = Games.getUniqueId(gameInstances.keySet())

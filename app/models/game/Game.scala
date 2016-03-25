@@ -10,6 +10,11 @@ import scala.collection.JavaConverters._
 
 abstract class Game(val id: String, val name: String, val gameDef: GameDefinition) {
 
+  private var lastActionReceived : Long = System.currentTimeMillis / 1000
+
+  private val oneMintue : Long = 60000
+  private val thresholdToDelete : Long = oneMintue * 60
+
   private val clients = Collections.synchronizedList(new util.ArrayList[Option[Client]])
   protected val actionSet = new util.HashSet[GameAction]()
 
@@ -28,6 +33,8 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
   }
 
   def createGameAction(clientInfo: ClientInfo, gameActionType: GameAction.Type, data: Option[JsValue]): GameAction = {
+    lastActionReceived = System.currentTimeMillis
+
     actionSet.synchronized {
       val action = new GameAction(clientInfo, actionSet.size, gameActionType, data)
       actionSet.add(action)
@@ -88,6 +95,13 @@ abstract class Game(val id: String, val name: String, val gameDef: GameDefinitio
     // IDK if we should assume that we shouldn't include people that have left
     // TODO have a client left and a client rejoined action?
     clients.asScala.flatten.map(_.clientInfo).toList
+  }
+
+  def hasGameExpired: Boolean = {
+    val currentTime : Long = System.currentTimeMillis
+    val difference = currentTime - lastActionReceived;
+
+    difference > thresholdToDelete
   }
 
   protected def forEachClient(func: (Client) => Unit): Unit = {
