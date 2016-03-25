@@ -8,7 +8,9 @@ js_client_files: [
   js/client/bid_form.jsx,
   js/client/dice_display.jsx,
   js/client/bid_display.jsx,
-  js/client/pirate_client.jsx
+  js/client/pirate_client.jsx,
+  js/client/client_header.jsx,
+  js/client/client_action_panel.jsx
 ]
 js_main_client_files: [js/main/pirate_main.jsx]
 js_server_files: [

@@ -35,6 +35,7 @@ var newClientConnectionHandler = function (clientStr) {
     if (!state.users[state.userIndexes[client.id]]) {
         addUser(client);
     }
+    sendUserInfo(client.id, client);
     broadcastActions.forEach(function (action) {
         sendActionToClient(client.id, action);
     });

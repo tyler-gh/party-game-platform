@@ -174,7 +174,8 @@ var setBid = function (action) {
 var lieAction = function (action) {
     if (state.bid.bidder == -1)
     {
-        promptNoBid(action.client.id)
+        promptNoBid(action.client.id);
+        return;
     }
     var user;
     if (didLie()) {

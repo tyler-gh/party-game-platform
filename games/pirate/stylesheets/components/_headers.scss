@@ -1,0 +1,41 @@
+@import '../base/variables';
+
+.pi-cs-header {
+	.pi-cs-banner {
+		width: 100%;
+		height: $pi-sp*11;
+		background-color: $pi-cs-color-primary;
+		box-shadow: 0px 3px 5px #888888;
+		align-items: center;
+	  	justify-content: center;
+	  	display: -webkit-flex;
+		display: flex;
+
+		.pi-cs-skull {
+			height: 80%;
+		}
+	}
+	.pi-cs-header-sign-container {
+		width: 100%;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+	  	justify-content: center;
+
+		.pi-cs-header-sign {
+			width: $pi-sp * 28;
+			position: relative;
+			margin-bottom: $pi-sp*5;
+		}
+
+		.pi-cs-header-sign-text {
+			left: 0;
+		    position:absolute;
+		    text-align:center;
+		    top: $pi-sp * 16;
+		    font-size: $pi-sp*4;
+		    color: $pi-color-white;
+		    width: 100%;
+		}
+	}
+}

@@ -54,7 +54,7 @@ ApiActionListener.prototype.getActionHandler = function() {
     }.bind(this);
 };
 
-var App = React.createClass({
+var PirateClient = React.createClass({
     getInitialState: function () {
         var al = new ApiActionListener(this);
         this.props.api.addActionListener(al.getActionHandler());
@@ -65,50 +65,33 @@ var App = React.createClass({
             currentBidNumber: -1
         };
     },
+    componentDidUpdate: function(oldProps, oldState) {
+        if (this.state.die != oldState.die) {
+            $( "#clientDiceDisplay" ).empty();
+            ReactDOM.render(<ClientDiceDisplay bid={this.state.currentBidCount} dice={this.state.die}/>, document.getElementById('clientDiceDisplay'));
+        }
+    },
     tookTurn: function () {
         this.setState({takingTurn: false});
     },
     render: function () {
-        var divStyle = {
-            padding: "50px"
-        };
-        var headerStyle = {
-            marginTop: "10px",
-            marginBottom: "30px"
-        };
 
         var body = "", display = "", bid = this.state.currentBidCount != -1, takingTurn = this.state.takingTurn;
 
-        if (bid) {
-            display = <BidDisplay bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />;
-        }
-
-        if (takingTurn) {
-            if(bid) {
-                body = <div>
-                    <LiarButton onSubmit={this.tookTurn} api={this.props.api}/>
-                    <BidForm onSubmit={this.tookTurn} api={this.props.api}/>
-                </div>;
-            } else {
-                body = <BidForm onSubmit={this.tookTurn} api={this.props.api}/>
-            }
-        }
-
-
         return (
-            <div style={divStyle}>
-                <h1 style={headerStyle}>Pirate's Dice</h1>
-                <DiceDisplay bid={bid} dice={this.state.die}/>
-                {display}
-                {body}
+            <div>
+                <ClientHeader username={this.props.userInfo.name}/>
+                <div id="clientDiceDisplay"></div>
+                <ClientActionPanel bid={this.state.currentBidCount} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
+                <BidDisplay bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />
             </div>
         );
     }
 });
 
-window.gameStart = function (dom, api, users) {
+window.gameStart = function (dom, api, users, userInfo) {
     ReactDOM.render(
-        <App api={api} users={users}/>,
+        <PirateClient api={api} users={users} userInfo={userInfo}/>,
         dom
     );
 };

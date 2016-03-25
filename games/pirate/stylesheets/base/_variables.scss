@@ -21,12 +21,16 @@ $pi-cs-color-primary:         '_'; //TODO: this is a temporary hack, in place un
 $pi-color-white:          #ffffff;
 $pi-color-black:          #000000;
 
-$pi-color-dark-gray:      #2a2a2a;
+$pi-color-dark-gray:      #4A4A4A;
 $pi-color-medium-gray:    #888888;
 $pi-color-light-gray:     #dbdbdb;
 
 $pi-color-success:        #417505;
 $pi-color-failure:        #D0021B;
+
+/*-------   typography  --------*/
+$pi-font: 				 'pirateScript';
+$pi-font-caps: 			 'pirateScript_smallCaps';
 
 
 /*-------  player colors  ------*/

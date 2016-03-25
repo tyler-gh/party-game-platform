@@ -8,7 +8,7 @@ var LiarButton = React.createClass({
     },
     render: function () {
         return <form onSubmit={this.callLiar}>
-            <input type="submit" value="LIAR!!"/>
+            <input type="submit" value="SAY THAT BE A LIE"/>
         </form>
     }
 });

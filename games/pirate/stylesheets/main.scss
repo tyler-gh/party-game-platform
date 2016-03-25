@@ -1,3 +1,9 @@
 @import 'base/reset';
 @import 'base/variables';
 @import 'base/typography';
+
+@import 'components/headers';
+@import 'components/dice';
+@import 'components/client_action_panel';
+
+@import 'pages/pirate_client';

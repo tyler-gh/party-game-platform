@@ -28,7 +28,6 @@ var sendDieToClient = function (id, die) {
     }));
 };
 
-//currently not used
 var broadcastDie = function () {
     forEachUser(function (user) {
         sendDieToClient(user.id, copy(user.die));
@@ -107,6 +106,14 @@ var broadcastLostDie = function(user) {
 
 
 //general broadcasters
+
+var sendUserInfo = function (id, user) {
+    sendActionToClient(id, makeAction({
+        actionType: "user-info",
+        data: user
+    }));
+};
+
 var doBroadcast = function (action) {
     broadcastActions.push(action);
     //noinspection JSUnresolvedFunction

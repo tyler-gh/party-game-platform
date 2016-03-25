@@ -1,1 +1,15 @@
 @import 'variables';
+
+body {
+	font-family: $pi-font;
+}
+
+@font-face {
+	font-family: 'pirateScript';
+	src: url('/assets/typefaces/oldstyle.TTF') format('truetype');
+}
+
+@font-face {
+	font-family: 'pirateScript_smallCaps';
+	src: url('/assets/typefaces/oldstyle_smallcaps.TTF') format('truetype');
+}
