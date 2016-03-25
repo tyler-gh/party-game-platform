@@ -29,6 +29,7 @@ var actionHandler = function (actionStr) {
     }
 };
 
+//TODO users who reconnect will get all the actions and rerun them. resulting in unplanned behaviors
 var newClientConnectionHandler = function (clientStr) {
     var client = JSON.parse(clientStr);
     if (!state.users[state.userIndexes[client.id]]) {

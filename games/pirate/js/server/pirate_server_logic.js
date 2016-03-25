@@ -1,5 +1,6 @@
 var state = {
     finished: false,
+    waitingOnRevealingDice: false,
     gameStarted: false,
     numberOfUsers: 0,
     currentUserIndex: 1,
@@ -26,7 +27,7 @@ var startNextRound = function()
         broadcastGameWinner(getWinner())
         return;
     }
-
+    state.roundStarted = true;
     generateDie();
     beginRolling();
 };
@@ -107,7 +108,12 @@ var allClientsHaveRolled = function()
 var beginTurn = function()
 {
     advanceUser();
+
+    //TODO refactor? this could be the same thing, maybe its good to be separate though
     broadcastCurrentTurn(state.users[state.currentUserIndex]);
+
+    promptCurrentTurn(state.users[state.currentUserIndex]);
+
 };
 
 var advanceUser = function () {
@@ -142,7 +148,7 @@ var bidAction = function (action) {
         return;
     }
     setBid(action);
-    broadcastNewBid();
+    broadcastNewBid(state.bid);
 
     beginTurn();
 };
@@ -181,7 +187,9 @@ var lieAction = function (action) {
     state.currentUserIndex = state.userIndexes[user.id];
 
     clearBid();
+    state.waitingOnRevealingDice = true
     broadcastShowDice();
+
 };
 
 var didLie = function () {
@@ -210,6 +218,8 @@ var clearBid = function () {
 };
 
 var roundOver = function (action) {
+    state.waitingOnRevealingDice = false
+
     var user = state.users[state.currentUserIndex]
     user.numberOfDie--;
     broadcastLostDie(user);

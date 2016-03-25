@@ -8,7 +8,7 @@ var broadcastGameWinner = function(user) {
     doBroadcast(makeAction({
         actionType: "game-winner",
         data: {
-            client_id: user.id
+            client_name: user.name
         }
     }));
 };
@@ -55,16 +55,15 @@ var broadcastAllClientsDoneRolling = function () {
 
 var broadcastCurrentTurn = function (user) {
     doBroadcast(makeAction({
-        actionType: "prompt-turn",
+        actionType: "new-turn",
         data: {
-            client_id: user.id
+            client_name: user.name
         }
     }));
 };
 
-//used on reconnect
-var promptCurrentTurn = function () {
-    sendActionToClient(state.users[state.currentUserIndex].id, makeAction({
+var promptCurrentTurn = function (user) {
+    sendActionToClient(user.id, makeAction({
         actionType: "prompt-turn"
     }));
 };
@@ -81,11 +80,11 @@ var promptNoBid = function (id) {
     }));
 }
 
-var broadcastNewBid = function() {
+var broadcastNewBid = function(bid) {
     doBroadcast(makeAction({
         actionType: "new-bid",
         data: {
-            bid: {dieCount: state.bid.dieCount, dieNumber: state.bid.dieNumber}
+            bid: {dieCount: bid.dieCount, dieNumber: bid.dieNumber}
         }
     }));
 };
