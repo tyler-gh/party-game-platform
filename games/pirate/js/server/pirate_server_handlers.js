@@ -14,13 +14,18 @@ var actionHandler = function (actionStr) {
             break;
         case "start-game":
             doBroadcast(action);
-            generateDie();
-            broadcastDie();
-            promptCurrentTurn();
+            startNextRound();
+            break;
+        case "dice-rolled":
+            clientRolled(action);
             break;
         case "take-turn":
             takeTurn(action);
             break;
+        case "dice-revealed":
+            roundOver(action)
+            break;
+
     }
 };
 
@@ -36,7 +41,7 @@ var newClientConnectionHandler = function (clientStr) {
         sendDieToClient(client.id, copy(state.users[state.userIndexes[client.id]].die));
 
         if (state.userIndexes[client.id] == state.currentUserIndex) {
-            promptCurrentTurn();
+            promptCurrentTurn(state.users[state.currentUserIndex]);
         }
     }
 };
