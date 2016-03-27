@@ -4,8 +4,8 @@
 	width: 100%;
 	height: $pi-sp*20;
 	bottom: 0px;
-	position: absolute;
-	clear: both;
+	position: fixed;
+	z-index: 5;
 	background-color: $pi-color-dark-gray;
 	align-items: center;
   	justify-content: center;
