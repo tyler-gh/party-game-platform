@@ -1,0 +1,43 @@
+@import '../base/variables';
+
+.pi-cs-footer {
+	width: 100%;
+	height: $pi-sp*20;
+	bottom: 0px;
+	position: absolute;
+	clear: both;
+	background-color: $pi-color-dark-gray;
+	align-items: center;
+  	justify-content: center;
+  	display: -webkit-flex;
+	display: flex;
+	font-size: $pi-sp * 6;
+	color: $pi-color-white;
+
+	.pi-cs-footer-sign {
+		margin-left: $pi-sp * 4;
+		width: 210px;
+		height: 65px;
+		position: relative;
+		background: url(/assets/svg/pirate_sign_white.svg);
+	    background-position: center center;
+	    background-repeat: no-repeat;
+	}
+
+	.pi-cs-footer-sign-content {
+		left: 0;
+	    position:absolute;
+	    top: 50%;
+	    transform: translate(0, -50%);
+	    text-align:center;
+	    width: 100%;
+	    color: $pi-color-dark-gray;
+	    vertical-align: super;
+	}
+
+	.pi-cs-footer-sign-text {
+		vertical-align: super;
+		color: $pi-color-dark-gray;
+		margin-right: $pi-sp * 4;
+	}
+}

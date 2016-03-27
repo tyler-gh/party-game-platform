@@ -56,7 +56,7 @@ var PirateClient = React.createClass({
                 <ClientHeader username={this.props.userInfo.name}/>
                 <div id="clientDiceDisplay"></div>
                 <ClientActionPanel bid={this.state.currentBidCount} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
-                <BidDisplay bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />
+                <ClientFooter bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />
             </div>
         );
     }
