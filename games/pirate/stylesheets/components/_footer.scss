@@ -11,15 +11,15 @@
   	justify-content: center;
   	display: -webkit-flex;
 	display: flex;
-	font-size: $pi-sp * 6;
+	font-size: $pi-sp * 8;
 	color: $pi-color-white;
 
 	.pi-cs-footer-sign {
-		margin-left: $pi-sp * 4;
-		width: 210px;
-		height: 65px;
+		margin-left: $pi-sp * 2;
+		width: 135px;
+		height: 51px;
 		position: relative;
-		background: url(/assets/svg/pirate_sign_white.svg);
+		background: url(/assets/svg/bid_plank.svg);
 	    background-position: center center;
 	    background-repeat: no-repeat;
 	}
@@ -32,12 +32,21 @@
 	    text-align:center;
 	    width: 100%;
 	    color: $pi-color-dark-gray;
-	    vertical-align: super;
+
+	    .dice_svg path {
+			fill: $pi-color-dark-gray;
+		}
+
+		.dice_svg {
+			margin: 0 $pi-sp;
+			verticle-align: sub;
+			height: $pi-sp * 6;
+		}
 	}
 
 	.pi-cs-footer-sign-text {
-		vertical-align: super;
+		vertical-align: bottom;
 		color: $pi-color-dark-gray;
-		margin-right: $pi-sp * 4;
+		margin-right: $pi-sp;
 	}
 }
