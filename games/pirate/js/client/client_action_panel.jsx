@@ -13,20 +13,20 @@ var ClientActionPanel = React.createClass({
         var tookTurn = this.props.tookTurn;
         var takingTurn = this.props.takingTurn;
         var api = this.props.api;
-        var bid = this.props.bid;
+        var bidCount = this.props.bidCount;
+        var bidNumber = this.props.bidNumber;
 
         var bidForm = "";
         var liarButton = "";
 
-        if (this.props.takingTurn) {
-            bidForm = <BidForm onSubmit={tookTurn} api={api}/>;
+        if (takingTurn) {
+            bidForm = <BidForm onSubmit={tookTurn} api={api} bidCount={bidCount} bidNumber={bidNumber}/>;
             liarButton = <LiarButton onSubmit={tookTurn} api={api}/>;
         }
 
         return (
             <div id="pi-cs-action-panel" className="pi-cs-action-panel">
                 {bidForm}
-                {liarButton}
             </div>
         )
     }

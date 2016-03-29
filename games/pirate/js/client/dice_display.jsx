@@ -1,10 +1,8 @@
 var ClientDiceDisplay = React.createClass({
     render: function () {
         return (
-        	<div className={"pi-cs-dice-display"}>
-        		<div className={"pi-cs-dice-bar-container"}>
-        			<DiceBar dice={this.props.dice}/>
-        		</div>
+        	<div>
+        		<DiceBar dice={this.props.dice}/>
         		<div className={"pi-cs-dice-shelf"}></div>
         	</div>
         )
@@ -15,10 +13,12 @@ var DiceBar = React.createClass({
 
     render: function () {
         return (
-        	<div className="pi-cs-dice-bar">
-                {this.props.dice.map(function(die_val){
-                    return <Die die_val={die_val}/>;
-                })}
+            <div className={"pi-cs-dice-bar-container"}>
+            	<div className="pi-cs-dice-bar">
+                    {this.props.dice.map(function(die_val){
+                        return <Die die_val={die_val}/>;
+                    })}
+                </div>
             </div>
         )
     }

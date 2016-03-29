@@ -1,8 +1,12 @@
 @import '../base/variables';
 
 .pi-cs-action-panel {
-	padding: $pi-sp*2;
-	margin-bottom: $pi-sp*20; /* Same as footer height */
+	padding-top: $pi-sp*4;
+	padding-bottom: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
+	width: 80%;
+	position: fixed;
 }
 
 .pi-cs-action-panel-bidding {

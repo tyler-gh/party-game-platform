@@ -43,6 +43,10 @@ var PirateClient = React.createClass({
             $( "#clientDiceDisplay" ).empty();
             ReactDOM.render(<ClientDiceDisplay bid={this.state.currentBidCount} dice={this.state.die}/>, document.getElementById('clientDiceDisplay'));
         }
+        
+        $( "#clientFooter" ).empty();
+        ReactDOM.render(<ClientFooter bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />, document.getElementById('clientFooter'));
+        
     },
     tookTurn: function () {
         this.setState({takingTurn: false});
@@ -55,8 +59,8 @@ var PirateClient = React.createClass({
             <div>
                 <ClientHeader username={this.props.userInfo.name}/>
                 <div id="clientDiceDisplay"></div>
-                <ClientActionPanel bid={this.state.currentBidCount} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
-                <ClientFooter bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />
+                <ClientActionPanel bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
+                <div id="clientFooter"></div>
             </div>
         );
     }

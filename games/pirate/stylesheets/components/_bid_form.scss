@@ -1,0 +1,90 @@
+@import '../base/variables';
+@import '../layout/center';
+
+.pi-bid-form-inputs {
+	@include complete_center_children();
+	width: 100%;
+	margin-bottom: $pi-sp*2;
+
+	.pi-dice-count-controller {
+		width: $pi-sp*10;
+
+		.pi-dice-count-control-arrow-container {
+			@include complete_center_children();
+			.pi-dice-count-controll-arrow {
+				width: 100%;
+
+				&:hover {
+					transform: scale(1.5, 1.5);
+				}
+			}
+		}	
+
+		.pi-dice-count-control-number {
+			width: 100%;
+			color: $pi-color-white;
+			font-size: $pi-sp * 10;
+			text-align: center;
+			margin-bottom: $pi-sp*1.5;
+		}
+	}
+
+	.pi-dice-value-selection {
+		width: $pi-sp*6;
+	}
+
+	.pi-dice-value-selection {
+		width: $pi-sp*30;
+		margin-left: $pi-sp*2;
+
+		.pi-dice-value-selection-row {
+			@include complete_center_children();
+
+			.pi-dice-value-svg {
+				margin: $pi-sp*.75;
+			}
+		}
+	}
+}
+
+@mixin pi-bid-form-button() {
+	width: 100%;
+	max-width: $pi-sp*40;
+	border: none;
+	background-color: $pi-color-white;
+	border-radius: $pi-sp;
+	padding-bottom: $pi-sp;
+	padding-top: $pi-sp*.5;
+
+	&:hover {
+		-ms-transform: scale(1.01);
+    	-webkit-transform: scale(1.01); 
+    	transform: scale(1.01);
+	}
+
+	&:active {
+		background-color: darken($pi-color-white, 10%);
+	}
+}
+
+.pi-bid-form-button-container {
+	@include complete_center_children();
+
+	.pi-make-bid-button {
+		@include pi-bid-form-button();
+	}
+}
+
+.pi-bid-form-button-text {
+	font-size: $pi-sp*3;
+	color: $pi-cs-color-primary;
+}
+
+.pi-bid-form-text {
+	text-align: center;
+	font-size: $pi-sp*3;
+	color: $pi-color-white;
+	margin: $pi-sp;
+	margin-bottom: $pi-sp*1.5;
+}
+

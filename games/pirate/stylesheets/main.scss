@@ -2,9 +2,12 @@
 @import 'base/variables';
 @import 'base/typography';
 
+@import 'layout/center';
+
 @import 'components/headers';
 @import 'components/dice';
 @import 'components/client_action_panel';
 @import 'components/footer';
+@import 'components/bid_form';
 
 @import 'pages/pirate_client';
