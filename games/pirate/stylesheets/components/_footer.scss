@@ -1,17 +1,15 @@
 @import '../base/variables';
+@import '../layout/center';
 
 .pi-cs-footer {
 	width: 100%;
-	height: $pi-sp*20;
+	height: $pi-sp*12;
 	bottom: 0px;
 	position: fixed;
 	z-index: 5;
 	background-color: $pi-color-dark-gray;
-	align-items: center;
-  	justify-content: center;
-  	display: -webkit-flex;
-	display: flex;
-	font-size: $pi-sp * 8;
+	@include complete_center_children();
+	font-size: $pi-sp*6;
 	color: $pi-color-white;
 
 	.pi-cs-footer-sign {
@@ -29,6 +27,7 @@
 	    position:absolute;
 	    top: 50%;
 	    transform: translate(0, -50%);
+	    -webkit-transform: translate(0, -50%);
 	    text-align:center;
 	    width: 100%;
 	    color: $pi-color-dark-gray;
@@ -40,13 +39,12 @@
 		.dice_svg {
 			margin: 0 $pi-sp;
 			verticle-align: sub;
-			height: $pi-sp * 6;
+			height: $pi-sp * 5;
 		}
 	}
 
 	.pi-cs-footer-sign-text {
 		vertical-align: bottom;
 		color: $pi-color-dark-gray;
-		margin-right: $pi-sp;
 	}
 }
