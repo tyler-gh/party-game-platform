@@ -17,6 +17,16 @@ var WaitingRoom = React.createClass({
     },
     clickStart: function () {
 
+        if (this.state.startButtonState == "start") {
+            Api.socketSend("ws", JSON.stringify({actionType: "countdown-started"}));
+        }
+        else if (this.state.startButtonState == "cancel") {
+            Api.socketSend("ws", JSON.stringify({actionType: "countdown-cancelled"}));
+        }
+        this.clickStart_Action();
+    },
+    clickStart_Action: function () {
+
         var countdownContainer = $("#waiting-room-start-countdown-container");
         var startButtonContainer = $("#waiting-room-start-button-container");
 

@@ -51,6 +51,14 @@ GameContainer.prototype.onPreGameMessage = function (data) {
             this.preGame = false;
             window.gameStart(this.dom, new GameApi(this.addActionListener.bind(this), this.api), this.users, this.userInfo);
             break;
+        case "countdown-started":
+            var myElement = document.getElementById('WaitingRoom');
+
+            myElement.clickStart_Action();
+            break;
+        case "countdown-cancelled":
+            window.clickStart_Action();
+            break;
         case "user-info":
             this.userInfo = data.data;
             break;
