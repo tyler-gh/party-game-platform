@@ -1,0 +1,50 @@
+@import '../base/variables';
+@import '../layout/center';
+
+.pi-cs-footer {
+	width: 100%;
+	height: $pi-sp*12;
+	bottom: 0px;
+	position: fixed;
+	z-index: 5;
+	background-color: $pi-color-dark-gray;
+	@include complete_center_children();
+	font-size: $pi-sp*6;
+	color: $pi-color-white;
+
+	.pi-cs-footer-sign {
+		margin-left: $pi-sp * 2;
+		width: 135px;
+		height: 51px;
+		position: relative;
+		background: url(/assets/svg/bid_plank.svg);
+	    background-position: center center;
+	    background-repeat: no-repeat;
+	}
+
+	.pi-cs-footer-sign-content {
+		left: 0;
+	    position:absolute;
+	    top: 50%;
+	    transform: translate(0, -50%);
+	    -webkit-transform: translate(0, -50%);
+	    text-align:center;
+	    width: 100%;
+	    color: $pi-color-dark-gray;
+
+	    .dice_svg path {
+			fill: $pi-color-dark-gray;
+		}
+
+		.dice_svg {
+			margin: 0 $pi-sp;
+			verticle-align: sub;
+			height: $pi-sp * 5;
+		}
+	}
+
+	.pi-cs-footer-sign-text {
+		vertical-align: bottom;
+		color: $pi-color-dark-gray;
+	}
+}

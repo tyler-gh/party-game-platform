@@ -2,8 +2,11 @@
 @import 'base/variables';
 @import 'base/typography';
 
+@import 'layout/center';
+
 @import 'components/headers';
 @import 'components/dice';
 @import 'components/client_action_panel';
+@import 'components/footer';
 
 @import 'pages/pirate_client';

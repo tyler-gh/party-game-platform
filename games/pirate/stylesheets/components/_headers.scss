@@ -1,4 +1,5 @@
 @import '../base/variables';
+@import '../layout/center';
 
 .pi-cs-header {
 	.pi-cs-banner {
@@ -6,10 +7,7 @@
 		height: $pi-sp*11;
 		background-color: $pi-cs-color-primary;
 		box-shadow: 0px 3px 5px #888888;
-		align-items: center;
-	  	justify-content: center;
-	  	display: -webkit-flex;
-		display: flex;
+		@include complete_center_children();
 
 		.pi-cs-skull {
 			height: 80%;
@@ -17,10 +15,7 @@
 	}
 	.pi-cs-header-sign-container {
 		width: 100%;
-		display: -webkit-flex;
-		display: flex;
-		align-items: center;
-	  	justify-content: center;
+		@include complete_center_children();
 
 		.pi-cs-header-sign {
 			width: $pi-sp * 28;
