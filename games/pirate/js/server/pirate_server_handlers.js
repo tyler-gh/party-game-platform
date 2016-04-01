@@ -16,6 +16,12 @@ var actionHandler = function (actionStr) {
             doBroadcast(action);
             startNextRound();
             break;
+        case "countdown-started":
+            doBroadcast(action);
+            break;
+        case "countdown-cancelled":
+            doBroadcast(action);
+            break;
         case "dice-rolled":
             clientRolled(action);
             break;
