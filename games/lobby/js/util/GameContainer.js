@@ -52,12 +52,12 @@ GameContainer.prototype.onPreGameMessage = function (data) {
             window.gameStart(this.dom, new GameApi(this.addActionListener.bind(this), this.api), this.users, this.userInfo);
             break;
         case "countdown-started":
-            var myElement = document.getElementById('WaitingRoom');
-
-            myElement.clickStart_Action();
+            var myButton = $( "#waiting-room-start-button" );
+            myButton.trigger("remote_countdown_started" );
             break;
         case "countdown-cancelled":
-            window.clickStart_Action();
+            var myButton = $( "#waiting-room-start-button" );
+            myButton.trigger("remote_countdown_stopped" );
             break;
         case "user-info":
             this.userInfo = data.data;
