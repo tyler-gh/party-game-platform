@@ -5,10 +5,11 @@ var LobbyButton = React.createClass({
     	var icon = this.props.icon;
     	var text = this.props.text;
         var hollow = this.props.hollow;
-
+		
 		var handleClick = this.props.handleClick;
-
+		var myID = this.props.id;
 		var className;
+
 		if (icon != null) {
 			className = "pg-lobby-icon-button";
 		} else if (hollow != null) {className = "pg-lobby-hollow-button";
@@ -22,7 +23,7 @@ var LobbyButton = React.createClass({
 		className += " " + game;
 
         return (
-	        <button className={className} onClick={handleClick}>
+	        <button id={myID} className={className} onClick={handleClick}>
 	        	<div id={"pg-lobby-button-splash-" + text}></div>
 	        	{text}
 				{(() => {

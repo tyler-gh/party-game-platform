@@ -7,6 +7,13 @@ var WaitingRoom = React.createClass({
         return {users: {}, startButtonState: "start", countdownTime: "5", intervalTimer: null};
     },
     onUserUpdate: function(users) {
+        var usersKeys = Object.keys(users);
+        var stateUsersKeys = Object.keys(this.state.users);
+
+        if(usersKeys.length !== stateUsersKeys.length) {
+            Api.socketSend("ws", JSON.stringify({actionType: "countdown-cancelled"}));
+        }
+
         this.setState({users: users});
     },
     clickLeave: function () {
@@ -17,10 +24,19 @@ var WaitingRoom = React.createClass({
     },
     clickStart: function () {
 
+        if (this.state.startButtonState == "start") {
+            Api.socketSend("ws", JSON.stringify({actionType: "countdown-started"}));
+        }
+        else if (this.state.startButtonState == "cancel") {
+            Api.socketSend("ws", JSON.stringify({actionType: "countdown-cancelled"}));
+        }
+    },
+    clickStart_Remote: function (starting) {
+
         var countdownContainer = $("#waiting-room-start-countdown-container");
         var startButtonContainer = $("#waiting-room-start-button-container");
 
-        if (this.state.startButtonState == "start") {
+        if (this.state.startButtonState == "start" && starting) {
             this.setState({startButtonState: "cancel"});
 
             countdownContainer.removeClass("countdown-leave");
@@ -31,7 +47,7 @@ var WaitingRoom = React.createClass({
 
             this.refs['countdown-timer'].startTimer();
         }
-        else if (this.state.startButtonState == "cancel") {
+        else if (this.state.startButtonState == "cancel" && !starting) {
             this.setState({startButtonState: "start"});
 
             countdownContainer.removeClass("countdown-enter");
@@ -48,6 +64,14 @@ var WaitingRoom = React.createClass({
         var title = this.props.title;
         var description = this.props.description;
         var gameCode = this.props.gameCode;
+
+        var remoteCountdownClick = this.clickStart_Remote;
+        $("#waiting-room-start-button").bind("remote_countdown_started", function(event, params) {
+            remoteCountdownClick(true);
+        });
+        $("#waiting-room-start-button").bind("remote_countdown_stopped", function(event, params) {
+            remoteCountdownClick(false);
+        });
 
         var callback = function() {
             if (window.gameStart) {
@@ -73,8 +97,8 @@ var WaitingRoom = React.createClass({
                                 </div>
                                 <div id="waiting-room-start-button-container"
                                      className="waiting-room-start-button-container">
-                                    <LobbyButton game={game} text={this.state.startButtonState}
-                                                 handleClick={this.clickStart}/>
+                                    <LobbyButton id="waiting-room-start-button" game={game} text={this.state.startButtonState}
+                                                 handleClick={this.clickStart} />
                                 </div>
                             </div>
                             <LobbyButton game={game} hollow="color" text={"leave"} handleClick={this.clickLeave}/>

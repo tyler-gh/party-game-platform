@@ -14,16 +14,28 @@ var actionHandler = function (actionStr) {
             break;
         case "start-game":
             doBroadcast(action);
-            generateDie();
-            broadcastDie();
-            promptCurrentTurn();
+            startNextRound();
+            break;
+        case "countdown-started":
+            doBroadcast(action);
+            break;
+        case "countdown-cancelled":
+            doBroadcast(action);
+            break;
+        case "dice-rolled":
+            clientRolled(action);
             break;
         case "take-turn":
             takeTurn(action);
             break;
+        case "dice-revealed":
+            roundOver(action)
+            break;
+
     }
 };
 
+//TODO users who reconnect will get all the actions and rerun them. resulting in unplanned behaviors
 var newClientConnectionHandler = function (clientStr) {
     var client = JSON.parse(clientStr);
     if (!state.users[state.userIndexes[client.id]]) {
@@ -37,7 +49,7 @@ var newClientConnectionHandler = function (clientStr) {
         sendDieToClient(client.id, copy(state.users[state.userIndexes[client.id]].die));
 
         if (state.userIndexes[client.id] == state.currentUserIndex) {
-            promptCurrentTurn();
+            promptCurrentTurn(state.users[state.currentUserIndex]);
         }
     }
 };
