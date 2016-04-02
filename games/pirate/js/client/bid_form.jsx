@@ -1,14 +1,15 @@
 var BidForm = React.createClass({
     getInitialState: function () {
+
+        var initialCount = this.props.bidCount;
+        if (initialCount < 0) {
+            initialCount = 1;
+        }
+
         return {
-            dieCount: this.props.bidCount,
+            dieCount: initialCount,
             dieNumber: -1
         };
-    },
-    componentDidMount: function() {
-        if (this.state.dieCount < 0) {
-            this.setState({dieCount: 1});
-        }
     },
     makeBid: function (e) {
         e.preventDefault();
@@ -21,6 +22,7 @@ var BidForm = React.createClass({
         }
     },
     callLiar: function(e) {
+        debugger
         e.preventDefault();
         this.props.api.callLiar();
         if(this.props.onSubmit) {

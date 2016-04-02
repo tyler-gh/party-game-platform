@@ -90,9 +90,9 @@ var PirateClient = React.createClass({
         return (
             <div>
                 <ClientHeader username={this.props.userInfo.name}/>
-                <div id="clientDiceDisplay"></div>
-                <ClientActionPanel bid={this.state.currentBidCount} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
                 <RollForm needToRoll={this.state.needToRoll} rolledDice={this.rolledDice}/>
+                <div id="clientDiceDisplay"></div>
+                <ClientActionPanel bidCount={this.state.currentBidCount} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
                 <div id="clientFooter"></div>
             </div>
         );
