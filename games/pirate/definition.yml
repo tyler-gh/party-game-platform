@@ -11,7 +11,8 @@ js_client_files: [
   js/client/pirate_client.jsx,
   js/client/client_header.jsx,
   js/client/client_action_panel.jsx,
-  js/client/client_footer.jsx
+  js/client/client_footer.jsx,
+  js/client/roll_form.jsx
 ]
 js_main_client_files: [js/main/pirate_main.jsx]
 js_server_files: [

@@ -9,7 +9,8 @@ ApiActionListener.prototype.getActionHandler = function() {
                 //TODO tell client to roll on UI
 
                 //TODO move this function to roll button
-                Api.socketSend("ws", JSON.stringify({actionType: "dice-rolled"}));
+                this.app.setState({needToRoll: true});
+
                 break;
             case "rolling-finished":
                 //TODO not sure if this will do anything on the normal clients
@@ -62,7 +63,8 @@ var PirateClient = React.createClass({
             die: [],
             takingTurn: false,
             currentBidCount: -1,
-            currentBidNumber: -1
+            currentBidNumber: -1,
+            needToRoll: false
         };
     },
     componentDidUpdate: function(oldProps, oldState) {
@@ -74,6 +76,9 @@ var PirateClient = React.createClass({
     tookTurn: function () {
         this.setState({takingTurn: false});
     },
+    rolledDice: function () {
+        this.setState({needToRoll: false});
+    },
     render: function () {
 
         var body = "", display = "", bid = this.state.currentBidCount != -1, takingTurn = this.state.takingTurn;
@@ -83,6 +88,7 @@ var PirateClient = React.createClass({
                 <ClientHeader username={this.props.userInfo.name}/>
                 <div id="clientDiceDisplay"></div>
                 <ClientActionPanel bid={this.state.currentBidCount} api={this.props.api} takingTurn={takingTurn} tookTurn={this.tookTurn}/>
+                <RollForm needToRoll={this.state.needToRoll} rolledDice={this.rolledDice}/>
                 <ClientFooter bidCount={this.state.currentBidCount} bidNumber={this.state.currentBidNumber} />
             </div>
         );
