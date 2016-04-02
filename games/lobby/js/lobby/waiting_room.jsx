@@ -7,6 +7,13 @@ var WaitingRoom = React.createClass({
         return {users: {}, startButtonState: "start", countdownTime: "5", intervalTimer: null};
     },
     onUserUpdate: function(users) {
+        var usersKeys = Object.keys(users);
+        var stateUsersKeys = Object.keys(this.state.users);
+
+        if(usersKeys.length !== stateUsersKeys.length) {
+            Api.socketSend("ws", JSON.stringify({actionType: "countdown-cancelled"}));
+        }
+
         this.setState({users: users});
     },
     clickLeave: function () {
