@@ -22,7 +22,6 @@ var BidForm = React.createClass({
         }
     },
     callLiar: function(e) {
-        debugger
         e.preventDefault();
         this.props.api.callLiar();
         if(this.props.onSubmit) {

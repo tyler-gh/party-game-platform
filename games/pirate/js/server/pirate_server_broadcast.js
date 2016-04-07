@@ -92,7 +92,10 @@ var broadcastNewBid = function(bid) {
 
 var broadcastShowDice = function() {
     doBroadcast(makeAction({
-        actionType: "reveal-dice"
+        actionType: "reveal-dice",
+        data: {
+            realDieCount: getRealDieCount()
+        }
     }));
 };
 var broadcastLostDie = function(user) {

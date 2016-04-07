@@ -9,6 +9,7 @@ ApiActionListener.prototype.getActionHandler = function() {
                 //TODO tell client to roll on UI
 
                 //TODO move this function to roll button
+                $( "#clientDiceDisplay" ).empty();
                 this.app.setState({needToRoll: true});
 
                 break;
@@ -54,6 +55,7 @@ ApiActionListener.prototype.getActionHandler = function() {
         }
     }.bind(this);
 };
+
 
 var PirateClient = React.createClass({
     getInitialState: function () {

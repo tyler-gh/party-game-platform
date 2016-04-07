@@ -33,7 +33,7 @@ ApiActionListener.prototype.getActionHandler = function(me) {
                 //when it is done showing the dice
 
                 //TODO move this call to a spot after the main screen is ready to continue the game
-                this.app.setState({revealingDice: true});
+                Api.socketSend("ws", JSON.stringify({actionType: "dice-revealed"}));
                 break;
             case "game-winner":
                 //TODO fill in what happens when the game finishes
@@ -52,24 +52,8 @@ var PirateApp = React.createClass({
 
         //});
         return {
-            actions: [],
-            revealingDice: false
+            actions: []
         };
-    },
-    componentDidUpdate: function() {
-        if (this.state.revealingDice) {
-            $('#Done-Revealing-Dice-Form').removeClass('invisible');
-        }
-        else {
-            $('#Done-Revealing-Dice-Form').addClass('invisible');
-        }
-    },
-    doneRevealingDice: function()
-    {
-        if (this.state.revealingDice) {
-            Api.socketSend("ws", JSON.stringify({actionType: "dice-revealed"}));
-            this.setState({revealingDice: false});
-        }
     },
     render: function () {
         return (
@@ -78,11 +62,6 @@ var PirateApp = React.createClass({
                 {this.state.actions.map(function (action) {
                     return <h6>{JSON.stringify(action)}</h6>;
                 })}
-                <div >
-                    <button id="Done-Revealing-Dice-Form" className="invisible"  onClick={this.doneRevealingDice}>
-                        Done revealing dice, start next turn
-                    </button>
-                </div>
             </div>
 
         );

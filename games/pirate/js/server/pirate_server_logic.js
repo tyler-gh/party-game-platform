@@ -187,29 +187,33 @@ var lieAction = function (action) {
     //this will be the user who will lose the dice after the dice has been revealed
     state.currentUserIndex = state.userIndexes[user.id];
 
-    clearBid();
     state.waitingOnRevealingDice = true
     broadcastShowDice();
-
 };
 
 var didLie = function () {
     if (state.bid.bidder != -1) {
-        var count = 0;
-
-        forEachUser(function (user) {
-            user.die.forEach(function (die) {
-                if (die === state.bid.dieNumber || die === 1) {
-                    count++;
-                }
-            });
-        });
+        var count = getRealDieCount();
 
         if (count < state.bid.dieCount) {
             return true;
         }
     }
     return false;
+};
+
+var getRealDieCount = function () {
+    var count = 0;
+
+    forEachUser(function (user) {
+        user.die.forEach(function (die) {
+            if (die === state.bid.dieNumber || die === 1) {
+                count++;
+            }
+        });
+    });
+
+    return count;
 };
 
 var clearBid = function () {
@@ -219,12 +223,15 @@ var clearBid = function () {
 };
 
 var roundOver = function (action) {
-    state.waitingOnRevealingDice = false
+    if (state.waitingOnRevealingDice == true) {
+        state.waitingOnRevealingDice = false
 
-    var user = state.users[state.currentUserIndex]
-    user.numberOfDie--;
-    broadcastLostDie(user);
+        var user = state.users[state.currentUserIndex]
+        user.numberOfDie--;
+        broadcastLostDie(user);
 
-    state.currentUserIndex = state.userIndexes[user.id] - 1;
-    startNextRound();
+        state.currentUserIndex = state.userIndexes[user.id] - 1;
+        clearBid();
+        startNextRound();
+    }
 }
