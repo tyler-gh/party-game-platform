@@ -3,7 +3,7 @@
 
 .pi-cs-footer {
 	width: 100%;
-	height: $pi-sp*12;
+	height: $pi-sp*8;
 	bottom: 0px;
 	position: fixed;
 	z-index: 5;
@@ -14,12 +14,13 @@
 
 	.pi-cs-footer-sign {
 		margin-left: $pi-sp * 2;
-		width: 135px;
-		height: 51px;
+		width: $pi-sp*20;
+		height: $pi-sp*7;
 		position: relative;
 		background: url(/assets/svg/bid_plank.svg);
 	    background-position: center center;
 	    background-repeat: no-repeat;
+	    background-size: $pi-sp*20 $pi-sp*7;
 	}
 
 	.pi-cs-footer-sign-content {

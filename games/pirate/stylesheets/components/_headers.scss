@@ -4,7 +4,7 @@
 .pi-cs-header {
 	.pi-cs-banner {
 		width: 100%;
-		height: $pi-sp*11;
+		height: $pi-sp*8;
 		background-color: $pi-cs-color-primary;
 		box-shadow: 0px 3px 5px #888888;
 		@include complete_center_children();
@@ -18,16 +18,16 @@
 		@include complete_center_children();
 
 		.pi-cs-header-sign {
-			width: $pi-sp * 28;
+			width: $pi-sp * 24;
 			position: relative;
-			margin-bottom: $pi-sp*5;
+			margin-bottom: $pi-sp*2;
 		}
 
 		.pi-cs-header-sign-text {
 			left: 0;
 		    position:absolute;
 		    text-align:center;
-		    top: $pi-sp * 16;
+		    top: $pi-sp * 12;
 		    font-size: $pi-sp*4;
 		    color: $pi-color-white;
 		    width: 100%;
