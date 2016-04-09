@@ -23,7 +23,7 @@
 		.pi-dice-count-control-number {
 			width: 100%;
 			color: $pi-color-white;
-			font-size: $pi-sp * 10;
+			font-size: $pi-sp * 8;
 			text-align: center;
 			margin-bottom: $pi-sp*1.5;
 		}
@@ -72,6 +72,7 @@
 
 	.pi-make-bid-button {
 		@include pi-bid-form-button();
+		margin-bottom: $pi-sp*2;
 	}
 }
 

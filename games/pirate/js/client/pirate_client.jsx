@@ -90,7 +90,7 @@ var PirateClient = React.createClass({
         var body = "", display = "", bid = this.state.currentBidCount != -1, takingTurn = this.state.takingTurn;
 
         return (
-            <div>
+            <div className={"pi-cs-app"}>
                 <ClientHeader username={this.props.userInfo.name}/>
                 <RollForm needToRoll={this.state.needToRoll} rolledDice={this.rolledDice}/>
                 <div id="clientDiceDisplay"></div>

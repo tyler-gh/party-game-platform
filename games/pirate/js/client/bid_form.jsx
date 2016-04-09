@@ -53,7 +53,6 @@ var BidForm = React.createClass({
                         <h1 className={"pi-bid-form-button-text"}>MAKE THE BID</h1>
                     </button>
                 </div>
-                <h1 className={"pi-bid-form-text"}>OR</h1>
                 <div className={"pi-bid-form-button-container"}>
                     <button className={"pi-make-bid-button"} type={"submit"} onClick={this.callLiar}>
                         <h1 className={"pi-bid-form-button-text"}>SAY THAT BE A LIE</h1>
